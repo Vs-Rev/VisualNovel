@@ -36,16 +36,16 @@ namespace Template {
     narrator: {
       name: ""
 
-    }
-     protagonist: {
+    },
+    protagonist: {
       name: ""
-     },
-     Lucor: {
+    },
+    Lucor: {
       name: "Lucor",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
-        
+
       }
-     }
+    }
   }
 }
