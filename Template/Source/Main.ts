@@ -3,6 +3,35 @@ namespace Template {
   export import ƒS = FudgeStory;
 
   console.log("FudgeStory template starting");
+  export let dataForSave = {
+    nameProtagonist: ""
+  }
+
+    //Menu shortcuts
+    let inGameMenuButtons = {
+      save: "Spiel Speichern",
+      load: "Laden",
+      close: "Schließen"
+      
+    }
+
+let gameMenu: ƒS.Menu;
+let menuIsOpen: boolean = true;
+async function buttonFunctionalities(_option:string): Promise<void> {
+  console.log(_option);
+  switch(_option){
+    case inGameMenuButtons.save:
+      await ƒS.Progress.save();
+      break;
+    case inGameMenuButtons.load:  
+      await ƒS.Progress.load();
+    case inGameMenuButtons.close:
+      gameMenu.close();
+      
+  }
+  
+}
+
 
   window.addEventListener("load", start);
   function start(_event: Event): void {
@@ -13,6 +42,7 @@ namespace Template {
     // start the sequence
     ƒS.Progress.go(scenes);
   }
+
 
   export let transition = {
     puzzle: {
