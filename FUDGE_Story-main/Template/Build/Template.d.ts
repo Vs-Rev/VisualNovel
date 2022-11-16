@@ -24,6 +24,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        background1: {
+            name: string;
+            background: string;
+        };
     };
     let data: {
         protagonist: {
@@ -43,6 +47,13 @@ declare namespace Template {
             origin: ƒ.ORIGIN2D;
             pose: {
                 happy: string;
+            };
+        };
+        whiteknight: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                standard: string;
             };
         };
     };

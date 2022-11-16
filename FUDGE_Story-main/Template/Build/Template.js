@@ -8,7 +8,7 @@ var Template;
     Template.transition = {
         clock: {
             duration: 1,
-            alpha: "./FreeTransitions/circle.jpg",
+            alpha: "./Images/Transitions/circle.jpg",
             edge: 1,
         },
         transition2: {
@@ -32,6 +32,10 @@ var Template;
             name: "examplelocation",
             background: "",
         },
+        background1: {
+            name: "background1",
+            background: "./Images/Backgrounds/Background1.jpg"
+        }
     };
     //Charakter benennen
     Template.data = {
@@ -55,6 +59,13 @@ var Template;
                 happy: "", /*Beispielbild für die Pose*/
             },
         },
+        whiteknight: {
+            name: Template.data.protagonist.name,
+            origin: Template.ƒS.ORIGIN.BOTTOMLEFT,
+            pose: {
+                standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
+            }
+        }
     };
     //Animations
     function fromLeftToRight() {
@@ -417,18 +428,26 @@ var Template;
                 T0000: "Beispieltext1",
                 T0001: "Beispieltext2",
             },
+            whiteknight: {
+                T0000: "Sex ist zwar schön.. aber hast du dir schonmal vorgestellt..",
+                T0001: "neben ihr unter den Sternen zu sitzen..",
+                T0002: "..ihre Hand zu halten und ihr dabei tief in die Augen zu schauen und zu sagen..",
+                T0003: ".. Du Hurensohn",
+            }
         };
         //Szenenablauf
         Template.ƒS.Sound.fade(Template.sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
-        //   ƒS.Sound.fade(sound.titletheme, 0, 0.2, true);
-        //   console.log("audio is being closed");
-        await Template.ƒS.Location.show(Template.locations.examplelocation); //Location initialisieren die in Main.ts definiert wurden
+        await Template.ƒS.Location.show(Template.locations.background1); //Location initialisieren die in Main.ts definiert wurden
+        console.log("Background is being displayed");
         await Template.ƒS.update(Template.transition.clock.duration, Template.transition.clock.alpha, Template.transition.clock.edge); //Ein Beispiel-Übergang der in Main.ts definiert wurde
-        await Template.ƒS.Character.show(Template.characters.camille, Template.characters.camille.pose.happy, Template.ƒS.positionPercent(15, 100)); //Charaktere mit deren Posen anzeigen die in Main.ts definiert wurden
+        console.log("Transition is being displayed");
+        await Template.ƒS.Character.show(Template.characters.whiteknight, Template.characters.whiteknight.pose.standard, Template.ƒS.positionPercent(10, 90)); //Charaktere mit deren Posen anzeigen die in Main.ts definiert wurden
         await Template.ƒS.update(1); //Update funktion? Idk warum ehrlich gesagt
-        await Template.ƒS.Speech.tell(Template.characters.camille, text.Character1.T0000); //Sprechtext wird eingeleitet
-        await Template.ƒS.Speech.tell(Template.characters.camille, text.Character1.T0001); //Sprechtext 2 wird eingeleitet
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0000); //Sprechtext wird eingeleitet
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0001); //Sprechtext 2 wird eingeleitet
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0003);
         /*ƒS.Sound.play(sound.money, 0.3, false);*/ //Itemsound
         /*await ƒS.Character.animate(characters.geld, characters.geld.pose.normal, fromCenterToCenter()); */ //Animation des Charakters (in diesem Fall ein Item "Geld") wird gespielt
         await Template.ƒS.Speech.tell(Template.characters.camille, text.Character2.T0000); //Sprechertext wird eingeleitet

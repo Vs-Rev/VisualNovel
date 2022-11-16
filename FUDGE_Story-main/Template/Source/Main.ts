@@ -8,7 +8,7 @@ namespace Template {
   export let transition = {
     clock: {
       duration: 1,
-      alpha: "./FreeTransitions/circle.jpg",
+      alpha: "./Images/Transitions/circle.jpg",
       edge: 1,
     },
     transition2: {
@@ -34,6 +34,10 @@ namespace Template {
       name: "examplelocation",
       background: "", 
     },
+    background1: {
+      name: "background1",
+      background: "./Images/Backgrounds/Background1.jpg"
+    }
   };
 
   //Charakter benennen
@@ -59,6 +63,13 @@ namespace Template {
         happy: "", /*Beispielbild für die Pose*/
       },
     },
+    whiteknight: {
+      name: data.protagonist.name,
+      origin: ƒS.ORIGIN.BOTTOMLEFT,
+      pose: {
+        standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
+      }
+    }
   };
 
   

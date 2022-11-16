@@ -14,18 +14,33 @@ namespace Template {
             T0000: "Beispieltext1",
             T0001: "Beispieltext2",
         },
+
+        whiteknight: {
+            T0000: "Sex ist zwar schön.. aber hast du dir schonmal vorgestellt..",
+            T0001: "neben ihr unter den Sternen zu sitzen..",
+            T0002: "..ihre Hand zu halten und ihr dabei tief in die Augen zu schauen und zu sagen..",
+            T0003: ".. Du Hurensohn",
+        }
       };
   //Szenenablauf
       ƒS.Sound.fade(sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
       console.log("audio is being played");
-    //   ƒS.Sound.fade(sound.titletheme, 0, 0.2, true);
-    //   console.log("audio is being closed");
-      await ƒS.Location.show(locations.examplelocation); //Location initialisieren die in Main.ts definiert wurden
+
+
+      await ƒS.Location.show(locations.background1); //Location initialisieren die in Main.ts definiert wurden
+      console.log("Background is being displayed");
+
+
       await ƒS.update(transition.clock.duration, transition.clock.alpha, transition.clock.edge); //Ein Beispiel-Übergang der in Main.ts definiert wurde
-      await ƒS.Character.show(characters.camille, characters.camille.pose.happy, ƒS.positionPercent(15, 100)); //Charaktere mit deren Posen anzeigen die in Main.ts definiert wurden
+      console.log("Transition is being displayed");
+
+
+      await ƒS.Character.show(characters.whiteknight, characters.whiteknight.pose.standard, ƒS.positionPercent(10, 90)) ; //Charaktere mit deren Posen anzeigen die in Main.ts definiert wurden
       await ƒS.update(1); //Update funktion? Idk warum ehrlich gesagt
-      await ƒS.Speech.tell(characters.camille, text.Character1.T0000); //Sprechtext wird eingeleitet
-      await ƒS.Speech.tell(characters.camille, text.Character1.T0001); //Sprechtext 2 wird eingeleitet
+      await ƒS.Speech.tell(characters.whiteknight, text.whiteknight.T0000); //Sprechtext wird eingeleitet
+      await ƒS.Speech.tell(characters.whiteknight, text.whiteknight.T0001); //Sprechtext 2 wird eingeleitet
+      await ƒS.Speech.tell(characters.whiteknight, text.whiteknight.T0002);
+      await ƒS.Speech.tell(characters.whiteknight, text.whiteknight.T0003);
       /*ƒS.Sound.play(sound.money, 0.3, false);*/ //Itemsound
       /*await ƒS.Character.animate(characters.geld, characters.geld.pose.normal, fromCenterToCenter()); */ //Animation des Charakters (in diesem Fall ein Item "Geld") wird gespielt
       await ƒS.Speech.tell(characters.camille, text.Character2.T0000); //Sprechertext wird eingeleitet
