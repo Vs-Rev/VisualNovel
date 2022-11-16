@@ -26,12 +26,12 @@ html, body {
   padding: 0px;
   background-color: black;
   overflow: hidden;
-  /* font-family: 'Gill Sans MT', sans-serif; */
+  font-family: 'Press Start 2P', cursive;
 }
 
 scene {
-    width: 1280px;
-    height: 720px;
+    width: 1280px; 
+    height: 720px; 
     display: inline-block;
     position: absolute;
 }
@@ -40,6 +40,13 @@ scene {
 canvas {
   width: 100%;
   height: 100%;
+  /* margin: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; */
 }
 
 
@@ -47,29 +54,39 @@ canvas {
 
 speech {
   position: absolute;
+  padding-top: 10px;
+  font-size: 12pt;
   bottom: 0px;
   left: 0px;
-  color: beige;
-  background-color: rgba(43, 43, 43, 0.8);
+  color: rgb(245, 220, 220);
+  background-color: rgba(0, 0, 0, 0.918);
   width: 100%;
-  height: 10vh;
+  height: 15vh;
   padding-left: 5%;
   box-sizing: border-box;
+
 }
-
-
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+ -webkit-user-select: none; /* Safari */
+ -khtml-user-select: none; /* Konqueror HTML */
+ -moz-user-select: none; /* Firefox */
+ -ms-user-select: none; /* Internet Explorer/Edge */
+}
 name {
-  font-size: 14pt;
+  font-size: 12pt;
+  font-style:oblique;
   display: block;
-  color: rgb(98, 113, 161);
+  color: rgb(0, 192, 240);
   margin-bottom: 10px;
 }
 
 /* Text für Auswahlfelder */
 .auswahl{
-  background-color: rgba(43, 43, 43, 0.8);
-  border: none;
-
+  background-color: rgba(0, 0, 0, 0.808);
+  /* border: none; */
+  border-style:solid;
+  border-color: rgba(214, 213, 213, 0.459);
 }
 .auswahl button{
   border: none;
@@ -78,11 +95,15 @@ name {
   background-color: #0000;
   font-size: 20px;
   margin: 2px;
-  cursor:pointer
+  cursor:pointer;
+  
 }
 
 .auswahl button:hover{
-  background-color: grey;
+  background-color: none;
+  border-color: rgb(0, 128, 128);
+  border-width: 2px;
+  border-style: inset;
 }
  
 /* Novel Page */

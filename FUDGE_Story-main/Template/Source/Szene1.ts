@@ -16,15 +16,158 @@ namespace Template {
         },
 
         whiteknight: {
-            T0000: "Sex ist zwar schön.. aber hast du dir schonmal vorgestellt..",
+            T0000: "Edler Abenteurer. Dich erwartet eine Reise voller Gefahren und Tanzveranstaltungen.",
             T0001: "neben ihr unter den Sternen zu sitzen..",
             T0002: "..ihre Hand zu halten und ihr dabei tief in die Augen zu schauen und zu sagen..",
             T0003: ".. Du Hurensohn. Aber wie heißt du eigentlich edler Cockreiter?   ",
             T0004: "hallo was geht ich heiße so und so",
+        },
+        MainNarrator: {
+            T0000: ". . .",
+            T0001: ". . .",
+            T0002: "Oh!!!",
+            T0003: "Verzeih mir doch bitte meine Unachtsamkeit. . .",
+            T0004: "Ich war tief in meinen Gedanken versunken. . .",
+            T0005: "Man hat viel Zeit zum Nachdenken weist du...",
+            T0006: "Wenn man nirgends mehr hin kann. . .",
+            T0007: "Würdest du mit einem alten Herren wie mir, deinen Namen teilen?",
+
+            T0008: "Das ist sehr lieb von dir!!!",
+            T0009: ". . .",
+            T0010: "Spann mich nun nicht so auf die Folter. Sag schon, wie ist dein Name? (Der Vorname reicht mir schon... und am besten auf Groß- und Kleinschreibung achten. . .",
+            T0011: ". . . gewöhnlicher Name . . .",
+
+            T0012: "Nun",
+            T0013: ". . .",
+            T0014: "Das ist sehr bedauerlich.",
+            T0015: "Oh! Du bist immernoch hier?",
+            T0016: "Ich denke wir beide kommen wohl nicht weit, wenn wir uns nicht gegenseitig austauschen",
+            T0017: "Wunderst du dich nicht wie du hier gelandet bist?",
+
+            T0018: "Nun gut, dann übernehme ich eben die Entscheidung für dich. . .",
+            T0019: "Also. . . dein Name ist: ",
+            
         }
       };
   //Szenenablauf
-      ƒS.Sound.fade(sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+
+      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0000);
+      await ƒS.update(2);
+      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0001);
+      await ƒS.update(2);
+      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0002);
+      await ƒS.update(3);
+      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0003);
+      await ƒS.update(5);
+      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0004);
+      await ƒS.update(5);
+      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0005);
+      await ƒS.update(5);
+      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0006);
+      await ƒS.update(5);
+      await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0007);
+
+
+      await delay();
+      //Entscheidungsoptionen
+      let entscheidung1 = {
+        iSayYes: "Namen mitteilen", //Passiert a
+        iSayNo: "Misstrauisch ablehnen" //Passiert b
+      };
+      let erstesdialogelement = await ƒS.Menu.getInput(entscheidung1, "auswahl");
+
+      //Abhängig von der oben stehenden Entscheidung wird nun folgendes passieren:
+
+
+      switch (erstesdialogelement) { //Wenn Auswahl "Anruf annehmen"
+        case entscheidung1.iSayYes:
+          
+          await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0008);
+          await ƒS.update(2);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0009);
+          await ƒS.update(2);
+          await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0010, false);
+          await ƒS.update(2);
+      data.protagonist.name = await ƒS.Speech.getInput();
+      characters.whiteknight.name = data.protagonist.name;
+      await ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + " also? Ein sehr . . .", true);
+      await ƒS.update(2);
+      await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0011);
+      console.log(data.protagonist.name);
+          break;
+
+
+
+        case entscheidung1.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
+        
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0012);
+          await ƒS.update(2);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0013);
+          await ƒS.update(2);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0014);
+          await ƒS.update(3);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0015);
+          await ƒS.update(2);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0016);
+          await ƒS.update(2);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0017);
+          await ƒS.update(2);
+          //Entscheidungsoptionen
+          let entscheidung2 = {
+            iSayYes: "Namen mitteilen", //Passiert a
+            iSayNo: "Erneut ablehnen" //Passiert b
+          };
+          let zweitesdialogelement = await ƒS.Menu.getInput(entscheidung2, "auswahl");
+          switch (zweitesdialogelement) {
+            case entscheidung2.iSayYes:
+                await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0008);
+                await ƒS.update(2);
+                ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0009);
+                await ƒS.update(2);
+                await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0010, false);
+                await ƒS.update(2);
+            data.protagonist.name = await ƒS.Speech.getInput();
+            characters.whiteknight.name = data.protagonist.name;
+            await ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + " also? Ein sehr . . .", true);
+            await ƒS.update(2);
+            await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0011);
+            console.log(data.protagonist.name);
+                break;
+
+                case entscheidung2.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
+        
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0018);
+          await ƒS.update(2);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0019, false);
+          data.protagonist.name = await ƒS.Speech.getInput();
+          characters.whiteknight.name = data.protagonist.name;
+          await ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + " also? Ein sehr . . .", true);
+          await ƒS.update(2);
+          await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0011);
+          console.log(data.protagonist.name);
+          break;       
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      await ƒS.Sound.fade(sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
       console.log("audio is being played");
 
 

@@ -49,6 +49,9 @@ declare namespace Template {
                 standard: string;
             };
         };
+        MainNarrator: {
+            name: string;
+        };
     };
     function fromLeftToRight(): ƒS.AnimationDefinition;
     function fromlefterToLeft(): ƒS.AnimationDefinition;

@@ -70,6 +70,9 @@ namespace Template {
         standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
       }
     },
+    MainNarrator: {
+      name: "",
+    }
   };
 
   
