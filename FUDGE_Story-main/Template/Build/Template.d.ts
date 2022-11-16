@@ -42,13 +42,6 @@ declare namespace Template {
         narrator: {
             name: string;
         };
-        camille: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
-                happy: string;
-            };
-        };
         whiteknight: {
             name: string;
             origin: ƒ.ORIGIN2D;

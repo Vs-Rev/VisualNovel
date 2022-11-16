@@ -56,20 +56,20 @@ namespace Template {
     narrator: {
       name: "",
     },
-    camille: {
+    /*camille: {
       name: data.protagonist.name,
       origin: ƒS.ORIGIN.BOTTOMLEFT,
       pose: {
-        happy: "", /*Beispielbild für die Pose*/
+        happy: "", /*Beispielbild für die Pose
       },
-    },
+    },*/
     whiteknight: {
       name: data.protagonist.name,
       origin: ƒS.ORIGIN.BOTTOMLEFT,
       pose: {
         standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
       }
-    }
+    },
   };
 
   

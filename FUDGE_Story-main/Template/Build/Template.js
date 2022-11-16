@@ -52,20 +52,20 @@ var Template;
         narrator: {
             name: "",
         },
-        camille: {
-            name: Template.data.protagonist.name,
-            origin: Template.ƒS.ORIGIN.BOTTOMLEFT,
-            pose: {
-                happy: "", /*Beispielbild für die Pose*/
-            },
-        },
+        /*camille: {
+          name: data.protagonist.name,
+          origin: ƒS.ORIGIN.BOTTOMLEFT,
+          pose: {
+            happy: "", /*Beispielbild für die Pose
+          },
+        },*/
         whiteknight: {
             name: Template.data.protagonist.name,
             origin: Template.ƒS.ORIGIN.BOTTOMLEFT,
             pose: {
                 standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
             }
-        }
+        },
     };
     //Animations
     function fromLeftToRight() {
@@ -432,7 +432,8 @@ var Template;
                 T0000: "Sex ist zwar schön.. aber hast du dir schonmal vorgestellt..",
                 T0001: "neben ihr unter den Sternen zu sitzen..",
                 T0002: "..ihre Hand zu halten und ihr dabei tief in die Augen zu schauen und zu sagen..",
-                T0003: ".. Du Hurensohn",
+                T0003: ".. Du Hurensohn. Aber wie heißt du eigentlich edler Cockreiter?   ",
+                T0004: "hallo was geht ich heiße so und so",
             }
         };
         //Szenenablauf
@@ -447,11 +448,16 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0000); //Sprechtext wird eingeleitet
         await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0001); //Sprechtext 2 wird eingeleitet
         await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0002);
-        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0003);
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0003, false);
+        await Template.ƒS.update(1);
+        Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
+        Template.characters.whiteknight.name = Template.data.protagonist.name;
+        await Template.ƒS.Speech.tell(Template.characters.narrator, Template.data.protagonist.name + "? Super, dann kann Detektivin Beuford ja mit ihrem Fall beginnen.", true);
+        console.log(Template.data.protagonist.name);
+        await Template.ƒS.update(2);
         /*ƒS.Sound.play(sound.money, 0.3, false);*/ //Itemsound
         /*await ƒS.Character.animate(characters.geld, characters.geld.pose.normal, fromCenterToCenter()); */ //Animation des Charakters (in diesem Fall ein Item "Geld") wird gespielt
-        await Template.ƒS.Speech.tell(Template.characters.camille, text.Character2.T0000); //Sprechertext wird eingeleitet
-        await Template.ƒS.Speech.tell(Template.characters.camille, text.Character2.T0001); //Sprechertext 2 wird eingeleitet
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0004); //Sprechtext wird eingeleitet
         // Novel Page 
         // Keine Ahnung was Novel Page ist amk
         // Kann sein dass das die Novel Page also quasi die aktuelle Stelle in der Handlung definiert und es als Text ausgibt. Entweder als Anzeige auf dem Bildschirm oder nur fürs Programm relevant  
