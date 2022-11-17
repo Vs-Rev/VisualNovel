@@ -18,6 +18,7 @@ declare namespace Template {
         titletheme: string;
         examplesound: string;
         backgroundBuero: string;
+        darkwind: string;
     };
     let locations: {
         examplelocation: {

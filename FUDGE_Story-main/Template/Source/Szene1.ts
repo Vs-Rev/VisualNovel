@@ -69,6 +69,8 @@ namespace Template {
         }
       };
   //Szenenablauf
+  await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+  console.log("audio is being played");
       await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.standard, ƒS.positionPercent(50, 100)); 
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0000);
       await ƒS.update(2);

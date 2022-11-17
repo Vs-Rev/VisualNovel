@@ -25,7 +25,12 @@ var Template;
         //sounds
         examplesound: "",
         backgroundBuero: "./Audio/backgroundBuero.wav",
+        //ambience
+        darkwind: "./Audio/Ambience/darkwind.wav",
     };
+    //Typewritersound
+    function Typewritersound() {
+    }
     //Backgrounds
     Template.locations = {
         examplelocation: {
@@ -483,6 +488,8 @@ var Template;
             }
         };
         //Szenenablauf
+        await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+        console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.standard, Template.ƒS.positionPercent(50, 100));
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0000);
         await Template.ƒS.update(2);

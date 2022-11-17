@@ -26,8 +26,13 @@ namespace Template {
     //sounds
     examplesound: "",
     backgroundBuero: "./Audio/backgroundBuero.wav",
+    //ambience
+    darkwind: "./Audio/Ambience/darkwind.wav",
   };
 
+  //Typewritersound
+  function Typewritersound(){
+  }
   //Backgrounds
   export let locations = {
     examplelocation: {
