@@ -72,9 +72,16 @@ namespace Template {
     },
     MainNarrator: {
       name: "",
+    },
+    Speechbox: {
+      name:"",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      pose: {
+        standard: "./Images/Speechbox.png",
+      }
     }
   };
-
+//Speechbox design
   
   //Animations
   export function fromLeftToRight(): ƒS.AnimationDefinition {

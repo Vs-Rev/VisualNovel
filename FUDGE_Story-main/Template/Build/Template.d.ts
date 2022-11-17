@@ -52,6 +52,13 @@ declare namespace Template {
         MainNarrator: {
             name: string;
         };
+        Speechbox: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                standard: string;
+            };
+        };
     };
     function fromLeftToRight(): ƒS.AnimationDefinition;
     function fromlefterToLeft(): ƒS.AnimationDefinition;

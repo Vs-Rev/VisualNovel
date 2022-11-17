@@ -25,12 +25,12 @@ namespace Template {
         MainNarrator: {
             T0000: ". . .",
             T0001: ". . .",
-            T0002: "Oh!!!",
+            T0002: "Oh",
             T0003: "Verzeih mir doch bitte meine Unachtsamkeit. . .",
             T0004: "Ich war tief in meinen Gedanken versunken. . .",
-            T0005: "Man hat viel Zeit zum Nachdenken weist du...",
-            T0006: "Wenn man nirgends mehr hin kann. . .",
-            T0007: "Würdest du mit einem alten Herren wie mir, deinen Namen teilen?",
+            T0005: "Es ist so dunkel hier drin. Wärst du wohl so freundlich das Licht anzuschalten?",
+            T0006: "Licht bringt zwar Klarheit in die Dinge, offenbart dafür auch unschöne Wahrheiten findest du nicht?",
+            T0007: "Da wir uns gerade so schön unterhalten, möchtest du deinen Namen mit einem alten Herren wie mir teilen?",
 
             T0008: "Das ist sehr lieb von dir!!!",
             T0009: ". . .",
@@ -46,11 +46,22 @@ namespace Template {
 
             T0018: "Nun gut, dann übernehme ich eben die Entscheidung für dich. . .",
             T0019: "Also. . . dein Name ist: ",
-            
+
+            //Lichtan
+            L0001: "Er versuchte zu helfen um etwas Licht ins Dunkle zu bringen",
+            L0002: "Doch er fand keinen . . . Lichtschalter",
+            L0003: "Keinen Lichtschalter gefunden heh? Das ist okay. Ich versuche es schon seit ich mich erinnern kann doch leider ohne Erfolg",
+
+            //Lichtaus
+            L0004: "Nichts passiert",
+            L0005: "Nein? Naja. Ich mag es sowieso viel lieber wenn es dunkel ist.",
+
+
+
         }
       };
   //Szenenablauf
-
+      await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.standard, ƒS.positionPercent(50, 100)); 
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0000);
       await ƒS.update(2);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0001);
@@ -61,12 +72,37 @@ namespace Template {
       await ƒS.update(5);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0004);
       await ƒS.update(5);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0005);
-      await ƒS.update(5);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0006);
-      await ƒS.update(5);
-      await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0007);
 
+
+      //Licht anschalten Text
+      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0005, false);
+      await ƒS.update(5);
+      let lichtanschalten = {
+        lichtan : "Licht anschalten",
+        lichtaus: "Nichts tun"
+      };
+      let lichtanschaltenelement = await ƒS.Menu.getInput(lichtanschalten, "auswahl");
+      switch (lichtanschaltenelement) {
+        case lichtanschalten.lichtan:
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0001);
+          await ƒS.update(10);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0002);
+          await ƒS.update(7);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0003);
+          await ƒS.update(10)
+          break;
+
+        case lichtanschalten.lichtaus:
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0004);
+          await ƒS.update(3);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0005);
+          await ƒS.update(3);
+          break;
+      }
+      await ƒS.update(3);
+      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0006);
+      await ƒS.update(15);
+      await ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0007);
 
       await delay();
       //Entscheidungsoptionen

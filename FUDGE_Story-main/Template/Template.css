@@ -24,7 +24,7 @@ html, body {
   height: 100vh;
   margin: 0px;
   padding: 0px;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   overflow: hidden;
   font-family: 'Press Start 2P', cursive;
 }
@@ -59,12 +59,12 @@ speech {
   bottom: 0px;
   left: 0px;
   color: rgb(245, 220, 220);
-  background-color: rgba(0, 0, 0, 0.918);
+  /*background-color: rgba(0, 0, 0, 0.918);*/
   width: 100%;
   height: 15vh;
   padding-left: 5%;
+  padding-right: 5%;
   box-sizing: border-box;
-
 }
 .disable-select {
   user-select: none; /* supported by Chrome and Opera */
@@ -80,7 +80,6 @@ name {
   color: rgb(0, 192, 240);
   margin-bottom: 10px;
 }
-
 /* Text für Auswahlfelder */
 .auswahl{
   background-color: rgba(0, 0, 0, 0.808);

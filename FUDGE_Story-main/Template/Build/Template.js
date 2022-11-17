@@ -68,8 +68,16 @@ var Template;
         },
         MainNarrator: {
             name: "",
+        },
+        Speechbox: {
+            name: "",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                standard: "./Images/Speechbox.png",
+            }
         }
     };
+    //Speechbox design
     //Animations
     function fromLeftToRight() {
         return {
@@ -441,12 +449,12 @@ var Template;
             MainNarrator: {
                 T0000: ". . .",
                 T0001: ". . .",
-                T0002: "Oh!!!",
+                T0002: "Oh",
                 T0003: "Verzeih mir doch bitte meine Unachtsamkeit. . .",
                 T0004: "Ich war tief in meinen Gedanken versunken. . .",
-                T0005: "Man hat viel Zeit zum Nachdenken weist du...",
-                T0006: "Wenn man nirgends mehr hin kann. . .",
-                T0007: "Würdest du mit einem alten Herren wie mir, deinen Namen teilen?",
+                T0005: "Es ist so dunkel hier drin. Wärst du wohl so freundlich das Licht anzuschalten?",
+                T0006: "Licht bringt zwar Klarheit in die Dinge, offenbart dafür auch unschöne Wahrheiten findest du nicht?",
+                T0007: "Da wir uns gerade so schön unterhalten, möchtest du deinen Namen mit einem alten Herren wie mir teilen?",
                 T0008: "Das ist sehr lieb von dir!!!",
                 T0009: ". . .",
                 T0010: "Spann mich nun nicht so auf die Folter. Sag schon, wie ist dein Name? (Der Vorname reicht mir schon... und am besten auf Groß- und Kleinschreibung achten. . .",
@@ -459,9 +467,17 @@ var Template;
                 T0017: "Wunderst du dich nicht wie du hier gelandet bist?",
                 T0018: "Nun gut, dann übernehme ich eben die Entscheidung für dich. . .",
                 T0019: "Also. . . dein Name ist: ",
+                //Lichtan
+                L0001: "Er versuchte zu helfen um etwas Licht ins Dunkle zu bringen",
+                L0002: "Doch er fand keinen . . . Lichtschalter",
+                L0003: "Keinen Lichtschalter gefunden heh? Das ist okay. Ich versuche es schon seit ich mich erinnern kann doch leider ohne Erfolg",
+                //Lichtaus
+                L0004: "Nichts passiert",
+                L0005: "Nein? Naja. Ich mag es sowieso viel lieber wenn es dunkel ist.",
             }
         };
         //Szenenablauf
+        await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.standard, Template.ƒS.positionPercent(50, 100));
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0000);
         await Template.ƒS.update(2);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0001);
@@ -472,10 +488,33 @@ var Template;
         await Template.ƒS.update(5);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0004);
         await Template.ƒS.update(5);
-        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0005);
+        //Licht anschalten Text
+        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0005, false);
         await Template.ƒS.update(5);
+        let lichtanschalten = {
+            lichtan: "Licht anschalten",
+            lichtaus: "Nichts tun"
+        };
+        let lichtanschaltenelement = await Template.ƒS.Menu.getInput(lichtanschalten, "auswahl");
+        switch (lichtanschaltenelement) {
+            case lichtanschalten.lichtan:
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.L0001);
+                await Template.ƒS.update(10);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.L0002);
+                await Template.ƒS.update(7);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.L0003);
+                await Template.ƒS.update(10);
+                break;
+            case lichtanschalten.lichtaus:
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.L0004);
+                await Template.ƒS.update(3);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.L0005);
+                await Template.ƒS.update(3);
+                break;
+        }
+        await Template.ƒS.update(3);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0006);
-        await Template.ƒS.update(5);
+        await Template.ƒS.update(15);
         await Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0007);
         await Template.delay();
         //Entscheidungsoptionen
