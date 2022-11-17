@@ -454,7 +454,7 @@ var Template;
                 T0004: "Ich war tief in meinen Gedanken versunken. . .",
                 T0005: "Es ist so dunkel hier drin. Wärst du wohl so freundlich das Licht anzuschalten?",
                 T0006: "Licht bringt zwar Klarheit in die Dinge, offenbart dafür auch unschöne Wahrheiten findest du nicht?",
-                T0007: "Da wir uns gerade so schön unterhalten, möchtest du deinen Namen mit einem alten Herren wie mir teilen?",
+                T0007: "Da wir uns gerade so schön unterhalten und offenbar nicht viele Auswahlmöglichkeiten haben. . . Möchtest du deinen Namen mit einem alten Herren wie mir teilen?",
                 T0008: "Das ist sehr lieb von dir!!!",
                 T0009: ". . .",
                 T0010: "Spann mich nun nicht so auf die Folter. Sag schon, wie ist dein Name? (Der Vorname reicht mir schon... und am besten auf Groß- und Kleinschreibung achten. . .",
@@ -462,11 +462,17 @@ var Template;
                 T0012: "Nun",
                 T0013: ". . .",
                 T0014: "Das ist sehr bedauerlich.",
-                T0015: "Oh! Du bist immernoch hier?",
-                T0016: "Ich denke wir beide kommen wohl nicht weit, wenn wir uns nicht gegenseitig austauschen",
+                T0015: "Du bist immernoch hier?",
+                T0016: "Ich denke wir beide kommen wohl nicht weit, wenn wir uns nicht gegenseitig vorstellen",
                 T0017: "Wunderst du dich nicht wie du hier gelandet bist?",
                 T0018: "Nun gut, dann übernehme ich eben die Entscheidung für dich. . .",
                 T0019: "Also. . . dein Name ist: ",
+                T0020: "Lieber ",
+                T0021: ". Dich erwartet eine heldenhafte Reise in ein längst vergessenes Königreich voller Herausforderungen, Tücken und Gefahren.",
+                T0022: "Bevor ich dich aufkläre, wo wir hier sind und wie du an diesen Ort gelangt bist, muss ich wissen. . .",
+                T0023: "Bist du der Herausforderung gewachsen?",
+                T0024: "Wunderbar!!!",
+                T0025: "Er war definitiv nicht bereit, doch er hatte keine leider keine andere Wahl",
                 //Lichtan
                 L0001: "Er versuchte zu helfen um etwas Licht ins Dunkle zu bringen",
                 L0002: "Doch er fand keinen . . . Lichtschalter",
@@ -515,43 +521,45 @@ var Template;
         await Template.ƒS.update(3);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0006);
         await Template.ƒS.update(15);
-        await Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0007);
+        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0007);
+        await Template.ƒS.update(5);
         await Template.delay();
-        //Entscheidungsoptionen
+        //Namen sagen
         let entscheidung1 = {
             iSayYes: "Namen mitteilen",
             iSayNo: "Misstrauisch ablehnen" //Passiert b
         };
         let erstesdialogelement = await Template.ƒS.Menu.getInput(entscheidung1, "auswahl");
         //Abhängig von der oben stehenden Entscheidung wird nun folgendes passieren:
-        switch (erstesdialogelement) { //Wenn Auswahl "Anruf annehmen"
+        switch (erstesdialogelement) { //Wenn Auswahl "Namen eingben"
             case entscheidung1.iSayYes:
-                await Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0008);
-                await Template.ƒS.update(2);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0008);
+                await Template.ƒS.update(5);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0009);
-                await Template.ƒS.update(2);
-                await Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0010, false);
-                await Template.ƒS.update(2);
+                await Template.ƒS.update(3);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0010, false);
+                await Template.ƒS.update(7);
                 Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
                 Template.characters.whiteknight.name = Template.data.protagonist.name;
-                await Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
-                await Template.ƒS.update(2);
-                await Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0011);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
+                await Template.ƒS.update(6);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0011);
+                await Template.ƒS.update(4);
                 console.log(Template.data.protagonist.name);
                 break;
             case entscheidung1.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0012);
-                await Template.ƒS.update(2);
+                await Template.ƒS.update(4);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0013);
-                await Template.ƒS.update(2);
+                await Template.ƒS.update(4);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0014);
-                await Template.ƒS.update(3);
+                await Template.ƒS.update(4);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0015);
-                await Template.ƒS.update(2);
+                await Template.ƒS.update(4);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0016);
-                await Template.ƒS.update(2);
+                await Template.ƒS.update(10);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0017);
-                await Template.ƒS.update(2);
+                await Template.ƒS.update(4);
                 //Entscheidungsoptionen
                 let entscheidung2 = {
                     iSayYes: "Namen mitteilen",
@@ -560,29 +568,52 @@ var Template;
                 let zweitesdialogelement = await Template.ƒS.Menu.getInput(entscheidung2, "auswahl");
                 switch (zweitesdialogelement) {
                     case entscheidung2.iSayYes:
-                        await Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0008);
-                        await Template.ƒS.update(2);
+                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0008);
+                        await Template.ƒS.update(5);
                         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0009);
-                        await Template.ƒS.update(2);
-                        await Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0010, false);
+                        await Template.ƒS.update(5);
+                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0010, false);
                         await Template.ƒS.update(2);
                         Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
                         Template.characters.whiteknight.name = Template.data.protagonist.name;
-                        await Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
-                        await Template.ƒS.update(2);
-                        await Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0011);
+                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
+                        await Template.ƒS.update(5);
+                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0011);
+                        await Template.ƒS.update(5);
                         console.log(Template.data.protagonist.name);
                         break;
                     case entscheidung2.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
                         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0018);
-                        await Template.ƒS.update(2);
+                        await Template.ƒS.update(5);
                         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0019, false);
+                        await Template.ƒS.update(2);
                         Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
                         Template.characters.whiteknight.name = Template.data.protagonist.name;
-                        await Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
-                        await Template.ƒS.update(2);
-                        await Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0011);
+                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
+                        await Template.ƒS.update(5);
+                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0011);
+                        await Template.ƒS.update(5);
                         console.log(Template.data.protagonist.name);
+                        break;
+                }
+                await Template.ƒS.Sound.fade(Template.sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+                console.log("audio is being played");
+                await Template.ƒS.update(7);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0020 + Template.data.protagonist.name + text.MainNarrator.T0021);
+                await Template.ƒS.update(5);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0022);
+                await Template.ƒS.update(5);
+                let herausforderung = {
+                    iSayYes: "Auf jeden Fall",
+                    iSayNo: "Ich glaube eher nicht" //Passiert b
+                };
+                let herausforderungselement = await Template.ƒS.Menu.getInput(herausforderung, "auswahl");
+                switch (herausforderungselement) {
+                    case herausforderung.iSayYes:
+                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0024);
+                        break;
+                    case herausforderung.iSayNo:
+                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0025);
                         break;
                 }
                 await Template.ƒS.Sound.fade(Template.sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
