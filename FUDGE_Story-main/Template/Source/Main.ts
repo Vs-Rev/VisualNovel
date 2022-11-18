@@ -23,9 +23,11 @@ namespace Template {
     //music 
     examplemusic: "",
     titletheme: "./Audio/TitleTheme.wav",
+    introductiontheme: "./Audio/Ambience/Introduction.wav",
     //sounds
     examplesound: "",
     backgroundBuero: "./Audio/backgroundBuero.wav",
+    makelight: "./Audio/Soundeffects/Makelight.wav",
     //ambience
     darkwind: "./Audio/Ambience/darkwind.wav",
   };
@@ -42,6 +44,10 @@ namespace Template {
     background1: {
       name: "background1",
       background: "./Images/Backgrounds/Background1.jpg"
+    },
+    startscreenbackground: {
+      name: "startscreen",
+      background: "./Images/Backgrounds/Darkcave.png",
     }
   };
 

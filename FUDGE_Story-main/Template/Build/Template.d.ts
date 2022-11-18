@@ -16,8 +16,10 @@ declare namespace Template {
     let sound: {
         examplemusic: string;
         titletheme: string;
+        introductiontheme: string;
         examplesound: string;
         backgroundBuero: string;
+        makelight: string;
         darkwind: string;
     };
     let locations: {
@@ -26,6 +28,10 @@ declare namespace Template {
             background: string;
         };
         background1: {
+            name: string;
+            background: string;
+        };
+        startscreenbackground: {
             name: string;
             background: string;
         };

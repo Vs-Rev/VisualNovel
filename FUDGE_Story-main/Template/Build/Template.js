@@ -22,9 +22,11 @@ var Template;
         //music 
         examplemusic: "",
         titletheme: "./Audio/TitleTheme.wav",
+        introductiontheme: "./Audio/Ambience/Introduction.wav",
         //sounds
         examplesound: "",
         backgroundBuero: "./Audio/backgroundBuero.wav",
+        makelight: "./Audio/Soundeffects/Makelight.wav",
         //ambience
         darkwind: "./Audio/Ambience/darkwind.wav",
     };
@@ -40,6 +42,10 @@ var Template;
         background1: {
             name: "background1",
             background: "./Images/Backgrounds/Background1.jpg"
+        },
+        startscreenbackground: {
+            name: "startscreen",
+            background: "./Images/Backgrounds/Darkcave.png",
         }
     };
     //Charakter benennen
@@ -469,7 +475,7 @@ var Template;
                 T0014: "Das ist sehr bedauerlich.",
                 T0015: "Du bist immernoch hier?",
                 T0016: "Ich denke wir beide kommen wohl nicht weit, wenn wir uns nicht gegenseitig vorstellen",
-                T0017: "Wunderst du dich nicht wie du hier gelandet bist?",
+                T0017: "Also. Wie heißt du?",
                 T0018: "Nun gut, dann übernehme ich eben die Entscheidung für dich. . .",
                 T0019: "Also. . . dein Name ist: ",
                 T0020: "Lieber ",
@@ -481,20 +487,24 @@ var Template;
                 //Lichtan
                 L0001: "Er versuchte zu helfen um etwas Licht ins Dunkle zu bringen",
                 L0002: "Doch er fand keinen . . . Lichtschalter",
-                L0003: "Keinen Lichtschalter gefunden heh? Das ist okay. Ich versuche es schon seit ich mich erinnern kann doch leider ohne Erfolg",
+                L0003: "Keinen Lichtschalter gefunden heh? Das ist okay, der Wille zählt. Lass mich das übernehmen",
                 //Lichtaus
                 L0004: "Nichts passiert",
-                L0005: "Nein? Naja. Ich mag es sowieso viel lieber wenn es dunkel ist.",
+                L0005: "Nein? Okay dann lass mich das übernehmen",
             }
         };
         //Szenenablauf
         await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.standard, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.Speech.setTickerDelays(250); //Wie schnell der Text angezeigt wird
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0000);
         await Template.ƒS.update(2);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0001);
         await Template.ƒS.update(2);
+        await Template.ƒS.Speech.setTickerDelays(50);
+        await Template.ƒS.Sound.fade(Template.sound.introductiontheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+        console.log("audio is being played");
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0002);
         await Template.ƒS.update(3);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0003);
@@ -516,13 +526,22 @@ var Template;
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.L0002);
                 await Template.ƒS.update(7);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.L0003);
-                await Template.ƒS.update(10);
+                await Template.ƒS.update(4);
+                Template.ƒS.Sound.play(Template.sound.makelight, 0.3, false);
+                await Template.ƒS.update(1);
+                await Template.ƒS.Location.show(Template.locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
+                console.log("Background is being displayed");
+                await Template.ƒS.update(6);
                 break;
             case lichtanschalten.lichtaus:
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.L0004);
                 await Template.ƒS.update(3);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.L0005);
                 await Template.ƒS.update(3);
+                Template.ƒS.Sound.play(Template.sound.makelight, 0.3, false);
+                await Template.ƒS.update(1);
+                await Template.ƒS.Location.show(Template.locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
+                console.log("Background is being displayed");
                 break;
         }
         await Template.ƒS.update(3);
@@ -545,7 +564,7 @@ var Template;
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0009);
                 await Template.ƒS.update(3);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0010, false);
-                await Template.ƒS.update(7);
+                await Template.ƒS.update(10);
                 Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
                 Template.characters.whiteknight.name = Template.data.protagonist.name;
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
@@ -555,155 +574,168 @@ var Template;
                 console.log(Template.data.protagonist.name);
                 break;
             case entscheidung1.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
+                await Template.ƒS.Speech.setTickerDelays(250);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0012);
                 await Template.ƒS.update(4);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0013);
+                await Template.ƒS.Speech.setTickerDelays(50);
                 await Template.ƒS.update(4);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0014);
                 await Template.ƒS.update(4);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0015);
                 await Template.ƒS.update(4);
                 Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0016);
-                await Template.ƒS.update(10);
-                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0017);
-                await Template.ƒS.update(4);
-                //Entscheidungsoptionen
-                let entscheidung2 = {
-                    iSayYes: "Namen mitteilen",
-                    iSayNo: "Erneut ablehnen" //Passiert b
-                };
-                let zweitesdialogelement = await Template.ƒS.Menu.getInput(entscheidung2, "auswahl");
-                switch (zweitesdialogelement) {
-                    case entscheidung2.iSayYes:
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0008);
-                        await Template.ƒS.update(5);
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0009);
-                        await Template.ƒS.update(5);
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0010, false);
-                        await Template.ƒS.update(2);
-                        Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
-                        Template.characters.whiteknight.name = Template.data.protagonist.name;
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
-                        await Template.ƒS.update(5);
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0011);
-                        await Template.ƒS.update(5);
-                        console.log(Template.data.protagonist.name);
-                        break;
-                    case entscheidung2.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0018);
-                        await Template.ƒS.update(5);
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0019, false);
-                        await Template.ƒS.update(2);
-                        Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
-                        Template.characters.whiteknight.name = Template.data.protagonist.name;
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
-                        await Template.ƒS.update(5);
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0011);
-                        await Template.ƒS.update(5);
-                        console.log(Template.data.protagonist.name);
-                        break;
-                }
-                await Template.ƒS.Sound.fade(Template.sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
-                console.log("audio is being played");
                 await Template.ƒS.update(7);
-                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0020 + Template.data.protagonist.name + text.MainNarrator.T0021);
-                await Template.ƒS.update(5);
-                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0022);
-                await Template.ƒS.update(5);
-                let herausforderung = {
-                    iSayYes: "Auf jeden Fall",
-                    iSayNo: "Ich glaube eher nicht" //Passiert b
-                };
-                let herausforderungselement = await Template.ƒS.Menu.getInput(herausforderung, "auswahl");
-                switch (herausforderungselement) {
-                    case herausforderung.iSayYes:
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0024);
-                        break;
-                    case herausforderung.iSayNo:
-                        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0025);
-                        break;
-                }
-                await Template.ƒS.Sound.fade(Template.sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
-                console.log("audio is being played");
-                await Template.ƒS.Location.show(Template.locations.background1); //Location initialisieren die in Main.ts definiert wurden
-                console.log("Background is being displayed");
-                await Template.ƒS.update(Template.transition.clock.duration, Template.transition.clock.alpha, Template.transition.clock.edge); //Ein Beispiel-Übergang der in Main.ts definiert wurde
-                console.log("Transition is being displayed");
-                await Template.ƒS.Character.show(Template.characters.whiteknight, Template.characters.whiteknight.pose.standard, Template.ƒS.positionPercent(10, 90)); //Charaktere mit deren Posen anzeigen die in Main.ts definiert wurden
-                await Template.ƒS.update(1); //Update funktion? Idk warum ehrlich gesagt
-                await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0000); //Sprechtext wird eingeleitet
-                await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0001); //Sprechtext 2 wird eingeleitet
-                await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0002);
-                await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0003, false);
-                await Template.ƒS.update(1);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0017, false);
+                await Template.ƒS.update(3);
                 Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
                 Template.characters.whiteknight.name = Template.data.protagonist.name;
-                await Template.ƒS.Speech.tell(Template.characters.narrator, Template.data.protagonist.name + "? Super, dann kann Detektivin Beuford ja mit ihrem Fall beginnen.", true);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + " also? Ein sehr . . .", true);
+                await Template.ƒS.update(6);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0011);
+                await Template.ƒS.update(4);
                 console.log(Template.data.protagonist.name);
-                await Template.ƒS.update(2);
-                /*ƒS.Sound.play(sound.money, 0.3, false);*/ //Itemsound
-                /*await ƒS.Character.animate(characters.geld, characters.geld.pose.normal, fromCenterToCenter()); */ //Animation des Charakters (in diesem Fall ein Item "Geld") wird gespielt
-                await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0004); //Sprechtext wird eingeleitet
-                // Novel Page 
-                // Keine Ahnung was Novel Page ist amk
-                // Kann sein dass das die Novel Page also quasi die aktuelle Stelle in der Handlung definiert und es als Text ausgibt. Entweder als Anzeige auf dem Bildschirm oder nur fürs Programm relevant  
-                Template.ƒS.Text.setClass("novel-page");
-                Template.ƒS.Text.print("34 Worlington Street");
-                //Inventory Funktion
-                /*ƒS.Inventory.add(items.money);
-                await ƒS.Character.hide(characters.geld);
-                await ƒS.update(1);
-                await ƒS.Speech.tell(characters.camille, text.camille.T0004);
-                */
-                /*ƒS.Sound.play(sound.handy, 0.5, false);*/ //Weiterer Sound
-                //Zeitliche Delay Funktion wird erwartet (bis Delay zuende ist?)
-                await Template.delay();
-                //Entscheidungsoptionen
-                let firstDialogueElementOptions = {
-                    iSayYes: "Anruf annehmen",
-                    iSayNo: "Anruf ignorieren" //Passiert b
-                };
-                let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, "auswahl");
-                //Abhängig von der oben stehenden Entscheidung wird nun folgendes passieren:
-                switch (firstDialogueElement) { //Wenn Auswahl "Anruf annehmen"
-                    case firstDialogueElementOptions.iSayYes:
-                    /*
-                     await ƒS.Speech.tell(characters.camille, text.camille.T0005);
-                     await ƒS.Speech.tell(characters.smith, text.smith.T0000);
-                     await ƒS.Speech.tell(characters.camille, text.camille.T0006);
-                     await ƒS.Speech.tell(characters.smith, text.smith.T0001);
-                     await ƒS.Speech.tell(characters.camille, text.camille.T0007);
-                     await ƒS.Speech.tell(characters.smith, text.smith.T0002);
-                     await ƒS.Speech.tell(characters.camille, text.camille.T0008);
-                     await ƒS.Speech.tell(characters.smith, text.smith.T0003);
-                     await ƒS.Speech.tell(characters.camille, text.camille.T0009);
-                     await ƒS.Speech.tell(characters.smith, text.smith.T0004);
-                     await ƒS.Speech.tell(characters.camille, text.camille.T0010);
-                     await ƒS.Speech.tell(characters.smith, text.smith.T0005);
-                     await ƒS.Speech.tell(characters.camille, text.camille.T0011);
-                     await ƒS.Speech.tell(characters.smith, text.smith.T0006);
-                     await ƒS.Speech.tell(characters.camille, text.camille.T0012);
-                     
-                     break;*/
-                    case firstDialogueElementOptions.iSayNo: //Wenn Auswahl "Anruf ablehnen"
-                    /*
-                      await ƒS.Speech.tell(characters.camille, text.camille.T0013);
-                      await ƒS.Speech.tell(characters.camille, text.camille.T0014);
-                      await ƒS.Speech.tell(characters.camille, text.camille.T0015);
-                      break;
-                      */
-                }
-                //Weitere CharakterAnimation
-                /*await ƒS.Character.animate(characters.camille, characters.camille.pose.happy, fromLeftToRight());
-          
-                await ƒS.Character.hide(characters.camille);*/
-                //Sound wird gespielt
-                /*
-                ƒS.Sound.fade(sound.backgroundBuero, 0, 0.2, true);
-                */
-                //Erwartet update 1? Immernoch keine Ahnung was das ist. Möglicherweise der letzte Schritt bis in die nächste Szene? Oder ein Mausklick? KEINE AHNUNG MAAN
-                await Template.ƒS.update(1);
+                break;
         }
+        /*
+        //Entscheidungsoptionen
+        let entscheidung2 = {
+          iSayYes: "Namen mitteilen", //Passiert a
+          iSayNo: "Erneut ablehnen" //Passiert b
+        };
+        let zweitesdialogelement = await ƒS.Menu.getInput(entscheidung2, "auswahl");
+        switch (zweitesdialogelement) {
+          case entscheidung2.iSayYes:
+              ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0008);
+              await ƒS.update(5);
+              ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0009);
+              await ƒS.update(5);
+              ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0010, false);
+              await ƒS.update(2);
+          data.protagonist.name = await ƒS.Speech.getInput();
+          characters.whiteknight.name = data.protagonist.name;
+          ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + " also? Ein sehr . . .", true);
+          await ƒS.update(5);
+          ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0011);
+          await ƒS.update(5);
+          console.log(data.protagonist.name);
+              break;
+    
+              case entscheidung2.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
+              ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0018);
+              await ƒS.update(5);
+              ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0019, false);
+              await ƒS.update(2);
+              data.protagonist.name = await ƒS.Speech.getInput();
+              characters.whiteknight.name = data.protagonist.name;
+              ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + " also? Ein sehr . . .", true);
+              await ƒS.update(5);
+              ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0011);
+              await ƒS.update(5);
+              console.log(data.protagonist.name);
+                  break;
+    
+        }*/
+        await Template.ƒS.Sound.fade(Template.sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+        console.log("audio is being played");
+        await Template.ƒS.update(3);
+        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0020 + Template.data.protagonist.name + text.MainNarrator.T0021);
+        await Template.ƒS.update(5);
+        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0022);
+        await Template.ƒS.update(5);
+        let herausforderung = {
+            iSayYes: "Auf jeden Fall",
+            iSayNo: "Ich glaube eher nicht" //Passiert b
+        };
+        let herausforderungselement = await Template.ƒS.Menu.getInput(herausforderung, "auswahl");
+        switch (herausforderungselement) {
+            case herausforderung.iSayYes:
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0024);
+                break;
+            case herausforderung.iSayNo:
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0025);
+                break;
+        }
+        await Template.ƒS.Sound.fade(Template.sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+        console.log("audio is being played");
+        await Template.ƒS.Location.show(Template.locations.background1); //Location initialisieren die in Main.ts definiert wurden
+        console.log("Background is being displayed");
+        await Template.ƒS.update(Template.transition.clock.duration, Template.transition.clock.alpha, Template.transition.clock.edge); //Ein Beispiel-Übergang der in Main.ts definiert wurde
+        console.log("Transition is being displayed");
+        await Template.ƒS.Character.show(Template.characters.whiteknight, Template.characters.whiteknight.pose.standard, Template.ƒS.positionPercent(10, 90)); //Charaktere mit deren Posen anzeigen die in Main.ts definiert wurden
+        await Template.ƒS.update(1); //Update funktion? Idk warum ehrlich gesagt
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0000); //Sprechtext wird eingeleitet
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0001); //Sprechtext 2 wird eingeleitet
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0002);
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0003, false);
+        await Template.ƒS.update(1);
+        Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
+        Template.characters.whiteknight.name = Template.data.protagonist.name;
+        await Template.ƒS.Speech.tell(Template.characters.narrator, Template.data.protagonist.name + "? Super, dann kann Detektivin Beuford ja mit ihrem Fall beginnen.", true);
+        console.log(Template.data.protagonist.name);
+        await Template.ƒS.update(2);
+        /*ƒS.Sound.play(sound.money, 0.3, false);*/ //Itemsound
+        /*await ƒS.Character.animate(characters.geld, characters.geld.pose.normal, fromCenterToCenter()); */ //Animation des Charakters (in diesem Fall ein Item "Geld") wird gespielt
+        await Template.ƒS.Speech.tell(Template.characters.whiteknight, text.whiteknight.T0004); //Sprechtext wird eingeleitet
+        // Novel Page 
+        // Keine Ahnung was Novel Page ist amk
+        // Kann sein dass das die Novel Page also quasi die aktuelle Stelle in der Handlung definiert und es als Text ausgibt. Entweder als Anzeige auf dem Bildschirm oder nur fürs Programm relevant  
+        Template.ƒS.Text.setClass("novel-page");
+        Template.ƒS.Text.print("34 Worlington Street");
+        //Inventory Funktion
+        /*ƒS.Inventory.add(items.money);
+        await ƒS.Character.hide(characters.geld);
+        await ƒS.update(1);
+        await ƒS.Speech.tell(characters.camille, text.camille.T0004);
+        */
+        /*ƒS.Sound.play(sound.handy, 0.5, false);*/ //Weiterer Sound
+        //Zeitliche Delay Funktion wird erwartet (bis Delay zuende ist?)
+        await Template.delay();
+        //Entscheidungsoptionen
+        let firstDialogueElementOptions = {
+            iSayYes: "Anruf annehmen",
+            iSayNo: "Anruf ignorieren" //Passiert b
+        };
+        let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, "auswahl");
+        //Abhängig von der oben stehenden Entscheidung wird nun folgendes passieren:
+        switch (firstDialogueElement) { //Wenn Auswahl "Anruf annehmen"
+            case firstDialogueElementOptions.iSayYes:
+            /*
+             await ƒS.Speech.tell(characters.camille, text.camille.T0005);
+             await ƒS.Speech.tell(characters.smith, text.smith.T0000);
+             await ƒS.Speech.tell(characters.camille, text.camille.T0006);
+             await ƒS.Speech.tell(characters.smith, text.smith.T0001);
+             await ƒS.Speech.tell(characters.camille, text.camille.T0007);
+             await ƒS.Speech.tell(characters.smith, text.smith.T0002);
+             await ƒS.Speech.tell(characters.camille, text.camille.T0008);
+             await ƒS.Speech.tell(characters.smith, text.smith.T0003);
+             await ƒS.Speech.tell(characters.camille, text.camille.T0009);
+             await ƒS.Speech.tell(characters.smith, text.smith.T0004);
+             await ƒS.Speech.tell(characters.camille, text.camille.T0010);
+             await ƒS.Speech.tell(characters.smith, text.smith.T0005);
+             await ƒS.Speech.tell(characters.camille, text.camille.T0011);
+             await ƒS.Speech.tell(characters.smith, text.smith.T0006);
+             await ƒS.Speech.tell(characters.camille, text.camille.T0012);
+             
+             break;*/
+            case firstDialogueElementOptions.iSayNo: //Wenn Auswahl "Anruf ablehnen"
+            /*
+              await ƒS.Speech.tell(characters.camille, text.camille.T0013);
+              await ƒS.Speech.tell(characters.camille, text.camille.T0014);
+              await ƒS.Speech.tell(characters.camille, text.camille.T0015);
+              break;
+              */
+        }
+        //Weitere CharakterAnimation
+        /*await ƒS.Character.animate(characters.camille, characters.camille.pose.happy, fromLeftToRight());
+    
+        await ƒS.Character.hide(characters.camille);*/
+        //Sound wird gespielt
+        /*
+        ƒS.Sound.fade(sound.backgroundBuero, 0, 0.2, true);
+        */
+        //Erwartet update 1? Immernoch keine Ahnung was das ist. Möglicherweise der letzte Schritt bis in die nächste Szene? Oder ein Mausklick? KEINE AHNUNG MAAN
+        await Template.ƒS.update(1);
     }
     Template.Szene1 = Szene1;
 })(Template || (Template = {}));
