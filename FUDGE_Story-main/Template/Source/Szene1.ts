@@ -194,6 +194,7 @@ namespace Template {
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T1007, false);
     await ƒS.update(3);
     await ƒS.Sound.play(sound.buttonhover, .2, false);
+
     let lichtanschalten = {
       lichtan: "Licht anschalten",
       lichtaus: "Nichts tun"
