@@ -21,6 +21,8 @@ declare namespace Template {
         backgroundBuero: string;
         speech: string;
         makelight: string;
+        buttonpress: string;
+        buttonhover: string;
         darkwind: string;
     };
     let locations: {

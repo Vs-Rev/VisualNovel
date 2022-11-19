@@ -30,6 +30,8 @@ namespace Template {
     backgroundBuero: "./Audio/backgroundBuero.wav",
     speech: "./Audio/Soundeffects/Speech.wav",
     makelight: "./Audio/Soundeffects/Makelight.wav",
+    buttonpress: "./Audio/Soundeffects/Buttonpress.wav",
+    buttonhover: "./Audio/Soundeffects/Buttonhover.wav",
     //ambience
     darkwind: "./Audio/Ambience/darkwind.wav",
   };

@@ -187,10 +187,13 @@ namespace Template {
 
     //Licht anschalten Text
     ƒS.Speech.setTickerDelays(50);
+    stimme(text.MainNarrator.T0005 + text.MainNarrator.T1005 + text.MainNarrator.T1006);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0005 + text.MainNarrator.T1005 + text.MainNarrator.T1006);
     await ƒS.update(8);
+    stimme(text.MainNarrator.T1007);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T1007, false);
     await ƒS.update(3);
+    await ƒS.Sound.play(sound.buttonhover, .2, false);
     let lichtanschalten = {
       lichtan: "Licht anschalten",
       lichtaus: "Nichts tun"
@@ -198,12 +201,17 @@ namespace Template {
     let lichtanschaltenelement = await ƒS.Menu.getInput(lichtanschalten, "auswahl");
     switch (lichtanschaltenelement) {
       case lichtanschalten.lichtan:
+        await ƒS.Sound.play(sound.buttonpress, .2, false);
+        await ƒS.update(2);
+        stimme(text.MainNarrator.L0001);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0001);
-        await ƒS.update(10);
+        await ƒS.update(5);
+        stimme(text.MainNarrator.L0002);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0002);
         await ƒS.update(7);
+        stimme(text.MainNarrator.L0003);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0003);
-        await ƒS.update(4)
+        await ƒS.update(3)
         ƒS.Sound.play(sound.makelight, 0.3, false);
         await ƒS.update(1);
         await ƒS.Location.show(locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
@@ -212,8 +220,12 @@ namespace Template {
         break;
 
       case lichtanschalten.lichtaus:
+        await ƒS.Sound.play(sound.buttonpress, .2, false);
+        await ƒS.update(2);
+        stimme(text.MainNarrator.L0004);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0004);
         await ƒS.update(7);
+        stimme(text.MainNarrator.L0005);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0005);
         await ƒS.update(2);
         ƒS.Sound.play(sound.makelight, 0.3, false);
@@ -223,8 +235,10 @@ namespace Template {
         break;
     }
     await ƒS.update(3);
+    stimme(text.MainNarrator.T0006);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0006);
     await ƒS.update(15);
+    stimme(text.MainNarrator.T0007);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0007);
     await ƒS.update(5);
     await delay();
@@ -242,60 +256,84 @@ namespace Template {
 
     switch (erstesdialogelement) { //Wenn Auswahl "Namen eingben"
       case entscheidung1.iSayYes:
+        await ƒS.Sound.play(sound.buttonpress, .2, false);
+        await ƒS.update(2);
+        stimme(text.MainNarrator.T0008);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0008);
         await ƒS.update(5);
+        stimme(text.MainNarrator.T0009);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0009);
         await ƒS.update(3);
+        stimme(text.MainNarrator.T0010);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0010, false);
         await ƒS.update(10);
         data.protagonist.name = await ƒS.Speech.getInput();
         characters.whiteknight.name = data.protagonist.name;
+        stimme(data.protagonist.name + " also?");
         ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + " also?", true);
         await ƒS.update(4);
+        stimme("Ein sehr. . .");
         ƒS.Speech.tell(characters.MainNarrator,"Ein sehr. . .");
         await ƒS.update(5);
+        stimme(text.MainNarrator.T0011);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0011);
         await ƒS.update(4);
         console.log(data.protagonist.name);
         break;
       case entscheidung1.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
+      await ƒS.Sound.play(sound.buttonpress, .2, false);
+      await ƒS.update(2);
         await ƒS.Speech.setTickerDelays(50);
+        stimme(text.MainNarrator.T0012);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0012);
         await ƒS.update(6);
+        stimme(text.MainNarrator.T0013);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0013);
         await ƒS.Speech.setTickerDelays(50);
         await ƒS.update(5);
+        stimme(text.MainNarrator.T0014);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0014);
         await ƒS.update(4);
+        stimme(text.MainNarrator.T0015);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0015);
         await ƒS.update(4);
+        stimme(text.MainNarrator.T0016);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0016);
         await ƒS.update(7);
+        stimme(text.MainNarrator.T0017);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0017, false);
         await ƒS.update(3);
         data.protagonist.name = await ƒS.Speech.getInput();
         characters.whiteknight.name = data.protagonist.name;
+        stimme(data.protagonist.name + " also?");
         ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + " also?", true);
         await ƒS.update(4);
+        stimme("Ein sehr. . .");
         ƒS.Speech.tell(characters.MainNarrator,"Ein sehr. . .");
         await ƒS.update(4);
+        stimme(text.MainNarrator.T0011);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0011);
         await ƒS.update(4);
         console.log(data.protagonist.name);
 
         break;
     }
-
+    stimme(data.protagonist.name + text.MainNarrator.TT001);
     ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + text.MainNarrator.TT001);
     await ƒS.update(5);
+    stimme(text.MainNarrator.TT002);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT002);
     await ƒS.update(4);
+    stimme(text.MainNarrator.TT003);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT003);
     await ƒS.update(4);
+    stimme(text.MainNarrator.TT004);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT004);
     await ƒS.update(4);
+    stimme(text.MainNarrator.TT005);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT005);
     await ƒS.update(4);
+    stimme(text.MainNarrator.TT006);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT006, false);
     await ƒS.update(4);
 
@@ -311,24 +349,36 @@ namespace Template {
 
   switch (tutorialauswahl) { //Wenn Auswahl "Namen eingben"
     case tutorial[0]:
+      await ƒS.Sound.play(sound.buttonpress, .2, false);
+      await ƒS.update(2);
+      stimme(text.MainNarrator.TT010);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT010);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT011);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT011);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT012);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT012);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT013);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT013);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT014);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT014);
       await ƒS.update(4);
       tutorial.splice(0, 1, "");
       break;
 
     case tutorial[1]:
+      await ƒS.Sound.play(sound.buttonpress, .2, false);
+      await ƒS.update(2);
+      stimme(text.MainNarrator.TT007);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT007);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT008);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT008);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT009);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT009);
       await ƒS.update(4);
       //Nimmt array an der stelle weg und ersetzt es mit "" (nichts)
@@ -336,17 +386,24 @@ namespace Template {
       break;
 
     case tutorial[2]:
+      await ƒS.Sound.play(sound.buttonpress, .2, false);
+      await ƒS.update(2);
       await ƒS.Location.show(locations.blackbackground);
 
       await ƒS.Sound.fade(sound.darkwind, 0, 0.2, true);
+      stimme(text.MainNarrator.TT015);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT015);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT016);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT016);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT017);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT017);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT018);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT018);
       await ƒS.update(4);
+      stimme(text.MainNarrator.TT019);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT019);
       await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true);
       await ƒS.Location.show(locations.startscreenbackground);
@@ -356,13 +413,16 @@ namespace Template {
     }
     i++;
 }
-
+    stimme(text.MainNarrator.T0026);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0026);
     await ƒS.update(4);
+    stimme(text.MainNarrator.T0027);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0027);
     await ƒS.update(4);
+    stimme(text.MainNarrator.T0028);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0028);
     await ƒS.update(4);
+    stimme(text.MainNarrator.T0029 + data.protagonist.name + "?");
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0029 + data.protagonist.name + "?", false);
     //FUNKTION FÜR SWITCH CASE MIT BEENDEN
 
@@ -384,14 +444,21 @@ namespace Template {
 
     switch (geschichtenauswahl) { //Wenn Auswahl "Namen eingben"
       case geschichten[0]:
+        await ƒS.Sound.play(sound.buttonpress, .2, false);
+        await ƒS.update(2);
+        stimme(text.MainNarrator.G0014);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0014);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0015);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0015);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0016);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0016);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0017);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0017);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0018);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0018);
         await ƒS.update(4);
         geschichten.splice(0, 1, "");
@@ -399,16 +466,24 @@ namespace Template {
         break;
 
       case geschichten[1]:
+        await ƒS.Sound.play(sound.buttonpress, .2, false);
+        await ƒS.update(2);
+        stimme(text.MainNarrator.G0008);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0008);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0009);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0009);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0010);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0010);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0011);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0011);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0012);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0012);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0013);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0013);
         await ƒS.update(4);
         //Nimmt array an der stelle weg und ersetzt es mit "" (nichts)
@@ -416,18 +491,27 @@ namespace Template {
         break;
 
       case geschichten[2]:
+        await ƒS.Sound.play(sound.buttonpress, .2, false);
+        await ƒS.update(2);
+        stimme(text.MainNarrator.G0001);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0001);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0002);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0002);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0003);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0003);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0004);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0004);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0005);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0005);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0006);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0006);
         await ƒS.update(4);
+        stimme(text.MainNarrator.G0007);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.G0007);
         await ƒS.update(4);
         geschichten.splice(2, 1, "");
@@ -437,7 +521,7 @@ namespace Template {
    console.log(mam(x));
   }
 
-
+   stimme(text.MainNarrator.T1007);
    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T1007, false);
     await ƒS.update(3);
     let tutorialspielen = {
@@ -447,31 +531,46 @@ namespace Template {
     let tutorialspielement = await ƒS.Menu.getInput(tutorialspielen, "auswahl");
     switch (tutorialspielement) {
       case tutorialspielen.ja:
+        await ƒS.Sound.play(sound.buttonpress, .2, false);
+        await ƒS.update(2);
+        stimme(text.MainNarrator.T0030);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0030);
         await ƒS.update(7);
+        stimme(text.MainNarrator.T0031);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0031);
         await ƒS.update(7);
+        stimme(text.MainNarrator.T0032);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0032);
         await ƒS.update(7)
+        stimme(text.MainNarrator.T0033);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0033);
         await ƒS.update(7)
         break;
 
       case tutorialspielen.nein:
+        await ƒS.Sound.play(sound.buttonpress, .2, false);
+        await ƒS.update(2);
+        stimme(text.MainNarrator.T0034);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0034);
         await ƒS.update(7);
+        stimme(text.MainNarrator.T0035);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0035);
         await ƒS.update(7);
+        stimme(text.MainNarrator.T0036);
         ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0036);
         await ƒS.update(7);
         break;
     }
+    stimme(text.MainNarrator.T0020);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0020);
     await ƒS.update(7);
+    stimme(text.MainNarrator.T0021);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0021);
     await ƒS.update(10);
+    stimme(text.MainNarrator.T0022);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0022);
     await ƒS.update(4);
+    stimme(text.MainNarrator.T0023);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0023, false);
     await ƒS.update(2);
      let herausforderung = {
@@ -481,10 +580,16 @@ namespace Template {
   let herausforderungselement = await ƒS.Menu.getInput(herausforderung, "auswahl");
   switch (herausforderungselement) {
     case herausforderung.iSayYes:
+      await ƒS.Sound.play(sound.buttonpress, .2, false);
+      await ƒS.update(2);
+      stimme(text.MainNarrator.T0024);
       ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0024);
       await ƒS.update(7);
       break;
     case herausforderung.iSayNo:
+      await ƒS.Sound.play(sound.buttonpress, .2, false);
+      await ƒS.update(2);
+      stimme(data.protagonist.name + text.MainNarrator.T0025 + data.protagonist.name + text.MainNarrator.T1026);
       ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + text.MainNarrator.T0025 + data.protagonist.name + text.MainNarrator.T1026);
       await ƒS.update(10);
       break;
