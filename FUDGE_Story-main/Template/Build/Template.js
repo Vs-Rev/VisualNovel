@@ -469,8 +469,8 @@ var Template;
                 T0004: "Ich bin wohl in meinen Gedanken versunken. . .",
                 T0005: "Kannst du mich sehen? ",
                 T1005: "Ich dich zumindest nicht. ",
-                T1006: "Wärst du wohl so freundlich und könntest mich. . . ",
-                T1007: "erleuchten?",
+                T1006: "Wärst du wohl so freundlich und könntest mich",
+                T1007: ". . . erleuchten?",
                 T0006: "Es ist besser ein Licht anzuzünden, als die gesamte Dunkelheit zu verfluchen, findest du nicht?",
                 T0007: "Da wir uns gerade besser kennenlernen, möchtest du deinen Namen mit mir teilen?",
                 T0008: "Das ist sehr lieb von dir!",
@@ -485,12 +485,13 @@ var Template;
                 T0017: "Also. Wie heißt du wirklich?",
                 T0018: "Nun gut, dann übernehme ich die Entscheidung für dich. . .",
                 T0019: "Also. . . dein Name ist: ",
-                T0020: "Lieber ",
-                T0021: ". Dich erwartet eine heldenhafte Reise in ein längst vergessenes Königreich voller Herausforderungen, Tücken und Gefahren.",
-                T0022: "Bevor ich dich aufkläre, wo wir hier sind und wie du an diesen Ort gelangt bist, muss ich wissen. . .",
+                T0020: "Ahja bevor ich es vergesse. . .",
+                T0021: "Dich erwartet nun eine heldenhafte Reise in ein längst vergessenes Königreich voller Herausforderungen, Tücken und Gefahren.",
+                T0022: "Bevor ich dir diese Geschichte also zumute, muss ich wissen. . .",
                 T0023: "Bist du der Herausforderung gewachsen?",
                 T0024: "Wunderbar!!!",
-                T0025: "Er war definitiv nicht bereit, doch er hatte keine leider keine andere Wahl",
+                T0025: " war definitiv nicht bereit, doch ",
+                T1026: " hatte leider keine andere Wahl",
                 //Lichtan
                 L0001: "Super!",
                 L0002: "Es gibt übrigens keinen Lichtschalter. . .",
@@ -546,6 +547,15 @@ var Template;
                 G0011: "Je länger du dich hier aufhältst, desto mehr Erinnerungen verschwinden aus deinem Gedächtnis",
                 G0012: ". . .",
                 G0013: "Was habe ich gerade gesagt?",
+                //Tutorial Spielen
+                T0030: "Alles klar. . .",
+                T0031: "Moment. . .",
+                T0032: "Mir fällt gerade auf, dass es noch gar kein Tutorial gibt. . .",
+                T0033: "Ich bin mir sicher, du kommst auch so zurecht",
+                //Tutorial nicht spielen
+                T0034: "Ah. . . Du bist also eher die Taffe Persönlichkeit?",
+                T0035: "Aber sag nicht ich hätte dich nicht gewarnt",
+                T0036: "Dann lehn dich zurück und hör gut zu. . .",
             }
         };
         //Szenenablauf
@@ -793,6 +803,56 @@ var Template;
             }
             x++;
             console.log(mam(x));
+        }
+        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T1007, false);
+        await Template.ƒS.update(3);
+        let tutorialspielen = {
+            ja: "Tutorial spielen",
+            nein: "Ich brauche keine Einweisung",
+        };
+        let tutorialspielement = await Template.ƒS.Menu.getInput(tutorialspielen, "auswahl");
+        switch (tutorialspielement) {
+            case tutorialspielen.ja:
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0030);
+                await Template.ƒS.update(7);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0031);
+                await Template.ƒS.update(7);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0032);
+                await Template.ƒS.update(7);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0033);
+                await Template.ƒS.update(7);
+                break;
+            case tutorialspielen.nein:
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0034);
+                await Template.ƒS.update(7);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0035);
+                await Template.ƒS.update(7);
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0036);
+                await Template.ƒS.update(7);
+                break;
+        }
+        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0020);
+        await Template.ƒS.update(7);
+        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0021);
+        await Template.ƒS.update(10);
+        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0022);
+        await Template.ƒS.update(4);
+        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0023, false);
+        await Template.ƒS.update(2);
+        let herausforderung = {
+            iSayYes: "Auf jeden Fall",
+            iSayNo: "Ich glaube eher nicht" //Passiert b
+        };
+        let herausforderungselement = await Template.ƒS.Menu.getInput(herausforderung, "auswahl");
+        switch (herausforderungselement) {
+            case herausforderung.iSayYes:
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0024);
+                await Template.ƒS.update(7);
+                break;
+            case herausforderung.iSayNo:
+                Template.ƒS.Speech.tell(Template.characters.MainNarrator, Template.data.protagonist.name + text.MainNarrator.T0025 + Template.data.protagonist.name + text.MainNarrator.T1026);
+                await Template.ƒS.update(10);
+                break;
         }
         // await ƒS.Sound.fade(sound.titletheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         // console.log("audio is being played");
