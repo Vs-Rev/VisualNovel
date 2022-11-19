@@ -26,6 +26,7 @@ var Template;
         //sounds
         examplesound: "",
         backgroundBuero: "./Audio/backgroundBuero.wav",
+        speech: "./Audio/Soundeffects/Speech.wav",
         makelight: "./Audio/Soundeffects/Makelight.wav",
         //ambience
         darkwind: "./Audio/Ambience/darkwind.wav",
@@ -444,6 +445,7 @@ var Template;
 (function (Template) {
     async function Szene1() {
         console.log("FudgeStory Template Scene1 starting");
+        console.log(Template.characters.MainNarrator);
         //Gesprochener Text
         let text = {
             Character1: {
@@ -462,8 +464,8 @@ var Template;
                 T0004: "hallo was geht ich heiße so und so",
             },
             MainNarrator: {
-                T0000: ". . .",
-                T0001: ". . .",
+                T0000: "...",
+                T0001: "...",
                 T0002: "Oh",
                 T0003: "Verzeih mir doch bitte meine Unachtsamkeit. . .",
                 T0004: "Ich bin wohl in meinen Gedanken versunken. . .",
@@ -558,22 +560,50 @@ var Template;
                 T0036: "Dann lehn dich zurück und hör gut zu. . .",
             }
         };
+        //String länge prüfen
+        // Funktion prüft die angegebene Textlänge und gibt eine zahl zurück, die die wiederholungen für den Sound bestimmt
+        async function stimme(r) {
+            let speechlength = r.length / 4;
+            console.log(speechlength);
+            let i = 0;
+            for (i = 0; i < speechlength; i++) {
+                await Template.ƒS.Sound.play(Template.sound.speech, .2, false); //Der Sound der in Main.ts definiert wurde
+                await Template.ƒS.update(.2);
+                console.log(i);
+            }
+            return speechlength;
+        }
+        ;
+        // let d: number = 0;
+        // function soundschleife(){
+        //   while(d < text.MainNarrator.T0000.length){
+        //   ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, false);
+        //   d++
+        // } //Der Sound der in Main.ts definiert wurde
+        // }
         //Szenenablauf
+        console.log(text.MainNarrator.T0020);
         await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.standard, Template.ƒS.positionPercent(50, 100));
-        await Template.ƒS.Speech.setTickerDelays(250); //Wie schnell der Text angezeigt wird
+        await Template.ƒS.Speech.setTickerDelays(100); //Wie schnell der Text angezeigt wird
+        stimme(text.MainNarrator.T0000);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0000);
+        await Template.delay();
         await Template.ƒS.update(2);
+        stimme(text.MainNarrator.T0001);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0001);
         await Template.ƒS.update(2);
         await Template.ƒS.Speech.setTickerDelays(50);
         /*await ƒS.Sound.fade(sound.introductiontheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");*/
+        stimme(text.MainNarrator.T0002);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0002);
         await Template.ƒS.update(3);
+        stimme(text.MainNarrator.T0003);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0003);
         await Template.ƒS.update(5);
+        stimme(text.MainNarrator.T0004);
         Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0004);
         await Template.ƒS.update(5);
         //Licht anschalten Text

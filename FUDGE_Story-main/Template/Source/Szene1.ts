@@ -2,7 +2,7 @@ namespace Template {
   export async function Szene1(): ƒS.SceneReturn {
     console.log("FudgeStory Template Scene1 starting");
 
-
+  console.log(characters.MainNarrator);
     //Gesprochener Text
     let text = {
       Character1: {
@@ -23,8 +23,8 @@ namespace Template {
         T0004: "hallo was geht ich heiße so und so",
       },
       MainNarrator: {
-        T0000: ". . .",
-        T0001: ". . .",
+        T0000: "...",
+        T0001: "...",
         T0002: "Oh",
         T0003: "Verzeih mir doch bitte meine Unachtsamkeit. . .",
         T0004: "Ich bin wohl in meinen Gedanken versunken. . .",
@@ -135,22 +135,52 @@ namespace Template {
 
       }
     };
+
+          //String länge prüfen
+          // Funktion prüft die angegebene Textlänge und gibt eine zahl zurück, die die wiederholungen für den Sound bestimmt
+   async function stimme(r: string): Promise<number>{
+    let speechlength = r.length/4;
+    console.log(speechlength);
+    let i: number = 0;
+    for (i=0; i<speechlength; i++){
+      await ƒS.Sound.play(sound.speech, .2, false); //Der Sound der in Main.ts definiert wurde
+      await ƒS.update(.2);
+      console.log(i);
+    }
+    return speechlength;
+  };
+
+
+  // let d: number = 0;
+  // function soundschleife(){
+  //   while(d < text.MainNarrator.T0000.length){
+  //   ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, false);
+  //   d++
+  // } //Der Sound der in Main.ts definiert wurde
+  // }
     //Szenenablauf
+    console.log(text.MainNarrator.T0020);
     await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
     console.log("audio is being played");
     await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.standard, ƒS.positionPercent(50, 100));
-    await ƒS.Speech.setTickerDelays(250); //Wie schnell der Text angezeigt wird
+    await ƒS.Speech.setTickerDelays(100); //Wie schnell der Text angezeigt wird
+    stimme(text.MainNarrator.T0000);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0000);
+    await delay();
     await ƒS.update(2);
+    stimme(text.MainNarrator.T0001);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0001);
     await ƒS.update(2);
     await ƒS.Speech.setTickerDelays(50);
     /*await ƒS.Sound.fade(sound.introductiontheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
     console.log("audio is being played");*/
+    stimme(text.MainNarrator.T0002);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0002);
     await ƒS.update(3);
+    stimme(text.MainNarrator.T0003);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0003);
     await ƒS.update(5);
+    stimme(text.MainNarrator.T0004);
     ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0004);
     await ƒS.update(5);
 

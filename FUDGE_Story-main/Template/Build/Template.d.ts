@@ -19,6 +19,7 @@ declare namespace Template {
         introductiontheme: string;
         examplesound: string;
         backgroundBuero: string;
+        speech: string;
         makelight: string;
         darkwind: string;
     };

@@ -18,6 +18,7 @@ namespace Template {
 
     }
   };
+
   //Sounds
   export let sound = {
     //music 
@@ -27,6 +28,7 @@ namespace Template {
     //sounds
     examplesound: "",
     backgroundBuero: "./Audio/backgroundBuero.wav",
+    speech: "./Audio/Soundeffects/Speech.wav",
     makelight: "./Audio/Soundeffects/Makelight.wav",
     //ambience
     darkwind: "./Audio/Ambience/darkwind.wav",
