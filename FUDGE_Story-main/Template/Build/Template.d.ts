@@ -35,6 +35,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        blackbackground: {
+            name: string;
+            background: string;
+        };
     };
     let data: {
         protagonist: {

@@ -48,6 +48,10 @@ namespace Template {
     startscreenbackground: {
       name: "startscreen",
       background: "./Images/Backgrounds/Darkcave.png",
+    },
+    blackbackground: {
+      name: "black",
+      background: "./Images/Backgrounds/Black.png",
     }
   };
 
