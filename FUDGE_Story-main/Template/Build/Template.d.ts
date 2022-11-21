@@ -55,6 +55,11 @@ declare namespace Template {
     let characters: {
         narrator: {
             name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                standard: string;
+                eyesonly: string;
+            };
         };
         whiteknight: {
             name: string;

@@ -74,6 +74,11 @@ namespace Template {
   export let characters = {
     narrator: {
       name: "",
+      origin: ƒS.ORIGIN.BOTTOMLEFT,
+      pose: {
+        standard: "./Images/Characters/Mysteryman/Mysteryman.png",
+        eyesonly: "./Images/Characters/Mysteryman/Mysteryman_Eyesonly.png"
+      }
     },
     /*camille: {
       name: data.protagonist.name,
@@ -84,7 +89,7 @@ namespace Template {
     },*/
     whiteknight: {
       name: data.protagonist.name,
-      origin: ƒS.ORIGIN.BOTTOMLEFT,
+      origin: ƒS.ORIGIN.CENTER,
       pose: {
         standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
       }
