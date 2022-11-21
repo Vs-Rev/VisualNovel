@@ -26,16 +26,15 @@ var Template;
         //sounds
         examplesound: "",
         backgroundBuero: "./Audio/backgroundBuero.wav",
-        speech: "./Audio/Soundeffects/Speech.wav",
         makelight: "./Audio/Soundeffects/Makelight.wav",
         buttonpress: "./Audio/Soundeffects/Buttonpress.wav",
         buttonhover: "./Audio/Soundeffects/Buttonhover.wav",
         //ambience
         darkwind: "./Audio/Ambience/darkwind.wav",
+        //Character Voices
+        MainNarrator: "./Audio/Soundeffects/Speech.wav",
     };
     //Typewritersound
-    function Typewritersound() {
-    }
     //Backgrounds
     Template.locations = {
         examplelocation: {
@@ -135,6 +134,7 @@ var Template;
             luna: false
         }
     };
+    //Kampfsystem
     //Menü
     let inGameMenu = {
         save: "Save",
@@ -466,8 +466,8 @@ var Template;
                 T0004: "hallo was geht ich heiße so und so",
             },
             MainNarrator: {
-                T0000: "...",
-                T0001: "...",
+                T0000: ". . .",
+                T0001: ". . .",
                 T0002: "Oh",
                 T0003: "Verzeih mir doch bitte meine Unachtsamkeit. . .",
                 T0004: "Ich bin wohl in meinen Gedanken versunken. . .",
@@ -562,6 +562,51 @@ var Template;
                 T0036: "Dann lehn dich zurück und hör gut zu. . .",
             }
         };
+        //Satzbaufunktion
+        async function satzbau(Sprecher, text, waitfornext, skipbar, pausenlänge, textgeschwindigkeit, voicetype, skiplänge) {
+            let speechlength = text.length / 4;
+            Template.ƒS.Speech.setTickerDelays(textgeschwindigkeit);
+            console.log(speechlength);
+            let doonce = true;
+            let geskipped = false;
+            //SpeechAudiofunktion
+            let t = 0;
+            //-- Check input key. Wenn pressed wird audioausgabe nicht berücksichtigt bzw abgebrochen
+            for (t = 0; t < speechlength; t++) { //Text wird in der Schleife nur einmal ausgegeben
+                if (doonce == true) {
+                    Template.ƒS.Speech.tell(Sprecher, text, waitfornext);
+                    doonce = false;
+                }
+                if (skipbar == true) {
+                    //Wenn SPACE/Mausbutton gedrückt wird, skippt es die rede
+                    document.addEventListener("keydown", hndKeyPress);
+                    async function hndKeyPress(_event) {
+                        switch (_event.code) {
+                            case Template.ƒ.KEYBOARD_CODE.SPACE:
+                                t = speechlength;
+                                textgeschwindigkeit = 0;
+                                geskipped = true;
+                                pausenlänge = 1;
+                                await Template.ƒS.update(skiplänge);
+                                console.log(pausenlänge);
+                                console.log("update abgewartet");
+                                break;
+                            case Template.ƒ.KEYBOARD_CODE.A:
+                                t = speechlength;
+                                break;
+                        }
+                    }
+                    //Mausabfrage
+                    /*document.addEventListener("mousedown", hndMousePress);
+                    async function hndMousePress(_event: MouseEvent): Promise<void> {
+                      console.log(MouseEvent);
+                  }*/
+                }
+                Template.ƒS.Sound.play(voicetype, .2, false); //Der Sound der in Main.ts definiert wurde
+                await Template.ƒS.update(.2);
+            }
+            await Template.ƒS.update(pausenlänge);
+        }
         //String länge prüfen
         // Funktion prüft die angegebene Textlänge und gibt eine zahl zurück, die die wiederholungen für den Sound bestimmt
         async function stimme(r) {
@@ -569,45 +614,39 @@ var Template;
             console.log(speechlength);
             let i = 0;
             for (i = 0; i < speechlength; i++) {
-                await Template.ƒS.Sound.play(Template.sound.speech, .2, false); //Der Sound der in Main.ts definiert wurde
-                await Template.ƒS.update(.2);
+                await Template.ƒS.Sound.play(Template.sound.MainNarrator, .2, false); //Der Sound der in Main.ts definiert wurde
+                //await ƒS.update(.2);
                 console.log(i);
             }
             return speechlength;
         }
         ;
-        // let d: number = 0;
-        // function soundschleife(){
-        //   while(d < text.MainNarrator.T0000.length){
-        //   ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, false);
-        //   d++
-        // } //Der Sound der in Main.ts definiert wurde
-        // }
         //Szenenablauf
-        console.log(text.MainNarrator.T0020);
         await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.standard, Template.ƒS.positionPercent(50, 100));
-        await Template.ƒS.Speech.setTickerDelays(100); //Wie schnell der Text angezeigt wird
-        stimme(text.MainNarrator.T0000);
-        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0000);
-        await Template.delay();
-        await Template.ƒS.update(2);
-        stimme(text.MainNarrator.T0001);
-        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0001);
-        await Template.ƒS.update(2);
-        await Template.ƒS.Speech.setTickerDelays(50);
-        /*await ƒS.Sound.fade(sound.introductiontheme, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
-        console.log("audio is being played");*/
-        stimme(text.MainNarrator.T0002);
-        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0002);
-        await Template.ƒS.update(3);
-        stimme(text.MainNarrator.T0003);
-        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0003);
-        await Template.ƒS.update(5);
-        stimme(text.MainNarrator.T0004);
-        Template.ƒS.Speech.tell(Template.characters.MainNarrator, text.MainNarrator.T0004);
-        await Template.ƒS.update(5);
+        await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
+        //stimme(text.MainNarrator.T0000);
+        //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0000);
+        //await delay();
+        //await ƒS.update(2);
+        await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
+        //stimme(text.MainNarrator.T0001);
+        //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0001);
+        //await ƒS.update(2);
+        //await ƒS.Speech.setTickerDelays(50);
+        //stimme(text.MainNarrator.T0002);
+        await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0002, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
+        //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0002);
+        //await ƒS.update(3);
+        //stimme(text.MainNarrator.T0003);
+        await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0003, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 5, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 3);
+        //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0003);
+        //await ƒS.update(5);
+        //stimme(text.MainNarrator.T0004);
+        await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0004, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 10, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator);
+        //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0004);
+        //await ƒS.update(5);
         //Licht anschalten Text
         Template.ƒS.Speech.setTickerDelays(50);
         stimme(text.MainNarrator.T0005 + text.MainNarrator.T1005 + text.MainNarrator.T1006);
@@ -1148,4 +1187,57 @@ var Template;
 //     x++;
 //  console.log(mam(x));
 // }
+// function satzbau(Sprecher: string, text: string, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number){}
+// //Skippen
+// async function skippen(r: string, ausführzeit: number): Promise <boolean>{
+//   let sprechertext = r;
+//   let skip: boolean = false;
+//   await ƒS.update(2);
+//   let i: number = 0;
+//   console.log(ausführzeit);
+//   console.log(i);
+//   for (i = 0; i < ausführzeit; i++) {
+//     document.addEventListener("keydown", hndKeyPressing);
+//     async function hndKeyPressing(_event: KeyboardEvent): Promise<void> {
+//       switch (_event.code) {
+//         case ƒ.KEYBOARD_CODE.SPACE:
+//           console.log("Space is pressed");
+//           i = ausführzeit;
+//           console.log("gedrückt");
+//           console.log(i);
+//       }
+//       await ƒS.update(ausführzeit);
+//     }
+//     if (i = ausführzeit){
+//       skip = true;
+//       break;
+//     }
+//   }
+//   console.log("skip");
+//   stimme(sprechertext, skip);
+//   return skip;
+// }
+// async function stimme(r: string, b: boolean): Promise<number>{
+// let skip = b;
+// let speechlength = r.length/4;
+// console.log(speechlength);
+// let i: number = 0;
+// for (i=0; i<speechlength; i++){
+//   await ƒS.Sound.play(sound.speech, .2, false); //Der Sound der in Main.ts definiert wurde
+//   await ƒS.update(.2);
+//   console.log(i);
+// }
+// return speechlength;
+// };
+/*async function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number){
+    let speechlength = text.length/4;
+    console.log(speechlength);
+    let t: number = 0;
+    for (t=0; t<speechlength; t++){
+      await ƒS.Sound.play(sound.speech, .2, false); //Der Sound der in Main.ts definiert wurde
+      await ƒS.update(.2);
+      console.log(t);
+    ƒS.Speech.tell(Sprecher, text, waitfornext);
+  };
+}*/ 
 //# sourceMappingURL=Template.js.map

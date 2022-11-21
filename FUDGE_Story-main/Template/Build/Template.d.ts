@@ -19,11 +19,11 @@ declare namespace Template {
         introductiontheme: string;
         examplesound: string;
         backgroundBuero: string;
-        speech: string;
         makelight: string;
         buttonpress: string;
         buttonhover: string;
         darkwind: string;
+        MainNarrator: string;
     };
     let locations: {
         examplelocation: {

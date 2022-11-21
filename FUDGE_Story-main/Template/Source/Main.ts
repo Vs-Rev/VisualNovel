@@ -28,22 +28,22 @@ namespace Template {
     //sounds
     examplesound: "",
     backgroundBuero: "./Audio/backgroundBuero.wav",
-    speech: "./Audio/Soundeffects/Speech.wav",
     makelight: "./Audio/Soundeffects/Makelight.wav",
     buttonpress: "./Audio/Soundeffects/Buttonpress.wav",
     buttonhover: "./Audio/Soundeffects/Buttonhover.wav",
     //ambience
     darkwind: "./Audio/Ambience/darkwind.wav",
+    //Character Voices
+    MainNarrator: "./Audio/Soundeffects/Speech.wav",
   };
 
   //Typewritersound
-  function Typewritersound(){
-  }
+
   //Backgrounds
   export let locations = {
     examplelocation: {
       name: "examplelocation",
-      background: "", 
+      background: "",
     },
     background1: {
       name: "background1",
@@ -93,19 +93,18 @@ namespace Template {
       name: "",
     },
     Speechbox: {
-      name:"",
+      name: "",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         standard: "./Images/Speechbox.png",
       }
     }
   };
-//Speechbox design
-  
+  //Speechbox design
   //Animations
   export function fromLeftToRight(): ƒS.AnimationDefinition {
     return {
-      start: { translation: ƒS.positionPercent(15,100) },
+      start: { translation: ƒS.positionPercent(15, 100) },
       end: { translation: ƒS.positions.bottomright },
       duration: 2,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
@@ -113,7 +112,7 @@ namespace Template {
   }
   export function fromlefterToLeft(): ƒS.AnimationDefinition {
     return {
-      start: { translation: ƒS.positionPercent(75,100) },
+      start: { translation: ƒS.positionPercent(75, 100) },
       end: { translation: ƒS.positionPercent(100, 100) },
       duration: 1,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
@@ -131,14 +130,16 @@ namespace Template {
   //SaveGame preparation
   export let dataForSave = {
     //Hier Speicherbare Elemente eintragen
-    points:0,
-    gesprochen:{
-      marie:false,
-      james:false,
-      violet:false,
-      luna:false
+    points: 0,
+    gesprochen: {
+      marie: false,
+      james: false,
+      violet: false,
+      luna: false
     }
   };
+
+  //Kampfsystem
 
   //Menü
   let inGameMenu = {
@@ -174,15 +175,15 @@ namespace Template {
     ƒS.Text.addClass("credits");
     ƒS.Text.print(
       "Die Visual Novel wurde mit FudgeStory erstellt." +
-        "<br/>" +
-        "Von Leonie Schwall" +
-        "<br/>" +
-        "Die Hintergründe, Charaktere und Items wurden selbst gezeichnet." +
-        "<br/>" +
-        "Die Transitions stammen aus dem FreeTransitions Ordner, der zu Verfügung gestellt wurrde." +
-        "<br/>" +
-        "Die Soundelemente wurden mit einer Envato Elements Lizenz lizensiert heruntergeladen" +
-        "<br/>" 
+      "<br/>" +
+      "Von Leonie Schwall" +
+      "<br/>" +
+      "Die Hintergründe, Charaktere und Items wurden selbst gezeichnet." +
+      "<br/>" +
+      "Die Transitions stammen aus dem FreeTransitions Ordner, der zu Verfügung gestellt wurrde." +
+      "<br/>" +
+      "Die Soundelemente wurden mit einer Envato Elements Lizenz lizensiert heruntergeladen" +
+      "<br/>"
     );
   }
 
