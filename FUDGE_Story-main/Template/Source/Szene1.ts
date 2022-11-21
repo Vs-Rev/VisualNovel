@@ -201,39 +201,21 @@ namespace Template {
     console.log("audio is being played");
     await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.standard, ƒS.positionPercent(50, 100));
     await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50, /*Stimme*/sound.MainNarrator, /*skiplänge*/1);
-    //stimme(text.MainNarrator.T0000);
-    //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0000);
-    //await delay();
-    //await ƒS.update(2);
+
     await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator, /*skiplänge*/1);
-    //stimme(text.MainNarrator.T0001);
-    //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0001);
-    //await ƒS.update(2);
-    //await ƒS.Speech.setTickerDelays(50);
-    //stimme(text.MainNarrator.T0002);
+
     await satzbau(characters.MainNarrator, text.MainNarrator.T0002, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator, /*skiplänge*/1);
-    //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0002);
-    //await ƒS.update(3);
-    //stimme(text.MainNarrator.T0003);
+
     await satzbau(characters.MainNarrator, text.MainNarrator.T0003, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 5,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator,/*skiplänge*/ 3 );
-    //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0003);
-    //await ƒS.update(5);
-    //stimme(text.MainNarrator.T0004);
-    await satzbau(characters.MainNarrator, text.MainNarrator.T0004, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 10,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator);
-    //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0004);
-    //await ƒS.update(5);
+
+    await satzbau(characters.MainNarrator, text.MainNarrator.T0004, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator, /*skiplänge*/ 2);
+
 
 
     //Licht anschalten Text
-    ƒS.Speech.setTickerDelays(50);
-    stimme(text.MainNarrator.T0005 + text.MainNarrator.T1005 + text.MainNarrator.T1006);
-    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0005 + text.MainNarrator.T1005 + text.MainNarrator.T1006);
-    await ƒS.update(8);
-    stimme(text.MainNarrator.T1007);
-    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T1007, false);
-    await ƒS.update(3);
+    await satzbau(characters.MainNarrator, text.MainNarrator.T0005 + text.MainNarrator.T1005 + text.MainNarrator.T1006, true, true, 5, 50, sound.MainNarrator, 3);
+    await satzbau(characters.MainNarrator, text.MainNarrator.T1007, false, true, 5, 50, sound.MainNarrator, 3);
     await ƒS.Sound.play(sound.buttonhover, .2, false);
-
     let lichtanschalten = {
       lichtan: "Licht anschalten",
       lichtaus: "Nichts tun"
@@ -243,208 +225,114 @@ namespace Template {
       case lichtanschalten.lichtan:
         await ƒS.Sound.play(sound.buttonpress, .2, false);
         await ƒS.update(2);
-        stimme(text.MainNarrator.L0001);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0001);
-        await ƒS.update(5);
-        stimme(text.MainNarrator.L0002);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0002);
-        await ƒS.update(7);
-        stimme(text.MainNarrator.L0003);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0003);
-        await ƒS.update(3)
+        await satzbau(characters.MainNarrator, text.MainNarrator.L0001, true, true, 3, 50, sound.MainNarrator, 2);
+        await satzbau(characters.MainNarrator, text.MainNarrator.L0002, true, true, 3, 50, sound.MainNarrator, 2);
+        await satzbau(characters.MainNarrator, text.MainNarrator.L0003, false, false, 3, 50, sound.MainNarrator, 2);
         ƒS.Sound.play(sound.makelight, 0.3, false);
-        await ƒS.update(1);
         await ƒS.Location.show(locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
         console.log("Background is being displayed");
-        await ƒS.update(6)
+        await ƒS.update(3)
         break;
 
       case lichtanschalten.lichtaus:
         await ƒS.Sound.play(sound.buttonpress, .2, false);
         await ƒS.update(2);
-        stimme(text.MainNarrator.L0004);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0004);
-        await ƒS.update(7);
-        stimme(text.MainNarrator.L0005);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.L0005);
-        await ƒS.update(2);
+        await satzbau(characters.MainNarrator, text.MainNarrator.L0004, true, true, 3, 50, sound.MainNarrator, 2);
+        await satzbau(characters.MainNarrator, text.MainNarrator.L0005, true, true, 3, 50, sound.MainNarrator, 2);
         ƒS.Sound.play(sound.makelight, 0.3, false);
-        await ƒS.update(2);
         await ƒS.Location.show(locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
         console.log("Background is being displayed");
         break;
     }
     await ƒS.update(3);
-    stimme(text.MainNarrator.T0006);
-    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0006);
-    await ƒS.update(15);
+    await satzbau(characters.MainNarrator, text.MainNarrator.T0006, true, true, 8, 50, sound.MainNarrator, 4);
     stimme(text.MainNarrator.T0007);
-    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0007);
-    await ƒS.update(5);
-    await delay();
-
-
+    await satzbau(characters.MainNarrator, text.MainNarrator.T0007, true, true, 3, 50, sound.MainNarrator, 2);
     //Namen sagen
     let entscheidung1 = {
       iSayYes: "Namen sagen", //Passiert a
       iSayNo: "Ablehnen" //Passiert b
     };
     let erstesdialogelement = await ƒS.Menu.getInput(entscheidung1, "auswahl");
-
     //Abhängig von der oben stehenden Entscheidung wird nun folgendes passieren:
-
-
     switch (erstesdialogelement) { //Wenn Auswahl "Namen eingben"
       case entscheidung1.iSayYes:
         await ƒS.Sound.play(sound.buttonpress, .2, false);
         await ƒS.update(2);
-        stimme(text.MainNarrator.T0008);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0008);
-        await ƒS.update(5);
-        stimme(text.MainNarrator.T0009);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0009);
-        await ƒS.update(3);
-        stimme(text.MainNarrator.T0010);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0010, false);
-        await ƒS.update(10);
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0008, true, true, 4, 50, sound.MainNarrator, 2);
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0009, true, true, 3, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0010, false, false, 7, 50, sound.MainNarrator, 3);
+        //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0010, false);
         data.protagonist.name = await ƒS.Speech.getInput();
         characters.whiteknight.name = data.protagonist.name;
-        stimme(data.protagonist.name + " also?");
-        ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + " also?", true);
-        await ƒS.update(4);
+        await satzbau(characters.MainNarrator, data.protagonist.name + " also?", true, true, 4, 50, sound.MainNarrator, 2);
         stimme("Ein sehr. . .");
-        ƒS.Speech.tell(characters.MainNarrator,"Ein sehr. . .");
-        await ƒS.update(5);
-        stimme(text.MainNarrator.T0011);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0011);
-        await ƒS.update(4);
+        await satzbau(characters.MainNarrator, "Ein sehr. . .", true, true, 4, 50, sound.MainNarrator, 2);
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0011, true, true, 4, 50, sound.MainNarrator, 2);
         console.log(data.protagonist.name);
         break;
       case entscheidung1.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
       await ƒS.Sound.play(sound.buttonpress, .2, false);
       await ƒS.update(2);
-        await ƒS.Speech.setTickerDelays(50);
-        stimme(text.MainNarrator.T0012);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0012);
-        await ƒS.update(6);
-        stimme(text.MainNarrator.T0013);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0013);
-        await ƒS.Speech.setTickerDelays(50);
-        await ƒS.update(5);
-        stimme(text.MainNarrator.T0014);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0014);
-        await ƒS.update(4);
-        stimme(text.MainNarrator.T0015);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0015);
-        await ƒS.update(4);
-        stimme(text.MainNarrator.T0016);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0016);
-        await ƒS.update(7);
-        stimme(text.MainNarrator.T0017);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0017, false);
-        await ƒS.update(3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T0012, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T0013, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T0014, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T0015, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T0016, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T0017, false, false, 3, 50, sound.MainNarrator, 2);
         data.protagonist.name = await ƒS.Speech.getInput();
         characters.whiteknight.name = data.protagonist.name;
-        stimme(data.protagonist.name + " also?");
-        ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + " also?", true);
-        await ƒS.update(4);
+        await satzbau(characters.MainNarrator, data.protagonist.name + " also?", true, true, 4, 50, sound.MainNarrator, 2);
         stimme("Ein sehr. . .");
-        ƒS.Speech.tell(characters.MainNarrator,"Ein sehr. . .");
-        await ƒS.update(4);
-        stimme(text.MainNarrator.T0011);
-        ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0011);
-        await ƒS.update(4);
+        await satzbau(characters.MainNarrator, "Ein sehr. . .", true, true, 4, 50, sound.MainNarrator, 2);
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0011, true, true, 4, 50, sound.MainNarrator, 2);
         console.log(data.protagonist.name);
-
         break;
     }
-    stimme(data.protagonist.name + text.MainNarrator.TT001);
-    ƒS.Speech.tell(characters.MainNarrator, data.protagonist.name + text.MainNarrator.TT001);
-    await ƒS.update(5);
-    stimme(text.MainNarrator.TT002);
-    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT002);
-    await ƒS.update(4);
-    stimme(text.MainNarrator.TT003);
-    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT003);
-    await ƒS.update(4);
-    stimme(text.MainNarrator.TT004);
-    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT004);
-    await ƒS.update(4);
-    stimme(text.MainNarrator.TT005);
-    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT005);
-    await ƒS.update(4);
-    stimme(text.MainNarrator.TT006);
-    ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT006, false);
-    await ƒS.update(4);
-
+    await satzbau(characters.MainNarrator, data.protagonist.name + text.MainNarrator.TT001, true, true, 5, 50, sound.MainNarrator, 3);
+    await satzbau(characters.MainNarrator, text.MainNarrator.TT002, true, true, 4, 50, sound.MainNarrator, 2);
+    await satzbau(characters.MainNarrator, text.MainNarrator.TT003, true, true, 4, 50, sound.MainNarrator, 2);
+    await satzbau(characters.MainNarrator, text.MainNarrator.TT004, true, true, 4, 50, sound.MainNarrator, 2);
+    await satzbau(characters.MainNarrator, text.MainNarrator.TT005, true, true, 4, 50, sound.MainNarrator, 2);
+    await satzbau(characters.MainNarrator, text.MainNarrator.TT006, false, false, 4, 50, sound.MainNarrator, 2);
   //FUNKTION FÜR SWITCH CASE MIT ALLEN MÖGLICHKEITEN
   let tutorial = ["Tour annehmen", "Trinken annehmen", "Konversation verlassen"];
-
   let i: number = 0;
   while (i < 3) {
   let tutorialauswahl = await ƒS.Menu.getInput(tutorial, "auswahl");
   console.log(tutorial.length)
   
   //Abhängig von der oben stehenden Entscheidung wird nun folgendes passieren:
-
   switch (tutorialauswahl) { //Wenn Auswahl "Namen eingben"
     case tutorial[0]:
       await ƒS.Sound.play(sound.buttonpress, .2, false);
       await ƒS.update(2);
-      stimme(text.MainNarrator.TT010);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT010);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT011);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT011);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT012);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT012);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT013);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT013);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT014);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT014);
-      await ƒS.update(4);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT010, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT011, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT012, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT013, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT014, true, true, 4, 50, sound.MainNarrator, 2);
       tutorial.splice(0, 1, "");
       break;
-
     case tutorial[1]:
       await ƒS.Sound.play(sound.buttonpress, .2, false);
       await ƒS.update(2);
-      stimme(text.MainNarrator.TT007);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT007);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT008);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT008);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT009);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT009);
-      await ƒS.update(4);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT007, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT008, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT009, true, true, 4, 50, sound.MainNarrator, 2);
       //Nimmt array an der stelle weg und ersetzt es mit "" (nichts)
       tutorial.splice(1, 1, "");
       break;
-
     case tutorial[2]:
       await ƒS.Sound.play(sound.buttonpress, .2, false);
       await ƒS.update(2);
       await ƒS.Location.show(locations.blackbackground);
-
       await ƒS.Sound.fade(sound.darkwind, 0, 0.2, true);
-      stimme(text.MainNarrator.TT015);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT015);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT016);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT016);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT017);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT017);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT018);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT018);
-      await ƒS.update(4);
-      stimme(text.MainNarrator.TT019);
-      ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.TT019);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT015, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT016, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT017, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT018, true, true, 4, 50, sound.MainNarrator, 2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.TT019, true, true, 4, 50, sound.MainNarrator, 2);
       await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true);
       await ƒS.Location.show(locations.startscreenbackground);
       await ƒS.update(4);
