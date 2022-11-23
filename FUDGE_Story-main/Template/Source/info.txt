@@ -1,0 +1,44 @@
+   //Satzbaufunktion
+    async function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number, voicetype: string, skiplänge: number) { //Funktionen vereinfachen
+      let speechlength = text.length / 4; //Teilt durch 4, damit die Audioausgabe nicht ZU OFT abgespielt wird
+      ƒS.Speech.setTickerDelays(textgeschwindigkeit); 
+      console.log(speechlength);
+      let doonce: boolean = true; //Damit Text in der Schleife nur einmal abgespielt wird
+      let istdurch: number = 0; //Ist nicht Boolean da boolean irgendwie bei den if Bedingungen in meiner Timer funktion nicht funktioniert haben, deshalb number
+      let geskipped: number = 0; //Gleicher Grund wie oben
+      console.log(istdurch.valueOf())
+      //SpeechAudiofunktion
+      let t: number = 0; 
+      //-- Check input key. Wenn pressed wird audioausgabe nicht berücksichtigt bzw abgebrochen
+      for (t = 0; t < speechlength; t++) { //Text wird in der Schleife nur einmal ausgegeben
+        if (doonce == true) { //Text wird nur einmal ausgegeben (Man kann sogar repeaten oder evtl. zurück zum vorherigen Text (in der Zukunft als option? :D )
+          ƒS.Speech.tell(Sprecher, text, waitfornext); //Gibt normal den Text aus
+          doonce = false; 
+        }
+        document.addEventListener("mousedown", hndMousePress); //Fügt Mouseklick hinzu, der Textschreiben überspringt beim Drücken
+        async function hndMousePress(_event: MouseEvent): Promise<void> {
+          console.log(MouseEvent);
+          t = text.length; //Setzt Timer in for Schleife direkt auf beendet und endet damit auch die Musik
+          geskipped = 1; //Variable zum anzeigen, dass der Text geskipped ODER fertiggeschrieben worden ist. (ist hier wichtig, sonst erkennt er nicht, ob text ausgeschrieben wurde)
+          document.removeEventListener("mousedown", hndMousePress); //removed Event listener wieder, sonst haben wir 1000 listener in der warteschlange
+        }
+        if(geskipped == 1){ //Kontrolle für "geskipped oder nicht?" bzw. geht nicht in die else rein was bedeutet : Beendet den Sound!!!
+          console.log("Text geskipped");
+        }
+        else {
+        ƒS.Sound.play(voicetype, .2, false); //Der Sound der in Main.ts definiert wurde
+        await ƒS.update(.2);
+      }
+      } //Sobald die for Schleife beendet ist, wird folgendes gespielt : 
+//Timerfunktion (Sie startet ERST SOBALD der Text FERTIGGESCHRIEBEN wurde, in jedem Fall)
+      for (t = 0; t < pausenlänge; t++) {  //Timer Funktion
+        document.addEventListener("mousedown", hndMousePress); //wieder Maus abhören
+        async function hndMousePress(_event: MouseEvent): Promise<void> {
+          console.log(MouseEvent);
+          t = pausenlänge; //beendet den Timer SOFORT
+          document.removeEventListener("mousedown", hndMousePress); //listener wieder removen
+        }
+          console.log(t);
+          await signaldelay(); //1 Sekunde warten bis t hochzählt
+      }
+    }

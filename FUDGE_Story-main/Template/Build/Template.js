@@ -251,8 +251,13 @@ var Template;
                     menu = true;
                 }
                 break;
+            case Template.ƒ.KEYBOARD_CODE.SPACE:
+                console.log("Space gedrückt");
+                let b = 5;
+                return b;
         }
     }
+    Template.hndKeyPress = hndKeyPress;
     console.log(1);
     window.addEventListener("load", start);
     function start(_event) {
@@ -452,6 +457,24 @@ var Template;
 (function (Template) {
     async function Szene1() {
         console.log("FudgeStory Template Scene1 starting");
+        //   document.addEventListener("keydown", hndKeyPress);
+        //   async function hndKeyPress(_event: KeyboardEvent, t: number, textgeschwindigkeit: number, geskipped: boolean, pausenlänge: number, skiplänge: number, speechlength: number): Promise<void> {
+        //     switch (_event.code) {
+        //     case ƒ.KEYBOARD_CODE.SPACE:
+        //       t = speechlength;
+        //       textgeschwindigkeit = 0;
+        //       geskipped = true;
+        //       pausenlänge = 1;
+        //       await ƒS.update(skiplänge);
+        //       console.log(pausenlänge);
+        //       console.log("update abgewartet");
+        //       break;
+        //     case ƒ.KEYBOARD_CODE.A:
+        //       t = speechlength;
+        //       break;
+        //   }
+        // }
+        // hndKeyPress(KeyA, 1, 1, true, 1, 2, 2);
         console.log(Template.characters.MainNarrator);
         //Gesprochener Text
         let text = {
@@ -552,6 +575,8 @@ var Template;
                 T0036: "Dann lehn dich zurück und hör gut zu. . .",
             }
         };
+        //Wartet delay ab wenn aufgerufen
+        let signaldelay = Template.ƒS.Progress.defineSignal([() => Template.ƒS.Progress.delay(1)]);
         //Buttonfunktion
         function buttonpress(buttonart, lautstärke) {
             Template.ƒS.Sound.play(buttonart, lautstärke, false);
@@ -562,7 +587,9 @@ var Template;
             Template.ƒS.Speech.setTickerDelays(textgeschwindigkeit);
             console.log(speechlength);
             let doonce = true;
-            let geskipped = false;
+            let istdurch = 0;
+            let geskipped = 0;
+            console.log(istdurch.valueOf());
             //SpeechAudiofunktion
             let t = 0;
             //-- Check input key. Wenn pressed wird audioausgabe nicht berücksichtigt bzw abgebrochen
@@ -571,35 +598,31 @@ var Template;
                     Template.ƒS.Speech.tell(Sprecher, text, waitfornext);
                     doonce = false;
                 }
-                if (skipbar == true) {
-                    //Wenn SPACE/Mausbutton gedrückt wird, skippt es die rede
-                    document.addEventListener("keydown", hndKeyPress);
-                    async function hndKeyPress(_event) {
-                        switch (_event.code) {
-                            case Template.ƒ.KEYBOARD_CODE.SPACE:
-                                t = speechlength;
-                                textgeschwindigkeit = 0;
-                                geskipped = true;
-                                pausenlänge = 1;
-                                await Template.ƒS.update(skiplänge);
-                                console.log(pausenlänge);
-                                console.log("update abgewartet");
-                                break;
-                            case Template.ƒ.KEYBOARD_CODE.A:
-                                t = speechlength;
-                                break;
-                        }
-                    }
-                    //Mausabfrage
-                    /*document.addEventListener("mousedown", hndMousePress);
-                    async function hndMousePress(_event: MouseEvent): Promise<void> {
-                      console.log(MouseEvent);
-                  }*/
+                document.addEventListener("mousedown", hndMousePress);
+                async function hndMousePress(_event) {
+                    console.log(MouseEvent);
+                    t = text.length;
+                    geskipped = 1;
+                    document.removeEventListener("mousedown", hndMousePress);
                 }
-                Template.ƒS.Sound.play(voicetype, .2, false); //Der Sound der in Main.ts definiert wurde
-                await Template.ƒS.update(.2);
+                if (geskipped == 1) {
+                    console.log("Text geskipped");
+                }
+                else {
+                    Template.ƒS.Sound.play(voicetype, .2, false); //Der Sound der in Main.ts definiert wurde
+                    await Template.ƒS.update(.2);
+                }
             }
-            await Template.ƒS.update(pausenlänge);
+            for (t = 0; t < pausenlänge; t++) {
+                document.addEventListener("mousedown", hndMousePress);
+                async function hndMousePress(_event) {
+                    console.log(MouseEvent);
+                    t = pausenlänge;
+                    document.removeEventListener("mousedown", hndMousePress);
+                }
+                console.log(t);
+                await signaldelay();
+            }
         }
         //String länge prüfen
         // Funktion prüft die angegebene Textlänge und gibt eine zahl zurück, die die wiederholungen für den Sound bestimmt
@@ -642,8 +665,10 @@ var Template;
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0002, true, true, 3, 50, Template.sound.MainNarrator, 2);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0003, false, false, 3, 50, Template.sound.MainNarrator, 2);
                 Template.ƒS.Sound.play(Template.sound.makelight, 0.3, false);
+                await Template.delay();
                 await Template.ƒS.Character.hide(Template.characters.narrator);
-                //await ƒS.Character.show(characters.narrator, characters.narrator.pose.standard, ƒS.positionPercent(50, 80));
+                await Template.delay();
+                await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.standard, Template.ƒS.positionPercent(50, 80));
                 await Template.ƒS.Location.show(Template.locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
                 console.log("Background is being displayed");
                 await Template.ƒS.update(3);
@@ -654,7 +679,10 @@ var Template;
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0004, true, true, 3, 50, Template.sound.MainNarrator, 2);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0005, true, true, 3, 50, Template.sound.MainNarrator, 2);
                 Template.ƒS.Sound.play(Template.sound.makelight, 0.3, false);
-                //await ƒS.Character.show(characters.narrator, characters.narrator.pose.standard, ƒS.positionPercent(50, 80));
+                await Template.delay();
+                await Template.ƒS.Character.hide(Template.characters.narrator);
+                await Template.delay();
+                await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.standard, Template.ƒS.positionPercent(50, 80));
                 await Template.ƒS.Location.show(Template.locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
                 console.log("Background is being displayed");
                 break;
@@ -1009,6 +1037,86 @@ var Template;
 //     }
 //     x++;
 //  console.log(mam(x));
+// }
+// async function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number, voicetype: string, skiplänge: number) {
+//   let speechlength = text.length / 4;
+//   ƒS.Speech.setTickerDelays(textgeschwindigkeit);
+//   console.log(speechlength);
+//   let doonce: boolean = true;
+//   let geskipped = false;
+//   //SpeechAudiofunktion
+//   let t: number = 0;
+//   let b: number = 0;
+//   //-- Check input key. Wenn pressed wird audioausgabe nicht berücksichtigt bzw abgebrochen
+//   for (t = 0; t < speechlength; t++) { //Text wird in der Schleife nur einmal ausgegeben
+//     if (doonce == true) {
+//       ƒS.Speech.tell(Sprecher, text, waitfornext);
+//       doonce = false;
+//       // document.addEventListener("keydown", hndKeyPress);
+//       // async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+//       //   switch (_event.code) {
+//       //     case ƒ.KEYBOARD_CODE.SPACE:
+//       //       t = speechlength;
+//       //       textgeschwindigkeit = 0;
+//       //       geskipped = true;
+//       //       //pausenlänge = 1;
+//       //       await ƒS.update(skiplänge);
+//       //       console.log(pausenlänge);
+//       //       console.log("update abgewartet");
+//       //       removeEventListener("keydown", hndKeyPress);
+//       //       break;
+//       //     case ƒ.KEYBOARD_CODE.A:
+//       //       t = speechlength;
+//       //       removeEventListener("keydown", hndKeyPress);
+//       //       break;
+//       //   }
+//       // }
+//       //document.removeEventListener("keydown", hndKeyPress);
+//     }
+//     if (skipbar == true) {
+//       //Wenn SPACE/Mausbutton gedrückt wird, skippt es die rede
+//       //Mausabfrage
+//       /*document.addEventListener("mousedown", hndMousePress);
+//       async function hndMousePress(_event: MouseEvent): Promise<void> {
+//         console.log(MouseEvent);
+//     }*/
+//     }
+//     ƒS.Sound.play(voicetype, .2, false); //Der Sound der in Main.ts definiert wurde
+//     await ƒS.update(.2);
+//   }
+//   for (b = 0; b < pausenlänge; b++) {
+//     if(pausenlänge == 3){
+//     console.log(b);
+//     console.log(pausenlänge);
+//     await signaldelay();
+//     console.log("es geht in if");
+//     document.addEventListener("keydown", ConfirmKey);
+//     async function ConfirmKey(_event: KeyboardEvent): Promise<void> {
+//     switch (_event.code) {
+//       case ƒ.KEYBOARD_CODE.SPACE:
+//         console.log("Space gedrückt");
+//         b = 10;
+//         console.log(b);
+//         break;
+//     }
+//   }
+// }
+//   else{
+//     pausenlänge = 0;
+//     await signaldelay();
+//     console.log("es ist nicht mehr in if");
+//   }
+//await ƒS.update(pausenlänge);
+//await signaldelay();
+//await ƒS.Progress.defineSignal;
+//let signal: ƒS.Signal = ƒS.Progress.defineSignal([ƒS.EVENT.KEYDOWN, () => ƒS.Progress,delay()]);
+//await signal();
+//   function timer (){
+//   let timer: ƒ.Timer;
+//   console.log(timer);
+// }
+//await signal();
+// await signaldelay();
 // }
 // function satzbau(Sprecher: string, text: string, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number){}
 // //Skippen

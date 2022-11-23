@@ -96,6 +96,7 @@ declare namespace Template {
     function decrementSound(): void;
     function showCredits(): void;
     let delay: ƒS.Signal;
+    function hndKeyPress(_event: KeyboardEvent): Promise<any>;
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;

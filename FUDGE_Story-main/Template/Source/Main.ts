@@ -247,7 +247,7 @@ namespace Template {
 
   //Shortcuts fürs Menu
   document.addEventListener("keydown", hndKeyPress);
-  async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+ export async function hndKeyPress(_event: KeyboardEvent): Promise<any> {
     switch (_event.code) {
       case ƒ.KEYBOARD_CODE.F8:
         console.log("Save");
@@ -268,6 +268,10 @@ namespace Template {
           menu = true;
         }
         break;
+      case ƒ.KEYBOARD_CODE.SPACE:
+        console.log("Space gedrückt");
+        let b: number = 5;
+        return b;
     }
   }
 
