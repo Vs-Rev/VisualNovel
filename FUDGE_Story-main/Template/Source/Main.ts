@@ -73,7 +73,7 @@ namespace Template {
   //Charakters
   export let characters = {
     narrator: {
-      name: "",
+      name: "narrator",
       origin: ƒS.ORIGIN.BOTTOMLEFT,
       pose: {
         standard: "./Images/Characters/Mysteryman/Mysteryman.png",
@@ -98,7 +98,7 @@ namespace Template {
       name: "",
     },
     Speechbox: {
-      name: "",
+      name: "speechbox",
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         standard: "./Images/Speechbox.png",
@@ -131,6 +131,15 @@ namespace Template {
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
+  export function fromCenterToLeft(): ƒS.AnimationDefinition {
+    return {
+      start: { translation: ƒS.positionPercent(40, 80)},
+      end: { translation: ƒS.positionPercent(10, 80)},
+      duration: 2,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+
 
   //SaveGame preparation
   export let dataForSave = {

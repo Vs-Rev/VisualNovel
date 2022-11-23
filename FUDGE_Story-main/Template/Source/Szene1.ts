@@ -220,11 +220,20 @@ namespace Template {
       }
       return speechlength;
     };
+
+
+
+
+
+
+
+
+
     //Szenenablauf
     await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
     console.log("audio is being played");
     await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.standard, ƒS.positionPercent(50, 100));
-    await ƒS.Character.show(characters.narrator, characters.narrator.pose.eyesonly, ƒS.positionPercent(50, 80));
+    await ƒS.Character.show(characters.narrator, characters.narrator.pose.eyesonly, ƒS.positionPercent(40, 80));
     await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50, /*Stimme*/sound.MainNarrator, /*skiplänge*/1);
 
     await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator, /*skiplänge*/1);
@@ -249,31 +258,31 @@ namespace Template {
     switch (lichtanschaltenelement) {
       case lichtanschalten.lichtan:
         await buttonpress(sound.buttonpress, .2);
-        //await timer(/*(skipable muss Nummer sein damit es bei if funktioniert)*/0, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.L0001, true, true, 3, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.L0002, true, true, 3, 50, sound.MainNarrator, 2);
-        await satzbau(characters.MainNarrator, text.MainNarrator.L0003, false, false, 3, 50, sound.MainNarrator, 2);
-        ƒS.Sound.play(sound.makelight, 0.3, false);
-        await delay();
+        await satzbau(characters.MainNarrator, text.MainNarrator.L0003, false, false, 2, 50, sound.MainNarrator, 2);
+        await ƒS.Character.animate(characters.narrator, characters.narrator.pose.eyesonly, fromCenterToLeft());
         await ƒS.Character.hide(characters.narrator);
-        await delay();
-        await ƒS.Character.show(characters.narrator, characters.narrator.pose.standard, ƒS.positionPercent(50, 80));
+        await ƒS.update(2);
+        ƒS.Sound.play(sound.makelight, 0.3, false);
+        await ƒS.Character.show(characters.narrator, characters.narrator.pose.standard, ƒS.positionPercent(10, 80));
         await ƒS.Location.show(locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
         console.log("Background is being displayed");
-        await ƒS.update(3)
+        await ƒS.update(1);
         break;
 
       case lichtanschalten.lichtaus:
         await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.L0004, true, true, 3, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.L0005, true, true, 3, 50, sound.MainNarrator, 2);
-        ƒS.Sound.play(sound.makelight, 0.3, false);
-        await delay();
+        await ƒS.Character.animate(characters.narrator, characters.narrator.pose.eyesonly, fromCenterToLeft());
         await ƒS.Character.hide(characters.narrator);
-        await delay();
-        await ƒS.Character.show(characters.narrator, characters.narrator.pose.standard, ƒS.positionPercent(50, 80));
+        await ƒS.update(2);
+        ƒS.Sound.play(sound.makelight, 0.3, false);
+        await ƒS.Character.show(characters.narrator, characters.narrator.pose.standard, ƒS.positionPercent(10, 80));
         await ƒS.Location.show(locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
         console.log("Background is being displayed");
+        await ƒS.update(1);
         break;
     }
     await ƒS.update(3);

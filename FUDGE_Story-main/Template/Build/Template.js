@@ -67,7 +67,7 @@ var Template;
     //Charakters
     Template.characters = {
         narrator: {
-            name: "",
+            name: "narrator",
             origin: Template.ƒS.ORIGIN.BOTTOMLEFT,
             pose: {
                 standard: "./Images/Characters/Mysteryman/Mysteryman.png",
@@ -92,7 +92,7 @@ var Template;
             name: "",
         },
         Speechbox: {
-            name: "",
+            name: "speechbox",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 standard: "./Images/Speechbox.png",
@@ -128,6 +128,15 @@ var Template;
         };
     }
     Template.fromCenterToCenter = fromCenterToCenter;
+    function fromCenterToLeft() {
+        return {
+            start: { translation: Template.ƒS.positionPercent(40, 80) },
+            end: { translation: Template.ƒS.positionPercent(10, 80) },
+            duration: 2,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+        };
+    }
+    Template.fromCenterToLeft = fromCenterToLeft;
     //SaveGame preparation
     Template.dataForSave = {
         //Hier Speicherbare Elemente eintragen
@@ -661,7 +670,7 @@ var Template;
         await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.standard, Template.ƒS.positionPercent(50, 100));
-        await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.eyesonly, Template.ƒS.positionPercent(50, 80));
+        await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.eyesonly, Template.ƒS.positionPercent(40, 80));
         await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
         await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
         await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0002, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
@@ -679,30 +688,30 @@ var Template;
         switch (lichtanschaltenelement) {
             case lichtanschalten.lichtan:
                 await buttonpress(Template.sound.buttonpress, .2);
-                //await timer(/*(skipable muss Nummer sein damit es bei if funktioniert)*/0, 2);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0001, true, true, 3, 50, Template.sound.MainNarrator, 2);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0002, true, true, 3, 50, Template.sound.MainNarrator, 2);
-                await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0003, false, false, 3, 50, Template.sound.MainNarrator, 2);
-                Template.ƒS.Sound.play(Template.sound.makelight, 0.3, false);
-                await Template.delay();
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0003, false, false, 2, 50, Template.sound.MainNarrator, 2);
+                await Template.ƒS.Character.animate(Template.characters.narrator, Template.characters.narrator.pose.eyesonly, Template.fromCenterToLeft());
                 await Template.ƒS.Character.hide(Template.characters.narrator);
-                await Template.delay();
-                await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.standard, Template.ƒS.positionPercent(50, 80));
+                await Template.ƒS.update(2);
+                Template.ƒS.Sound.play(Template.sound.makelight, 0.3, false);
+                await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.standard, Template.ƒS.positionPercent(10, 80));
                 await Template.ƒS.Location.show(Template.locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
                 console.log("Background is being displayed");
-                await Template.ƒS.update(3);
+                await Template.ƒS.update(1);
                 break;
             case lichtanschalten.lichtaus:
                 await buttonpress(Template.sound.buttonpress, .2);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0004, true, true, 3, 50, Template.sound.MainNarrator, 2);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.L0005, true, true, 3, 50, Template.sound.MainNarrator, 2);
-                Template.ƒS.Sound.play(Template.sound.makelight, 0.3, false);
-                await Template.delay();
+                await Template.ƒS.Character.animate(Template.characters.narrator, Template.characters.narrator.pose.eyesonly, Template.fromCenterToLeft());
                 await Template.ƒS.Character.hide(Template.characters.narrator);
-                await Template.delay();
-                await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.standard, Template.ƒS.positionPercent(50, 80));
+                await Template.ƒS.update(2);
+                Template.ƒS.Sound.play(Template.sound.makelight, 0.3, false);
+                await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.standard, Template.ƒS.positionPercent(10, 80));
                 await Template.ƒS.Location.show(Template.locations.startscreenbackground); //Location initialisieren die in Main.ts definiert wurden
                 console.log("Background is being displayed");
+                await Template.ƒS.update(1);
                 break;
         }
         await Template.ƒS.update(3);

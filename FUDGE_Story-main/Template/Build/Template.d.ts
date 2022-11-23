@@ -82,6 +82,7 @@ declare namespace Template {
     function fromLeftToRight(): ƒS.AnimationDefinition;
     function fromlefterToLeft(): ƒS.AnimationDefinition;
     function fromCenterToCenter(): ƒS.AnimationDefinition;
+    function fromCenterToLeft(): ƒS.AnimationDefinition;
     let dataForSave: {
         points: number;
         gesprochen: {
