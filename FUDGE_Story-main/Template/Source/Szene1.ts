@@ -140,8 +140,9 @@ namespace Template {
     //Wartet delay ab wenn aufgerufen
     let signaldelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
     //Buttonfunktion
-    function buttonpress(buttonart: string, lautstärke: number) {
+    async function buttonpress(buttonart: string, lautstärke: number) {
       ƒS.Sound.play(buttonart, lautstärke, false);
+        await timer(0, 2);
     }
     //Satzbaufunktion
     async function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number, voicetype: string, skiplänge: number) {
@@ -188,7 +189,24 @@ namespace Template {
       }
     }
 
-
+    //Allgemeiner Timer Funktion
+    async function timer(skipable: number, länge: number){
+      let t: number;
+      for (t = 0; t < länge; t++) {
+        if(skipable == 1){
+          document.addEventListener("mousedown", hndMousePress);
+          async function hndMousePress(_event: MouseEvent): Promise<void> {
+            console.log(MouseEvent);
+            t = länge;
+            document.removeEventListener("mousedown", hndMousePress);
+          }
+        }
+        else {
+          console.log(t);
+          await signaldelay();
+        }
+      }
+    }
     //String länge prüfen
     // Funktion prüft die angegebene Textlänge und gibt eine zahl zurück, die die wiederholungen für den Sound bestimmt
     async function stimme(r: string): Promise<number> {
@@ -230,8 +248,8 @@ namespace Template {
     let lichtanschaltenelement = await ƒS.Menu.getInput(lichtanschalten, "auswahl");
     switch (lichtanschaltenelement) {
       case lichtanschalten.lichtan:
-        buttonpress(sound.buttonpress, .2);
-        await ƒS.update(2);
+        await buttonpress(sound.buttonpress, .2);
+        //await timer(/*(skipable muss Nummer sein damit es bei if funktioniert)*/0, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.L0001, true, true, 3, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.L0002, true, true, 3, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.L0003, false, false, 3, 50, sound.MainNarrator, 2);
@@ -246,8 +264,7 @@ namespace Template {
         break;
 
       case lichtanschalten.lichtaus:
-        buttonpress(sound.buttonpress, .2);
-        await ƒS.update(2);
+        await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.L0004, true, true, 3, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.L0005, true, true, 3, 50, sound.MainNarrator, 2);
         ƒS.Sound.play(sound.makelight, 0.3, false);
@@ -272,8 +289,7 @@ namespace Template {
     //Abhängig von der oben stehenden Entscheidung wird nun folgendes passieren:
     switch (erstesdialogelement) { //Wenn Auswahl "Namen eingben"
       case entscheidung1.iSayYes:
-        buttonpress(sound.buttonpress, .2);
-        await ƒS.update(2);
+        await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0008, true, true, 4, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0009, true, true, 3, 50, sound.MainNarrator, 1);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0010, false, false, 7, 50, sound.MainNarrator, 3);
@@ -287,8 +303,7 @@ namespace Template {
         console.log(data.protagonist.name);
         break;
       case entscheidung1.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
-        buttonpress(sound.buttonpress, .2);
-        await ƒS.update(2);
+      await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0012, true, true, 5, 50, sound.MainNarrator, 3);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0013, true, true, 4, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0014, true, true, 4, 50, sound.MainNarrator, 2);
@@ -320,8 +335,7 @@ namespace Template {
       //Abhängig von der oben stehenden Entscheidung wird nun folgendes passieren:
       switch (tutorialauswahl) { //Wenn Auswahl "Namen eingben"
         case tutorial[0]:
-          buttonpress(sound.buttonpress, .2);
-          await ƒS.update(2);
+          await buttonpress(sound.buttonpress, .2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT010, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT011, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT012, true, true, 4, 50, sound.MainNarrator, 2);
@@ -330,8 +344,7 @@ namespace Template {
           tutorial.splice(0, 1, "");
           break;
         case tutorial[1]:
-          buttonpress(sound.buttonpress, .2);
-          await ƒS.update(2);
+          await buttonpress(sound.buttonpress, .2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT007, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT008, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT009, true, true, 4, 50, sound.MainNarrator, 2);
@@ -339,8 +352,7 @@ namespace Template {
           tutorial.splice(1, 1, "");
           break;
         case tutorial[2]:
-          buttonpress(sound.buttonpress, .2);
-          await ƒS.update(2);
+          await buttonpress(sound.buttonpress, .2);
           await ƒS.Location.show(locations.blackbackground);
           await ƒS.Sound.fade(sound.darkwind, 0, 0.2, true);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT015, true, true, 4, 50, sound.MainNarrator, 2);
@@ -362,7 +374,7 @@ namespace Template {
     await satzbau(characters.MainNarrator, text.MainNarrator.T0029 + data.protagonist.name + "?", false, false, 4, 50, sound.MainNarrator, 2);
     //FUNKTION FÜR SWITCH CASE MIT BEENDEN
     //Entscheidung mithilfe von Array (wieder zurückkehren in switch funktion)
-    let b: number = 0
+    //let b: number = 0
     let geschichten = ["Geschichte anhören", "Nach der Umgebung fragen", "Nach dem Herrn fragen"];
     function mam(b: number): number {
       x = b;
@@ -377,8 +389,7 @@ namespace Template {
 
       switch (geschichtenauswahl) { //Wenn Auswahl "Namen eingben"
         case geschichten[0]:
-          buttonpress(sound.buttonpress, .2);
-          await ƒS.update(2);
+          await buttonpress(sound.buttonpress, .2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0014, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0015, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0016, true, true, 4, 50, sound.MainNarrator, 2);
@@ -388,8 +399,7 @@ namespace Template {
           mam(5);
           break;
         case geschichten[1]:
-          buttonpress(sound.buttonpress, .2);
-          await ƒS.update(2);
+          await buttonpress(sound.buttonpress, .2);;
           await satzbau(characters.MainNarrator, text.MainNarrator.G0008, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0009, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0010, true, true, 4, 50, sound.MainNarrator, 2);
@@ -400,8 +410,7 @@ namespace Template {
           geschichten.splice(1, 1, "");
           break;
         case geschichten[2]:
-          buttonpress(sound.buttonpress, .2);
-          await ƒS.update(2);
+          await buttonpress(sound.buttonpress, .2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0001, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0002, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0003, true, true, 4, 50, sound.MainNarrator, 2);
@@ -423,8 +432,7 @@ namespace Template {
     let tutorialspielement = await ƒS.Menu.getInput(tutorialspielen, "auswahl");
     switch (tutorialspielement) {
       case tutorialspielen.ja:
-        buttonpress(sound.buttonpress, .2);
-        await ƒS.update(2);
+        await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0030, true, true, 7, 50, sound.MainNarrator, 3);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0031, true, true, 7, 50, sound.MainNarrator, 3);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0032, true, true, 7, 50, sound.MainNarrator, 3);
@@ -432,8 +440,7 @@ namespace Template {
         break;
 
       case tutorialspielen.nein:
-        buttonpress(sound.buttonpress, .2);
-        await ƒS.update(2);
+        await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0034, true, true, 7, 50, sound.MainNarrator, 3);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0035, true, true, 7, 50, sound.MainNarrator, 3);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0036, true, true, 7, 50, sound.MainNarrator, 3);
@@ -450,13 +457,11 @@ namespace Template {
     let herausforderungselement = await ƒS.Menu.getInput(herausforderung, "auswahl");
     switch (herausforderungselement) {
       case herausforderung.iSayYes:
-        buttonpress(sound.buttonpress, .2);
-        await ƒS.update(2);
+        await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0024, true, true, 7, 50, sound.MainNarrator, 3);
         break;
       case herausforderung.iSayNo:
-        buttonpress(sound.buttonpress, .2);
-        await ƒS.update(2);
+        await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, data.protagonist.name + text.MainNarrator.T0025 + data.protagonist.name + text.MainNarrator.T1026, true, true, 10, 50, sound.MainNarrator, 5);
         break;
     }
