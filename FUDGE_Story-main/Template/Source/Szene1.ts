@@ -362,16 +362,20 @@ namespace Template {
           break;
         case tutorial[2]:
           await buttonpress(sound.buttonpress, .2);
-          await ƒS.Location.show(locations.blackbackground);
           await ƒS.Sound.fade(sound.darkwind, 0, 0.2, true);
+          ƒS.Character.hide(characters.narrator);
+          await ƒS.update(1);
+          ƒS.Location.show(locations.blackbackground);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT015, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT016, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT017, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT018, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT019, true, true, 4, 50, sound.MainNarrator, 2);
-          await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true);
           await ƒS.Location.show(locations.startscreenbackground);
-          await ƒS.update(4);
+          await ƒS.update(1);
+          await ƒS.Character.show(characters.narrator, characters.narrator.pose.standard, ƒS.positionPercent(10, 80));
+          ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true);
+          await ƒS.update(3);
           tutorial.splice(2, 1, "");
           break;
       }

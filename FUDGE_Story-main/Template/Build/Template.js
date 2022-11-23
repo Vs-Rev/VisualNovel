@@ -790,16 +790,20 @@ var Template;
                     break;
                 case tutorial[2]:
                     await buttonpress(Template.sound.buttonpress, .2);
-                    await Template.ƒS.Location.show(Template.locations.blackbackground);
                     await Template.ƒS.Sound.fade(Template.sound.darkwind, 0, 0.2, true);
+                    Template.ƒS.Character.hide(Template.characters.narrator);
+                    await Template.ƒS.update(1);
+                    Template.ƒS.Location.show(Template.locations.blackbackground);
                     await satzbau(Template.characters.MainNarrator, text.MainNarrator.TT015, true, true, 4, 50, Template.sound.MainNarrator, 2);
                     await satzbau(Template.characters.MainNarrator, text.MainNarrator.TT016, true, true, 4, 50, Template.sound.MainNarrator, 2);
                     await satzbau(Template.characters.MainNarrator, text.MainNarrator.TT017, true, true, 4, 50, Template.sound.MainNarrator, 2);
                     await satzbau(Template.characters.MainNarrator, text.MainNarrator.TT018, true, true, 4, 50, Template.sound.MainNarrator, 2);
                     await satzbau(Template.characters.MainNarrator, text.MainNarrator.TT019, true, true, 4, 50, Template.sound.MainNarrator, 2);
-                    await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true);
                     await Template.ƒS.Location.show(Template.locations.startscreenbackground);
-                    await Template.ƒS.update(4);
+                    await Template.ƒS.update(1);
+                    await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.standard, Template.ƒS.positionPercent(10, 80));
+                    Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true);
+                    await Template.ƒS.update(3);
                     tutorial.splice(2, 1, "");
                     break;
             }
