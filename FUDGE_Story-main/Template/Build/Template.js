@@ -678,18 +678,6 @@ var Template;
         }
         //String länge prüfen
         // Funktion prüft die angegebene Textlänge und gibt eine zahl zurück, die die wiederholungen für den Sound bestimmt
-        async function stimme(r) {
-            let speechlength = r.length / 4;
-            console.log(speechlength);
-            let i = 0;
-            for (i = 0; i < speechlength; i++) {
-                await Template.ƒS.Sound.play(Template.sound.MainNarrator, .2, false); //Der Sound der in Main.ts definiert wurde
-                //await ƒS.update(.2);
-                console.log(i);
-            }
-            return speechlength;
-        }
-        ;
         //Szenenablauf
         await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
@@ -740,7 +728,7 @@ var Template;
         }
         await Template.ƒS.update(3);
         await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0006, true, true, 8, 50, Template.sound.MainNarrator, 4);
-        stimme(text.MainNarrator.T0007);
+        //stimme(text.MainNarrator.T0007);
         await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0007, true, true, 3, 50, Template.sound.MainNarrator, 2);
         //Namen sagen
         let entscheidung1 = {
@@ -759,7 +747,7 @@ var Template;
                 Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
                 Template.characters.whiteknight.name = Template.data.protagonist.name;
                 await satzbau(Template.characters.MainNarrator, Template.data.protagonist.name + " also?", true, true, 4, 50, Template.sound.MainNarrator, 2);
-                stimme("Ein sehr. . .");
+                //stimme("Ein sehr. . .");
                 await satzbau(Template.characters.MainNarrator, "Ein sehr. . .", true, true, 4, 50, Template.sound.MainNarrator, 2);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0011, true, true, 4, 50, Template.sound.MainNarrator, 2);
                 console.log(Template.data.protagonist.name);
@@ -775,7 +763,7 @@ var Template;
                 Template.data.protagonist.name = await Template.ƒS.Speech.getInput();
                 Template.characters.whiteknight.name = Template.data.protagonist.name;
                 await satzbau(Template.characters.MainNarrator, Template.data.protagonist.name + " also?", true, true, 4, 50, Template.sound.MainNarrator, 2);
-                stimme("Ein sehr. . .");
+                //stimme("Ein sehr. . .");
                 await satzbau(Template.characters.MainNarrator, "Ein sehr. . .", true, true, 4, 50, Template.sound.MainNarrator, 2);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.T0011, true, true, 4, 50, Template.sound.MainNarrator, 2);
                 console.log(Template.data.protagonist.name);
