@@ -168,11 +168,22 @@ namespace Template {
           geskipped = 1;
           document.removeEventListener("mousedown", hndMousePress);
         }
+        document.addEventListener("keydown", hndKeyPress);
+        async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+          switch (_event.code) {
+            case ƒ.KEYBOARD_CODE.SPACE:
+              console.log(KeyboardEvent);
+              t = text.length;
+              geskipped = 1;
+              break;
+        }
+        document.removeEventListener("keydown", hndKeyPress);
+      }
         if(geskipped == 1){
           console.log("Text geskipped");
         }
         else {
-        ƒS.Sound.play(voicetype, .2, false); //Der Sound der in Main.ts definiert wurde
+        ƒS.Sound.play(voicetype, .05, false); //Der Sound der in Main.ts definiert wurde
         await ƒS.update(.2);
       }
       }
@@ -184,6 +195,17 @@ namespace Template {
           t = pausenlänge;
           document.removeEventListener("mousedown", hndMousePress);
         }
+        document.addEventListener("keydown", hndKeyPress);
+        async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+          switch (_event.code) {
+            case ƒ.KEYBOARD_CODE.SPACE:
+              console.log(KeyboardEvent);
+              t = text.length;
+              geskipped = 1;
+              break;
+        }
+        document.removeEventListener("keydown", hndKeyPress);
+      }
           console.log(t);
           await signaldelay();
       }
@@ -222,19 +244,12 @@ namespace Template {
     };
 
 
-
-
-
-
-
-
-
     //Szenenablauf
     await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
     console.log("audio is being played");
-    await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.standard, ƒS.positionPercent(50, 100));
+    await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.newversion, ƒS.positionPercent(50, 100));
     await ƒS.Character.show(characters.narrator, characters.narrator.pose.eyesonly, ƒS.positionPercent(40, 80));
-    await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50, /*Stimme*/sound.MainNarrator, /*skiplänge*/1);
+    await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/false,/*skipbar*/ false,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50, /*Stimme*/sound.MainNarrator, /*skiplänge*/1);
 
     await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator, /*skiplänge*/1);
 
@@ -301,7 +316,7 @@ namespace Template {
         await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0008, true, true, 4, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0009, true, true, 3, 50, sound.MainNarrator, 1);
-        await satzbau(characters.MainNarrator, text.MainNarrator.T0010, false, false, 7, 50, sound.MainNarrator, 3);
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0010 + " ", false, false, 4, 50, sound.MainNarrator, 2);
         //ƒS.Speech.tell(characters.MainNarrator, text.MainNarrator.T0010, false);
         data.protagonist.name = await ƒS.Speech.getInput();
         characters.whiteknight.name = data.protagonist.name;
@@ -384,7 +399,7 @@ namespace Template {
     await satzbau(characters.MainNarrator, text.MainNarrator.T0026, true, true, 4, 50, sound.MainNarrator, 2);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0027, true, true, 4, 50, sound.MainNarrator, 2);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0028, true, true, 4, 50, sound.MainNarrator, 2);
-    await satzbau(characters.MainNarrator, text.MainNarrator.T0029 + data.protagonist.name + "?", false, false, 4, 50, sound.MainNarrator, 2);
+    await satzbau(characters.MainNarrator, text.MainNarrator.T0029 + " "+ data.protagonist.name + "?", false, false, 4, 50, sound.MainNarrator, 2);
     //FUNKTION FÜR SWITCH CASE MIT BEENDEN
     //Entscheidung mithilfe von Array (wieder zurückkehren in switch funktion)
     //let b: number = 0
@@ -403,6 +418,7 @@ namespace Template {
       switch (geschichtenauswahl) { //Wenn Auswahl "Namen eingben"
         case geschichten[0]:
           await buttonpress(sound.buttonpress, .2);
+          await ƒS.Sound.fade(sound.MysteryManTheme, 0.05, 0.1, true); //Der Sound der in Main.ts definiert wurde
           await satzbau(characters.MainNarrator, text.MainNarrator.G0014, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0015, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0016, true, true, 4, 50, sound.MainNarrator, 2);

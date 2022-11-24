@@ -35,6 +35,7 @@ namespace Template {
     darkwind: "./Audio/Ambience/darkwind.wav",
     //Character Voices
     MainNarrator: "./Audio/Soundeffects/Speech.wav",
+    MysteryManTheme: "./Audio/MysteryMan_Theme.wav",
   };
 
   //Typewritersound
@@ -102,6 +103,7 @@ namespace Template {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         standard: "./Images/Speechbox.png",
+        newversion: "./Images/Speechbox_v2.png",
       }
     }
   };

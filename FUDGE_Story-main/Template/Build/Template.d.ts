@@ -24,6 +24,7 @@ declare namespace Template {
         buttonhover: string;
         darkwind: string;
         MainNarrator: string;
+        MysteryManTheme: string;
     };
     let locations: {
         examplelocation: {
@@ -76,6 +77,7 @@ declare namespace Template {
             origin: ƒ.ORIGIN2D;
             pose: {
                 standard: string;
+                newversion: string;
             };
         };
     };
