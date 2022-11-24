@@ -231,18 +231,6 @@ namespace Template {
     }
     //String länge prüfen
     // Funktion prüft die angegebene Textlänge und gibt eine zahl zurück, die die wiederholungen für den Sound bestimmt
-    async function stimme(r: string): Promise<number> {
-      let speechlength = r.length / 4;
-      console.log(speechlength);
-      let i: number = 0;
-      for (i = 0; i < speechlength; i++) {
-        await ƒS.Sound.play(sound.MainNarrator, .2, false); //Der Sound der in Main.ts definiert wurde
-        //await ƒS.update(.2);
-        console.log(i);
-      }
-      return speechlength;
-    };
-
 
     //Szenenablauf
     await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
@@ -302,7 +290,7 @@ namespace Template {
     }
     await ƒS.update(3);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0006, true, true, 8, 50, sound.MainNarrator, 4);
-    stimme(text.MainNarrator.T0007);
+    //stimme(text.MainNarrator.T0007);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0007, true, true, 3, 50, sound.MainNarrator, 2);
     //Namen sagen
     let entscheidung1 = {
@@ -321,7 +309,7 @@ namespace Template {
         data.protagonist.name = await ƒS.Speech.getInput();
         characters.whiteknight.name = data.protagonist.name;
         await satzbau(characters.MainNarrator, data.protagonist.name + " also?", true, true, 4, 50, sound.MainNarrator, 2);
-        stimme("Ein sehr. . .");
+        //stimme("Ein sehr. . .");
         await satzbau(characters.MainNarrator, "Ein sehr. . .", true, true, 4, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0011, true, true, 4, 50, sound.MainNarrator, 2);
         console.log(data.protagonist.name);
@@ -337,7 +325,7 @@ namespace Template {
         data.protagonist.name = await ƒS.Speech.getInput();
         characters.whiteknight.name = data.protagonist.name;
         await satzbau(characters.MainNarrator, data.protagonist.name + " also?", true, true, 4, 50, sound.MainNarrator, 2);
-        stimme("Ein sehr. . .");
+        //stimme("Ein sehr. . .");
         await satzbau(characters.MainNarrator, "Ein sehr. . .", true, true, 4, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0011, true, true, 4, 50, sound.MainNarrator, 2);
         console.log(data.protagonist.name);
