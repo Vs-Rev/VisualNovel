@@ -36,6 +36,9 @@ namespace Template {
     //Character Voices
     MainNarrator: "./Audio/Soundeffects/Speech.wav",
     MysteryManTheme: "./Audio/MysteryMan_Theme.wav",
+    clockticking: "./Audio/Soundeffects/clock_ticking.wav",
+    alarmclock: "./Audio/Soundeffects/alarmclock.wav",
+    impact: "./Audio/Soundeffects/Impact.wav",
   };
 
   //Typewritersound
@@ -57,7 +60,11 @@ namespace Template {
     blackbackground: {
       name: "black",
       background: "./Images/Backgrounds/Black.png",
-    }
+    },
+    homeroom: {
+      name: "homeroom",
+      background: "./Images/Backgrounds/Room.png",
+    },
   };
 
   //Charakter benennen
@@ -92,8 +99,8 @@ namespace Template {
       name: data.protagonist.name,
       origin: ƒS.ORIGIN.CENTER,
       pose: {
-        standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
-      }
+       standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
+     }
     },
     MainNarrator: {
       name: "",
@@ -141,7 +148,14 @@ namespace Template {
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
-
+  export function fromLeftToCenter(): ƒS.AnimationDefinition {
+    return {
+      start: { translation: ƒS.positionPercent(10, 80)},
+      end: { translation: ƒS.positionPercent(40, 80)},
+      duration: 2,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
 
   //SaveGame preparation
   export let dataForSave = {
@@ -296,7 +310,10 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      { scene: Szene1, name: "Szene1" }
+      { id:"szene1",scene: Szene1, name: "Szene1" },
+      { id:"szene2",scene: Szene2, name: "Szene2" },
+      //{ scene: Szene1, name: "Szene1" },
+      //{ scene: Szene2, name: "Szene2" },
     ];
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
     dataForSave = ƒS.Progress.setData(dataForSave, uiElement);

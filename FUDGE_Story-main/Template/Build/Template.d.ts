@@ -25,6 +25,9 @@ declare namespace Template {
         darkwind: string;
         MainNarrator: string;
         MysteryManTheme: string;
+        clockticking: string;
+        alarmclock: string;
+        impact: string;
     };
     let locations: {
         examplelocation: {
@@ -40,6 +43,10 @@ declare namespace Template {
             background: string;
         };
         blackbackground: {
+            name: string;
+            background: string;
+        };
+        homeroom: {
             name: string;
             background: string;
         };
@@ -85,6 +92,7 @@ declare namespace Template {
     function fromlefterToLeft(): ƒS.AnimationDefinition;
     function fromCenterToCenter(): ƒS.AnimationDefinition;
     function fromCenterToLeft(): ƒS.AnimationDefinition;
+    function fromLeftToCenter(): ƒS.AnimationDefinition;
     let dataForSave: {
         points: number;
         gesprochen: {
@@ -106,4 +114,7 @@ declare namespace Template {
 }
 declare namespace Template {
     function Szene1(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Szene2(): ƒS.SceneReturn;
 }
