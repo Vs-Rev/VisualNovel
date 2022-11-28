@@ -72,7 +72,79 @@ namespace Template {
       name: "homeroom",
       background: "./Images/Backgrounds/Bedroom.png",
     },
+    walking01: {
+      name: "walking01",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking01.png",
+    },
+    walking02: {
+      name: "walking02",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking02.png",
+    },
+    walking03: {
+      name: "walking03",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking03.png",
+    },
+    walking04: {
+      name: "walking04",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking04.png",
+    },
+    walking05: {
+      name: "walking05",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking05.png",
+    },
+    walking06: {
+      name: "walking06",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking06.png",
+    },
+    walking07: {
+      name: "walking07",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking07.png",
+    },
+    walking08: {
+      name: "walking08",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking08.png",
+    },
+    walking09: {
+      name: "walking09",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking09.png",
+    },
+    walking10: {
+      name: "walking10",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking10.png",
+    },
+    walking11: {
+      name: "walking11",
+      background: "./Images/Backgrounds/Animationbackgrounds/Walking11.png",
+    },
   };
+
+  export async function animationwalking (){
+    await ƒS.Location.show(locations.walking01);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking02);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking03);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking04);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking05);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking06);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking07);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking08);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking09);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking10);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.walking11);
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.blackbackground);
+    await ƒS.update(5);
+  }
+
 
   //Charakter benennen
   export let data = {
@@ -271,6 +343,98 @@ namespace Template {
         break;
     }
   }
+      //Allgemeiner Timer Funktion
+      export async function timer(skipable: number, länge: number){
+        let t: number;
+        for (t = 0; t < länge; t++) {
+          if(skipable == 1){
+            document.addEventListener("mousedown", hndMousePress);
+            async function hndMousePress(_event: MouseEvent): Promise<void> {
+              console.log(MouseEvent);
+              t = länge;
+              document.removeEventListener("mousedown", hndMousePress);
+            }
+          }
+          else {
+            console.log(t);
+            await signaldelay();
+          }
+        }
+      }
+  export let signaldelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
+  //Buttonfunktion
+  export async function buttonpress(buttonart: string, lautstärke: number) {
+    ƒS.Sound.play(buttonart, lautstärke, false);
+      await timer(0, 2);
+  }
+  //Satzbaufunktion
+  export async function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number, voicetype: string, skiplänge: number) {
+    let speechlength = text.length / 4;
+    ƒS.Speech.setTickerDelays(textgeschwindigkeit);
+    console.log(speechlength);
+    let doonce: boolean = true;
+    let istdurch: number = 0;
+    let geskipped: number = 0;
+    console.log(istdurch.valueOf())
+    //SpeechAudiofunktion
+    let t: number = 0;
+    //-- Check input key. Wenn pressed wird audioausgabe nicht berücksichtigt bzw abgebrochen
+    for (t = 0; t < speechlength; t++) { //Text wird in der Schleife nur einmal ausgegeben
+      if (doonce == true) {
+        ƒS.Speech.tell(Sprecher, text, waitfornext);
+        doonce = false;
+      }
+      document.addEventListener("mousedown", hndMousePress);
+      async function hndMousePress(_event: MouseEvent): Promise<void> {
+        ƒS.Sound.play(sound.mouseclick, .5, false);
+        console.log(MouseEvent);
+        t = text.length;
+        geskipped = 1;
+        document.removeEventListener("mousedown", hndMousePress);
+      }
+      document.addEventListener("keydown", hndKeyPress);
+      async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+        switch (_event.code) {
+          case ƒ.KEYBOARD_CODE.SPACE:
+            console.log(KeyboardEvent);
+            t = text.length;
+            geskipped = 1;
+            break;
+      }
+      document.removeEventListener("keydown", hndKeyPress);
+    }
+      if(geskipped == 1){
+        console.log("Text geskipped");
+      }
+      else {
+      ƒS.Sound.play(voicetype, .05, false); //Der Sound der in Main.ts definiert wurde
+      await ƒS.update(.2);
+    }
+    }
+
+    for (t = 0; t < pausenlänge; t++) {
+      document.addEventListener("mousedown", hndMousePress);
+      async function hndMousePress(_event: MouseEvent): Promise<void> {
+        ƒS.Sound.play(sound.mouseclick, .5, false);
+        console.log(MouseEvent);
+        t = pausenlänge;
+        document.removeEventListener("mousedown", hndMousePress);
+      }
+      document.addEventListener("keydown", hndKeyPress);
+      async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+        switch (_event.code) {
+          case ƒ.KEYBOARD_CODE.SPACE:
+            console.log(KeyboardEvent);
+            t = text.length;
+            geskipped = 1;
+            break;
+      }
+      document.removeEventListener("keydown", hndKeyPress);
+    }
+        console.log(t);
+        await signaldelay();
+    }
+  }
 
   //Menü standardmäßig an = true. Standardmäßig aus = false
   let menu: boolean = false;
@@ -319,7 +483,7 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      //{ id:"szene1",scene: Szene1, name: "Szene1" },
+      { id:"szene1",scene: Szene1, name: "Szene1" },
       { id:"szene2",scene: Szene2, name: "Szene2" },
       //{ scene: Szene1, name: "Szene1" },
       //{ scene: Szene2, name: "Szene2" },
@@ -329,6 +493,8 @@ namespace Template {
     // start the sequence
     // ƒS.Progress.setData(data);
     ƒS.Progress.go(scenes);
+
+  
   }
 }
 

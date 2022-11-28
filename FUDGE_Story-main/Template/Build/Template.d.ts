@@ -57,7 +57,52 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        walking01: {
+            name: string;
+            background: string;
+        };
+        walking02: {
+            name: string;
+            background: string;
+        };
+        walking03: {
+            name: string;
+            background: string;
+        };
+        walking04: {
+            name: string;
+            background: string;
+        };
+        walking05: {
+            name: string;
+            background: string;
+        };
+        walking06: {
+            name: string;
+            background: string;
+        };
+        walking07: {
+            name: string;
+            background: string;
+        };
+        walking08: {
+            name: string;
+            background: string;
+        };
+        walking09: {
+            name: string;
+            background: string;
+        };
+        walking10: {
+            name: string;
+            background: string;
+        };
+        walking11: {
+            name: string;
+            background: string;
+        };
     };
+    function animationwalking(): Promise<void>;
     let data: {
         protagonist: {
             name: string;
@@ -114,6 +159,10 @@ declare namespace Template {
     function incrementSound(): void;
     function decrementSound(): void;
     function showCredits(): void;
+    function timer(skipable: number, länge: number): Promise<void>;
+    let signaldelay: ƒS.Signal;
+    function buttonpress(buttonart: string, lautstärke: number): Promise<void>;
+    function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number, voicetype: string, skiplänge: number): Promise<void>;
     let delay: ƒS.Signal;
     function hndKeyPress(_event: KeyboardEvent): Promise<any>;
 }
