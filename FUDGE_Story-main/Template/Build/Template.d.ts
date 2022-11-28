@@ -17,17 +17,19 @@ declare namespace Template {
         examplemusic: string;
         titletheme: string;
         introductiontheme: string;
+        MysteryManTheme: string;
         examplesound: string;
+        glitch: string;
         backgroundBuero: string;
         makelight: string;
         buttonpress: string;
         buttonhover: string;
-        darkwind: string;
-        MainNarrator: string;
-        MysteryManTheme: string;
         clockticking: string;
         alarmclock: string;
         impact: string;
+        mouseclick: string;
+        darkwind: string;
+        MainNarrator: string;
     };
     let locations: {
         examplelocation: {
@@ -85,6 +87,7 @@ declare namespace Template {
             pose: {
                 standard: string;
                 newversion: string;
+                grayedout: string;
             };
         };
     };

@@ -166,6 +166,7 @@ namespace Template {
         }
         document.addEventListener("mousedown", hndMousePress);
         async function hndMousePress(_event: MouseEvent): Promise<void> {
+          ƒS.Sound.play(sound.mouseclick, .5, false);
           console.log(MouseEvent);
           t = text.length;
           geskipped = 1;
@@ -194,6 +195,7 @@ namespace Template {
       for (t = 0; t < pausenlänge; t++) {
         document.addEventListener("mousedown", hndMousePress);
         async function hndMousePress(_event: MouseEvent): Promise<void> {
+          ƒS.Sound.play(sound.mouseclick, .5, false);
           console.log(MouseEvent);
           t = pausenlänge;
           document.removeEventListener("mousedown", hndMousePress);
@@ -377,6 +379,8 @@ namespace Template {
           await satzbau(characters.MainNarrator, text.MainNarrator.TT015, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT016, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT017, true, true, 4, 50, sound.MainNarrator, 2);
+          await ƒS.Sound.play(sound.glitch, 0.05);
+          await ƒS.update(4);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT018, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.TT019, true, true, 4, 50, sound.MainNarrator, 2);
           await ƒS.Location.show(locations.startscreenbackground);

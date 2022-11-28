@@ -7,34 +7,50 @@ namespace Template {
     //Gesprochener Text
     let text = {
       MainNarrator: {
-        M0000: " erwachte aus dem süßen Schlaf, als wäre nichts gewesen",
+        M0000: "Wach auf",
         //Aufwachen ja
-        M0001: " wusste, es gibt etwas wichtiges. . .",
-        M0002: "etwas so unglaublich wichtiges, dass ",
-        M0003: " beschloss, gegen die verführerische Gemütlichkeit des eigenen Bettes anzukämpfen und. . .",
+        M0001: ", hast du nicht etwas wichtiges vergessen?",
+        M0002: "Etwas SEHR wichtiges?",
+
+        M1003: "Naja, deine Eltern sind für 2 Wochen im Urlaub",
+        M1004: "Du musst also alleine auf das Haus und auf deine Schwester aufpassen",
+        M1005: "Sie ist heute länger in der Schule, da heute Geschichtserzähltag ist. Du solltest sie abholen, es ist schon dunkel geworden!",
+        M1006: "Das ist etwas. . .",
+        M1007: "Das man nicht vergessen sollte",
+
+        M1008: "Doch",
+        M1009: "Doch!",
+        M1010: "DOCH",
+
+
+        M0003: "",
         M0004: "schaffte es letztendlich aufzustehen",
         //Aufwachen nein
-        M0005: " wollte liegen bleiben, der gemütlichen Verführung des Bettes verfallen doch. . .",
-        M0006: "Die Fesseln der Gemütlichkeit lösten sich wie auf magische Weise!",
-        M0007: " stand auf",
+        M0005: " blieb liegen und verschlief alles spannende",
+        M0006: "Ende",
+        M0007: "Wie fandest du die Geschichte?",
+        M2008: "Blöd?",
+        M2009: "Kann ich mir vorstellen, ist ja noch nicht viel passiert",
+        M2010: "Also steh jetzt auf und verschwende keine Zeit!",
 
-        M0008: " war wütend, ernzürnt wie als wäre sein Herz im heißesten Vulkan geschmiedet worden",
-        M0009: "Doch es war klar, dass es noch sehr viel zu tun gibt!",
+        M0008: ", kein Grund gleich so wütend zu werden",
+        M0009: "Heb dir deine Energie lieber für später auf",
 
-        M0010: " war ganz gelassen. Ganz entspannt und ohne jede Sorge",
-        M0011: "Doch da war ",
-        M0012: " noch nicht klar, was noch alles vorne liegt",
+        M0010: ", gute Einstellung. Es ist auch besser sich nicht zu wehren.",
+        M0011: "Doch ich glaube. . .",
+        M0012: "dir ist nicht klar, was noch alles vor dir liegt",
 
-        M0013: "So viele Gefühle auf einmal überkamen ",
-        M0014: ", das garnicht klar war, wie ",
-        M0015: " sich verhalten sollte.",
-        M0016: "Das Resultat war. . .",
-        M0017: "Stillschweigend",
+        M0013: "Schweigen ist auch eine Antwort. . .",
+        M0014: "wenn auch keine Gute",
+        M0015: "Wie dem auch sei. . .",
 
         M0018: "Schnell war klar, dass etwas sehr wichtiges getan werden musste!",
         M0019: "So wichtig, dass das Lebenen davon abhing",
       },
       whiteknight: {
+        W0005: "",
+        W0006: "Ich sollte mich fertig machen um meine Schwester von der Schule abzuholen",
+        W0007: "",
         //Aufwachen nein
         W0000: "Was?",
         W0001: "Moment, wie bin ich gerade aufgestanden?!",
@@ -138,20 +154,20 @@ namespace Template {
         }
       }
     }
-    data.protagonist.name = "Nina";
+    data.protagonist.name = "Vasi";
     characters.whiteknight.name = data.protagonist.name;
-    await ƒS.Sound.fade(sound.clockticking, 0.5, 2, true);
-    await ƒS.update(1);
-    await timer(0, 5);
+    //await ƒS.Sound.fade(sound.clockticking, 0.5, 2, true);
+    //await ƒS.update(1);
+    //await timer(0, 5);
     await ƒS.Sound.fade(sound.clockticking, 0, 2, false);
     await ƒS.update(1);
     ƒS.Sound.play(sound.alarmclock, 1, false);
     await ƒS.update(1);
-    ƒS.Sound.play(sound.impact, 1, false);
-    await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.newversion, ƒS.positionPercent(50, 100));
-    await ƒS.Location.show(locations.homeroom);
-    await ƒS.update(1);
-    await satzbau(characters.MainNarrator, data.protagonist.name + text.MainNarrator.M0000, /*waitfornext*/false,/*skipbar*/ false,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50, /*Stimme*/sound.MainNarrator, /*skiplänge*/1);
+    await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.grayedout, ƒS.positionPercent(50, 100));
+    await ƒS.update(2);
+    //ƒS.Sound.play(sound.impact, 1, false);
+    await satzbau(characters.MainNarrator, text.MainNarrator.M0000, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 5,/*geschwindigkeit*/ 500, /*Stimme*/sound.MainNarrator, /*skiplänge*/1);
+    await ƒS.update(3);
     await ƒS.Sound.play(sound.buttonhover, .2, false);
     let aufwachen = {
       aufstehen: "Aufstehen",
@@ -162,17 +178,21 @@ namespace Template {
     switch (aufwachentscheidung) {
       case aufwachen.aufstehen:
         await buttonpress(sound.buttonpress, .2);
+        await ƒS.Location.show(locations.homeroom);
         await satzbau(characters.MainNarrator,data.protagonist.name + text.MainNarrator.M0001, true, true, 3, 50, sound.MainNarrator, 1);
         await satzbau(characters.MainNarrator, text.MainNarrator.M0002, true, true, 3, 50, sound.MainNarrator, 1);
-        await satzbau(characters.MainNarrator,data.protagonist.name + text.MainNarrator.M0003, true, true, 3, 50, sound.MainNarrator, 1);
-        await satzbau(characters.MainNarrator, text.MainNarrator.M0004, true, true, 3, 50, sound.MainNarrator, 1);
         break;
 
       case aufwachen.liegenbleiben:
         await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator,data.protagonist.name + text.MainNarrator.M0005, true, true, 3, 50, sound.MainNarrator, 1);
-        await satzbau(characters.MainNarrator,text.MainNarrator.M0006, true, true, 3, 50, sound.MainNarrator, 1);
-        await satzbau(characters.MainNarrator,data.protagonist.name + text.MainNarrator.M0007 , true, true, 3, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator,text.MainNarrator.M0006, true, true, 5, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator,text.MainNarrator.M0007, true, true, 5, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator,text.MainNarrator.M2008, true, true, 5, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator,text.MainNarrator.M2009, true, true, 5, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator,text.MainNarrator.M2010, false, false, 5, 50, sound.MainNarrator, 1);
+        await ƒS.Location.show(locations.homeroom);
+        await ƒS.update(1);
         verhalten = 1;
         break;
     }
@@ -185,27 +205,65 @@ namespace Template {
       let benehmensentscheidung = await ƒS.Menu.getInput(Benehmen, "auswahl");
       switch (benehmensentscheidung) {
         case Benehmen.ruhig:
-          await satzbau(characters.whiteknight,text.whiteknight.W0002, true, true, 5, 50, sound.MainNarrator, 1);
-          await satzbau(characters.whiteknight,text.whiteknight.W0003, true, true, 5, 50, sound.MainNarrator, 1);
-          await satzbau(characters.whiteknight,text.whiteknight.W0004, true, true, 5, 50, sound.MainNarrator, 1);
-          await satzbau(characters.MainNarrator, data.protagonist.name + text.MainNarrator.M0010, true, true, 6, 50, sound.MainNarrator, 1);
-          await satzbau(characters.MainNarrator, text.MainNarrator.M0011 + data.protagonist.name + text.MainNarrator.M0012 , true, true, 5, 50, sound.MainNarrator, 1);
+          await buttonpress(sound.buttonpress, .2);
+          await satzbau(characters.MainNarrator, data.protagonist.name + text.MainNarrator.M0010, true, true, 5, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator, text.MainNarrator.M0011, true, true, 5, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator, text.MainNarrator.M0012, true, true, 5, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator,data.protagonist.name + text.MainNarrator.M0001, true, true, 3, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator, text.MainNarrator.M0002, true, true, 3, 50, sound.MainNarrator, 1);
           break;
         case Benehmen.wütend:
-          await satzbau(characters.whiteknight,text.whiteknight.W0000, true, true, 5, 50, sound.MainNarrator, 1);
-          await satzbau(characters.whiteknight,text.whiteknight.W0001, true, true, 5, 50, sound.MainNarrator, 1);
-          await satzbau(characters.MainNarrator,data.protagonist.name + text.MainNarrator.M0008 , true, true, 5, 50, sound.MainNarrator, 1);
-          await satzbau(characters.MainNarrator, text.MainNarrator.M0009 , true, true, 5, 50, sound.MainNarrator, 1);
+          await buttonpress(sound.buttonpress, .2);
+          await satzbau(characters.MainNarrator, data.protagonist.name + text.MainNarrator.M0008, true, true, 5, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator, text.MainNarrator.M0009, true, true, 5, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator,data.protagonist.name + text.MainNarrator.M0001, true, true, 3, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator, text.MainNarrator.M0002, true, true, 3, 50, sound.MainNarrator, 1);
           break;
         case Benehmen.nichts:
-          await satzbau(characters.MainNarrator, text.MainNarrator.M0013 + data.protagonist.name + text.MainNarrator.M0014 + text.MainNarrator.M0015, true, true, 5, 50, sound.MainNarrator, 1);
-          await satzbau(characters.MainNarrator, text.MainNarrator.M0016, true, true, 5, 50, sound.MainNarrator, 1);
-          await satzbau(characters.MainNarrator, text.MainNarrator.M0017, true, true, 5, 50, sound.MainNarrator, 1);
+          await buttonpress(sound.buttonpress, .2);
+          await satzbau(characters.MainNarrator, text.MainNarrator.M0013, true, true, 5, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator, text.MainNarrator.M0014, true, true, 5, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator, text.MainNarrator.M0015, true, true, 5, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator,data.protagonist.name + text.MainNarrator.M0001, true, true, 3, 50, sound.MainNarrator, 1);
+          await satzbau(characters.MainNarrator, text.MainNarrator.M0002, true, true, 3, 50, sound.MainNarrator, 1);
           break;
       }
     }
-      await satzbau(characters.MainNarrator, text.MainNarrator.M0018 , true, true, 5, 50, sound.MainNarrator, 1);
-      await satzbau(characters.MainNarrator, text.MainNarrator.M0019 , true, true, 5, 50, sound.MainNarrator, 1);
+    await ƒS.Sound.play(sound.buttonhover, .2, false);
+    let vergessen = {
+      ja: "Was denn?",
+      nein: "Nein",
+    };
+    let nein = {
+      nein: "Nein",
+    };
+    let wasdenn = {
+      was: "Was denn?",
+    };
+    let vergessenentscheidung = await ƒS.Menu.getInput(vergessen, "auswahl");
+    switch (vergessenentscheidung) {
+      case vergessen.ja:
+        await buttonpress(sound.buttonpress, .2);
+      await satzbau(characters.MainNarrator, text.MainNarrator.M1003 , true, true, 5, 50, sound.MainNarrator, 1);
+      await satzbau(characters.MainNarrator, text.MainNarrator.M1004 , true, true, 5, 50, sound.MainNarrator, 1);
+      await satzbau(characters.MainNarrator, text.MainNarrator.M1005 , true, true, 5, 50, sound.MainNarrator, 1);
+      await satzbau(characters.MainNarrator, text.MainNarrator.M1006 , true, true, 5, 50, sound.MainNarrator, 1);
+      await satzbau(characters.MainNarrator, text.MainNarrator.M1007 , true, true, 5, 50, sound.MainNarrator, 1);
+      break;
+      case vergessen.nein:
+        await satzbau(characters.MainNarrator, text.MainNarrator.M1008 , false, false, 5, 50, sound.MainNarrator, 1);
+        await ƒS.Menu.getInput(nein, "auswahl");
+        await satzbau(characters.MainNarrator, text.MainNarrator.M1009 , false, false, 5, 50, sound.MainNarrator, 1);
+        await ƒS.Menu.getInput(nein, "auswahl");
+        await satzbau(characters.MainNarrator, text.MainNarrator.M1010 , false, false, 5, 50, sound.MainNarrator, 1);
+        await ƒS.Menu.getInput(wasdenn, "auswahl");
+        await satzbau(characters.MainNarrator, text.MainNarrator.M1003 , true, true, 5, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator, text.MainNarrator.M1004 , true, true, 5, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator, text.MainNarrator.M1005 , true, true, 5, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator, text.MainNarrator.M1006 , true, true, 5, 50, sound.MainNarrator, 1);
+        await satzbau(characters.MainNarrator, text.MainNarrator.M1007 , true, true, 5, 50, sound.MainNarrator, 1);
+        break;
     //Szenenablauf
+    }
   }
 }

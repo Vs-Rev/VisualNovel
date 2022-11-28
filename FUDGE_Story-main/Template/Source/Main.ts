@@ -25,20 +25,22 @@ namespace Template {
     examplemusic: "",
     titletheme: "./Audio/TitleTheme.wav",
     introductiontheme: "./Audio/Ambience/Introduction.wav",
+    MysteryManTheme: "./Audio/MysteryMan_Theme.wav",
     //sounds
     examplesound: "",
+    glitch: "./Audio/Soundeffects/Glitch.wav",
     backgroundBuero: "./Audio/backgroundBuero.wav",
     makelight: "./Audio/Soundeffects/Makelight.wav",
     buttonpress: "./Audio/Soundeffects/Buttonpress.wav",
     buttonhover: "./Audio/Soundeffects/Buttonhover.wav",
+    clockticking: "./Audio/Soundeffects/clock_ticking.wav",
+    alarmclock: "./Audio/Soundeffects/alarmclock.wav",
+    impact: "./Audio/Soundeffects/Impact.wav",
+    mouseclick: "./Audio/Soundeffects/Mouseclick.wav",
     //ambience
     darkwind: "./Audio/Ambience/darkwind.wav",
     //Character Voices
     MainNarrator: "./Audio/Soundeffects/Speech.wav",
-    MysteryManTheme: "./Audio/MysteryMan_Theme.wav",
-    clockticking: "./Audio/Soundeffects/clock_ticking.wav",
-    alarmclock: "./Audio/Soundeffects/alarmclock.wav",
-    impact: "./Audio/Soundeffects/Impact.wav",
   };
 
   //Typewritersound
@@ -63,7 +65,7 @@ namespace Template {
     },
     homeroom: {
       name: "homeroom",
-      background: "./Images/Backgrounds/Room.png",
+      background: "./Images/Backgrounds/Bedroom.png",
     },
   };
 
@@ -111,6 +113,7 @@ namespace Template {
       pose: {
         standard: "./Images/Speechbox.png",
         newversion: "./Images/Speechbox_v2.png",
+        grayedout: "./Images/Speechbox_grayed.png",
       }
     }
   };
@@ -265,7 +268,7 @@ namespace Template {
   }
 
   //Menü standardmäßig an = true. Standardmäßig aus = false
-  let menu: boolean = true;
+  let menu: boolean = false;
 
   //Keine Ahnung
   export let delay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
@@ -300,6 +303,7 @@ namespace Template {
     }
   }
 
+
   console.log(1);
   window.addEventListener("load", start);
   function start(_event: Event): void {
@@ -310,7 +314,7 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      { id:"szene1",scene: Szene1, name: "Szene1" },
+      //{ id:"szene1",scene: Szene1, name: "Szene1" },
       { id:"szene2",scene: Szene2, name: "Szene2" },
       //{ scene: Szene1, name: "Szene1" },
       //{ scene: Szene2, name: "Szene2" },
