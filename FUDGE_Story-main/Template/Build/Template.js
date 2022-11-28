@@ -24,6 +24,7 @@ var Template;
         titletheme: "./Audio/TitleTheme.wav",
         introductiontheme: "./Audio/Ambience/Introduction.wav",
         MysteryManTheme: "./Audio/MysteryMan_Theme.wav",
+        Bedroom: "./Audio/Themes/Bedroom.wav",
         //sounds
         examplesound: "",
         glitch: "./Audio/Soundeffects/Glitch.wav",
@@ -35,6 +36,10 @@ var Template;
         alarmclock: "./Audio/Soundeffects/alarmclock.wav",
         impact: "./Audio/Soundeffects/Impact.wav",
         mouseclick: "./Audio/Soundeffects/Mouseclick.wav",
+        train: "./Audio/Soundeffects/Train.wav",
+        walking: "./Audio/Soundeffects/Walking.wav",
+        bus: "./Audio/Soundeffects/Bus.wav",
+        bicycle: "./Audio/Soundeffects/Bicycle.wav",
         //ambience
         darkwind: "./Audio/Ambience/darkwind.wav",
         //Character Voices
@@ -996,21 +1001,34 @@ var Template;
                 M0013: "Schweigen ist auch eine Antwort. . .",
                 M0014: "wenn auch keine Gute",
                 M0015: "Wie dem auch sei. . .",
-                M0018: "Schnell war klar, dass etwas sehr wichtiges getan werden musste!",
-                M0019: "So wichtig, dass das Lebenen davon abhing",
+                M0020: "Zimmer verlassen",
+                M0021: "Gute Idee! Du solltest dich ordentlich kleiden, bevor du aus dem Haus gehst",
+                M0022: "Kleidung wurde hinzugefügt",
+                M0023: "Du tust. . .",
+                M0024: "also nichts. . .",
+                M0025: "Wie einfallsreich. . .",
+                M0026: "Warte mal!",
+                M0027: "Mir gefällt deine - mit dem Kopf durch die Wand - Einstellung, aber du solltest nicht in Schlafsachen zur Schule deiner Schwester gehen",
+                M0028: "Warte, lass mich dir helfen. . .",
+                M0029: "Gerngeschehen!",
+                M0030: "Du solltest dich wirklich langsam auf den Weg machen",
+                M0031: "Sonst wartet deine Schwester ganz alleine auf dich",
+                M0032: "Oder Schlimmeres. . .",
+                M0033: "Mit dem Fahrrad?",
+                M0034: "Nicht gerade das spannendste Fortbewegungsmittel aber. . .",
+                M0035: "So soll es sein",
+                M0036: "Zu Fuß?",
+                M0037: "Sportlich sportlich. . .",
+                M0038: "Nicht gerade vorteilhaft wenn du sowieso spät dran bist aber. . .",
+                //M0035
+                M0039: "Mit dem Bus?",
+                M0040: "Bescheiden. Aber es fährt um diese Uhrzeit keiner mehr,",
+                M0041: "Was solls. Du hast Glück dass ich heute gut gelaunt bin",
+                M0042: "Mit der Bahn?",
+                M0043: "Scheint wohl die schnellste Alternative zu sein",
+                M0044: "Dann nichts wie weg mit dir!",
             },
-            whiteknight: {
-                W0005: "",
-                W0006: "Ich sollte mich fertig machen um meine Schwester von der Schule abzuholen",
-                W0007: "",
-                //Aufwachen nein
-                W0000: "Was?",
-                W0001: "Moment, wie bin ich gerade aufgestanden?!",
-                W0002: "Das war ein erholsamer Schlaf. Ich hatte so einen schönen Traum",
-                W0003: ". . . glaube ich",
-                W0004: "Moment. . . Was habe ich gleich nochmal geträumt?",
-                //
-            },
+            whiteknight: {},
         };
         //Wartet delay ab wenn aufgerufen
         let signaldelay = Template.ƒS.Progress.defineSignal([() => Template.ƒS.Progress.delay(1)]);
@@ -1104,17 +1122,17 @@ var Template;
         }
         Template.data.protagonist.name = "Vasi";
         Template.characters.whiteknight.name = Template.data.protagonist.name;
-        //await ƒS.Sound.fade(sound.clockticking, 0.5, 2, true);
-        //await ƒS.update(1);
-        //await timer(0, 5);
+        await Template.ƒS.Sound.fade(Template.sound.clockticking, 0.05, 2, true);
+        await Template.ƒS.update(2);
+        await timer(0, 5);
         await Template.ƒS.Sound.fade(Template.sound.clockticking, 0, 2, false);
         await Template.ƒS.update(1);
-        Template.ƒS.Sound.play(Template.sound.alarmclock, 1, false);
+        Template.ƒS.Sound.play(Template.sound.alarmclock, 0.07, false);
         await Template.ƒS.update(1);
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.grayedout, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update(2);
         //ƒS.Sound.play(sound.impact, 1, false);
-        await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0000, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 5, /*geschwindigkeit*/ 500, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
+        await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0000, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 5, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
         await Template.ƒS.update(3);
         await Template.ƒS.Sound.play(Template.sound.buttonhover, .2, false);
         let aufwachen = {
@@ -1126,20 +1144,27 @@ var Template;
         switch (aufwachentscheidung) {
             case aufwachen.aufstehen:
                 await buttonpress(Template.sound.buttonpress, .2);
+                await Template.ƒS.Speech.hide();
+                await Template.ƒS.Sound.fade(Template.sound.Bedroom, 0.05, 4, true);
+                await Template.ƒS.update(1);
                 await Template.ƒS.Location.show(Template.locations.homeroom);
+                await Template.ƒS.update(5);
                 await satzbau(Template.characters.MainNarrator, Template.data.protagonist.name + text.MainNarrator.M0001, true, true, 3, 50, Template.sound.MainNarrator, 1);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0002, true, true, 3, 50, Template.sound.MainNarrator, 1);
                 break;
             case aufwachen.liegenbleiben:
                 await buttonpress(Template.sound.buttonpress, .2);
+                await Template.ƒS.Speech.hide();
                 await satzbau(Template.characters.MainNarrator, Template.data.protagonist.name + text.MainNarrator.M0005, true, true, 3, 50, Template.sound.MainNarrator, 1);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0006, true, true, 5, 50, Template.sound.MainNarrator, 1);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0007, true, true, 5, 50, Template.sound.MainNarrator, 1);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.M2008, true, true, 5, 50, Template.sound.MainNarrator, 1);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.M2009, true, true, 5, 50, Template.sound.MainNarrator, 1);
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.M2010, false, false, 5, 50, Template.sound.MainNarrator, 1);
-                await Template.ƒS.Location.show(Template.locations.homeroom);
+                await Template.ƒS.Sound.fade(Template.sound.Bedroom, 0.05, 4, true);
                 await Template.ƒS.update(1);
+                await Template.ƒS.Location.show(Template.locations.homeroom);
+                await Template.ƒS.update(5);
                 verhalten = 1;
                 break;
         }
@@ -1211,6 +1236,109 @@ var Template;
                 await satzbau(Template.characters.MainNarrator, text.MainNarrator.M1007, true, true, 5, 50, Template.sound.MainNarrator, 1);
                 break;
             //Szenenablauf
+        }
+        let gekleidet = 0;
+        Template.ƒS.Speech.clear();
+        await Template.ƒS.update(2);
+        let Aktion01 = ["Zimmer verlassen", "Kleidung anziehen", "Nichts tun"];
+        function mam(b) {
+            x = b;
+            return b;
+        }
+        let x = 0;
+        while (mam(x) < 3) {
+            let Aktion01Progress = await Template.ƒS.Menu.getInput(Aktion01, "auswahl");
+            switch (Aktion01Progress) {
+                case Aktion01[0]:
+                    await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0020, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                    if (gekleidet != 3) {
+                        gekleidet = 1;
+                    }
+                    Aktion01.splice(0, 1, "");
+                    mam(5);
+                    break;
+                case Aktion01[1]:
+                    await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0021, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                    await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0022, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                    gekleidet = 3;
+                    Aktion01.splice(1, 1, "");
+                    break;
+                case Aktion01[2]:
+                    await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0023, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                    await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0024, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                    await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0025, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                    Aktion01.splice(2, 1, "");
+                    break;
+            }
+        }
+        await Template.ƒS.Location.show(Template.locations.blackbackground);
+        await Template.ƒS.update(5);
+        if (gekleidet == 1) {
+            await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0026, true, true, 5, 50, Template.sound.MainNarrator, 1);
+            await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0027, true, true, 5, 50, Template.sound.MainNarrator, 1);
+            await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0028, true, true, 5, 50, Template.sound.MainNarrator, 1);
+            await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0022, true, true, 5, 50, Template.sound.MainNarrator, 1);
+        }
+        await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0030, true, true, 5, 50, Template.sound.MainNarrator, 1);
+        await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0031, true, true, 5, 50, Template.sound.MainNarrator, 1);
+        await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0032, true, true, 5, 50, Template.sound.MainNarrator, 1);
+        let transportmethode = 0;
+        //Fahrrad = 1,
+        //Bus = 2,
+        //Bahn = 3,
+        //Fuß = 4,
+        let transport = {
+            Fahrrad: "Fahrrad nehmen",
+            Bus: "Bus fahren",
+            Bahn: "Bahn fahren",
+            Fuß: "Zu Fuß laufen",
+        };
+        let transportelement = await Template.ƒS.Menu.getInput(transport, "auswahl");
+        switch (transportelement) {
+            case transport.Fahrrad:
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0033, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0034, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0035, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                transportmethode = 1;
+                break;
+            case transport.Bus:
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0039, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0040, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0041, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                transportmethode = 2;
+                break;
+            case transport.Bahn:
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0042, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0044, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                transportmethode = 3;
+                break;
+            case transport.Fuß:
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0036, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0037, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0038, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                await satzbau(Template.characters.MainNarrator, text.MainNarrator.M0035, true, true, 5, 50, Template.sound.MainNarrator, 1);
+                transportmethode = 4;
+                break;
+        }
+        Template.ƒS.Speech.clear();
+        await Template.ƒS.update(2);
+        await Template.ƒS.Sound.fade(Template.sound.Bedroom, 0, 4, true);
+        await Template.ƒS.update(1);
+        if (transportmethode == 1) {
+            await Template.ƒS.Sound.fade(Template.sound.bicycle, 0.05, 3, false);
+            await Template.ƒS.Sound.fade(Template.sound.bicycle, 0.05, 3, false);
+        }
+        if (transportmethode == 2) {
+            await Template.ƒS.Sound.fade(Template.sound.bus, 0.05, 3, false);
+            await Template.ƒS.Sound.fade(Template.sound.bus, 0.05, 3, false);
+        }
+        if (transportmethode == 3) {
+            await Template.ƒS.Sound.fade(Template.sound.train, 0.05, 3, false);
+            await Template.ƒS.Sound.fade(Template.sound.train, 0.05, 3, false);
+        }
+        if (transportmethode == 4) {
+            await Template.ƒS.Sound.fade(Template.sound.walking, 0.05, 3, false);
+            await Template.ƒS.Sound.fade(Template.sound.walking, 0.05, 3, false);
         }
     }
     Template.Szene2 = Szene2;

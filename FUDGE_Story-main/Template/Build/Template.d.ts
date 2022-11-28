@@ -18,6 +18,7 @@ declare namespace Template {
         titletheme: string;
         introductiontheme: string;
         MysteryManTheme: string;
+        Bedroom: string;
         examplesound: string;
         glitch: string;
         backgroundBuero: string;
@@ -28,6 +29,10 @@ declare namespace Template {
         alarmclock: string;
         impact: string;
         mouseclick: string;
+        train: string;
+        walking: string;
+        bus: string;
+        bicycle: string;
         darkwind: string;
         MainNarrator: string;
     };

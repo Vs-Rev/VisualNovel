@@ -26,6 +26,7 @@ namespace Template {
     titletheme: "./Audio/TitleTheme.wav",
     introductiontheme: "./Audio/Ambience/Introduction.wav",
     MysteryManTheme: "./Audio/MysteryMan_Theme.wav",
+    Bedroom: "./Audio/Themes/Bedroom.wav",
     //sounds
     examplesound: "",
     glitch: "./Audio/Soundeffects/Glitch.wav",
@@ -37,6 +38,10 @@ namespace Template {
     alarmclock: "./Audio/Soundeffects/alarmclock.wav",
     impact: "./Audio/Soundeffects/Impact.wav",
     mouseclick: "./Audio/Soundeffects/Mouseclick.wav",
+    train: "./Audio/Soundeffects/Train.wav",
+    walking: "./Audio/Soundeffects/Walking.wav",
+    bus: "./Audio/Soundeffects/Bus.wav",
+    bicycle: "./Audio/Soundeffects/Bicycle.wav",
     //ambience
     darkwind: "./Audio/Ambience/darkwind.wav",
     //Character Voices
