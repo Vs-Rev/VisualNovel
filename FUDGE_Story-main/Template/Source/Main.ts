@@ -29,6 +29,9 @@ namespace Template {
     Bedroom: "./Audio/Themes/Bedroom.wav",
     //sounds
     examplesound: "",
+    phonecallend: "./Audio/Soundeffects/Phonecall_End.wav",
+    phonering: "./Audio/Soundeffects/Phonering.wav",
+    dooropen: "./Audio/Soundeffects/Dooropen.wav",
     glitch: "./Audio/Soundeffects/Glitch.wav",
     backgroundBuero: "./Audio/backgroundBuero.wav",
     makelight: "./Audio/Soundeffects/Makelight.wav",
@@ -43,18 +46,32 @@ namespace Template {
     bus: "./Audio/Soundeffects/Bus.wav",
     bicycle: "./Audio/Soundeffects/Bicycle.wav",
     //ambience
+    nightambience: "./Audio/Ambience/Nightambience.wav",
     darkwind: "./Audio/Ambience/darkwind.wav",
+    forestnight: "./Audio/Ambience/Forestnight.wav",
+    peopletalking: "./Audio/Ambience/People_talking.wav",
     //Character Voices
     MainNarrator: "./Audio/Soundeffects/Speech.wav",
+    Elo: "./Audio/Soundeffects/Voice_Elo.wav",
+    Karten: "./Audio/Soundeffects/Voice_Karten.wav",
+    School: "./Audio/Soundeffects/Voice_School.wav",
   };
 
   //Typewritersound
 
   //Backgrounds
   export let locations = {
+    waldweg: {
+      name: "waldweg",
+      background: "./Images/Backgrounds/Moonsky.png",
+    },
     examplelocation: {
       name: "examplelocation",
       background: "",
+    },
+    theaterfront: {
+      name: "theaterfront",
+      background: "./Images/Backgrounds/Theater/Theater_Front.png",
     },
     background1: {
       name: "background1",
@@ -72,6 +89,10 @@ namespace Template {
       name: "homeroom",
       background: "./Images/Backgrounds/Bedroom.png",
     },
+    housefloor: {
+      name: "housefloor",
+      background: "./Images/Backgrounds/Housefloor.png",
+    }, 
     walking01: {
       name: "walking01",
       background: "./Images/Backgrounds/Animationbackgrounds/Walking01.png",
@@ -151,6 +172,7 @@ namespace Template {
     protagonist: {
       name: "",
     },
+    entschuldigung: 0,
     score: 0,
     state: {
       a: 1,
@@ -166,6 +188,9 @@ namespace Template {
         standard: "./Images/Characters/Mysteryman/Mysteryman.png",
         eyesonly: "./Images/Characters/Mysteryman/Mysteryman_Eyesonly.png"
       }
+    },
+    Elo: {
+      name: "Elo",
     },
     /*camille: {
       name: data.protagonist.name,
@@ -246,7 +271,9 @@ namespace Template {
       james: false,
       violet: false,
       luna: false
-    }
+    },
+    beispielwert: 0,
+    beispielbool: false,
   };
 
   //Kampfsystem
@@ -317,26 +344,19 @@ namespace Template {
       case inGameMenu.volumedown:
         decrementSound();
         break;
-
-
-      //Inventar für Items
-      /*
-      case inGameMenu.inventar:
-        const selectedItems:string[] = await ƒS.Inventory.open();
-        if(selectedItems && selectedItems.length > 0){
-          selectedItems.forEach((s)=>{
-            Object.keys(items).forEach((i)=>{
-              const item = items[i];
-              if(item.name === s){
-                ƒS.Inventory.add(item);
-              }
-            })
-          })
-        }
-        break;
-        */
-
-
+      // case inGameMenu.inventar:
+      //     const selectedItems:string[] = await ƒS.Inventory.open();
+      //     if(selectedItems && selectedItems.length > 0){
+      //       selectedItems.forEach((s)=>{
+      //         Object.keys(items).forEach((i)=>{
+      //           const item = items[i];
+      //           if(item.name === s){
+      //             ƒS.Inventory.add(item);
+      //           }
+      //         })
+      //       })
+      //     }
+      //     break;
       //Credits
       case inGameMenu.credits:
         showCredits();
@@ -386,7 +406,7 @@ namespace Template {
       }
       document.addEventListener("mousedown", hndMousePress);
       async function hndMousePress(_event: MouseEvent): Promise<void> {
-        ƒS.Sound.play(sound.mouseclick, .5, false);
+        ƒS.Sound.play(sound.mouseclick, .1, false);
         console.log(MouseEvent);
         t = text.length;
         geskipped = 1;
@@ -407,7 +427,7 @@ namespace Template {
         console.log("Text geskipped");
       }
       else {
-      ƒS.Sound.play(voicetype, .05, false); //Der Sound der in Main.ts definiert wurde
+      ƒS.Sound.play(voicetype, .02, false); //Der Sound der in Main.ts definiert wurde
       await ƒS.update(.2);
     }
     }
@@ -415,7 +435,7 @@ namespace Template {
     for (t = 0; t < pausenlänge; t++) {
       document.addEventListener("mousedown", hndMousePress);
       async function hndMousePress(_event: MouseEvent): Promise<void> {
-        ƒS.Sound.play(sound.mouseclick, .5, false);
+        ƒS.Sound.play(sound.mouseclick, .1, false);
         console.log(MouseEvent);
         t = pausenlänge;
         document.removeEventListener("mousedown", hndMousePress);
@@ -471,6 +491,17 @@ namespace Template {
         return b;
     }
   }
+    //Items
+    // export let items = {
+    //   key: {
+    //     name: "Schlüssel",
+    //     description: "Ein alter Schlüssel.",
+    //     image: "./Images/Background1.png",
+    //   },
+    // };
+
+  
+  
 
 
   console.log(1);
@@ -483,9 +514,10 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      { id:"szene1",scene: Szene1, name: "Szene1" },
-      { id:"szene2",scene: Szene2, name: "Szene2" },
-      //{ scene: Szene1, name: "Szene1" },
+      //{ id:"szene1",scene: Szene1, name: "Szene1" },
+      //{ id:"szene2",scene: Szene2, name: "Szene2" },
+      { id:"szene3",scene: Szene3, name: "Szene3" },
+      //{ id:"zufuß",scene: zufuß, name: "zufuß" },
       //{ scene: Szene2, name: "Szene2" },
     ];
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

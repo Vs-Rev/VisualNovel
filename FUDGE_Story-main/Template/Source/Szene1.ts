@@ -1,26 +1,6 @@
 namespace Template {
   export async function Szene1(): ƒS.SceneReturn {
     console.log("FudgeStory Template Scene1 starting");
-
-    //   document.addEventListener("keydown", hndKeyPress);
-    //   async function hndKeyPress(_event: KeyboardEvent, t: number, textgeschwindigkeit: number, geskipped: boolean, pausenlänge: number, skiplänge: number, speechlength: number): Promise<void> {
-    //     switch (_event.code) {
-    //     case ƒ.KEYBOARD_CODE.SPACE:
-    //       t = speechlength;
-    //       textgeschwindigkeit = 0;
-    //       geskipped = true;
-    //       pausenlänge = 1;
-    //       await ƒS.update(skiplänge);
-    //       console.log(pausenlänge);
-    //       console.log("update abgewartet");
-    //       break;
-    //     case ƒ.KEYBOARD_CODE.A:
-    //       t = speechlength;
-    //       break;
-    //   }
-    // }
-    // hndKeyPress(KeyA, 1, 1, true, 1, 2, 2);
-
     console.log(characters.MainNarrator);
     //Gesprochener Text
     let text = {
@@ -139,12 +119,12 @@ namespace Template {
 
       }
     };
-    
+
     //Szenenablauf
     await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
     console.log("audio is being played");
     await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.newversion, ƒS.positionPercent(50, 100));
-    await ƒS.Character.show(characters.narrator, characters.narrator.pose.eyesonly, ƒS.positionPercent(40, 80));
+    await ƒS.update(3);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/false,/*skipbar*/ false,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50, /*Stimme*/sound.MainNarrator, /*skiplänge*/1);
 
     await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator, /*skiplänge*/1);
@@ -154,7 +134,8 @@ namespace Template {
     await satzbau(characters.MainNarrator, text.MainNarrator.T0003, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 5,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator,/*skiplänge*/ 3);
 
     await satzbau(characters.MainNarrator, text.MainNarrator.T0004, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator, /*skiplänge*/ 2);
-
+    await ƒS.Character.show(characters.narrator, characters.narrator.pose.eyesonly, ƒS.positionPercent(40, 80));
+    await ƒS.update(3);
 
 
     //Licht anschalten Text
@@ -202,6 +183,7 @@ namespace Template {
     await satzbau(characters.MainNarrator, text.MainNarrator.T0006, true, true, 8, 50, sound.MainNarrator, 4);
     //stimme(text.MainNarrator.T0007);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0007, true, true, 3, 50, sound.MainNarrator, 2);
+    await ƒS.Sound.play(sound.buttonhover, .2, false);
     //Namen sagen
     let entscheidung1 = {
       iSayYes: "Namen sagen", //Passiert a
@@ -225,7 +207,7 @@ namespace Template {
         console.log(data.protagonist.name);
         break;
       case entscheidung1.iSayNo: //Wenn Auswahl "Name sagen ablehnen"
-      await buttonpress(sound.buttonpress, .2);
+        await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0012, true, true, 5, 50, sound.MainNarrator, 3);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0013, true, true, 4, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0014, true, true, 4, 50, sound.MainNarrator, 2);
@@ -247,8 +229,9 @@ namespace Template {
     await satzbau(characters.MainNarrator, text.MainNarrator.TT004, true, true, 4, 50, sound.MainNarrator, 2);
     await satzbau(characters.MainNarrator, text.MainNarrator.TT005, true, true, 4, 50, sound.MainNarrator, 2);
     await satzbau(characters.MainNarrator, text.MainNarrator.TT006, false, false, 4, 50, sound.MainNarrator, 2);
+    await ƒS.Sound.play(sound.buttonhover, .2, false);
     //FUNKTION FÜR SWITCH CASE MIT ALLEN MÖGLICHKEITEN
-    let tutorial = ["Tour annehmen", "Trinken annehmen", "Konversation verlassen"];
+    let tutorial = ["Tour annehmen", "Trinken annehmen", "Konversation beenden"];
     let i: number = 0;
     while (i < 3) {
       let tutorialauswahl = await ƒS.Menu.getInput(tutorial, "auswahl");
@@ -299,7 +282,8 @@ namespace Template {
     await satzbau(characters.MainNarrator, text.MainNarrator.T0026, true, true, 4, 50, sound.MainNarrator, 2);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0027, true, true, 4, 50, sound.MainNarrator, 2);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0028, true, true, 4, 50, sound.MainNarrator, 2);
-    await satzbau(characters.MainNarrator, text.MainNarrator.T0029 + " "+ data.protagonist.name + "?", false, false, 4, 50, sound.MainNarrator, 2);
+    await satzbau(characters.MainNarrator, text.MainNarrator.T0029 + " " + data.protagonist.name + "?", false, false, 4, 50, sound.MainNarrator, 2);
+    await ƒS.Sound.play(sound.buttonhover, .2, false);
     //FUNKTION FÜR SWITCH CASE MIT BEENDEN
     //Entscheidung mithilfe von Array (wieder zurückkehren in switch funktion)
     //let b: number = 0
@@ -323,7 +307,7 @@ namespace Template {
           await satzbau(characters.MainNarrator, text.MainNarrator.G0015, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0016, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0017, true, true, 4, 50, sound.MainNarrator, 2);
-          await satzbau(characters.MainNarrator, text.MainNarrator.G0018, true, true, 4, 50, sound.MainNarrator, 2);
+          await satzbau(characters.MainNarrator, text.MainNarrator.G0018, false, false, 4, 50, sound.MainNarrator, 2);
           geschichten.splice(0, 1, "");
           mam(5);
           break;
@@ -353,7 +337,7 @@ namespace Template {
       x++;
       console.log(mam(x));
     }
-    await satzbau(characters.MainNarrator, text.MainNarrator.T1007, false, false, 3, 50, sound.MainNarrator, 2);
+    await ƒS.Sound.play(sound.buttonhover, .2, false);
     let tutorialspielen = {
       ja: "Tutorial spielen",
       nein: "Ich brauche keine Einweisung",
@@ -379,6 +363,7 @@ namespace Template {
     await satzbau(characters.MainNarrator, text.MainNarrator.T0021, true, true, 8, 50, sound.MainNarrator, 4);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0022, true, true, 4, 50, sound.MainNarrator, 2);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0023, false, false, 4, 50, sound.MainNarrator, 2);
+    await ƒS.Sound.play(sound.buttonhover, .2, false);
     let herausforderung = {
       iSayYes: "Auf jeden Fall", //Passiert a
       iSayNo: "Ich glaube eher nicht" //Passiert b

@@ -20,6 +20,9 @@ declare namespace Template {
         MysteryManTheme: string;
         Bedroom: string;
         examplesound: string;
+        phonecallend: string;
+        phonering: string;
+        dooropen: string;
         glitch: string;
         backgroundBuero: string;
         makelight: string;
@@ -33,11 +36,25 @@ declare namespace Template {
         walking: string;
         bus: string;
         bicycle: string;
+        nightambience: string;
         darkwind: string;
+        forestnight: string;
+        peopletalking: string;
         MainNarrator: string;
+        Elo: string;
+        Karten: string;
+        School: string;
     };
     let locations: {
+        waldweg: {
+            name: string;
+            background: string;
+        };
         examplelocation: {
+            name: string;
+            background: string;
+        };
+        theaterfront: {
             name: string;
             background: string;
         };
@@ -54,6 +71,10 @@ declare namespace Template {
             background: string;
         };
         homeroom: {
+            name: string;
+            background: string;
+        };
+        housefloor: {
             name: string;
             background: string;
         };
@@ -107,6 +128,7 @@ declare namespace Template {
         protagonist: {
             name: string;
         };
+        entschuldigung: number;
         score: number;
         state: {
             a: number;
@@ -120,6 +142,9 @@ declare namespace Template {
                 standard: string;
                 eyesonly: string;
             };
+        };
+        Elo: {
+            name: string;
         };
         whiteknight: {
             name: string;
@@ -154,6 +179,8 @@ declare namespace Template {
             violet: boolean;
             luna: boolean;
         };
+        beispielwert: number;
+        beispielbool: boolean;
     };
     let gameMenu: ƒS.Menu;
     function incrementSound(): void;
@@ -174,4 +201,10 @@ declare namespace Template {
 }
 declare namespace Template {
     function Szene2(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Szene3(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function zufuß(): ƒS.SceneReturn;
 }
