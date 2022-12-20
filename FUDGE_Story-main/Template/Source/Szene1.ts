@@ -121,6 +121,7 @@ namespace Template {
     };
 
     //Szenenablauf
+    ƒS.Sound.setMasterVolume(11);
     await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
     console.log("audio is being played");
     await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.newversion, ƒS.positionPercent(50, 100));

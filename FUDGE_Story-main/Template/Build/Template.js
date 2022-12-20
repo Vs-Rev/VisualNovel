@@ -398,7 +398,7 @@ var Template;
             }
             document.addEventListener("mousedown", hndMousePress);
             async function hndMousePress(_event) {
-                Template.ƒS.Sound.play(Template.sound.mouseclick, .1, false);
+                Template.ƒS.Sound.play(Template.sound.mouseclick, .2, false);
                 console.log(MouseEvent);
                 t = text.length;
                 geskipped = 1;
@@ -419,14 +419,14 @@ var Template;
                 console.log("Text geskipped");
             }
             else {
-                Template.ƒS.Sound.play(voicetype, .02, false); //Der Sound der in Main.ts definiert wurde
+                Template.ƒS.Sound.play(voicetype, .01, false); //Der Sound der in Main.ts definiert wurde
                 await Template.ƒS.update(.2);
             }
         }
         for (t = 0; t < pausenlänge; t++) {
             document.addEventListener("mousedown", hndMousePress);
             async function hndMousePress(_event) {
-                Template.ƒS.Sound.play(Template.sound.mouseclick, .1, false);
+                Template.ƒS.Sound.play(Template.sound.mouseclick, .2, false);
                 console.log(MouseEvent);
                 t = pausenlänge;
                 document.removeEventListener("mousedown", hndMousePress);
@@ -500,8 +500,8 @@ var Template;
         let scenes = [
             //{ id:"szene1",scene: Szene1, name: "Szene1" },
             //{ id:"szene2",scene: Szene2, name: "Szene2" },
-            { id: "szene3", scene: Template.Szene3, name: "Szene3" },
             //{ id:"zufuß",scene: zufuß, name: "zufuß" },
+            { id: "szene3", scene: Template.Szene3, name: "Szene3" },
             //{ scene: Szene2, name: "Szene2" },
         ];
         let uiElement = document.querySelector("[type=interface]");
@@ -795,6 +795,7 @@ var Template;
             }
         };
         //Szenenablauf
+        Template.ƒS.Sound.setMasterVolume(11);
         await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.newversion, Template.ƒS.positionPercent(50, 100));

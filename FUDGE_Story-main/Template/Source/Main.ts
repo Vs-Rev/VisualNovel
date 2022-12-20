@@ -406,7 +406,7 @@ namespace Template {
       }
       document.addEventListener("mousedown", hndMousePress);
       async function hndMousePress(_event: MouseEvent): Promise<void> {
-        ƒS.Sound.play(sound.mouseclick, .1, false);
+        ƒS.Sound.play(sound.mouseclick, .2, false);
         console.log(MouseEvent);
         t = text.length;
         geskipped = 1;
@@ -427,7 +427,7 @@ namespace Template {
         console.log("Text geskipped");
       }
       else {
-      ƒS.Sound.play(voicetype, .02, false); //Der Sound der in Main.ts definiert wurde
+      ƒS.Sound.play(voicetype, .01, false); //Der Sound der in Main.ts definiert wurde
       await ƒS.update(.2);
     }
     }
@@ -435,7 +435,7 @@ namespace Template {
     for (t = 0; t < pausenlänge; t++) {
       document.addEventListener("mousedown", hndMousePress);
       async function hndMousePress(_event: MouseEvent): Promise<void> {
-        ƒS.Sound.play(sound.mouseclick, .1, false);
+        ƒS.Sound.play(sound.mouseclick, .2, false);
         console.log(MouseEvent);
         t = pausenlänge;
         document.removeEventListener("mousedown", hndMousePress);
@@ -516,8 +516,8 @@ namespace Template {
     let scenes: ƒS.Scenes = [
       //{ id:"szene1",scene: Szene1, name: "Szene1" },
       //{ id:"szene2",scene: Szene2, name: "Szene2" },
-      { id:"szene3",scene: Szene3, name: "Szene3" },
       //{ id:"zufuß",scene: zufuß, name: "zufuß" },
+      { id:"szene3",scene: Szene3, name: "Szene3" },
       //{ scene: Szene2, name: "Szene2" },
     ];
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
