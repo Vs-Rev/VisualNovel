@@ -38,6 +38,10 @@ namespace Template {
           E0011: "Byeee",
           //Entschuldigung Ablehnen
           E0012: "Ich wusste du würdest es nicht verstehen. . .",
+          //Was meinst du
+          E0013: "Ah. . .",
+          E0014: "Verstehe schon, wir reden nicht darüber",
+          E0015: "Danke dir",
         },
       };
       //await ƒS.Sound.fade(sound.introductiontheme, 0.3, 3, true);
@@ -69,6 +73,7 @@ namespace Template {
       switch (handyentscheidung) {
         case rangehen.rangehen:
           await buttonpress(sound.buttonpress, .2);
+          dataForSave.good +1;
           await ƒS.update(1);
           await satzbau(characters.Elo, text.Elo.E0000 + data.protagonist.name , true, true, 5, 50, sound.Elo, 1);
           await satzbau(characters.Elo, text.Elo.E0001 , true, true, 5, 50, sound.Elo, 1);
@@ -80,6 +85,7 @@ namespace Template {
           break;
         case rangehen.ablehnen:
           await buttonpress(sound.buttonpress, .2);
+          dataForSave.evil +1;
           await ƒS.update(1);
           await satzbau(characters.MainNarrator, text.MainNarrator.M0010 , true, true, 5, 50, sound.MainNarrator, 1);
           data.entschuldigung = 2;
@@ -96,6 +102,7 @@ namespace Template {
       switch (entschuldigungsentscheidung) {
         case entschuldigung.annehmen:
           await buttonpress(sound.buttonpress, .2);
+          dataForSave.good +1;
           await ƒS.update(1);
           await satzbau(characters.Elo, text.Elo.E0006 , true, true, 5, 50, sound.Elo, 1);
           await satzbau(characters.Elo, text.Elo.E0007 , true, true, 5, 50, sound.Elo, 1);
@@ -110,6 +117,8 @@ namespace Template {
           break;
         case entschuldigung.ablehnen:
           await buttonpress(sound.buttonpress, .2);
+          data.entschuldigung = 3;
+          dataForSave.evil +1;
           await ƒS.update(1);
           await satzbau(characters.Elo, text.Elo.E0012 , true, true, 5, 50, sound.Elo, 1);
           ƒS.Sound.play(sound.phonecallend, .3, false);
@@ -117,13 +126,25 @@ namespace Template {
           await satzbau(characters.MainNarrator, text.MainNarrator.M0009 , true, true, 5, 50, sound.MainNarrator, 1);
           break;
         case entschuldigung.waspassiert: 
-
+        await buttonpress(sound.buttonpress, .2);
+        dataForSave.good +1;
+        dataForSave.calm +1;
+        data.entschuldigung = 1;
+        await ƒS.update(1);
+        await satzbau(characters.Elo, text.Elo.E0013 , true, true, 5, 50, sound.Elo, 1);
+        await satzbau(characters.Elo, text.Elo.E0014 , true, true, 5, 50, sound.Elo, 1);
+        await satzbau(characters.Elo, text.Elo.E0015 , true, true, 5, 50, sound.Elo, 1);
+        await satzbau(characters.Elo, text.Elo.E0008 , true, true, 5, 50, sound.Elo, 1);
+        await satzbau(characters.Elo, text.Elo.E0009 , true, true, 5, 50, sound.Elo, 1);
+        await satzbau(characters.Elo, text.Elo.E0010 , true, true, 5, 50, sound.Elo, 1);
+        await satzbau(characters.Elo, text.Elo.E0011 , true, true, 5, 50, sound.Elo, 1);
+        break;
     }
   }
   await satzbau(characters.MainNarrator, text.MainNarrator.M0011 , true, true, 5, 50, sound.MainNarrator, 1);
   ƒS.Speech.clear();
   await ƒS.update(2);
-  return "szene1";
+  return "szene3";
     }
   }
   

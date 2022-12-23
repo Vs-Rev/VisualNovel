@@ -117,6 +117,9 @@ namespace Template {
       case aufwachen.liegenbleiben:
         await buttonpress(sound.buttonpress, .2);
         await ƒS.Speech.hide();
+        console.log(dataForSave);
+        dataForSave.calm +1;
+        console.log(dataForSave.calm);
         await satzbau(characters.MainNarrator,data.protagonist.name + text.MainNarrator.M0005, true, true, 3, 50, sound.MainNarrator, 1);
         await satzbau(characters.MainNarrator,text.MainNarrator.M0006, true, true, 5, 50, sound.MainNarrator, 1);
         await satzbau(characters.MainNarrator,text.MainNarrator.M0007, true, true, 5, 50, sound.MainNarrator, 1);
@@ -141,6 +144,7 @@ namespace Template {
       switch (benehmensentscheidung) {
         case Benehmen.ruhig:
           await buttonpress(sound.buttonpress, .2);
+          dataForSave.calm +1;
           await satzbau(characters.MainNarrator, data.protagonist.name + text.MainNarrator.M0010, true, true, 5, 50, sound.MainNarrator, 1);
           await satzbau(characters.MainNarrator, text.MainNarrator.M0011, true, true, 5, 50, sound.MainNarrator, 1);
           await satzbau(characters.MainNarrator, text.MainNarrator.M0012, true, true, 5, 50, sound.MainNarrator, 1);
@@ -148,6 +152,7 @@ namespace Template {
           await satzbau(characters.MainNarrator, text.MainNarrator.M0002, true, true, 3, 50, sound.MainNarrator, 1);
           break;
         case Benehmen.wütend:
+          dataForSave.evil +1;
           await buttonpress(sound.buttonpress, .2);
           await satzbau(characters.MainNarrator, data.protagonist.name + text.MainNarrator.M0008, true, true, 5, 50, sound.MainNarrator, 1);
           await satzbau(characters.MainNarrator, text.MainNarrator.M0009, true, true, 5, 50, sound.MainNarrator, 1);
@@ -155,6 +160,7 @@ namespace Template {
           await satzbau(characters.MainNarrator, text.MainNarrator.M0002, true, true, 3, 50, sound.MainNarrator, 1);
           break;
         case Benehmen.nichts:
+          dataForSave.calm +1;
           await buttonpress(sound.buttonpress, .2);
           await satzbau(characters.MainNarrator, text.MainNarrator.M0013, true, true, 5, 50, sound.MainNarrator, 1);
           await satzbau(characters.MainNarrator, text.MainNarrator.M0014, true, true, 5, 50, sound.MainNarrator, 1);
@@ -186,6 +192,7 @@ namespace Template {
       await satzbau(characters.MainNarrator, text.MainNarrator.M1007 , true, true, 5, 50, sound.MainNarrator, 1);
       break;
       case vergessen.nein:
+        dataForSave.evil +1;
         await buttonpress(sound.buttonpress, .2);
         await satzbau(characters.MainNarrator, text.MainNarrator.M1008 , false, false, 5, 50, sound.MainNarrator, 1);
         await ƒS.Menu.getInput(nein, "auswahl");
@@ -232,6 +239,7 @@ namespace Template {
         break;
       case Aktion01[2]:
         await buttonpress(sound.buttonpress, .2);
+        dataForSave.calm +1;
         await satzbau(characters.MainNarrator, text.MainNarrator.M0023 , true, true, 5, 50, sound.MainNarrator, 1);
         await satzbau(characters.MainNarrator, text.MainNarrator.M0024 , true, true, 5, 50, sound.MainNarrator, 1);
         await satzbau(characters.MainNarrator, text.MainNarrator.M0025 , true, true, 5, 50, sound.MainNarrator, 1);

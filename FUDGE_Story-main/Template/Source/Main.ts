@@ -519,9 +519,9 @@ namespace Template {
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
       //{ id:"szene1",scene: Szene1, name: "Szene1" },
-      //{ id:"szene2",scene: Szene2, name: "Szene2" },
+      { id:"szene2",scene: Szene2, name: "Szene2" },
       //{ id:"zufuß",scene: zufuß, name: "zufuß" },
-      { id:"szene3",scene: Szene3, name: "Szene3" },
+      // { id:"szene3",scene: Szene3, name: "Szene3" },
       //{ scene: Szene2, name: "Szene2" },
     ];
     let uiElement: HTMLElement = document.querySelector("[type=interface]");

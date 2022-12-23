@@ -23,6 +23,18 @@ namespace Template {
         T0008: "Hm. . . scheint hier wohl nicht viele zu geben die du fragen könntest",
         T0009: "Vielleicht sollten wir uns. . .",
         T0010: "Reinschleichen?",
+
+        T0011: "Warum möchtest du dich reinschleichen wenn du doch gerade eine Sitzgelegenheit bekommen hast?",
+        T0012: "Ich verstehe, du brauchst den Nervenkitzel",
+        T0013: "Na dann. . .",
+        T0014: "Was denn?",
+        T0015: "Dich aufhalten? Nein wieso denn?",
+        T0016: "Das macht das Ganze doch spannender",
+
+        T0017: "Sehr gut. Dann lass uns beeilen bevor die Vorstellung beginnt",
+
+        T0018: "Sehr gewagt. Doch wer nicht wagt, der nicht gewinnt",
+        T0019: "Nicht wahr?",
       },
       School: {
         S0000: "ERINNERUNG",
@@ -59,6 +71,9 @@ namespace Template {
       },
     };
     let umsehen: number = 0;
+    let ticketbekommen: number = 0;
+    let reinschleichen: number = 0;
+    let überreden: number = 0;
     await ƒS.Sound.fade(sound.peopletalking, 0.05, 3, true);
     await ƒS.update(2);
     await ƒS.Location.show(locations.theaterfront);
@@ -90,6 +105,7 @@ namespace Template {
         break;
     }
     if (umsehen == 1) {
+      //entschuldigung = angenommen
       if (data.entschuldigung == 1) {
         await satzbau(characters.Elo, text.Elo.E0000, true, true, 5, 50, sound.Elo, 2);
         await satzbau(characters.Elo, text.Elo.E0001, true, true, 5, 50, sound.Elo, 2);
@@ -107,15 +123,19 @@ namespace Template {
         switch (setzelement) {
           case setzen.setzen:
             await buttonpress(sound.buttonpress, .2);
+            dataForSave.good +1;
             await satzbau(characters.Elo, text.Elo.E0007, true, true, 5, 50, sound.Elo, 2);
+            ticketbekommen = 1;
             break;
           case setzen.ablehnen:
             await buttonpress(sound.buttonpress, .2);
+            dataForSave.evil +1;
             await satzbau(characters.Elo, text.Elo.E0014, true, true, 5, 50, sound.Elo, 2);
             await satzbau(characters.MainNarrator, text.MainNarrator.T0007, true, true, 5, 50, sound.MainNarrator, 2);
             break;
         }
       }
+      //entschuldigung = Anruf abgelehnt
       if (data.entschuldigung == 2) {
         await satzbau(characters.Elo, text.Elo.E0008, true, true, 5, 50, sound.Elo, 2);
         await satzbau(characters.Elo, text.Elo.E0009, true, true, 5, 50, sound.Elo, 2);
@@ -124,13 +144,62 @@ namespace Template {
         await satzbau(characters.MainNarrator, text.School.S0004, true, true, 5, 50, sound.School, 2);
         await satzbau(characters.MainNarrator, text.School.S0005, true, true, 5, 50, sound.School, 2);
         await satzbau(characters.MainNarrator, text.School.S0006, true, true, 5, 50, sound.School, 2);
+        await satzbau(characters.Elo, text.Elo.E0011, true, true, 5, 50, sound.Elo, 2);
+        await satzbau(characters.Elo, text.Elo.E0012, true, true, 5, 50, sound.Elo, 2);
+        await satzbau(characters.Elo, text.Elo.E0013, true, true, 5, 50, sound.Elo, 2);
       }
-      if (data.entschuldigung == 0) {
+      //Entschuldigung abgelehnt
+      if (data.entschuldigung == 3) {
         await satzbau(characters.MainNarrator, text.MainNarrator.T0008, true, true, 5, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0009, true, true, 5, 50, sound.MainNarrator, 2);
         await satzbau(characters.MainNarrator, text.MainNarrator.T0010, true, true, 5, 50, sound.MainNarrator, 2);
-
+        ticketbekommen == 2;
       }
     }
+    //Ticket erhalten
+    if(ticketbekommen == 1){
+      let saalbetreten = {
+        rein: "Saal betreten",
+        reinschleich: "Reinschleichen",
+      };
+      let ticketelement = await ƒS.Menu.getInput(saalbetreten, "auswahl");
+      switch (ticketelement) {
+        case saalbetreten.rein:
+          await satzbau(characters.MainNarrator, text.MainNarrator.T0017, true, true, 5, 50, sound.MainNarrator, 2);
+          break;
+        case saalbetreten.reinschleich:
+          dataForSave.crazy +1;
+          await satzbau(characters.MainNarrator, text.MainNarrator.T0011, true, true, 5, 50, sound.MainNarrator, 2);
+          await satzbau(characters.MainNarrator, text.MainNarrator.T0012, true, true, 5, 50, sound.MainNarrator, 2);
+          await satzbau(characters.MainNarrator, text.MainNarrator.T0013, true, true, 5, 50, sound.MainNarrator, 2);
+          await satzbau(characters.MainNarrator, text.MainNarrator.T0014, true, true, 5, 50, sound.MainNarrator, 2);
+          await satzbau(characters.MainNarrator, text.MainNarrator.T0015, true, true, 5, 50, sound.MainNarrator, 2);
+          await satzbau(characters.MainNarrator, text.MainNarrator.T0016, true, true, 5, 50, sound.MainNarrator, 2);
+          reinschleichen = 1;
+          break;
+    }
   }
+  if(ticketbekommen == 2){
+    let saalbetreten = {
+      überzeugen: "Ticketkontrolleur überreden",
+      schleichen: "Reinschleichen",
+    };
+    let ticketelement = await ƒS.Menu.getInput(saalbetreten, "auswahl");
+    switch (ticketelement) {
+      case saalbetreten.überzeugen:
+        dataForSave.crazy +1;
+        überreden = 1;
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0018, true, true, 5, 50, sound.MainNarrator, 2);
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0019, true, true, 5, 50, sound.MainNarrator, 2);
+      break;
+      case saalbetreten.schleichen:
+        dataForSave.crazy +1;
+        dataForSave.evil +1;
+        reinschleichen = 1;
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0018, true, true, 5, 50, sound.MainNarrator, 2);
+        await satzbau(characters.MainNarrator, text.MainNarrator.T0019, true, true, 5, 50, sound.MainNarrator, 2);
+        break;
+  }
+  }
+}
 }

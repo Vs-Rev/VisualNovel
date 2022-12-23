@@ -181,6 +181,10 @@ declare namespace Template {
         };
         beispielwert: number;
         beispielbool: boolean;
+        evil: number;
+        good: number;
+        crazy: number;
+        calm: number;
     };
     let gameMenu: ƒS.Menu;
     function incrementSound(): void;

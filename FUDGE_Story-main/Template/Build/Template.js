@@ -271,6 +271,10 @@ var Template;
         },
         beispielwert: 0,
         beispielbool: false,
+        evil: 0,
+        good: 0,
+        crazy: 0,
+        calm: 0,
     };
     //Kampfsystem
     //Menü
@@ -499,9 +503,9 @@ var Template;
         //Szenen aufrufen bezogen auf die .TS Datei
         let scenes = [
             //{ id:"szene1",scene: Szene1, name: "Szene1" },
-            //{ id:"szene2",scene: Szene2, name: "Szene2" },
+            { id: "szene2", scene: Template.Szene2, name: "Szene2" },
             //{ id:"zufuß",scene: zufuß, name: "zufuß" },
-            { id: "szene3", scene: Template.Szene3, name: "Szene3" },
+            // { id:"szene3",scene: Szene3, name: "Szene3" },
             //{ scene: Szene2, name: "Szene2" },
         ];
         let uiElement = document.querySelector("[type=interface]");
@@ -1156,6 +1160,9 @@ var Template;
             case aufwachen.liegenbleiben:
                 await Template.buttonpress(Template.sound.buttonpress, .2);
                 await Template.ƒS.Speech.hide();
+                console.log(Template.dataForSave);
+                Template.dataForSave.calm + 1;
+                console.log(Template.dataForSave.calm);
                 await Template.satzbau(Template.characters.MainNarrator, Template.data.protagonist.name + text.MainNarrator.M0005, true, true, 3, 50, Template.sound.MainNarrator, 1);
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0006, true, true, 5, 50, Template.sound.MainNarrator, 1);
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0007, true, true, 5, 50, Template.sound.MainNarrator, 1);
@@ -1180,6 +1187,7 @@ var Template;
             switch (benehmensentscheidung) {
                 case Benehmen.ruhig:
                     await Template.buttonpress(Template.sound.buttonpress, .2);
+                    Template.dataForSave.calm + 1;
                     await Template.satzbau(Template.characters.MainNarrator, Template.data.protagonist.name + text.MainNarrator.M0010, true, true, 5, 50, Template.sound.MainNarrator, 1);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0011, true, true, 5, 50, Template.sound.MainNarrator, 1);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0012, true, true, 5, 50, Template.sound.MainNarrator, 1);
@@ -1187,6 +1195,7 @@ var Template;
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0002, true, true, 3, 50, Template.sound.MainNarrator, 1);
                     break;
                 case Benehmen.wütend:
+                    Template.dataForSave.evil + 1;
                     await Template.buttonpress(Template.sound.buttonpress, .2);
                     await Template.satzbau(Template.characters.MainNarrator, Template.data.protagonist.name + text.MainNarrator.M0008, true, true, 5, 50, Template.sound.MainNarrator, 1);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0009, true, true, 5, 50, Template.sound.MainNarrator, 1);
@@ -1194,6 +1203,7 @@ var Template;
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0002, true, true, 3, 50, Template.sound.MainNarrator, 1);
                     break;
                 case Benehmen.nichts:
+                    Template.dataForSave.calm + 1;
                     await Template.buttonpress(Template.sound.buttonpress, .2);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0013, true, true, 5, 50, Template.sound.MainNarrator, 1);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0014, true, true, 5, 50, Template.sound.MainNarrator, 1);
@@ -1225,6 +1235,7 @@ var Template;
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M1007, true, true, 5, 50, Template.sound.MainNarrator, 1);
                 break;
             case vergessen.nein:
+                Template.dataForSave.evil + 1;
                 await Template.buttonpress(Template.sound.buttonpress, .2);
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M1008, false, false, 5, 50, Template.sound.MainNarrator, 1);
                 await Template.ƒS.Menu.getInput(nein, "auswahl");
@@ -1271,6 +1282,7 @@ var Template;
                     break;
                 case Aktion01[2]:
                     await Template.buttonpress(Template.sound.buttonpress, .2);
+                    Template.dataForSave.calm + 1;
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0023, true, true, 5, 50, Template.sound.MainNarrator, 1);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0024, true, true, 5, 50, Template.sound.MainNarrator, 1);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0025, true, true, 5, 50, Template.sound.MainNarrator, 1);
@@ -1385,6 +1397,15 @@ var Template;
                 T0008: "Hm. . . scheint hier wohl nicht viele zu geben die du fragen könntest",
                 T0009: "Vielleicht sollten wir uns. . .",
                 T0010: "Reinschleichen?",
+                T0011: "Warum möchtest du dich reinschleichen wenn du doch gerade eine Sitzgelegenheit bekommen hast?",
+                T0012: "Ich verstehe, du brauchst den Nervenkitzel",
+                T0013: "Na dann. . .",
+                T0014: "Was denn?",
+                T0015: "Dich aufhalten? Nein wieso denn?",
+                T0016: "Das macht das Ganze doch spannender",
+                T0017: "Sehr gut. Dann lass uns beeilen bevor die Vorstellung beginnt",
+                T0018: "Sehr gewagt. Doch wer nicht wagt, der nicht gewinnt",
+                T0019: "Nicht wahr?",
             },
             School: {
                 S0000: "ERINNERUNG",
@@ -1418,6 +1439,9 @@ var Template;
             },
         };
         let umsehen = 0;
+        let ticketbekommen = 0;
+        let reinschleichen = 0;
+        let überreden = 0;
         await Template.ƒS.Sound.fade(Template.sound.peopletalking, 0.05, 3, true);
         await Template.ƒS.update(2);
         await Template.ƒS.Location.show(Template.locations.theaterfront);
@@ -1449,6 +1473,7 @@ var Template;
                 break;
         }
         if (umsehen == 1) {
+            //entschuldigung = angenommen
             if (Template.data.entschuldigung == 1) {
                 await Template.satzbau(Template.characters.Elo, text.Elo.E0000, true, true, 5, 50, Template.sound.Elo, 2);
                 await Template.satzbau(Template.characters.Elo, text.Elo.E0001, true, true, 5, 50, Template.sound.Elo, 2);
@@ -1466,15 +1491,19 @@ var Template;
                 switch (setzelement) {
                     case setzen.setzen:
                         await Template.buttonpress(Template.sound.buttonpress, .2);
+                        Template.dataForSave.good + 1;
                         await Template.satzbau(Template.characters.Elo, text.Elo.E0007, true, true, 5, 50, Template.sound.Elo, 2);
+                        ticketbekommen = 1;
                         break;
                     case setzen.ablehnen:
                         await Template.buttonpress(Template.sound.buttonpress, .2);
+                        Template.dataForSave.evil + 1;
                         await Template.satzbau(Template.characters.Elo, text.Elo.E0014, true, true, 5, 50, Template.sound.Elo, 2);
                         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0007, true, true, 5, 50, Template.sound.MainNarrator, 2);
                         break;
                 }
             }
+            //entschuldigung = Anruf abgelehnt
             if (Template.data.entschuldigung == 2) {
                 await Template.satzbau(Template.characters.Elo, text.Elo.E0008, true, true, 5, 50, Template.sound.Elo, 2);
                 await Template.satzbau(Template.characters.Elo, text.Elo.E0009, true, true, 5, 50, Template.sound.Elo, 2);
@@ -1483,11 +1512,61 @@ var Template;
                 await Template.satzbau(Template.characters.MainNarrator, text.School.S0004, true, true, 5, 50, Template.sound.School, 2);
                 await Template.satzbau(Template.characters.MainNarrator, text.School.S0005, true, true, 5, 50, Template.sound.School, 2);
                 await Template.satzbau(Template.characters.MainNarrator, text.School.S0006, true, true, 5, 50, Template.sound.School, 2);
+                await Template.satzbau(Template.characters.Elo, text.Elo.E0011, true, true, 5, 50, Template.sound.Elo, 2);
+                await Template.satzbau(Template.characters.Elo, text.Elo.E0012, true, true, 5, 50, Template.sound.Elo, 2);
+                await Template.satzbau(Template.characters.Elo, text.Elo.E0013, true, true, 5, 50, Template.sound.Elo, 2);
             }
-            if (Template.data.entschuldigung == 0) {
+            //Entschuldigung abgelehnt
+            if (Template.data.entschuldigung == 3) {
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0008, true, true, 5, 50, Template.sound.MainNarrator, 2);
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0009, true, true, 5, 50, Template.sound.MainNarrator, 2);
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0010, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                ticketbekommen == 2;
+            }
+        }
+        //Ticket erhalten
+        if (ticketbekommen == 1) {
+            let saalbetreten = {
+                rein: "Saal betreten",
+                reinschleich: "Reinschleichen",
+            };
+            let ticketelement = await Template.ƒS.Menu.getInput(saalbetreten, "auswahl");
+            switch (ticketelement) {
+                case saalbetreten.rein:
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0017, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    break;
+                case saalbetreten.reinschleich:
+                    Template.dataForSave.crazy + 1;
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0011, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0012, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0013, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0014, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0015, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0016, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    reinschleichen = 1;
+                    break;
+            }
+        }
+        if (ticketbekommen == 2) {
+            let saalbetreten = {
+                überzeugen: "Ticketkontrolleur überreden",
+                schleichen: "Reinschleichen",
+            };
+            let ticketelement = await Template.ƒS.Menu.getInput(saalbetreten, "auswahl");
+            switch (ticketelement) {
+                case saalbetreten.überzeugen:
+                    Template.dataForSave.crazy + 1;
+                    überreden = 1;
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0018, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0019, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    break;
+                case saalbetreten.schleichen:
+                    Template.dataForSave.crazy + 1;
+                    Template.dataForSave.evil + 1;
+                    reinschleichen = 1;
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0018, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0019, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                    break;
             }
         }
     }
@@ -1664,6 +1743,10 @@ var Template;
                 E0011: "Byeee",
                 //Entschuldigung Ablehnen
                 E0012: "Ich wusste du würdest es nicht verstehen. . .",
+                //Was meinst du
+                E0013: "Ah. . .",
+                E0014: "Verstehe schon, wir reden nicht darüber",
+                E0015: "Danke dir",
             },
         };
         //await ƒS.Sound.fade(sound.introductiontheme, 0.3, 3, true);
@@ -1695,6 +1778,7 @@ var Template;
         switch (handyentscheidung) {
             case rangehen.rangehen:
                 await Template.buttonpress(Template.sound.buttonpress, .2);
+                Template.dataForSave.good + 1;
                 await Template.ƒS.update(1);
                 await Template.satzbau(Template.characters.Elo, text.Elo.E0000 + Template.data.protagonist.name, true, true, 5, 50, Template.sound.Elo, 1);
                 await Template.satzbau(Template.characters.Elo, text.Elo.E0001, true, true, 5, 50, Template.sound.Elo, 1);
@@ -1706,6 +1790,7 @@ var Template;
                 break;
             case rangehen.ablehnen:
                 await Template.buttonpress(Template.sound.buttonpress, .2);
+                Template.dataForSave.evil + 1;
                 await Template.ƒS.update(1);
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0010, true, true, 5, 50, Template.sound.MainNarrator, 1);
                 Template.data.entschuldigung = 2;
@@ -1722,6 +1807,7 @@ var Template;
             switch (entschuldigungsentscheidung) {
                 case entschuldigung.annehmen:
                     await Template.buttonpress(Template.sound.buttonpress, .2);
+                    Template.dataForSave.good + 1;
                     await Template.ƒS.update(1);
                     await Template.satzbau(Template.characters.Elo, text.Elo.E0006, true, true, 5, 50, Template.sound.Elo, 1);
                     await Template.satzbau(Template.characters.Elo, text.Elo.E0007, true, true, 5, 50, Template.sound.Elo, 1);
@@ -1736,6 +1822,8 @@ var Template;
                     break;
                 case entschuldigung.ablehnen:
                     await Template.buttonpress(Template.sound.buttonpress, .2);
+                    Template.data.entschuldigung = 3;
+                    Template.dataForSave.evil + 1;
                     await Template.ƒS.update(1);
                     await Template.satzbau(Template.characters.Elo, text.Elo.E0012, true, true, 5, 50, Template.sound.Elo, 1);
                     Template.ƒS.Sound.play(Template.sound.phonecallend, .3, false);
@@ -1743,12 +1831,25 @@ var Template;
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0009, true, true, 5, 50, Template.sound.MainNarrator, 1);
                     break;
                 case entschuldigung.waspassiert:
+                    await Template.buttonpress(Template.sound.buttonpress, .2);
+                    Template.dataForSave.good + 1;
+                    Template.dataForSave.calm + 1;
+                    Template.data.entschuldigung = 1;
+                    await Template.ƒS.update(1);
+                    await Template.satzbau(Template.characters.Elo, text.Elo.E0013, true, true, 5, 50, Template.sound.Elo, 1);
+                    await Template.satzbau(Template.characters.Elo, text.Elo.E0014, true, true, 5, 50, Template.sound.Elo, 1);
+                    await Template.satzbau(Template.characters.Elo, text.Elo.E0015, true, true, 5, 50, Template.sound.Elo, 1);
+                    await Template.satzbau(Template.characters.Elo, text.Elo.E0008, true, true, 5, 50, Template.sound.Elo, 1);
+                    await Template.satzbau(Template.characters.Elo, text.Elo.E0009, true, true, 5, 50, Template.sound.Elo, 1);
+                    await Template.satzbau(Template.characters.Elo, text.Elo.E0010, true, true, 5, 50, Template.sound.Elo, 1);
+                    await Template.satzbau(Template.characters.Elo, text.Elo.E0011, true, true, 5, 50, Template.sound.Elo, 1);
+                    break;
             }
         }
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0011, true, true, 5, 50, Template.sound.MainNarrator, 1);
         Template.ƒS.Speech.clear();
         await Template.ƒS.update(2);
-        return "szene1";
+        return "szene3";
     }
     Template.zufuß = zufuß;
 })(Template || (Template = {}));
