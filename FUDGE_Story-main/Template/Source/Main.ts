@@ -55,6 +55,7 @@ namespace Template {
     Elo: "./Audio/Soundeffects/Voice_Elo.wav",
     Karten: "./Audio/Soundeffects/Voice_Karten.wav",
     School: "./Audio/Soundeffects/Voice_School.wav",
+    Ticketkontrolleur: "./Audio/Soundeffects/Speech.wav",
   };
 
   //Typewritersound
@@ -192,6 +193,9 @@ namespace Template {
     Elo: {
       name: "Elo",
     },
+    Ticketkontrolleur: {
+      name: "Ticketkontrolleur",
+    }, 
     /*camille: {
       name: data.protagonist.name,
       origin: ƒS.ORIGIN.BOTTOMLEFT,

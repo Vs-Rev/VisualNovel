@@ -44,6 +44,7 @@ declare namespace Template {
         Elo: string;
         Karten: string;
         School: string;
+        Ticketkontrolleur: string;
     };
     let locations: {
         waldweg: {
@@ -144,6 +145,9 @@ declare namespace Template {
             };
         };
         Elo: {
+            name: string;
+        };
+        Ticketkontrolleur: {
             name: string;
         };
         whiteknight: {
