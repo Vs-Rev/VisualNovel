@@ -274,6 +274,10 @@ namespace Template {
     },
     beispielwert: 0,
     beispielbool: false,
+    evil: 0,
+    good: 0,
+    crazy: 0,
+    calm: 0,
   };
 
   //Kampfsystem
