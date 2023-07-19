@@ -13,12 +13,46 @@ declare namespace Template {
             edge: number;
         };
     };
+    let items: {
+        pageVampire: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+            exist: boolean;
+        };
+        Kleidung: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+            exist: boolean;
+        };
+        Ticket: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+            exist: boolean;
+        };
+    };
+    let dataForSave: {
+        protagonist: {
+            name: string;
+        };
+        evil: number;
+        good: number;
+        entschuldigung: number;
+        Halisgefährteangenommen: boolean;
+    };
     let sound: {
         examplemusic: string;
         titletheme: string;
         introductiontheme: string;
         MysteryManTheme: string;
         Bedroom: string;
+        Meadow: string;
+        Halistheme: string;
         examplesound: string;
         phonecallend: string;
         phonering: string;
@@ -36,18 +70,27 @@ declare namespace Template {
         walking: string;
         bus: string;
         bicycle: string;
+        snoring: string;
+        pianoharp: string;
+        slap: string;
         nightambience: string;
         darkwind: string;
         forestnight: string;
         peopletalking: string;
+        deepdark: string;
         MainNarrator: string;
         Elo: string;
         Karten: string;
         School: string;
         Ticketkontrolleur: string;
+        Halistrator: string;
     };
     let locations: {
         waldweg: {
+            name: string;
+            background: string;
+        };
+        meadow: {
             name: string;
             background: string;
         };
@@ -123,18 +166,12 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        white: {
+            name: string;
+            background: string;
+        };
     };
     function animationwalking(): Promise<void>;
-    let data: {
-        protagonist: {
-            name: string;
-        };
-        entschuldigung: number;
-        score: number;
-        state: {
-            a: number;
-        };
-    };
     let characters: {
         narrator: {
             name: string;
@@ -149,6 +186,16 @@ declare namespace Template {
         };
         Ticketkontrolleur: {
             name: string;
+        };
+        Halistrator: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                standard: string;
+                sauer: string;
+                surprised: string;
+                cute: string;
+            };
         };
         whiteknight: {
             name: string;
@@ -171,25 +218,12 @@ declare namespace Template {
         };
     };
     function fromLeftToRight(): ƒS.AnimationDefinition;
-    function fromlefterToLeft(): ƒS.AnimationDefinition;
+    function fromLeftToLeft(): ƒS.AnimationDefinition;
     function fromCenterToCenter(): ƒS.AnimationDefinition;
     function fromCenterToLeft(): ƒS.AnimationDefinition;
     function fromLeftToCenter(): ƒS.AnimationDefinition;
-    let dataForSave: {
-        points: number;
-        gesprochen: {
-            marie: boolean;
-            james: boolean;
-            violet: boolean;
-            luna: boolean;
-        };
-        beispielwert: number;
-        beispielbool: boolean;
-        evil: number;
-        good: number;
-        crazy: number;
-        calm: number;
-    };
+    function fromCenterToRight_Halistrator(): ƒS.AnimationDefinition;
+    function fromRightToCenter_Halistrator(): ƒS.AnimationDefinition;
     let gameMenu: ƒS.Menu;
     function incrementSound(): void;
     function decrementSound(): void;
@@ -205,14 +239,17 @@ declare namespace Template {
     function Scene(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function Szene1(): ƒS.SceneReturn;
+    function Szene1_1(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function Szene2(): ƒS.SceneReturn;
+    function Szene1_2(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function Szene3(): ƒS.SceneReturn;
+    function Szene1_3(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function zufuß(): ƒS.SceneReturn;
+    function Szene1_4(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Szene4_1(): ƒS.SceneReturn;
 }

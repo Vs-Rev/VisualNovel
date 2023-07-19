@@ -18,6 +18,42 @@ namespace Template {
 
     }
   };
+  export let items = {
+    pageVampire: {
+      name: "Vampire Novel Notes", 
+      description: "Notes about the Vampire Novel to answer the officers questions", 
+      image: "Images/Items/VampirePage.png",
+      static: true,
+      exist: true
+    }, 
+    Kleidung: {
+      name: "Klamotten",
+      description: "Normale Klamotten. Nichts besonderes. Wirklich nicht",
+      image: "Images/Items/Klamotten.png",
+      static: true,
+      exist: true,
+    },
+    Ticket: {
+      name: "Ticket",
+      description: "Die Eintrittskarte für die Theatershow der Schule mit dem Sitzplatz: 05C 01D",
+      image: "Images/Items/Ticketpng",
+      static: true,
+      exist: true,
+    }
+  }
+
+    //SaveGame preparation
+    export let dataForSave = {
+      //Hier Speicherbare Elemente eintragen
+      protagonist: {
+        name: "",
+      },
+      evil: 0,
+      good: 0,
+      entschuldigung: 0,
+      Halisgefährteangenommen: true,
+    };
+  
 
   //Sounds
   export let sound = {
@@ -27,6 +63,8 @@ namespace Template {
     introductiontheme: "./Audio/Ambience/Introduction.wav",
     MysteryManTheme: "./Audio/MysteryMan_Theme.wav",
     Bedroom: "./Audio/Themes/Bedroom.wav",
+    Meadow: "./Audio/Themes/Meadow.wav",
+    Halistheme: "./Audio/Themes/HalisTheme.wav",
     //sounds
     examplesound: "",
     phonecallend: "./Audio/Soundeffects/Phonecall_End.wav",
@@ -45,17 +83,22 @@ namespace Template {
     walking: "./Audio/Soundeffects/Walking.wav",
     bus: "./Audio/Soundeffects/Bus.wav",
     bicycle: "./Audio/Soundeffects/Bicycle.wav",
+    snoring: "./Audio/Soundeffects/Snoring.wav",
+    pianoharp: "./Audio/Soundeffects/PianoHarp.wav",
+    slap: "./Audio/Soundeffects/Slap.wav",
     //ambience
     nightambience: "./Audio/Ambience/Nightambience.wav",
     darkwind: "./Audio/Ambience/darkwind.wav",
     forestnight: "./Audio/Ambience/Forestnight.wav",
     peopletalking: "./Audio/Ambience/People_talking.wav",
+    deepdark: "./Audio/Ambience/Deepdark.wav",
     //Character Voices
     MainNarrator: "./Audio/Soundeffects/Speech.wav",
     Elo: "./Audio/Soundeffects/Voice_Elo.wav",
     Karten: "./Audio/Soundeffects/Voice_Karten.wav",
     School: "./Audio/Soundeffects/Voice_School.wav",
     Ticketkontrolleur: "./Audio/Soundeffects/Speech.wav",
+    Halistrator: "./Audio/Soundeffects/Voice_Halistrator.wav"
   };
 
   //Typewritersound
@@ -65,6 +108,10 @@ namespace Template {
     waldweg: {
       name: "waldweg",
       background: "./Images/Backgrounds/Moonsky.png",
+    },
+    meadow: {
+      name: "meadow",
+      background: "./Images/Backgrounds/Meadow/Meadow_Final.png",
     },
     examplelocation: {
       name: "examplelocation",
@@ -76,7 +123,7 @@ namespace Template {
     },
     background1: {
       name: "background1",
-      background: "./Images/Backgrounds/Background1.jpg"
+      background: "./Images/Backgrounds/Background1.jpg",
     },
     startscreenbackground: {
       name: "startscreen",
@@ -138,6 +185,10 @@ namespace Template {
       name: "walking11",
       background: "./Images/Backgrounds/Animationbackgrounds/Walking11.png",
     },
+    white: {
+      name: "white",
+      background: "./Images/Backgrounds/White.png",
+    },
   };
 
   export async function animationwalking (){
@@ -169,7 +220,7 @@ namespace Template {
 
 
   //Charakter benennen
-  export let data = {
+  /*export let data = {
     protagonist: {
       name: "",
     },
@@ -178,7 +229,7 @@ namespace Template {
     state: {
       a: 1,
     },
-  };
+  };*/
 
   //Charakters
   export let characters = {
@@ -196,6 +247,16 @@ namespace Template {
     Ticketkontrolleur: {
       name: "Ticketkontrolleur",
     }, 
+    Halistrator: {
+      name: "Halistrator",
+      origin: ƒS.ORIGIN.CENTER,
+      pose: {
+        standard: "./Images/Characters/Halistrator/Halistrator.png",
+        sauer: "./Images/Characters/Halistrator/halistrator_sauer.png",
+        surprised: "./Images/Characters/Halistrator/halistrator_verblüfft.png",
+        cute: "./Images/Characters/Halistrator/halistrator_süß.png",
+      }
+    },
     /*camille: {
       name: data.protagonist.name,
       origin: ƒS.ORIGIN.BOTTOMLEFT,
@@ -204,7 +265,7 @@ namespace Template {
       },
     },*/
     whiteknight: {
-      name: data.protagonist.name,
+      name: dataForSave.protagonist.name,
       origin: ƒS.ORIGIN.CENTER,
       pose: {
        standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
@@ -233,7 +294,7 @@ namespace Template {
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
-  export function fromlefterToLeft(): ƒS.AnimationDefinition {
+  export function fromLeftToLeft(): ƒS.AnimationDefinition {
     return {
       start: { translation: ƒS.positionPercent(75, 100) },
       end: { translation: ƒS.positionPercent(100, 100) },
@@ -265,24 +326,31 @@ namespace Template {
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
+  export function fromCenterToRight_Halistrator(): ƒS.AnimationDefinition {
+    return {
+      start: { translation: ƒS.positionPercent(50, 48) },
+      end: { translation: ƒS.positionPercent(80, 48)  },
+      duration: 1,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+  export function fromRightToCenter_Halistrator(): ƒS.AnimationDefinition {
+    return {
+      start: { translation: ƒS.positionPercent(80, 48)  },
+      end: { translation: ƒS.positionPercent(50, 48) },
+      duration: 1,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+  /*export function fromRightToCenter_Halistrator(): ƒS.AnimationDefinition {
+    return {
+      start: { translation: ƒS.positionPercent(50, 48) },
+      end: { translation: ƒS.positionPercent(20, 48)  },
+      duration: 1,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }*/
 
-  //SaveGame preparation
-  export let dataForSave = {
-    //Hier Speicherbare Elemente eintragen
-    points: 0,
-    gesprochen: {
-      marie: false,
-      james: false,
-      violet: false,
-      luna: false
-    },
-    beispielwert: 0,
-    beispielbool: false,
-    evil: 0,
-    good: 0,
-    crazy: 0,
-    calm: 0,
-  };
 
   //Kampfsystem
 
@@ -321,7 +389,7 @@ namespace Template {
     ƒS.Text.print(
       "Die Visual Novel wurde mit FudgeStory erstellt." +
       "<br/>" +
-      "Von Leonie Schwall" +
+      "Von Vasi" +
       "<br/>" +
       "Die Hintergründe, Charaktere und Items wurden selbst gezeichnet." +
       "<br/>" +
@@ -352,19 +420,22 @@ namespace Template {
       case inGameMenu.volumedown:
         decrementSound();
         break;
-      // case inGameMenu.inventar:
-      //     const selectedItems:string[] = await ƒS.Inventory.open();
-      //     if(selectedItems && selectedItems.length > 0){
-      //       selectedItems.forEach((s)=>{
-      //         Object.keys(items).forEach((i)=>{
-      //           const item = items[i];
-      //           if(item.name === s){
-      //             ƒS.Inventory.add(item);
-      //           }
-      //         })
-      //       })
-      //     }
-      //     break;
+      case inGameMenu.inventar:
+        await ƒS.Inventory.open(); 
+        await ƒS.update();
+           /*const selectedItems:string[] = await ƒS.Inventory.open();
+           if(selectedItems && selectedItems.length > 0){
+             selectedItems.forEach((s)=>{
+               Object.keys(items).forEach((i)=>{
+                 const item = items[i];
+               if(item.name === s){
+                   ƒS.Inventory.add(item);
+                }
+              })
+            })
+           }
+           break;*/
+           break;
       //Credits
       case inGameMenu.credits:
         showCredits();
@@ -522,12 +593,15 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      //{ id:"szene1",scene: Szene1, name: "Szene1" },
-      { id:"szene2",scene: Szene2, name: "Szene2" },
-      //{ id:"zufuß",scene: zufuß, name: "zufuß" },
-      // { id:"szene3",scene: Szene3, name: "Szene3" },
+      //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
+      //{ id:"Szene1_2",scene: Szene1_2, name: "Szene1_2" },
+      { id:"Szene1-3",scene: Szene1_3, name: "Szene1_3" },
+      { id:"Szene1-4",scene: Szene1_4, name: "Szene1_4" },
+      { id:"Szene4_1",scene: Szene4_1, name: "Szene4_1" },
       //{ scene: Szene2, name: "Szene2" },
     ];
+
+
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
     dataForSave = ƒS.Progress.setData(dataForSave, uiElement);
     // start the sequence
