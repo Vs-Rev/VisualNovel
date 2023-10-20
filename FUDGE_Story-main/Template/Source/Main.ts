@@ -52,6 +52,10 @@ namespace Template {
       good: 0,
       entschuldigung: 0,
       Halisgefährteangenommen: true,
+      Entscheidungsfrage1: 0,
+      Entscheidungsfrage2: 0,
+      Entscheidugnsfrage3: 0,
+      Entscheidungsfrage4: 0,
     };
   
 
@@ -189,6 +193,42 @@ namespace Template {
       name: "white",
       background: "./Images/Backgrounds/White.png",
     },
+    theaterindoor1: {
+      name: "theaterin1",
+      background: "./Images/Backgrounds/Theater_Indoor/Theater1.png",
+    },
+    theaterindoor2: {
+      name: "theaterin2",
+      background: "./Images/Backgrounds/Theater_Indoor/Theater2.png",
+    },
+    theaterindoor3: {
+      name: "theaterin3",
+      background: "./Images/Backgrounds/Theater_Indoor/Theater3.png",
+    },
+    theaterindoor4: {
+      name: "theaterin4",
+      background: "./Images/Backgrounds/Theater_Indoor/Theater4.png",
+    },
+    theaterindoor5: {
+      name: "theaterin5",
+      background: "./Images/Backgrounds/Theater_Indoor/Theater5.png",
+    },
+    theaterindoor6: {
+      name: "theaterin6",
+      background: "./Images/Backgrounds/Theater_Indoor/Theater6.png",
+    },
+    theaterindoor7: {
+      name: "theaterin7",
+      background: "./Images/Backgrounds/Theater_Indoor/Theater7.png",
+    },
+    theaterindoor8: {
+      name: "theaterin8",
+      background: "./Images/Backgrounds/Theater_Indoor/Theater8.png",
+    },
+    theaterindoor9: {
+      name: "theaterin9",
+      background: "./Images/Backgrounds/Theater_Indoor/Theater9.png",
+    },
   };
 
   export async function animationwalking (){
@@ -241,6 +281,9 @@ namespace Template {
         eyesonly: "./Images/Characters/Mysteryman/Mysteryman_Eyesonly.png"
       }
     },
+    Oldlady: {
+      name: ""
+    }
     Elo: {
       name: "Elo",
     },
@@ -593,11 +636,13 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
-      //{ id:"Szene1_2",scene: Szene1_2, name: "Szene1_2" },
-      { id:"Szene1-3",scene: Szene1_3, name: "Szene1_3" },
-      { id:"Szene1-4",scene: Szene1_4, name: "Szene1_4" },
+      { id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
+      { id:"Szene1_2",scene: Szene1_2, name: "Szene1_2" },
+      { id:"Szene1_3",scene: Szene1_3, name: "Szene1_3" },
+      { id:"Szene1_4",scene: Szene1_4, name: "Szene1_4" },
+      { id:"Szene1_5",scene: Szene1_5, name: "Szene1_5" },
       { id:"Szene4_1",scene: Szene4_1, name: "Szene4_1" },
+      { id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
       //{ scene: Szene2, name: "Szene2" },
     ];
 

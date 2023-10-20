@@ -82,8 +82,8 @@ namespace Template {
       whiteknight: {
       },
     };
-    dataForSave.protagonist.name = "Brani";
-    characters.whiteknight.name = dataForSave.protagonist.name;
+    //dataForSave.protagonist.name = "Brani";
+    //characters.whiteknight.name = dataForSave.protagonist.name;
     await ƒS.Sound.fade(sound.clockticking, 0.05, 2, true);
     await ƒS.update(2);
     await timer(0, 5);
@@ -340,6 +340,9 @@ let transportmethode: number = 0;
     return "zufuß";
   }*/
   //return "Szene1_3";
+  await ƒS.Sound.fade(sound.Bedroom, 0, 1, false);
+  ƒS.Location.show(locations.blackbackground);
+  ƒS.update(2);
   ƒS.Character.hideAll();
   ƒS.Speech.hide();
   ƒS.update(1);

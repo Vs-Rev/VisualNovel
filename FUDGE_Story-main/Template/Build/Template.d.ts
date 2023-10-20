@@ -44,6 +44,10 @@ declare namespace Template {
         good: number;
         entschuldigung: number;
         Halisgefährteangenommen: boolean;
+        Entscheidungsfrage1: number;
+        Entscheidungsfrage2: number;
+        Entscheidugnsfrage3: number;
+        Entscheidungsfrage4: number;
     };
     let sound: {
         examplemusic: string;
@@ -170,6 +174,42 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        theaterindoor1: {
+            name: string;
+            background: string;
+        };
+        theaterindoor2: {
+            name: string;
+            background: string;
+        };
+        theaterindoor3: {
+            name: string;
+            background: string;
+        };
+        theaterindoor4: {
+            name: string;
+            background: string;
+        };
+        theaterindoor5: {
+            name: string;
+            background: string;
+        };
+        theaterindoor6: {
+            name: string;
+            background: string;
+        };
+        theaterindoor7: {
+            name: string;
+            background: string;
+        };
+        theaterindoor8: {
+            name: string;
+            background: string;
+        };
+        theaterindoor9: {
+            name: string;
+            background: string;
+        };
     };
     function animationwalking(): Promise<void>;
     let characters: {
@@ -180,6 +220,9 @@ declare namespace Template {
                 standard: string;
                 eyesonly: string;
             };
+        };
+        Oldlady: {
+            name: string;
         };
         Elo: {
             name: string;
@@ -251,5 +294,11 @@ declare namespace Template {
     function Szene1_4(): ƒS.SceneReturn;
 }
 declare namespace Template {
+    function Szene1_5(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function Szene4_1(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Szene5_Entscheidung(): ƒS.SceneReturn;
 }

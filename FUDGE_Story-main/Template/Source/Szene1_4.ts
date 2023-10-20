@@ -487,6 +487,5 @@ namespace Template {
     ƒS.update(3);
     await ƒS.Sound.fade(sound.nightambience, 0, 4, false);
     ƒS.update(1);
-    //return"Szene4_1";
   }
 }
