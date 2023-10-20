@@ -283,7 +283,7 @@ namespace Template {
     },
     Oldlady: {
       name: ""
-    }
+    },
     Elo: {
       name: "Elo",
     },
