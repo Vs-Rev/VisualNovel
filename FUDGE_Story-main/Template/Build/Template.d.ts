@@ -88,6 +88,7 @@ declare namespace Template {
         School: string;
         Ticketkontrolleur: string;
         Halistrator: string;
+        Leserin: string;
     };
     let locations: {
         waldweg: {
@@ -221,7 +222,10 @@ declare namespace Template {
                 eyesonly: string;
             };
         };
-        Oldlady: {
+        Leserin: {
+            name: string;
+        };
+        Publikum: {
             name: string;
         };
         Elo: {
@@ -295,6 +299,9 @@ declare namespace Template {
 }
 declare namespace Template {
     function Szene1_5(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Szene1_6(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Szene4_1(): ƒS.SceneReturn;

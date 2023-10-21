@@ -1,1 +1,63 @@
-{"bundle":{"commonSourceDirectory":"..","sourceFiles":["../Source/Main.ts","../Source/Presentation.ts","../Source/Scene.ts","../Source/Szene1_1.ts","../Source/Szene1_2.ts","../Source/Szene1_3.ts","../Source/Szene1_4.ts","../Source/Szene1_5.ts","../Source/Szene4_1.ts","../Source/Szene5_Entscheidung.ts","../Source/Text.ts"],"js":{"sections":[{"pos":0,"end":13,"kind":"prologue","data":"use strict"},{"pos":15,"end":252086,"kind":"text"}],"sources":{"prologues":[{"file":0,"text":"","directives":[{"pos":-1,"end":-1,"expression":{"pos":-1,"end":-1,"text":"use strict"}}]}]},"mapHash":"77442f8b78f971d5067c9e7ffbcc17617cb35847cee0aaa99bfcdaab44c95295","hash":"177ad34168e86aeb86033443b51d4d6534920da72266004bf6f4fd94068d01cc"},"dts":{"sections":[{"pos":0,"end":8180,"kind":"text"}],"hash":"d0b4df30c1122f3131de25e0359c993aacb0e763d2b351b47d3fcdc916d240d5"}},"program":{"fileNames":["../fudge/fudgecore.d.ts","../fudgestory/fudgestory.d.ts","../source/main.ts","../source/presentation.ts","../source/scene.ts","../source/szene1_1.ts","../source/szene1_2.ts","../source/szene1_3.ts","../source/szene1_4.ts","../source/szene1_5.ts","../source/szene4_1.ts","../source/szene5_entscheidung.ts","../source/text.ts"],"fileInfos":["09df64c7945c1de9811dbc09f09ef75fe638f67af440094a2595da6937eae9a6","23876d3f9c2f36d3430f797528c5fe53debbff4f4a66c2d78f76f89866e6b7e4","78a51e27bb7d492def5f4831d0a9ded1597e495bd84fdfde80f8bc7b71b9cbbc","e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","fc5558ea999528af5933d46467e4f3b74766efa1945e1d9a2f8557e76ce5fc10","7f5facea6192bd3161d1e5e1e13d9efe7042ccdf871f1f0d035910257a386b62","bf9f2490a34a47c1b980415ec300e59f874d6e6af2e9721f6a7f18f81217511f","243c351edc1db7d1ca2a2d0b957f5ca050f0c3d0e6461c2b278e1481bc90d50f","8a7fd3b86685786ce40a8c50c84faef82876a0f4c84d04fca307d787260fa574","5226eecd07b822f42e58ad3c58bac455c03ce812b7a6a82e72f03048fa3cc161","b30fa1e8188b5f573fabe4032711d2b2d40af0b9ffe3e230fed29eb73222d4c2","743540f7a687d0fd2fae142795f078c485d4ecbf81fb598bc6b9e6387a5c368b","a45e486c5bbaa02f9f7147cc968df1ece568eb054908f0fe8d39ba6560340bbd"],"options":{"composite":true,"outFile":"./Template.js"},"outSignature":"d0b4df30c1122f3131de25e0359c993aacb0e763d2b351b47d3fcdc916d240d5","latestChangedDtsFile":"./Template.d.ts"},"version":"4.8.4"}
+{
+  "bundle": {
+    "commonSourceDirectory": "..",
+    "sourceFiles": [
+      "../Source/Main.ts",
+      "../Source/Presentation.ts",
+      "../Source/Scene.ts",
+      "../Source/Szene1_1.ts",
+      "../Source/Szene1_2.ts",
+      "../Source/Szene1_3.ts",
+      "../Source/Szene1_4.ts",
+      "../Source/Szene1_5.ts",
+      "../Source/Szene1_6.ts",
+      "../Source/Szene4_1.ts",
+      "../Source/Szene5_Entscheidung.ts",
+      "../Source/Text.ts"
+    ],
+    "js": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 13,
+          "kind": "prologue",
+          "data": "use strict"
+        },
+        {
+          "pos": 15,
+          "end": 265403,
+          "kind": "text"
+        }
+      ],
+      "sources": {
+        "prologues": [
+          {
+            "file": 0,
+            "text": "",
+            "directives": [
+              {
+                "pos": -1,
+                "end": -1,
+                "expression": {
+                  "pos": -1,
+                  "end": -1,
+                  "text": "use strict"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "dts": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 8341,
+          "kind": "text"
+        }
+      ]
+    }
+  },
+  "version": "3.9.3"
+}
