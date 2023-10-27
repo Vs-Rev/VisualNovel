@@ -69,7 +69,7 @@ namespace Template {
     //Szenenablauf
     ƒS.Sound.setMasterVolume(11);
     await ƒS.Location.show(locations.theaterindoor1);
-    ƒS.update(5);
+    await ƒS.update(5);
     await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
     console.log("audio is being played");
     await ƒS.Character.show(
@@ -179,7 +179,7 @@ namespace Template {
       1
     );
     await ƒS.Location.show(locations.theaterindoor2);
-    ƒS.update(6);
+    await ƒS.update(6);
     await satzbau(
       characters.Leserin,
       text.Leserin.L0000,
@@ -291,7 +291,7 @@ namespace Template {
       1
     );
     await ƒS.Location.show(locations.theaterindoor3);
-    ƒS.update(3);
+    await ƒS.update(3);
     await satzbau(
       characters.Leserin,
       text.Leserin.L0010,
@@ -323,7 +323,7 @@ namespace Template {
       1
     );
     await ƒS.Location.show(locations.theaterindoor4);
-    ƒS.update(3);
+    await ƒS.update(3);
     await satzbau(
       characters.Leserin,
       text.Leserin.L0011,
@@ -345,7 +345,7 @@ namespace Template {
       1
     );
     await ƒS.Location.show(locations.theaterindoor5);
-    ƒS.update(3);
+    await ƒS.update(3);
     await satzbau(
       characters.Leserin,
       text.Leserin.L0012,
@@ -377,7 +377,7 @@ namespace Template {
       1
     );
     await ƒS.Location.show(locations.theaterindoor6);
-    ƒS.update(3);
+    await ƒS.update(3);
     let reaktion = {
       nachgeben: "Nachgeben", //Passiert a
       abreagieren: "Abreagieren", //Passiert b
@@ -576,18 +576,18 @@ namespace Template {
         break;
     }
     await ƒS.Location.show(locations.theaterindoor7);
-    ƒS.update(3);
+    await ƒS.update(3);
     await ƒS.Location.show(locations.theaterindoor8);
-    ƒS.update(3);
-    await ƒS.Location.show(locations.theaterindoor9);
-    ƒS.update(3);
+    await ƒS.update(3);
+    await await ƒS.Location.show(locations.theaterindoor9);
+    await ƒS.update(3);
     await ƒS.Location.show(locations.blackbackground);
-    ƒS.update(3);
+    await ƒS.update(3);
     await ƒS.update(3);
     await ƒS.update(1);
     ƒS.Sound.fade(sound.darkwind, 0, 0.8, true);
     ƒS.Character.hideAll();
     ƒS.Speech.hide();
-    ƒS.update(1);
+    await ƒS.update(1);
   }
 }

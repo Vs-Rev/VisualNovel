@@ -2613,7 +2613,7 @@ var Template;
         //Szenenablauf
         Template.ƒS.Sound.setMasterVolume(11);
         await Template.ƒS.Location.show(Template.locations.theaterindoor1);
-        Template.ƒS.update(5);
+        await Template.ƒS.update(5);
         await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.grayedout, Template.ƒS.positionPercent(50, 100));
@@ -2629,7 +2629,7 @@ var Template;
         await Template.satzbau(Template.characters.Publikum, text.Publikum.P0008, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0000, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.ƒS.Location.show(Template.locations.theaterindoor2);
-        Template.ƒS.update(6);
+        await Template.ƒS.update(6);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0000, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0001, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0002, true, true, 3, 50, Template.sound.Leserin, 1);
@@ -2642,21 +2642,21 @@ var Template;
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0009, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0001, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.ƒS.Location.show(Template.locations.theaterindoor3);
-        Template.ƒS.update(3);
+        await Template.ƒS.update(3);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0010, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0003, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0004, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.ƒS.Location.show(Template.locations.theaterindoor4);
-        Template.ƒS.update(3);
+        await Template.ƒS.update(3);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0011, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0005, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.ƒS.Location.show(Template.locations.theaterindoor5);
-        Template.ƒS.update(3);
+        await Template.ƒS.update(3);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0012, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0006, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0007, false, false, 3, 50, Template.sound.MainNarrator, 1);
         await Template.ƒS.Location.show(Template.locations.theaterindoor6);
-        Template.ƒS.update(3);
+        await Template.ƒS.update(3);
         let reaktion = {
             nachgeben: "Nachgeben",
             abreagieren: "Abreagieren",
@@ -2693,19 +2693,19 @@ var Template;
                 break;
         }
         await Template.ƒS.Location.show(Template.locations.theaterindoor7);
-        Template.ƒS.update(3);
+        await Template.ƒS.update(3);
         await Template.ƒS.Location.show(Template.locations.theaterindoor8);
-        Template.ƒS.update(3);
-        await Template.ƒS.Location.show(Template.locations.theaterindoor9);
-        Template.ƒS.update(3);
+        await Template.ƒS.update(3);
+        await await Template.ƒS.Location.show(Template.locations.theaterindoor9);
+        await Template.ƒS.update(3);
         await Template.ƒS.Location.show(Template.locations.blackbackground);
-        Template.ƒS.update(3);
+        await Template.ƒS.update(3);
         await Template.ƒS.update(3);
         await Template.ƒS.update(1);
         Template.ƒS.Sound.fade(Template.sound.darkwind, 0, 0.8, true);
         Template.ƒS.Character.hideAll();
         Template.ƒS.Speech.hide();
-        Template.ƒS.update(1);
+        await Template.ƒS.update(1);
     }
     Template.Szene1_6 = Szene1_6;
 })(Template || (Template = {}));
