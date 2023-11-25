@@ -656,13 +656,13 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
-      //{ id:"Szene1_2",scene: Szene1_2, name: "Szene1_2" },
-      //{ id:"Szene1_3",scene: Szene1_3, name: "Szene1_3" },
-      //{ id:"Szene1_4",scene: Szene1_4, name: "Szene1_4" },
-      //{ id:"Szene1_5",scene: Szene1_5, name: "Szene1_5" },
-      //{ id:"Szene4_1",scene: Szene4_1, name: "Szene4_1" },
+      { id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
+      { id:"Szene1_2",scene: Szene1_2, name: "Szene1_2" },
+      { id:"Szene1_3",scene: Szene1_3, name: "Szene1_3" },
+      { id:"Szene1_4",scene: Szene1_4, name: "Szene1_4" },
+      { id:"Szene1_5",scene: Szene1_5, name: "Szene1_5" },
       { id: "Szene1_6", scene: Szene1_6, name: "Szene1_6" },
+      { id:"Szene4_1",scene: Szene4_1, name: "Szene4_1" },
       //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
       //{ scene: Szene2, name: "Szene2" },
     ];

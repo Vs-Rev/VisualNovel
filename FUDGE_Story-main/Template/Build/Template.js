@@ -645,8 +645,8 @@ var Template;
             //{ id:"Szene1_3",scene: Szene1_3, name: "Szene1_3" },
             //{ id:"Szene1_4",scene: Szene1_4, name: "Szene1_4" },
             //{ id:"Szene1_5",scene: Szene1_5, name: "Szene1_5" },
-            //{ id:"Szene4_1",scene: Szene4_1, name: "Szene4_1" },
             { id: "Szene1_6", scene: Template.Szene1_6, name: "Szene1_6" },
+            { id: "Szene4_1", scene: Template.Szene4_1, name: "Szene4_1" },
             //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
             //{ scene: Szene2, name: "Szene2" },
         ];
@@ -1273,6 +1273,11 @@ var Template;
         };
         //dataForSave.protagonist.name = "Brani";
         //characters.whiteknight.name = dataForSave.protagonist.name;
+        await Template.ƒS.Location.show(Template.locations.chapter1);
+        await Template.ƒS.update(2);
+        await Template.ƒS.update(5);
+        await Template.ƒS.Location.show(Template.locations.blackbackground);
+        await Template.ƒS.update(5);
         await Template.ƒS.Sound.fade(Template.sound.clockticking, 0.05, 2, true);
         await Template.ƒS.update(2);
         await Template.timer(0, 5);
