@@ -57,6 +57,7 @@ declare namespace Template {
         Bedroom: string;
         Meadow: string;
         Halistheme: string;
+        MainTheme: string;
         examplesound: string;
         phonecallend: string;
         phonering: string;
@@ -77,11 +78,18 @@ declare namespace Template {
         snoring: string;
         pianoharp: string;
         slap: string;
+        cough: string;
+        curtains: string;
+        laughterold: string;
+        oldmagic: string;
+        teleport: string;
         nightambience: string;
         darkwind: string;
         forestnight: string;
         peopletalking: string;
         deepdark: string;
+        audience: string;
+        thunder: string;
         MainNarrator: string;
         Elo: string;
         Karten: string;
@@ -208,6 +216,14 @@ declare namespace Template {
             background: string;
         };
         theaterindoor9: {
+            name: string;
+            background: string;
+        };
+        prolog: {
+            name: string;
+            background: string;
+        };
+        chapter1: {
             name: string;
             background: string;
         };

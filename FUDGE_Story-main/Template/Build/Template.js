@@ -65,6 +65,7 @@ var Template;
         Bedroom: "./Audio/Themes/Bedroom.wav",
         Meadow: "./Audio/Themes/Meadow.wav",
         Halistheme: "./Audio/Themes/HalisTheme.wav",
+        MainTheme: "./Audio/Themes/MainTheme.wav",
         //sounds
         examplesound: "",
         phonecallend: "./Audio/Soundeffects/Phonecall_End.wav",
@@ -86,12 +87,19 @@ var Template;
         snoring: "./Audio/Soundeffects/Snoring.wav",
         pianoharp: "./Audio/Soundeffects/PianoHarp.wav",
         slap: "./Audio/Soundeffects/Slap.wav",
+        cough: "./Audio/Soundeffects/cough.wav",
+        curtains: "./Audio/Soundeffects/curtains.wav",
+        laughterold: "./Audio/Soundeffects/laughterold.wav",
+        oldmagic: "./Audio/Soundeffects/oldmagic.wav",
+        teleport: "./Audio/Soundeffects/teleport.wav",
         //ambience
         nightambience: "./Audio/Ambience/Nightambience.wav",
         darkwind: "./Audio/Ambience/darkwind.wav",
         forestnight: "./Audio/Ambience/Forestnight.wav",
         peopletalking: "./Audio/Ambience/People_talking.wav",
         deepdark: "./Audio/Ambience/Deepdark.wav",
+        audience: "./Audio/Ambience/Audience.wav",
+        thunder: "./Audio/Ambience/Thunder.wav",
         //Character Voices
         MainNarrator: "./Audio/Soundeffects/Speech.wav",
         Elo: "./Audio/Soundeffects/Voice_Elo.wav",
@@ -99,7 +107,7 @@ var Template;
         School: "./Audio/Soundeffects/Voice_School.wav",
         Ticketkontrolleur: "./Audio/Soundeffects/Speech.wav",
         Halistrator: "./Audio/Soundeffects/Voice_Halistrator.wav",
-        Leserin: "",
+        Leserin: "./Audio/Soundeffects/Voice_Lady.wav",
     };
     //Typewritersound
     //Backgrounds
@@ -224,6 +232,14 @@ var Template;
             name: "theaterin9",
             background: "./Images/Backgrounds/Theater_Indoor/Theater9.png",
         },
+        prolog: {
+            name: "prolog",
+            background: "./Images/Chapters/Prolog.png",
+        },
+        chapter1: {
+            name: "chapter1",
+            background: "./Images/Chapters/Chapter1.png",
+        }
     };
     async function animationwalking() {
         await Template.ƒS.Location.show(Template.locations.walking01);
@@ -631,6 +647,8 @@ var Template;
             //{ id:"Szene1_5",scene: Szene1_5, name: "Szene1_5" },
             //{ id:"Szene4_1",scene: Szene4_1, name: "Szene4_1" },
             { id: "Szene1_6", scene: Template.Szene1_6, name: "Szene1_6" },
+            //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
+            //{ scene: Szene2, name: "Szene2" },
         ];
         let uiElement = document.querySelector("[type=interface]");
         Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
@@ -2318,7 +2336,7 @@ var Template;
         //Namen sagen
         let entscheidung1 = {
             iSayYes: "Namen sagen",
-            iSayNo: "Ablehnen",
+            iSayNo: "Ablehnen", //Passiert b
         };
         let erstesdialogelement = await Template.ƒS.Menu.getInput(entscheidung1, "auswahl");
         //Abhängig von der oben stehenden Entscheidung wird nun folgendes passieren:
@@ -2504,7 +2522,7 @@ var Template;
         await Template.ƒS.Sound.play(Template.sound.buttonhover, 0.2, false);
         let herausforderung = {
             iSayYes: "Auf jeden Fall",
-            iSayNo: "Ich glaube eher nicht",
+            iSayNo: "Ich glaube eher nicht", //Passiert b
         };
         let herausforderungselement = await Template.ƒS.Menu.getInput(herausforderung, "auswahl");
         switch (herausforderungselement) {
@@ -2530,7 +2548,7 @@ var Template;
         Template.ƒS.Sound.fade(Template.sound.MysteryManTheme, 0, 0.8, true);
         let türöffnen = {
             iSayYes: "Tür normal öffnen",
-            iSayNo: "Tür langsam öffnen",
+            iSayNo: "Tür langsam öffnen", //Passiert b
         };
         let türöffnenelement = await Template.ƒS.Menu.getInput(türöffnen, "auswahl");
         switch (türöffnenelement) {
@@ -2567,6 +2585,7 @@ var Template;
                 T0007: "Aus der Richtung der Dame scheinen regelrecht Funken zu sprühen",
                 T0008: "Deine Sinne scheinen dir nicht länger treu zu sein",
                 T0009: "Du hast das Gefühl, als würdest du gleich dein Bewusstsein verlieren",
+                T0100: "Speichere. . .",
                 //Abreagieren / Nachgeben
                 T0010: "Du versuchst dich zu beruhigen",
                 T0011: ". . .",
@@ -2614,7 +2633,7 @@ var Template;
         Template.ƒS.Sound.setMasterVolume(11);
         await Template.ƒS.Location.show(Template.locations.theaterindoor1);
         await Template.ƒS.update(5);
-        await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+        await Template.ƒS.Sound.fade(Template.sound.audience, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.grayedout, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update(2);
@@ -2628,15 +2647,19 @@ var Template;
         await Template.satzbau(Template.characters.Publikum, text.Publikum.P0007, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.satzbau(Template.characters.Publikum, text.Publikum.P0008, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0000, true, true, 3, 50, Template.sound.MainNarrator, 1);
+        Template.ƒS.Sound.play(Template.sound.curtains, 0.8, false);
         await Template.ƒS.Location.show(Template.locations.theaterindoor2);
         await Template.ƒS.update(6);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0000, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0001, true, true, 3, 50, Template.sound.Leserin, 1);
+        Template.ƒS.Sound.play(Template.sound.cough, 0.8, false);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0002, true, true, 3, 50, Template.sound.Leserin, 1);
+        Template.ƒS.Sound.fade(Template.sound.audience, 0, 0.8, true);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0003, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0004, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0005, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0006, true, true, 3, 50, Template.sound.Leserin, 1);
+        Template.ƒS.Sound.play(Template.sound.laughterold, 0.5, false);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0007, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0008, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0009, true, true, 3, 50, Template.sound.Leserin, 1);
@@ -2646,15 +2669,20 @@ var Template;
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0010, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0003, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0004, true, true, 3, 50, Template.sound.MainNarrator, 1);
+        await Template.ƒS.Sound.fade(Template.sound.thunder, 0.04, 0.5, true);
+        await Template.ƒS.update(3);
+        Template.ƒS.Sound.play(Template.sound.oldmagic, 0.3, false);
         await Template.ƒS.Location.show(Template.locations.theaterindoor4);
         await Template.ƒS.update(3);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0011, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0005, true, true, 3, 50, Template.sound.MainNarrator, 1);
+        Template.ƒS.Sound.play(Template.sound.oldmagic, 0.8, false);
         await Template.ƒS.Location.show(Template.locations.theaterindoor5);
         await Template.ƒS.update(3);
         await Template.satzbau(Template.characters.Leserin, text.Leserin.L0012, true, true, 3, 50, Template.sound.Leserin, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0006, true, true, 3, 50, Template.sound.MainNarrator, 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0007, false, false, 3, 50, Template.sound.MainNarrator, 1);
+        Template.ƒS.Sound.play(Template.sound.oldmagic, 0.8, false);
         await Template.ƒS.Location.show(Template.locations.theaterindoor6);
         await Template.ƒS.update(3);
         let reaktion = {
@@ -2692,13 +2720,18 @@ var Template;
                 await Template.satzbau(Template.characters.Leserin, text.Leserin.L0013, false, false, 3, 50, Template.sound.Leserin, 1);
                 break;
         }
+        Template.ƒS.Sound.play(Template.sound.oldmagic, 0.8, false);
         await Template.ƒS.Location.show(Template.locations.theaterindoor7);
         await Template.ƒS.update(3);
+        Template.ƒS.Sound.play(Template.sound.oldmagic, 0.8, false);
         await Template.ƒS.Location.show(Template.locations.theaterindoor8);
         await Template.ƒS.update(3);
+        Template.ƒS.Sound.play(Template.sound.oldmagic, 0.8, false);
         await await Template.ƒS.Location.show(Template.locations.theaterindoor9);
         await Template.ƒS.update(3);
+        await Template.ƒS.Sound.fade(Template.sound.thunder, 0, 0.6, false);
         await Template.ƒS.Location.show(Template.locations.blackbackground);
+        Template.ƒS.Sound.play(Template.sound.teleport, 0.8, false);
         await Template.ƒS.update(3);
         await Template.ƒS.update(3);
         await Template.ƒS.update(1);
@@ -2706,6 +2739,13 @@ var Template;
         Template.ƒS.Character.hideAll();
         Template.ƒS.Speech.hide();
         await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.locations.chapter1);
+        await Template.ƒS.update(1);
+        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0100, true, true, 3, 50, Template.sound.MainNarrator, 1);
+        await Template.ƒS.Progress.save();
+        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.locations.blackbackground);
+        await Template.ƒS.update(5);
     }
     Template.Szene1_6 = Szene1_6;
 })(Template || (Template = {}));

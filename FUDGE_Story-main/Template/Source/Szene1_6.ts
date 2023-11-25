@@ -19,6 +19,7 @@ namespace Template {
         T0008: "Deine Sinne scheinen dir nicht länger treu zu sein",
         T0009:
           "Du hast das Gefühl, als würdest du gleich dein Bewusstsein verlieren",
+        T0100: "Speichere. . .",
 
         //Abreagieren / Nachgeben
         T0010: "Du versuchst dich zu beruhigen",
@@ -70,7 +71,7 @@ namespace Template {
     ƒS.Sound.setMasterVolume(11);
     await ƒS.Location.show(locations.theaterindoor1);
     await ƒS.update(5);
-    await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+    await ƒS.Sound.fade(sound.audience, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
     console.log("audio is being played");
     await ƒS.Character.show(
       characters.Speechbox,
@@ -178,6 +179,7 @@ namespace Template {
       sound.MainNarrator,
       1
     );
+    ƒS.Sound.play(sound.curtains, 0.8, false);
     await ƒS.Location.show(locations.theaterindoor2);
     await ƒS.update(6);
     await satzbau(
@@ -200,6 +202,7 @@ namespace Template {
       sound.Leserin,
       1
     );
+    ƒS.Sound.play(sound.cough, 0.8, false);
     await satzbau(
       characters.Leserin,
       text.Leserin.L0002,
@@ -210,6 +213,7 @@ namespace Template {
       sound.Leserin,
       1
     );
+    ƒS.Sound.fade(sound.audience, 0, 0.8, true);
     await satzbau(
       characters.Leserin,
       text.Leserin.L0003,
@@ -250,6 +254,7 @@ namespace Template {
       sound.Leserin,
       1
     );
+    ƒS.Sound.play(sound.laughterold, 0.5, false);
     await satzbau(
       characters.Leserin,
       text.Leserin.L0007,
@@ -322,6 +327,9 @@ namespace Template {
       sound.MainNarrator,
       1
     );
+    await ƒS.Sound.fade(sound.thunder, 0.04, 0.5, true);
+    await ƒS.update(3);
+    ƒS.Sound.play(sound.oldmagic, 0.3, false);
     await ƒS.Location.show(locations.theaterindoor4);
     await ƒS.update(3);
     await satzbau(
@@ -344,6 +352,7 @@ namespace Template {
       sound.MainNarrator,
       1
     );
+    ƒS.Sound.play(sound.oldmagic, 0.8, false);
     await ƒS.Location.show(locations.theaterindoor5);
     await ƒS.update(3);
     await satzbau(
@@ -376,6 +385,7 @@ namespace Template {
       sound.MainNarrator,
       1
     );
+    ƒS.Sound.play(sound.oldmagic, 0.8, false);
     await ƒS.Location.show(locations.theaterindoor6);
     await ƒS.update(3);
     let reaktion = {
@@ -575,13 +585,18 @@ namespace Template {
         );
         break;
     }
+    ƒS.Sound.play(sound.oldmagic, 0.8, false);
     await ƒS.Location.show(locations.theaterindoor7);
     await ƒS.update(3);
+    ƒS.Sound.play(sound.oldmagic, 0.8, false);
     await ƒS.Location.show(locations.theaterindoor8);
     await ƒS.update(3);
+    ƒS.Sound.play(sound.oldmagic, 0.8, false);
     await await ƒS.Location.show(locations.theaterindoor9);
     await ƒS.update(3);
+    await ƒS.Sound.fade(sound.thunder, 0, 0.6, false);
     await ƒS.Location.show(locations.blackbackground);
+    ƒS.Sound.play(sound.teleport, 0.8, false);
     await ƒS.update(3);
     await ƒS.update(3);
     await ƒS.update(1);
@@ -589,5 +604,21 @@ namespace Template {
     ƒS.Character.hideAll();
     ƒS.Speech.hide();
     await ƒS.update(1);
+    await ƒS.Location.show(locations.chapter1);
+    await ƒS.update(1);
+    await satzbau(
+      characters.MainNarrator,
+      text.MainNarrator.T0100,
+      true,
+      true,
+      3,
+      50,
+      sound.MainNarrator,
+      1
+    );
+    await ƒS.Progress.save();
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.blackbackground);
+    await ƒS.update(5);
   }
 }

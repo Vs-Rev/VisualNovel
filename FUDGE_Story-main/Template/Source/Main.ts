@@ -69,6 +69,7 @@ namespace Template {
     Bedroom: "./Audio/Themes/Bedroom.wav",
     Meadow: "./Audio/Themes/Meadow.wav",
     Halistheme: "./Audio/Themes/HalisTheme.wav",
+    MainTheme: "./Audio/Themes/MainTheme.wav",
     //sounds
     examplesound: "",
     phonecallend: "./Audio/Soundeffects/Phonecall_End.wav",
@@ -90,12 +91,19 @@ namespace Template {
     snoring: "./Audio/Soundeffects/Snoring.wav",
     pianoharp: "./Audio/Soundeffects/PianoHarp.wav",
     slap: "./Audio/Soundeffects/Slap.wav",
+    cough: "./Audio/Soundeffects/cough.wav",
+    curtains: "./Audio/Soundeffects/curtains.wav",
+    laughterold: "./Audio/Soundeffects/laughterold.wav",
+    oldmagic: "./Audio/Soundeffects/oldmagic.wav",
+    teleport: "./Audio/Soundeffects/teleport.wav",
     //ambience
     nightambience: "./Audio/Ambience/Nightambience.wav",
     darkwind: "./Audio/Ambience/darkwind.wav",
     forestnight: "./Audio/Ambience/Forestnight.wav",
     peopletalking: "./Audio/Ambience/People_talking.wav",
     deepdark: "./Audio/Ambience/Deepdark.wav",
+    audience: "./Audio/Ambience/Audience.wav",
+    thunder: "./Audio/Ambience/Thunder.wav",
     //Character Voices
     MainNarrator: "./Audio/Soundeffects/Speech.wav",
     Elo: "./Audio/Soundeffects/Voice_Elo.wav",
@@ -103,7 +111,7 @@ namespace Template {
     School: "./Audio/Soundeffects/Voice_School.wav",
     Ticketkontrolleur: "./Audio/Soundeffects/Speech.wav",
     Halistrator: "./Audio/Soundeffects/Voice_Halistrator.wav",
-    Leserin: "",
+    Leserin: "./Audio/Soundeffects/Voice_Lady.wav",
   };
 
   //Typewritersound
@@ -230,6 +238,14 @@ namespace Template {
       name: "theaterin9",
       background: "./Images/Backgrounds/Theater_Indoor/Theater9.png",
     },
+    prolog: {
+      name: "prolog",
+      background: "./Images/Chapters/Prolog.png",
+    },
+    chapter1: {
+      name: "chapter1",
+      background: "./Images/Chapters/Chapter1.png",
+    }
   };
 
   export async function animationwalking (){
