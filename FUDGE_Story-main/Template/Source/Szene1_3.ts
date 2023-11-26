@@ -87,10 +87,10 @@ namespace Template {
         break;
       case rangehen.ablehnen:
         await buttonpress(sound.buttonpress, .2);
-        dataForSave.evil + 1;
+        dataForSave.evil +1;
         await ƒS.update(1);
         await satzbau(characters.MainNarrator, text.MainNarrator.M0010, true, true, 5, 50, sound.MainNarrator, 1);
-        dataForSave.entschuldigung = 2;
+        dataForSave.entschuldigung == 2;
         break;
     }
     if (rangegangen == 1) {

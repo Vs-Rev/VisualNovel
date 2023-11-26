@@ -29,7 +29,7 @@ namespace Template {
     Kleidung: {
       name: "Klamotten",
       description: "Normale Klamotten. Nichts besonderes. Wirklich nicht",
-      image: "Images/Items/Klamotten.png",
+      image: "./Images/Inventory/Clothes.png",
       static: true,
       exist: true,
     },
@@ -656,7 +656,7 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      { id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
+      //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
       { id:"Szene1_2",scene: Szene1_2, name: "Szene1_2" },
       { id:"Szene1_3",scene: Szene1_3, name: "Szene1_3" },
       { id:"Szene1_4",scene: Szene1_4, name: "Szene1_4" },

@@ -84,6 +84,7 @@ namespace Template {
     };
     //dataForSave.protagonist.name = "Brani";
     //characters.whiteknight.name = dataForSave.protagonist.name;
+    ƒS.Inventory.add(items.Kleidung); 
     await ƒS.Location.show(locations.chapter1);
     await ƒS.update(2);
     await ƒS.update(5);

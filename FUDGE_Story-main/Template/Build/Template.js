@@ -28,7 +28,7 @@ var Template;
         Kleidung: {
             name: "Klamotten",
             description: "Normale Klamotten. Nichts besonderes. Wirklich nicht",
-            image: "Images/Items/Klamotten.png",
+            image: "./Images/Inventory/Clothes.png",
             static: true,
             exist: true,
         },
@@ -641,10 +641,10 @@ var Template;
         //Szenen aufrufen bezogen auf die .TS Datei
         let scenes = [
             //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
-            //{ id:"Szene1_2",scene: Szene1_2, name: "Szene1_2" },
-            //{ id:"Szene1_3",scene: Szene1_3, name: "Szene1_3" },
-            //{ id:"Szene1_4",scene: Szene1_4, name: "Szene1_4" },
-            //{ id:"Szene1_5",scene: Szene1_5, name: "Szene1_5" },
+            { id: "Szene1_2", scene: Template.Szene1_2, name: "Szene1_2" },
+            { id: "Szene1_3", scene: Template.Szene1_3, name: "Szene1_3" },
+            { id: "Szene1_4", scene: Template.Szene1_4, name: "Szene1_4" },
+            { id: "Szene1_5", scene: Template.Szene1_5, name: "Szene1_5" },
             { id: "Szene1_6", scene: Template.Szene1_6, name: "Szene1_6" },
             { id: "Szene4_1", scene: Template.Szene4_1, name: "Szene4_1" },
             //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
@@ -1273,6 +1273,7 @@ var Template;
         };
         //dataForSave.protagonist.name = "Brani";
         //characters.whiteknight.name = dataForSave.protagonist.name;
+        Template.ƒS.Inventory.add(Template.items.Kleidung);
         await Template.ƒS.Location.show(Template.locations.chapter1);
         await Template.ƒS.update(2);
         await Template.ƒS.update(5);
@@ -1630,7 +1631,7 @@ var Template;
                 Template.dataForSave.evil + 1;
                 await Template.ƒS.update(1);
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0010, true, true, 5, 50, Template.sound.MainNarrator, 1);
-                Template.dataForSave.entschuldigung = 2;
+                Template.dataForSave.entschuldigung == 2;
                 break;
         }
         if (rangegangen == 1) {
