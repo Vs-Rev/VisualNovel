@@ -293,6 +293,10 @@ namespace Template {
       dataForSave.protagonist.name = "???";
       characters.whiteknight.name = dataForSave.protagonist.name;
     }
+    await ƒS.Progress.save();
+    await ƒS.update(1);
+    await ƒS.Location.show(locations.chapter1);
+    await ƒS.update(1);
     ƒS.Sound.setMasterVolume(11);
     await ƒS.Sound.fade(sound.deepdark, 0.07, 0.1, true);
     await ƒS.update(5);

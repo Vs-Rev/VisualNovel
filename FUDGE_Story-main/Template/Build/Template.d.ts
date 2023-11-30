@@ -227,6 +227,22 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        tipp1: {
+            name: string;
+            background: string;
+        };
+        tipp2: {
+            name: string;
+            background: string;
+        };
+        tipp3: {
+            name: string;
+            background: string;
+        };
+        tipp4: {
+            name: string;
+            background: string;
+        };
     };
     function animationwalking(): Promise<void>;
     let characters: {
@@ -300,6 +316,9 @@ declare namespace Template {
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Szene0_1(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Szene1_1(): ƒS.SceneReturn;

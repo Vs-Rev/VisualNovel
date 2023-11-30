@@ -604,21 +604,5 @@ namespace Template {
     ƒS.Character.hideAll();
     ƒS.Speech.hide();
     await ƒS.update(1);
-    await ƒS.Location.show(locations.chapter1);
-    await ƒS.update(1);
-    await satzbau(
-      characters.MainNarrator,
-      text.MainNarrator.T0100,
-      true,
-      true,
-      3,
-      50,
-      sound.MainNarrator,
-      1
-    );
-    await ƒS.Progress.save();
-    await ƒS.update(1);
-    await ƒS.Location.show(locations.blackbackground);
-    await ƒS.update(5);
   }
 }

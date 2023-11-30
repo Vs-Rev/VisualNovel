@@ -239,6 +239,22 @@ var Template;
         chapter1: {
             name: "chapter1",
             background: "./Images/Chapters/Chapter1.png",
+        },
+        tipp1: {
+            name: "tipp1",
+            background: "./Images/Tipps/Tipp1.png",
+        },
+        tipp2: {
+            name: "tipp2",
+            background: "./Images/Tipps/Tipp2.png",
+        },
+        tipp3: {
+            name: "tipp3",
+            background: "./Images/Tipps/Tipp3.png",
+        },
+        tipp4: {
+            name: "tipp4",
+            background: "./Images/Tipps/Tipp5.png",
         }
     };
     async function animationwalking() {
@@ -414,8 +430,8 @@ var Template;
     //Kampfsystem
     //Menü
     let inGameMenu = {
-        save: "Save",
-        load: "Load",
+        save: "Speichern",
+        load: "Laden",
         credits: "Credits",
         volumeup: "+",
         volumedown: "-",
@@ -640,7 +656,8 @@ var Template;
         Template.gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
         //Szenen aufrufen bezogen auf die .TS Datei
         let scenes = [
-            //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
+            { id: "Szene0_1", scene: Template.Szene0_1, name: "Szene0_1" },
+            { id: "Szene1_1", scene: Template.Szene1_1, name: "Szene1_1" },
             { id: "Szene1_2", scene: Template.Szene1_2, name: "Szene1_2" },
             { id: "Szene1_3", scene: Template.Szene1_3, name: "Szene1_3" },
             { id: "Szene1_4", scene: Template.Szene1_4, name: "Szene1_4" },
@@ -834,6 +851,43 @@ var Template;
         await Template.ƒS.update(1);
     }
     Template.Scene = Scene;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function Szene0_1() {
+        console.log("FudgeStory Template Scene0 starting");
+        console.log(Template.characters.MainNarrator);
+        //Gesprochener Text
+        let text = {
+            MainNarrator: {
+                T000: "Irgendwann kommt der Moment, in dem du entschieden musst, ob du die Seite umblätterst, oder das Buch schließt.",
+            },
+        };
+        //Szenenablauf
+        Template.ƒS.Sound.setMasterVolume(8);
+        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T000, true, true, 50, 50, Template.sound.MainNarrator, 100);
+        Template.ƒS.Speech.hide();
+        await Template.ƒS.Location.show(Template.locations.tipp1);
+        await Template.ƒS.update(3);
+        await Template.ƒS.Location.show(Template.locations.blackbackground);
+        await Template.ƒS.update(3);
+        await Template.ƒS.Location.show(Template.locations.tipp2);
+        await Template.ƒS.update(3);
+        await Template.ƒS.Location.show(Template.locations.blackbackground);
+        await Template.ƒS.update(3);
+        await Template.ƒS.Location.show(Template.locations.tipp3);
+        await Template.ƒS.update(3);
+        await Template.ƒS.Location.show(Template.locations.blackbackground);
+        await Template.ƒS.update(3);
+        await Template.ƒS.Location.show(Template.locations.tipp4);
+        await Template.ƒS.update(3);
+        await Template.ƒS.Location.show(Template.locations.blackbackground);
+        await Template.ƒS.update(3);
+        Template.ƒS.Character.hideAll();
+        Template.ƒS.Speech.hide();
+        Template.ƒS.update(1);
+    }
+    Template.Szene0_1 = Szene0_1;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -1273,9 +1327,10 @@ var Template;
         };
         //dataForSave.protagonist.name = "Brani";
         //characters.whiteknight.name = dataForSave.protagonist.name;
-        Template.ƒS.Inventory.add(Template.items.Kleidung);
-        await Template.ƒS.Location.show(Template.locations.chapter1);
+        await Template.ƒS.Location.show(Template.locations.prolog);
         await Template.ƒS.update(2);
+        await Template.ƒS.Progress.save();
+        await Template.ƒS.update(1);
         await Template.ƒS.update(5);
         await Template.ƒS.Location.show(Template.locations.blackbackground);
         await Template.ƒS.update(5);
@@ -2745,13 +2800,6 @@ var Template;
         Template.ƒS.Character.hideAll();
         Template.ƒS.Speech.hide();
         await Template.ƒS.update(1);
-        await Template.ƒS.Location.show(Template.locations.chapter1);
-        await Template.ƒS.update(1);
-        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0100, true, true, 3, 50, Template.sound.MainNarrator, 1);
-        await Template.ƒS.Progress.save();
-        await Template.ƒS.update(1);
-        await Template.ƒS.Location.show(Template.locations.blackbackground);
-        await Template.ƒS.update(5);
     }
     Template.Szene1_6 = Szene1_6;
 })(Template || (Template = {}));
@@ -3019,6 +3067,10 @@ var Template;
             Template.dataForSave.protagonist.name = "???";
             Template.characters.whiteknight.name = Template.dataForSave.protagonist.name;
         }
+        await Template.ƒS.Progress.save();
+        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.locations.chapter1);
+        await Template.ƒS.update(1);
         Template.ƒS.Sound.setMasterVolume(11);
         await Template.ƒS.Sound.fade(Template.sound.deepdark, 0.07, 0.1, true);
         await Template.ƒS.update(5);

@@ -245,6 +245,22 @@ namespace Template {
     chapter1: {
       name: "chapter1",
       background: "./Images/Chapters/Chapter1.png",
+    },
+    tipp1: {
+      name: "tipp1",
+      background: "./Images/Tipps/Tipp1.png",
+    },
+    tipp2: {
+      name: "tipp2",
+      background: "./Images/Tipps/Tipp2.png",
+    },
+    tipp3: {
+      name: "tipp3",
+      background: "./Images/Tipps/Tipp3.png",
+    },
+    tipp4: {
+      name: "tipp4",
+      background: "./Images/Tipps/Tipp5.png",
     }
   };
 
@@ -419,8 +435,8 @@ namespace Template {
 
   //Menü
   let inGameMenu = {
-    save: "Save",
-    load: "Load",
+    save: "Speichern",
+    load: "Laden",
     credits: "Credits",
     volumeup: "+",
     volumedown: "-",
@@ -656,7 +672,8 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
+      { id:"Szene0_1",scene: Szene0_1, name: "Szene0_1" },
+      { id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
       { id:"Szene1_2",scene: Szene1_2, name: "Szene1_2" },
       { id:"Szene1_3",scene: Szene1_3, name: "Szene1_3" },
       { id:"Szene1_4",scene: Szene1_4, name: "Szene1_4" },
