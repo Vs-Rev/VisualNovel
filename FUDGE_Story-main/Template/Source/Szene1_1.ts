@@ -121,11 +121,11 @@ namespace Template {
     };
 
     //Szenenablauf
-    ƒS.Sound.setMasterVolume(11);
-    await ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+    ƒS.Sound.setMasterVolume(8);
+    await ƒS.Sound.fade(sound.darkwind, .02, 10, true); //Der Sound der in Main.ts definiert wurde
     console.log("audio is being played");
     await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.newversion, ƒS.positionPercent(50, 100));
-    await ƒS.update(3);
+    await ƒS.update(10);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/false,/*skipbar*/ false,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50, /*Stimme*/sound.MainNarrator, /*skiplänge*/1);
 
     await satzbau(characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/true,/*skipbar*/ true,/*pausenlänge*/ 3,/*geschwindigkeit*/ 50,/*Stimme*/ sound.MainNarrator, /*skiplänge*/1);
@@ -277,7 +277,7 @@ namespace Template {
           await ƒS.Location.show(locations.startscreenbackground);
           await ƒS.update(1);
           await ƒS.Character.show(characters.narrator, characters.narrator.pose.standard, ƒS.positionPercent(10, 80));
-          ƒS.Sound.fade(sound.darkwind, 0.07, 0.1, true);
+          await ƒS.Sound.fade(sound.darkwind, .02, 10, true); 
           await ƒS.update(3);
           tutorial.splice(2, 1, "");
           break;
@@ -307,7 +307,7 @@ namespace Template {
       switch (geschichtenauswahl) { //Wenn Auswahl "Namen eingben"
         case geschichten[0]:
           await buttonpress(sound.buttonpress, .2);
-          await ƒS.Sound.fade(sound.MysteryManTheme, 0.05, 0.1, true); //Der Sound der in Main.ts definiert wurde
+          await ƒS.Sound.fade(sound.MainTheme, .03, 10, true); //Der Sound der in Main.ts definiert wurde
           await satzbau(characters.MainNarrator, text.MainNarrator.G0014, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0015, true, true, 4, 50, sound.MainNarrator, 2);
           await satzbau(characters.MainNarrator, text.MainNarrator.G0016, true, true, 4, 50, sound.MainNarrator, 2);
@@ -390,8 +390,8 @@ namespace Template {
     await ƒS.Location.show(locations.blackbackground);
     await satzbau(characters.MainNarrator, text.MainNarrator.T0037, true, true, 3, 50, sound.MainNarrator, 2);
     await ƒS.update(1);
-    ƒS.Sound.fade(sound.darkwind, 0, 0.8, true);
-    ƒS.Sound.fade(sound.MysteryManTheme, 0, 0.8, true);
+    ƒS.Sound.fade(sound.darkwind, 0, 5, false);
+    await ƒS.Sound.fade(sound.MainTheme, 0, 5, false);
     ƒS.Character.hideAll();
     ƒS.Speech.hide();
     ƒS.update(1);

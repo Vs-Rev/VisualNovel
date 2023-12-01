@@ -59,6 +59,9 @@ declare namespace Template {
         Halistheme: string;
         MainTheme: string;
         examplesound: string;
+        inventoryadd: string;
+        blackscreen: string;
+        chaptertransition: string;
         phonecallend: string;
         phonering: string;
         dooropen: string;

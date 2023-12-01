@@ -68,6 +68,9 @@ var Template;
         MainTheme: "./Audio/Themes/MainTheme.wav",
         //sounds
         examplesound: "",
+        inventoryadd: "./Audio/Soundeffects/Inventoryaddsound.wav",
+        blackscreen: "./Audio/Soundeffects/Retroeffect1.wav",
+        chaptertransition: "./Audio/Soundeffects/Retroeffect2.wav",
         phonecallend: "./Audio/Soundeffects/Phonecall_End.wav",
         phonering: "./Audio/Soundeffects/Phonering.wav",
         dooropen: "./Audio/Soundeffects/Dooropen.wav",
@@ -656,8 +659,8 @@ var Template;
         Template.gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
         //Szenen aufrufen bezogen auf die .TS Datei
         let scenes = [
-            { id: "Szene0_1", scene: Template.Szene0_1, name: "Szene0_1" },
-            { id: "Szene1_1", scene: Template.Szene1_1, name: "Szene1_1" },
+            //{ id:"Szene0_1",scene: Szene0_1, name: "Szene0_1" },
+            //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
             { id: "Szene1_2", scene: Template.Szene1_2, name: "Szene1_2" },
             { id: "Szene1_3", scene: Template.Szene1_3, name: "Szene1_3" },
             { id: "Szene1_4", scene: Template.Szene1_4, name: "Szene1_4" },
@@ -867,22 +870,27 @@ var Template;
         Template.ƒS.Sound.setMasterVolume(8);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T000, true, true, 50, 50, Template.sound.MainNarrator, 100);
         Template.ƒS.Speech.hide();
+        Template.ƒS.Sound.play(Template.sound.chaptertransition, 0.05, false);
         await Template.ƒS.Location.show(Template.locations.tipp1);
         await Template.ƒS.update(3);
         await Template.ƒS.Location.show(Template.locations.blackbackground);
         await Template.ƒS.update(3);
+        Template.ƒS.Sound.play(Template.sound.chaptertransition, 0.05, false);
         await Template.ƒS.Location.show(Template.locations.tipp2);
         await Template.ƒS.update(3);
         await Template.ƒS.Location.show(Template.locations.blackbackground);
         await Template.ƒS.update(3);
+        Template.ƒS.Sound.play(Template.sound.chaptertransition, 0.05, false);
         await Template.ƒS.Location.show(Template.locations.tipp3);
         await Template.ƒS.update(3);
         await Template.ƒS.Location.show(Template.locations.blackbackground);
         await Template.ƒS.update(3);
+        Template.ƒS.Sound.play(Template.sound.chaptertransition, 0.05, false);
         await Template.ƒS.Location.show(Template.locations.tipp4);
         await Template.ƒS.update(3);
+        Template.ƒS.Sound.play(Template.sound.blackscreen, 0.05, false);
         await Template.ƒS.Location.show(Template.locations.blackbackground);
-        await Template.ƒS.update(3);
+        await Template.ƒS.update(10);
         Template.ƒS.Character.hideAll();
         Template.ƒS.Speech.hide();
         Template.ƒS.update(1);
@@ -995,11 +1003,11 @@ var Template;
             }
         };
         //Szenenablauf
-        Template.ƒS.Sound.setMasterVolume(11);
-        await Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true); //Der Sound der in Main.ts definiert wurde
+        Template.ƒS.Sound.setMasterVolume(8);
+        await Template.ƒS.Sound.fade(Template.sound.darkwind, .02, 10, true); //Der Sound der in Main.ts definiert wurde
         console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.newversion, Template.ƒS.positionPercent(50, 100));
-        await Template.ƒS.update(3);
+        await Template.ƒS.update(10);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/ false, /*skipbar*/ false, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0002, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
@@ -1141,7 +1149,7 @@ var Template;
                     await Template.ƒS.Location.show(Template.locations.startscreenbackground);
                     await Template.ƒS.update(1);
                     await Template.ƒS.Character.show(Template.characters.narrator, Template.characters.narrator.pose.standard, Template.ƒS.positionPercent(10, 80));
-                    Template.ƒS.Sound.fade(Template.sound.darkwind, 0.07, 0.1, true);
+                    await Template.ƒS.Sound.fade(Template.sound.darkwind, .02, 10, true);
                     await Template.ƒS.update(3);
                     tutorial.splice(2, 1, "");
                     break;
@@ -1169,7 +1177,7 @@ var Template;
             switch (geschichtenauswahl) { //Wenn Auswahl "Namen eingben"
                 case geschichten[0]:
                     await Template.buttonpress(Template.sound.buttonpress, .2);
-                    await Template.ƒS.Sound.fade(Template.sound.MysteryManTheme, 0.05, 0.1, true); //Der Sound der in Main.ts definiert wurde
+                    await Template.ƒS.Sound.fade(Template.sound.MainTheme, .03, 10, true); //Der Sound der in Main.ts definiert wurde
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.G0014, true, true, 4, 50, Template.sound.MainNarrator, 2);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.G0015, true, true, 4, 50, Template.sound.MainNarrator, 2);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.G0016, true, true, 4, 50, Template.sound.MainNarrator, 2);
@@ -1252,8 +1260,8 @@ var Template;
         await Template.ƒS.Location.show(Template.locations.blackbackground);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0037, true, true, 3, 50, Template.sound.MainNarrator, 2);
         await Template.ƒS.update(1);
-        Template.ƒS.Sound.fade(Template.sound.darkwind, 0, 0.8, true);
-        Template.ƒS.Sound.fade(Template.sound.MysteryManTheme, 0, 0.8, true);
+        Template.ƒS.Sound.fade(Template.sound.darkwind, 0, 5, false);
+        await Template.ƒS.Sound.fade(Template.sound.MainTheme, 0, 5, false);
         Template.ƒS.Character.hideAll();
         Template.ƒS.Speech.hide();
         Template.ƒS.update(1);
@@ -1327,8 +1335,10 @@ var Template;
         };
         //dataForSave.protagonist.name = "Brani";
         //characters.whiteknight.name = dataForSave.protagonist.name;
+        Template.ƒS.Sound.setMasterVolume(8);
+        Template.ƒS.Sound.play(Template.sound.chaptertransition, .02, false);
         await Template.ƒS.Location.show(Template.locations.prolog);
-        await Template.ƒS.update(2);
+        await Template.ƒS.update(5);
         await Template.ƒS.Progress.save();
         await Template.ƒS.update(1);
         await Template.ƒS.update(5);

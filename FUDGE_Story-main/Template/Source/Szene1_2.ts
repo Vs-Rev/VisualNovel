@@ -84,8 +84,10 @@ namespace Template {
     };
     //dataForSave.protagonist.name = "Brani";
     //characters.whiteknight.name = dataForSave.protagonist.name;
+    ƒS.Sound.setMasterVolume(8);
+    ƒS.Sound.play(sound.chaptertransition, .02, false)
     await ƒS.Location.show(locations.prolog);
-    await ƒS.update(2);
+    await ƒS.update(5);
     await ƒS.Progress.save();
     await ƒS.update(1);
     await ƒS.update(5);
