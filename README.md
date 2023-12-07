@@ -31,7 +31,7 @@ A FUDGE module for the easy development of interactive stories, visual novels an
 |  C | Novel-Pages             | _Novel-Pages_ können eingesetzt werden, um weitere Textelemente mit ggf. besonderen Interaktionsmöglichkeiten auszustatten und einzublenden. Wie wurden Novel Pages umgesetzt und welche Interaktionsmöglichkeiten gibt es?                       |
 |  D | Meter-bar             | Mithilfe des HTML-Elements `<meter>`  kann entweder ein skalarer Wert innerhalb eines bekannten Bereichs oder ein Bruchwert dargestellt werden (Anwendung finden kann dies zum Beispiel als Lovebar bzw. Love'O'Meter / damage-bar etc.). Wird dieses Element verwendet und unter welchen Bedingungen füllt sich die _meter-bar_ bzw. sinkt der Wert? Welchen Zweck erfüllt sie?
 
-
+Link zu der Visual Novel: https://vs-rev.github.io/VisualNovel/FUDGE_Story-main/Template/Template.html
 
 ##  Abgabeformat
 
