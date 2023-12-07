@@ -385,7 +385,7 @@ declare class Controls {
     redraw(): void;
 }
 declare const controls: Controls;
-declare const gui: any;
+declare const gui: dat.GUI;
 declare let prevx: number;
 declare let prevy: number;
 declare const prev2: number;

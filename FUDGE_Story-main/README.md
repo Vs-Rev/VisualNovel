@@ -32,6 +32,8 @@ A FUDGE module for the easy development of interactive stories, visual novels an
 
 ##  Abgabeformat
 
+Link zu der Visual Novel: https://vs-rev.github.io/VisualNovel/FUDGE_Story-main/Template/Template.html
+
 * Die Konzeption soll als .pdf-Dokument abgegeben werden.
 * Platziere einen Link in der Readme-Datei deines VisualNovel-Repositories auf Github auf die fertige und in Github-Pages lauffähige Anwendung.
 * Platziere ebenso Links zu den Stellen in deinem Repository, an denen der Quellcode und das Konzept-Dokument zu finden sind.
