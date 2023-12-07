@@ -50,6 +50,7 @@ namespace Template {
     /*dataForSave.protagonist.name = "Brani";
     characters.whiteknight.name = dataForSave.protagonist.name;*/
     await ƒS.Location.show(locations.waldweg);
+    await ƒS.update(3);
     await ƒS.Sound.fade(sound.nightambience, 0.2, 4, true);
     await ƒS.update(5);
     await ƒS.Character.show(characters.Speechbox, characters.Speechbox.pose.grayedout, ƒS.positionPercent(50, 100));

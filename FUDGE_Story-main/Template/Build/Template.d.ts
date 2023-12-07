@@ -49,6 +49,8 @@ declare namespace Template {
         Entscheidugnsfrage3: number;
         Entscheidungsfrage4: number;
     };
+    function horizontalShake(): Promise<void>;
+    function verticalShake(): Promise<void>;
     let sound: {
         examplemusic: string;
         titletheme: string;
@@ -310,6 +312,7 @@ declare namespace Template {
     function incrementSound(): void;
     function decrementSound(): void;
     function showCredits(): void;
+    function showSteuerung(): void;
     function timer(skipable: number, länge: number): Promise<void>;
     let signaldelay: ƒS.Signal;
     function buttonpress(buttonart: string, lautstärke: number): Promise<void>;
@@ -347,3 +350,50 @@ declare namespace Template {
 declare namespace Template {
     function Szene5_Entscheidung(): ƒS.SceneReturn;
 }
+declare const c: HTMLCanvasElement | null;
+declare const ctx: CanvasRenderingContext2D | null;
+declare let dots: {
+    x: number;
+    y: number;
+    xv: number;
+    yv: number;
+    col: string;
+    rad: number;
+}[];
+declare let emitRate: number;
+declare let minRad: number;
+declare let maxRad: number;
+declare let color: string;
+declare let opc: number;
+declare let sha: number;
+declare let lifeTime: number;
+declare let tn: number;
+declare let roc: number;
+declare let speed: number;
+declare class Controls {
+    emitRate: number;
+    spread: number;
+    radiusMin: number;
+    radiusMax: number;
+    color: string;
+    opacity: number;
+    glow: number;
+    onChange_redraw: boolean;
+    randomColor: boolean;
+    lifeTime: number;
+    circleShape: boolean;
+    redraw(): void;
+}
+declare const controls: Controls;
+declare const gui: any;
+declare let prevx: number;
+declare let prevy: number;
+declare const prev2: number;
+declare let increase: number;
+declare let counter: number;
+declare function preview(): void;
+declare function emitDots(mx: number, my: number): void;
+declare function animDots(): void;
+declare function cleanUp(): void;
+declare function getFPS(): void;
+declare function loop(): void;

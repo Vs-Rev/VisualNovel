@@ -20,12 +20,12 @@ namespace Template {
   };
   export let items = {
     pageVampire: {
-      name: "Vampire Novel Notes", 
-      description: "Notes about the Vampire Novel to answer the officers questions", 
+      name: "Vampire Novel Notes",
+      description: "Notes about the Vampire Novel to answer the officers questions",
       image: "Images/Items/VampirePage.png",
       static: true,
       exist: true
-    }, 
+    },
     Kleidung: {
       name: "Klamotten",
       description: "Normale Klamotten. Nichts besonderes. Wirklich nicht",
@@ -40,24 +40,56 @@ namespace Template {
       static: true,
       exist: true,
     }
-  }
+  }
 
-    //SaveGame preparation
-    export let dataForSave = {
-      //Hier Speicherbare Elemente eintragen
-      protagonist: {
-        name: "",
-      },
-      evil: 0,
-      good: 0,
-      entschuldigung: 0,
-      Halisgefährteangenommen: true,
-      Entscheidungsfrage1: 0,
-      Entscheidungsfrage2: 0,
-      Entscheidugnsfrage3: 0,
-      Entscheidungsfrage4: 0,
-    };
-  
+  //SaveGame preparation
+  export let dataForSave = {
+    //Hier Speicherbare Elemente eintragen
+    protagonist: {
+      name: "",
+    },
+    evil: 0,
+    good: 0,
+    entschuldigung: 0,
+    Halisgefährteangenommen: true,
+    Entscheidungsfrage1: 0,
+    Entscheidungsfrage2: 0,
+    Entscheidugnsfrage3: 0,
+    Entscheidungsfrage4: 0,
+  };
+
+  export async function horizontalShake(): Promise<void> {
+    let scene: HTMLElement = <HTMLElement>document.getElementsByTagName("scene")[0];
+
+    for (let i: number = 0; i < 15; i++) {
+      if (i % 2 == 0) {
+        scene.style.transform = `translateX(20px)`;
+      }
+      else {
+        scene.style.transform = `translateX(-20px)`;
+      }
+      await new Promise(resolve => setTimeout(resolve, 40));
+    }
+    scene.style.transform = `translateX(0px)`;
+  }
+
+
+  // vertical Shaker
+  export async function verticalShake(): Promise<void> {
+    let scene: HTMLElement = <HTMLElement>document.getElementsByTagName("scene")[0];
+
+    for (let i: number = 0; i < 15; i++) {
+      if (i % 2 == 0) {
+        scene.style.transform = `translateY(20px)`;
+      }
+      else {
+        scene.style.transform = `translateY(-20px)`;
+      }
+      await new Promise(resolve => setTimeout(resolve, 40));
+    }
+    scene.style.transform = `translateY(0px)`;
+  }
+
 
   //Sounds
   export let sound = {
@@ -156,7 +188,7 @@ namespace Template {
     housefloor: {
       name: "housefloor",
       background: "./Images/Backgrounds/Housefloor.png",
-    }, 
+    },
     walking01: {
       name: "walking01",
       background: "./Images/Backgrounds/Animationbackgrounds/Walking01.png",
@@ -267,7 +299,7 @@ namespace Template {
     }
   };
 
-  export async function animationwalking (){
+  export async function animationwalking() {
     await ƒS.Location.show(locations.walking01);
     await ƒS.update(1);
     await ƒS.Location.show(locations.walking02);
@@ -328,7 +360,7 @@ namespace Template {
     },
     Ticketkontrolleur: {
       name: "Ticketkontrolleur",
-    }, 
+    },
     Halistrator: {
       name: "Halistrator",
       origin: ƒS.ORIGIN.CENTER,
@@ -350,8 +382,8 @@ namespace Template {
       name: dataForSave.protagonist.name,
       origin: ƒS.ORIGIN.CENTER,
       pose: {
-       standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
-     }
+        standard: "./Images/Characters/whiteknight/whiteknight_standard.png",
+      }
     },
     MainNarrator: {
       name: "",
@@ -394,16 +426,16 @@ namespace Template {
   }
   export function fromCenterToLeft(): ƒS.AnimationDefinition {
     return {
-      start: { translation: ƒS.positionPercent(40, 80)},
-      end: { translation: ƒS.positionPercent(10, 80)},
+      start: { translation: ƒS.positionPercent(40, 80) },
+      end: { translation: ƒS.positionPercent(10, 80) },
       duration: 2,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
   export function fromLeftToCenter(): ƒS.AnimationDefinition {
     return {
-      start: { translation: ƒS.positionPercent(10, 80)},
-      end: { translation: ƒS.positionPercent(40, 80)},
+      start: { translation: ƒS.positionPercent(10, 80) },
+      end: { translation: ƒS.positionPercent(40, 80) },
       duration: 2,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
@@ -411,14 +443,14 @@ namespace Template {
   export function fromCenterToRight_Halistrator(): ƒS.AnimationDefinition {
     return {
       start: { translation: ƒS.positionPercent(50, 48) },
-      end: { translation: ƒS.positionPercent(80, 48)  },
+      end: { translation: ƒS.positionPercent(80, 48) },
       duration: 1,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
     };
   }
   export function fromRightToCenter_Halistrator(): ƒS.AnimationDefinition {
     return {
-      start: { translation: ƒS.positionPercent(80, 48)  },
+      start: { translation: ƒS.positionPercent(80, 48) },
       end: { translation: ƒS.positionPercent(50, 48) },
       duration: 1,
       playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
@@ -444,6 +476,7 @@ namespace Template {
     volumeup: "+",
     volumedown: "-",
     inventar: "Inventar",
+    steuerung: "Steuerung",
   };
 
   //Menüfunktionen
@@ -471,14 +504,38 @@ namespace Template {
     ƒS.Text.print(
       "Die Visual Novel wurde mit FudgeStory erstellt." +
       "<br/>" +
-      "Von Vasi" +
+      "The Tale of a Knight - by Vasilii Gurev" +
       "<br/>" +
-      "Die Hintergründe, Charaktere und Items wurden selbst gezeichnet." +
+      "-------------" + "<br/>" +
+      "Die Transitions wurden sowohl aus dem FreeTransitions Ordner verwendet als auch selbst erstellt." +
       "<br/>" +
-      "Die Transitions stammen aus dem FreeTransitions Ordner, der zu Verfügung gestellt wurrde." +
+      "-------------" + "<br/>" +
+      "Jegliche visuelle Inhalte wie Gegenstände, Charaktere und Hintergründe wurden selbst erstellt." +
       "<br/>" +
-      "Die Soundelemente wurden mit einer Envato Elements Lizenz lizensiert heruntergeladen" +
+      "-------------" + "<br/>" +
+      "Der Großteil der Geräuschkulisse wurde selbst erstellt und zum Teil von Freesound.org mit einer Royalty Free Lizenz verwendet." +
       "<br/>"
+    );
+  }
+
+  export function showSteuerung(): void {
+    ƒS.Text.addClass("steuerung");
+    ƒS.Text.print(
+      "<h2>Steuerungsübersicht</h2>" +
+      "<br/>" +
+      "-------------" + "<br/>" +
+      "<h1>[Entscheidungen]</h1>" +
+      "<br/>" +
+      "In diesem Spiel triffst du die Entscheidungen. Jede Entscheidung die du triffst beeinflusst deinen Spielverlauf. Wähle weise." +
+      "<br/>" +
+      "-------------" + "<br/>" +
+      "<h1>[Überspringen]</h1>" +
+      "<br/>" +
+      "Mit dem Klicken auf den Bildschirm kannst du den Text überspringen. Mit dem ersten Klicken lässt du dir den gesamten Text anzeigen. Beim zweiten Mal springst du direkt zum nächsten Textfeld" +
+      "<br/>"+
+      "-------------" + "<br/>" +
+      "<h1>[Kämpfen]</h1>"+ "<br/>"+
+      "In dieser Visual Novel wird es viele Herausforderungen geben, die jedoch nicht mit Kämpfen gelöst werden. In der Welt von Verdantia steht jeder auf Musik. Gewinne im GrooveWettbewerb indem deine Groove Leiste gefüllt wird. Eine Niederlage erfolgt, sobald du 3 Mal bei einer Leeren Anzeige einen Minusgroove erhältst.",
     );
   }
 
@@ -503,50 +560,53 @@ namespace Template {
         decrementSound();
         break;
       case inGameMenu.inventar:
-        await ƒS.Inventory.open(); 
-        await ƒS.update();
-           /*const selectedItems:string[] = await ƒS.Inventory.open();
-           if(selectedItems && selectedItems.length > 0){
-             selectedItems.forEach((s)=>{
-               Object.keys(items).forEach((i)=>{
-                 const item = items[i];
-               if(item.name === s){
-                   ƒS.Inventory.add(item);
-                }
-              })
-            })
-           }
-           break;*/
-           break;
+        await ƒS.Inventory.open();
+        await ƒS.update();
+        /*const selectedItems:string[] = await ƒS.Inventory.open();
+        if(selectedItems && selectedItems.length > 0){
+          selectedItems.forEach((s)=>{
+            Object.keys(items).forEach((i)=>{
+              const item = items[i];
+            if(item.name === s){
+                ƒS.Inventory.add(item);
+             }
+           })
+         })
+        }
+        break;*/
+        break;
       //Credits
       case inGameMenu.credits:
         showCredits();
         break;
+      case inGameMenu.steuerung:
+        showSteuerung();
+        break;
     }
   }
-      //Allgemeiner Timer Funktion
-      export async function timer(skipable: number, länge: number){
-        let t: number;
-        for (t = 0; t < länge; t++) {
-          if(skipable == 1){
-            document.addEventListener("mousedown", hndMousePress);
-            async function hndMousePress(_event: MouseEvent): Promise<void> {
-              console.log(MouseEvent);
-              t = länge;
-              document.removeEventListener("mousedown", hndMousePress);
-            }
-          }
-          else {
-            console.log(t);
-            await signaldelay();
-          }
+  //Allgemeiner Timer Funktion
+  export async function timer(skipable: number, länge: number) {
+    let t: number;
+    for (t = 0; t < länge; t++) {
+      if (skipable == 1) {
+        document.addEventListener("mousedown", hndMousePress);
+        async function hndMousePress(_event: MouseEvent): Promise<void> {
+          console.log(MouseEvent);
+          t = länge;
+          document.removeEventListener("mousedown", hndMousePress);
         }
       }
+      else {
+        console.log(t);
+        await signaldelay();
+      }
+    }
+  }
   export let signaldelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(1)]);
   //Buttonfunktion
   export async function buttonpress(buttonart: string, lautstärke: number) {
     ƒS.Sound.play(buttonart, lautstärke, false);
-      await timer(0, 2);
+    await timer(0, 2);
   }
   //Satzbaufunktion
   export async function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number, voicetype: string, skiplänge: number) {
@@ -581,16 +641,16 @@ namespace Template {
             t = text.length;
             geskipped = 1;
             break;
+        }
+        document.removeEventListener("keydown", hndKeyPress);
       }
-      document.removeEventListener("keydown", hndKeyPress);
-    }
-      if(geskipped == 1){
+      if (geskipped == 1) {
         console.log("Text geskipped");
       }
       else {
-      ƒS.Sound.play(voicetype, .01, false); //Der Sound der in Main.ts definiert wurde
-      await ƒS.update(.2);
-    }
+        ƒS.Sound.play(voicetype, .01, false); //Der Sound der in Main.ts definiert wurde
+        await ƒS.update(.2);
+      }
     }
 
     for (t = 0; t < pausenlänge; t++) {
@@ -609,11 +669,11 @@ namespace Template {
             t = text.length;
             geskipped = 1;
             break;
+        }
+        document.removeEventListener("keydown", hndKeyPress);
       }
-      document.removeEventListener("keydown", hndKeyPress);
-    }
-        console.log(t);
-        await signaldelay();
+      console.log(t);
+      await signaldelay();
     }
   }
 
@@ -625,7 +685,7 @@ namespace Template {
 
   //Shortcuts fürs Menu
   document.addEventListener("keydown", hndKeyPress);
- export async function hndKeyPress(_event: KeyboardEvent): Promise<any> {
+  export async function hndKeyPress(_event: KeyboardEvent): Promise<any> {
     switch (_event.code) {
       case ƒ.KEYBOARD_CODE.F8:
         console.log("Save");
@@ -652,17 +712,17 @@ namespace Template {
         return b;
     }
   }
-    //Items
-    // export let items = {
-    //   key: {
-    //     name: "Schlüssel",
-    //     description: "Ein alter Schlüssel.",
-    //     image: "./Images/Background1.png",
-    //   },
-    // };
+  //Items
+  // export let items = {
+  //   key: {
+  //     name: "Schlüssel",
+  //     description: "Ein alter Schlüssel.",
+  //     image: "./Images/Background1.png",
+  //   },
+  // };
 
-  
-  
+
+
 
 
   console.log(1);
@@ -675,14 +735,14 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      //{ id:"Szene0_1",scene: Szene0_1, name: "Szene0_1" },
-      //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
-      { id:"Szene1_2",scene: Szene1_2, name: "Szene1_2" },
-      { id:"Szene1_3",scene: Szene1_3, name: "Szene1_3" },
-      { id:"Szene1_4",scene: Szene1_4, name: "Szene1_4" },
-      { id:"Szene1_5",scene: Szene1_5, name: "Szene1_5" },
+      { id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
+      { id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
+      { id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
+      { id: "Szene1_3", scene: Szene1_3, name: "Szene1_3" },
+      { id: "Szene1_4", scene: Szene1_4, name: "Szene1_4" },
+      { id: "Szene1_5", scene: Szene1_5, name: "Szene1_5" },
       { id: "Szene1_6", scene: Szene1_6, name: "Szene1_6" },
-      { id:"Szene4_1",scene: Szene4_1, name: "Szene4_1" },
+      { id: "Szene4_1", scene: Szene4_1, name: "Szene4_1" },
       //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
       //{ scene: Szene2, name: "Szene2" },
     ];
@@ -694,7 +754,7 @@ namespace Template {
     // ƒS.Progress.setData(data);
     ƒS.Progress.go(scenes);
 
-  
+
   }
 }
 

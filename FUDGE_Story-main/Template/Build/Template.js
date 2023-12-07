@@ -55,6 +55,35 @@ var Template;
         Entscheidugnsfrage3: 0,
         Entscheidungsfrage4: 0,
     };
+    async function horizontalShake() {
+        let scene = document.getElementsByTagName("scene")[0];
+        for (let i = 0; i < 15; i++) {
+            if (i % 2 == 0) {
+                scene.style.transform = `translateX(20px)`;
+            }
+            else {
+                scene.style.transform = `translateX(-20px)`;
+            }
+            await new Promise(resolve => setTimeout(resolve, 40));
+        }
+        scene.style.transform = `translateX(0px)`;
+    }
+    Template.horizontalShake = horizontalShake;
+    // vertical Shaker
+    async function verticalShake() {
+        let scene = document.getElementsByTagName("scene")[0];
+        for (let i = 0; i < 15; i++) {
+            if (i % 2 == 0) {
+                scene.style.transform = `translateY(20px)`;
+            }
+            else {
+                scene.style.transform = `translateY(-20px)`;
+            }
+            await new Promise(resolve => setTimeout(resolve, 40));
+        }
+        scene.style.transform = `translateY(0px)`;
+    }
+    Template.verticalShake = verticalShake;
     //Sounds
     Template.sound = {
         //music 
@@ -439,6 +468,7 @@ var Template;
         volumeup: "+",
         volumedown: "-",
         inventar: "Inventar",
+        steuerung: "Steuerung",
     };
     let volume = 5.0;
     //Sound lauter machen
@@ -462,16 +492,38 @@ var Template;
         Template.ƒS.Text.addClass("credits");
         Template.ƒS.Text.print("Die Visual Novel wurde mit FudgeStory erstellt." +
             "<br/>" +
-            "Von Vasi" +
+            "The Tale of a Knight - by Vasilii Gurev" +
             "<br/>" +
-            "Die Hintergründe, Charaktere und Items wurden selbst gezeichnet." +
+            "-------------" + "<br/>" +
+            "Die Transitions wurden sowohl aus dem FreeTransitions Ordner verwendet als auch selbst erstellt." +
             "<br/>" +
-            "Die Transitions stammen aus dem FreeTransitions Ordner, der zu Verfügung gestellt wurrde." +
+            "-------------" + "<br/>" +
+            "Jegliche visuelle Inhalte wie Gegenstände, Charaktere und Hintergründe wurden selbst erstellt." +
             "<br/>" +
-            "Die Soundelemente wurden mit einer Envato Elements Lizenz lizensiert heruntergeladen" +
+            "-------------" + "<br/>" +
+            "Der Großteil der Geräuschkulisse wurde selbst erstellt und zum Teil von Freesound.org mit einer Royalty Free Lizenz verwendet." +
             "<br/>");
     }
     Template.showCredits = showCredits;
+    function showSteuerung() {
+        Template.ƒS.Text.addClass("steuerung");
+        Template.ƒS.Text.print("<h2>Steuerungsübersicht</h2>" +
+            "<br/>" +
+            "-------------" + "<br/>" +
+            "<h1>[Entscheidungen]</h1>" +
+            "<br/>" +
+            "In diesem Spiel triffst du die Entscheidungen. Jede Entscheidung die du triffst beeinflusst deinen Spielverlauf. Wähle weise." +
+            "<br/>" +
+            "-------------" + "<br/>" +
+            "<h1>[Überspringen]</h1>" +
+            "<br/>" +
+            "Mit dem Klicken auf den Bildschirm kannst du den Text überspringen. Mit dem ersten Klicken lässt du dir den gesamten Text anzeigen. Beim zweiten Mal springst du direkt zum nächsten Textfeld" +
+            "<br/>" +
+            "-------------" + "<br/>" +
+            "<h1>[Kämpfen]</h1>" + "<br/>" +
+            "In dieser Visual Novel wird es viele Herausforderungen geben, die jedoch nicht mit Kämpfen gelöst werden. In der Welt von Verdantia steht jeder auf Musik. Gewinne im GrooveWettbewerb indem deine Groove Leiste gefüllt wird. Eine Niederlage erfolgt, sobald du 3 Mal bei einer Leeren Anzeige einen Minusgroove erhältst.");
+    }
+    Template.showSteuerung = showSteuerung;
     //Buttonfunktionen
     async function buttonFunctionalities(_option) {
         console.log(_option);
@@ -511,6 +563,9 @@ var Template;
             //Credits
             case inGameMenu.credits:
                 showCredits();
+                break;
+            case inGameMenu.steuerung:
+                showSteuerung();
                 break;
         }
     }
@@ -659,8 +714,8 @@ var Template;
         Template.gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
         //Szenen aufrufen bezogen auf die .TS Datei
         let scenes = [
-            //{ id:"Szene0_1",scene: Szene0_1, name: "Szene0_1" },
-            //{ id:"Szene1_1",scene: Szene1_1, name: "Szene1_1" },
+            { id: "Szene0_1", scene: Template.Szene0_1, name: "Szene0_1" },
+            { id: "Szene1_1", scene: Template.Szene1_1, name: "Szene1_1" },
             { id: "Szene1_2", scene: Template.Szene1_2, name: "Szene1_2" },
             { id: "Szene1_3", scene: Template.Szene1_3, name: "Szene1_3" },
             { id: "Szene1_4", scene: Template.Szene1_4, name: "Szene1_4" },
@@ -1142,6 +1197,7 @@ var Template;
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.TT015, true, true, 4, 50, Template.sound.MainNarrator, 2);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.TT016, true, true, 4, 50, Template.sound.MainNarrator, 2);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.TT017, true, true, 4, 50, Template.sound.MainNarrator, 2);
+                    Template.horizontalShake();
                     await Template.ƒS.Sound.play(Template.sound.glitch, 0.05);
                     await Template.ƒS.update(4);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.TT018, true, true, 4, 50, Template.sound.MainNarrator, 2);
@@ -1656,6 +1712,7 @@ var Template;
         /*dataForSave.protagonist.name = "Brani";
         characters.whiteknight.name = dataForSave.protagonist.name;*/
         await Template.ƒS.Location.show(Template.locations.waldweg);
+        await Template.ƒS.update(3);
         await Template.ƒS.Sound.fade(Template.sound.nightambience, 0.2, 4, true);
         await Template.ƒS.update(5);
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.grayedout, Template.ƒS.positionPercent(50, 100));
@@ -3839,4 +3896,140 @@ var Template;
     ƒS.Speech.tell(Sprecher, text, waitfornext);
   };
 }*/ 
+const c = document.getElementById("canvas");
+const ctx = c?.getContext("2d");
+ctx?.canvas && ((ctx.canvas.width = window.innerWidth), (ctx.canvas.height = window.innerHeight));
+window.onresize = function () {
+    ctx?.canvas && ((ctx.canvas.width = window.innerWidth), (ctx.canvas.height = window.innerHeight));
+};
+let dots = [];
+let emitRate = 9;
+let minRad = 1;
+let maxRad = 5;
+let color = "";
+let opc = 0.6;
+let sha = 0;
+let lifeTime = 30;
+let tn = 0;
+let roc = 1;
+let speed = 1;
+class Controls {
+    emitRate = emitRate;
+    spread = speed;
+    radiusMin = minRad;
+    radiusMax = maxRad;
+    color = "#ffffff";
+    opacity = opc;
+    glow = sha;
+    onChange_redraw = false;
+    randomColor = true;
+    lifeTime = lifeTime;
+    circleShape = true;
+    redraw() {
+        emitRate = this.emitRate;
+        speed = this.spread;
+        minRad = this.radiusMin;
+        maxRad = this.radiusMax;
+        lifeTime = this.lifeTime;
+        color = this.color;
+        opc = this.opacity;
+        sha = this.glow;
+        if (this.onChange_redraw) {
+            dots.splice(0, dots.length);
+        }
+        roc = this.circleShape ? 1 : 0;
+        if (this.randomColor) {
+            color = "";
+        }
+    }
+}
+const controls = new Controls();
+const gui = new dat.GUI({ resizable: false });
+gui.add(controls, "emitRate", 2, 100).step(1).onChange(controls.redraw);
+gui.add(controls, "spread", 0.1, 5).onChange(controls.redraw);
+gui.add(controls, "lifeTime", 10, 300).onChange(controls.redraw);
+gui.add(controls, "radiusMin", 1, 10).step(1).onChange(controls.redraw);
+gui.add(controls, "radiusMax", 1, 30).step(1).onChange(controls.redraw);
+gui.add(controls, "opacity", 0.1, 1).onChange(controls.redraw);
+gui.add(controls, "glow", 0, 30).step(1).onChange(controls.redraw);
+gui.addColor(controls, "color").onChange(controls.redraw);
+gui.add(controls, "circleShape").onChange(controls.redraw);
+gui.add(controls, "randomColor").onChange(controls.redraw);
+gui.add(controls, "onChange_redraw").onChange(controls.redraw);
+let prevx = ctx?.canvas.width ? ctx.canvas.width / 2 - 250 : 0;
+let prevy = ctx?.canvas.height ? ctx.canvas.height / 8 : 0;
+const prev2 = setInterval(preview, 16.67);
+let increase = (Math.PI * 2) / 40;
+let counter = 0;
+function preview() {
+    prevx += 8;
+    prevy += (Math.sin(counter) / 2 + 0.5) * 8;
+    emitDots(prevx, prevy);
+    counter += increase;
+}
+preview();
+setTimeout(() => clearInterval(prev2), 1000);
+function emitDots(mx, my) {
+    for (let i = 0; i < emitRate; i++) {
+        const rxv = Math.random() * 2 - 1;
+        const ryv = Math.random() * 2 - 1;
+        const col = color === "" ? `hsl(${Math.random() * 360},65%,65%)` : color;
+        const rad = Math.random() * (maxRad - minRad) + minRad;
+        dots.push({ x: mx, y: my, xv: rxv, yv: ryv, col: col, rad: rad });
+    }
+}
+function animDots() {
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].x += dots[i].xv * speed;
+        dots[i].y += dots[i].yv * speed;
+        ctx?.beginPath();
+        ctx.fillStyle = dots[i].col;
+        ctx.globalAlpha = opc;
+        ctx.shadowColor = dots[i].col;
+        ctx.shadowBlur = sha;
+        if (roc === 0) {
+            ctx.rect(dots[i].x, dots[i].y, dots[i].rad, dots[i].rad);
+        }
+        else {
+            ctx.arc(dots[i].x, dots[i].y, dots[i].rad, 0, 2 * Math.PI);
+        }
+        ctx.fill();
+        ctx.closePath();
+    }
+}
+function cleanUp() {
+    if (dots.length > 1) {
+        dots.splice(0, Math.ceil(dots.length / lifeTime));
+    }
+}
+function getFPS() {
+    const tl = tn;
+    tn = Date.now();
+    const td = tn - tl;
+    let fps = Math.round(1000 / td);
+    fps = fps >= 58 ? 60 : fps;
+    const fpse = document.getElementById("fps");
+    if (fpse) {
+        fpse.innerHTML = `FPS: ${fps}`;
+        fpse.style.color = `hsl(${fps * 2},100%,50%)`;
+    }
+}
+function loop() {
+    ctx?.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    document.onmousemove = function (e) {
+        const mx = e.clientX;
+        const my = e.clientY;
+        emitDots(mx, my);
+    };
+    document.ontouchmove = function (e) {
+        const mx = e.changedTouches[0].pageX;
+        const my = e.changedTouches[0].pageY;
+        emitDots(mx, my);
+    };
+    animDots();
+    cleanUp();
+    getFPS();
+}
+loop();
+setInterval(loop, 16.67);
 //# sourceMappingURL=Template.js.map

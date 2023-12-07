@@ -8,7 +8,6 @@ namespace Template {
         T000: "Irgendwann kommt der Moment, in dem du entschieden musst, ob du die Seite umblätterst, oder das Buch schließt.",
       },
     };
-
     //Szenenablauf
     ƒS.Sound.setMasterVolume(8);
     await satzbau(characters.MainNarrator, text.MainNarrator.T000, true, true, 50, 50, sound.MainNarrator, 100);
