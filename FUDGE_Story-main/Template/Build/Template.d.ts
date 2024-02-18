@@ -48,6 +48,7 @@ declare namespace Template {
         Entscheidungsfrage2: number;
         Entscheidugnsfrage3: number;
         Entscheidungsfrage4: number;
+        gefallen: number;
     };
     function horizontalShake(): Promise<void>;
     function verticalShake(): Promise<void>;
@@ -348,5 +349,5 @@ declare namespace Template {
     function Szene4_1(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function Szene5_Entscheidung(): ƒS.SceneReturn;
+    function Szene4_2(): ƒS.SceneReturn;
 }

@@ -54,6 +54,7 @@ var Template;
         Entscheidungsfrage2: 0,
         Entscheidugnsfrage3: 0,
         Entscheidungsfrage4: 0,
+        gefallen: 0,
     };
     async function horizontalShake() {
         let scene = document.getElementsByTagName("scene")[0];
@@ -146,7 +147,7 @@ var Template;
     Template.locations = {
         waldweg: {
             name: "waldweg",
-            background: "./Images/Backgrounds/Moonsky.png",
+            background: "./Images/Backgrounds/Waldweg/waldweg.png",
         },
         meadow: {
             name: "meadow",
@@ -714,9 +715,9 @@ var Template;
         Template.gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
         //Szenen aufrufen bezogen auf die .TS Datei
         let scenes = [
-            { id: "Szene0_1", scene: Template.Szene0_1, name: "Szene0_1" },
-            { id: "Szene1_1", scene: Template.Szene1_1, name: "Szene1_1" },
-            { id: "Szene1_2", scene: Template.Szene1_2, name: "Szene1_2" },
+            //{ id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
+            //{ id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
+            //{ id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
             { id: "Szene1_3", scene: Template.Szene1_3, name: "Szene1_3" },
             { id: "Szene1_4", scene: Template.Szene1_4, name: "Szene1_4" },
             { id: "Szene1_5", scene: Template.Szene1_5, name: "Szene1_5" },
@@ -1552,6 +1553,7 @@ var Template;
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0021, true, true, 5, 50, Template.sound.MainNarrator, 1);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.M0022, true, true, 5, 50, Template.sound.MainNarrator, 1);
                     gekleidet = 3;
+                    Template.ƒS.Inventory.add(Template.items.Kleidung);
                     Aktion01.splice(1, 1, "");
                     break;
                 case Aktion01[2]:
@@ -1859,6 +1861,8 @@ var Template;
                 T0030: ". . .",
                 T0031: "Da hast du ja nochmal Glück gehabt",
                 T0032: "Du zeigst das Ticket vor",
+                T0033: "Mit dem Kopf durch die Wand. . .",
+                T0034: "Ob das wohl gut geht",
             },
             School: {
                 S0000: "ERINNERUNG",
@@ -1918,6 +1922,32 @@ var Template;
                 T1023: "Nein! Du hast Glück gehabt!",
                 T1024: "Ich lass dich noch davon kommen. . .",
                 T1025: "Jetzt verschwinde!",
+                T1026: ". . .",
+                T1027: "Andererseits. . .",
+                T1028: "Es gäbe drinnen noch ein Platz. . .",
+                T1029: "Noch E-EIN TICKET das nicht verkauft wurde. . .",
+                T1030: "Ich könnte es dir geben. . .",
+                T1031: "Wenn du mir einen Gefallen tust. . .",
+                //Gefallen
+                T2001: "Du willst garnicht hören worum es sich handelt?",
+                T2002: "Gut, jedem das seine schätze ich. . .",
+                T2003: "Merk dir das. Du schuldest mir einen Gefallen",
+                T2004: "Vielleicht nicht jetzt",
+                T2005: "Vielleicht nicht heute. . .",
+                T2006: "Vielleicht nicht nächsten Monat. . .",
+                T2007: "ABER DU SCHULDEST MIR EINEN GEFALLEN",
+                T2008: "Ich drücke für dich ein Auge zu. . .",
+                T2009: "Dieses EINE Mal",
+                T2010: "Jetzt geh schon, bevor ich es mir anders überlege!",
+                //reinlaufen
+                T3001: "Hey ähm. . . was machst du da?",
+                T3002: "HEY!!!",
+                T3003: "Du kannst doch nicht einfach so reinlaufen ohne ein Ticket!",
+                T3004: "Oder kannst du das?",
+                T3005: "Vielleicht kann er das. . .",
+                T3006: "Das wird ein Nachspiel haben!",
+                T3007: "Das wirst du schon sehen!!!",
+                T3008: "Du wirst schon sehen was es heißt, mich DEN TICKETKONTROLLEUR zu überlisten!",
                 //beleidigen
                 T0019: "Was hast du gerade gesagt?",
                 T0020: "Oha",
@@ -1967,6 +1997,8 @@ var Template;
         let sneaken = 0;
         let überreden = 0;
         let lügen = 0;
+        //testing
+        //Theater Front
         await Template.ƒS.Sound.fade(Template.sound.peopletalking, 0.05, 3, true);
         await Template.ƒS.update(2);
         await Template.ƒS.Location.show(Template.locations.theaterfront);
@@ -1997,88 +2029,89 @@ var Template;
                 await Template.satzbau(Template.characters.MainNarrator, text.School.S0001, true, true, 5, 50, Template.sound.School, 2);
                 await Template.satzbau(Template.characters.MainNarrator, text.School.S0002, true, true, 5, 50, Template.sound.School, 2);
                 umsehen = 1;
-                break;
-        }
-        if (umsehen == 1) {
-            //entschuldigung = angenommen
-            if (Template.dataForSave.entschuldigung == 1) {
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0000, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0001, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0002, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0003, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0004, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0005, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0006, false, false, 5, 50, Template.sound.Elo, 2);
-                await Template.ƒS.Sound.play(Template.sound.buttonhover, .2, false);
-                let setzen = {
-                    setzen: "Sitzgelegenheit annehmen",
-                    ablehnen: "Ablehnen",
-                };
-                let setzelement = await Template.ƒS.Menu.getInput(setzen, "auswahl");
-                switch (setzelement) {
-                    case setzen.setzen:
-                        await Template.buttonpress(Template.sound.buttonpress, .2);
-                        Template.dataForSave.good + 1;
-                        await Template.satzbau(Template.characters.Elo, text.Elo.E0007, true, true, 5, 50, Template.sound.Elo, 2);
-                        Template.ƒS.Inventory.add(Template.items.Ticket);
-                        ticketbekommen = 1;
-                        break;
-                    case setzen.ablehnen:
-                        await Template.buttonpress(Template.sound.buttonpress, .2);
-                        Template.dataForSave.evil + 1;
-                        await Template.satzbau(Template.characters.Elo, text.Elo.E0014, true, true, 5, 50, Template.sound.Elo, 2);
-                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0007, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                if (umsehen == 1) {
+                    //entschuldigung = angenommen
+                    if (Template.dataForSave.entschuldigung == 1) {
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0000, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0001, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0002, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0003, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0004, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0005, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0006, false, false, 5, 50, Template.sound.Elo, 2);
+                        await Template.ƒS.Sound.play(Template.sound.buttonhover, .2, false);
+                        let setzen = {
+                            setzen: "Sitzgelegenheit annehmen",
+                            ablehnen: "Ablehnen",
+                        };
+                        let setzelement = await Template.ƒS.Menu.getInput(setzen, "auswahl");
+                        switch (setzelement) {
+                            case setzen.setzen:
+                                await Template.buttonpress(Template.sound.buttonpress, .2);
+                                Template.dataForSave.good + 1;
+                                await Template.satzbau(Template.characters.Elo, text.Elo.E0007, true, true, 5, 50, Template.sound.Elo, 2);
+                                Template.ƒS.Inventory.add(Template.items.Ticket);
+                                ticketbekommen = 1;
+                                break;
+                            case setzen.ablehnen:
+                                await Template.buttonpress(Template.sound.buttonpress, .2);
+                                Template.dataForSave.evil + 1;
+                                await Template.satzbau(Template.characters.Elo, text.Elo.E0014, true, true, 5, 50, Template.sound.Elo, 2);
+                                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0007, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                                ticketbekommen = 2;
+                                break;
+                        }
+                    }
+                    //entschuldigung = Anruf abgelehnt
+                    if (Template.dataForSave.entschuldigung == 2) {
                         ticketbekommen = 2;
-                        break;
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0008, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0009, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0010, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.MainNarrator, text.School.S0003, true, true, 5, 50, Template.sound.School, 2);
+                        await Template.satzbau(Template.characters.MainNarrator, text.School.S0004, true, true, 5, 50, Template.sound.School, 2);
+                        await Template.satzbau(Template.characters.MainNarrator, text.School.S0005, true, true, 5, 50, Template.sound.School, 2);
+                        await Template.satzbau(Template.characters.MainNarrator, text.School.S0006, true, true, 5, 50, Template.sound.School, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0011, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0012, true, true, 5, 50, Template.sound.Elo, 2);
+                        await Template.satzbau(Template.characters.Elo, text.Elo.E0013, false, false, 5, 50, Template.sound.Elo, 2);
+                    }
+                    //Entschuldigung abgelehnt
+                    if (Template.dataForSave.entschuldigung == 3) {
+                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0008, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0009, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0010, false, false, 5, 50, Template.sound.MainNarrator, 2);
+                        ticketbekommen == 2;
+                    }
                 }
-            }
-            //entschuldigung = Anruf abgelehnt
-            if (Template.dataForSave.entschuldigung == 2) {
-                ticketbekommen = 2;
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0008, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0009, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0010, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.School.S0003, true, true, 5, 50, Template.sound.School, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.School.S0004, true, true, 5, 50, Template.sound.School, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.School.S0005, true, true, 5, 50, Template.sound.School, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.School.S0006, true, true, 5, 50, Template.sound.School, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0011, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0012, true, true, 5, 50, Template.sound.Elo, 2);
-                await Template.satzbau(Template.characters.Elo, text.Elo.E0013, false, false, 5, 50, Template.sound.Elo, 2);
-            }
-            //Entschuldigung abgelehnt
-            if (Template.dataForSave.entschuldigung == 3) {
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0008, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0009, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0010, false, false, 5, 50, Template.sound.MainNarrator, 2);
-                ticketbekommen == 2;
-            }
+                break;
         }
         //Ticket erhalten
         if (ticketbekommen == 1) {
             console.log("Hollalaaaa");
             let saalbetreten = {
                 rein: "Saal betreten",
-                reinschleich: "Reinschleichen",
+                //reinschleich: "Reinschleichen",
             };
             await Template.ƒS.Sound.play(Template.sound.buttonhover, .2, false);
             let ticketelement = await Template.ƒS.Menu.getInput(saalbetreten, "auswahl");
             switch (ticketelement) {
                 case saalbetreten.rein:
                     Template.dataForSave.good + 1;
+                    await Template.buttonpress(Template.sound.buttonpress, .2);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0017, true, true, 5, 50, Template.sound.MainNarrator, 2);
                     break;
-                case saalbetreten.reinschleich:
-                    Template.dataForSave.evil + 1;
-                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0011, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0012, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0013, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0014, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0015, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0016, false, false, 5, 50, Template.sound.MainNarrator, 2);
-                    sneaken = 1;
-                    console.log(sneaken);
-                    break;
+                /*case saalbetreten.reinschleich:
+                  dataForSave.evil + 1;
+                  await satzbau(characters.MainNarrator, text.MainNarrator.T0011, true, true, 5, 50, sound.MainNarrator, 2);
+                  await satzbau(characters.MainNarrator, text.MainNarrator.T0012, true, true, 5, 50, sound.MainNarrator, 2);
+                  await satzbau(characters.MainNarrator, text.MainNarrator.T0013, true, true, 5, 50, sound.MainNarrator, 2);
+                  await satzbau(characters.MainNarrator, text.MainNarrator.T0014, true, true, 5, 50, sound.MainNarrator, 2);
+                  await satzbau(characters.MainNarrator, text.MainNarrator.T0015, true, true, 5, 50, sound.MainNarrator, 2);
+                  await satzbau(characters.MainNarrator, text.MainNarrator.T0016, false, false, 5, 50, sound.MainNarrator, 2);
+                  sneaken = 1;
+                  console.log(sneaken);
+                  break;*/
             }
         }
         if (ticketbekommen == 2) {
@@ -2087,7 +2120,7 @@ var Template;
             await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0033, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
             let saalbetreten = {
                 überzeugen: "Ticketkontrolleur überreden",
-                schleichen: "Reinschleichen",
+                //schleichen: "Reinschleichen",
             };
             let ticketelement = await Template.ƒS.Menu.getInput(saalbetreten, "auswahl");
             await Template.ƒS.Sound.play(Template.sound.buttonhover, .2, false);
@@ -2095,172 +2128,220 @@ var Template;
                 case saalbetreten.überzeugen:
                     Template.dataForSave.good + 1;
                     überreden = 1;
+                    await Template.buttonpress(Template.sound.buttonpress, .2);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0018, true, true, 5, 50, Template.sound.MainNarrator, 2);
                     await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0019, true, true, 5, 50, Template.sound.MainNarrator, 2);
                     break;
-                case saalbetreten.schleichen:
-                    Template.dataForSave.evil + 1;
-                    sneaken = 1;
-                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0018, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0019, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                    break;
+                /*case saalbetreten.schleichen:
+                  dataForSave.evil + 1;
+                  sneaken = 1;
+                  await satzbau(characters.MainNarrator, text.MainNarrator.T0018, true, true, 5, 50, sound.MainNarrator, 2);
+                  await satzbau(characters.MainNarrator, text.MainNarrator.T0019, true, true, 5, 50, sound.MainNarrator, 2);
+                  break;
+              }*/
             }
-        }
-        //Überzeugen
-        if (überreden == 1) {
-            //Abwägen von Good und Evil
-            if (Template.dataForSave.good > Template.dataForSave.evil) {
-                //ja kein Problem, passiert dies das. Von mir aus kannst du rein. Aber nur eine Außnahme
-            }
-            if (Template.dataForSave.evil >= Template.dataForSave.good) {
-                //Sag mal wie kannst du nur bla bla bla - Überreden
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0000, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0001, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0002, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0003, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0004, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0005, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0006, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0007, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0008, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0009, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0010, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0020, false, false, 5, 50, Template.sound.MainNarrator, 2);
-                let ticketgespräch = {
-                    schwester: "Meine Schwester",
-                    drohen: "Wie kannst du es wagen?",
-                };
-                let überredenelement = await Template.ƒS.Menu.getInput(ticketgespräch, "auswahl");
-                await Template.ƒS.Sound.play(Template.sound.buttonhover, .2, false);
-                switch (überredenelement) {
-                    case ticketgespräch.schwester:
-                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0021, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0041, false, false, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0022, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0023, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0024, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0025, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0026, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                        await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0027, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0042, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0052, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0053, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0054, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        break;
-                    case ticketgespräch.drohen:
-                        Template.dataForSave.evil + 1;
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0011, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0012, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0013, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0014, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0015, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0016, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0017, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0018, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0019, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1020, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1021, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1022, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1023, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1024, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1025, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                        sneaken = 1;
-                        break;
+            //Überzeugen
+            if (überreden == 1) {
+                //Abwägen von Good und Evil
+                if (Template.dataForSave.good > Template.dataForSave.evil) {
+                    //ja kein Problem, passiert dies das. Von mir aus kannst du rein. Aber nur eine Außnahme
                 }
+                if (Template.dataForSave.evil >= Template.dataForSave.good) {
+                    //Sag mal wie kannst du nur bla bla bla - Überreden
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0000, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0001, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0002, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0003, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0004, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0005, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0006, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0007, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0008, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0009, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0010, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0020, false, false, 5, 50, Template.sound.MainNarrator, 2);
+                    let ticketgespräch = {
+                        schwester: "Meine Schwester",
+                        drohen: "Wie kannst du es wagen?",
+                    };
+                    let überredenelement = await Template.ƒS.Menu.getInput(ticketgespräch, "auswahl");
+                    await Template.ƒS.Sound.play(Template.sound.buttonhover, .2, false);
+                    switch (überredenelement) {
+                        case ticketgespräch.schwester:
+                            await Template.buttonpress(Template.sound.buttonpress, .2);
+                            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0021, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0041, false, false, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0022, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0023, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0024, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0025, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0026, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0027, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0042, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0052, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0053, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0054, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            break;
+                        case ticketgespräch.drohen:
+                            Template.dataForSave.evil + 1;
+                            await Template.buttonpress(Template.sound.buttonpress, .2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0011, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0012, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0013, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0014, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0015, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0016, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0017, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0018, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            //await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0019, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1020, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1021, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1022, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1023, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1024, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1025, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            //andererseits bla bla
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1026, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1027, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1028, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1029, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1030, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T1031, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                            sneaken = 1;
+                            let einengefallen = {
+                                gefallenzustimmen: "Gefallen erwidern",
+                                reinlaufen: "Einfach reinlaufen",
+                            };
+                            let eingefallenelement = await Template.ƒS.Menu.getInput(einengefallen, "auswahl");
+                            await Template.ƒS.Sound.play(Template.sound.buttonhover, .2, false);
+                            switch (eingefallenelement) {
+                                case einengefallen.gefallenzustimmen:
+                                    await Template.buttonpress(Template.sound.buttonpress, .2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2001, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2002, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2003, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2004, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2005, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2006, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2007, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2008, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2009, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T2010, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    Template.dataForSave.gefallen = 1;
+                                    break;
+                                case einengefallen.reinlaufen:
+                                    Template.dataForSave.evil + 1;
+                                    await Template.buttonpress(Template.sound.buttonpress, .2);
+                                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0033, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                                    await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0034, true, true, 5, 50, Template.sound.MainNarrator, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T3001, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T3002, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T3003, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T3004, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T3005, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T3006, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T3007, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T3008, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
+                                    break;
+                            }
+                    }
+                }
+                /*if (sneaken == 1) {
+                  dataForSave.evil + 1;
+                  if (ticketbekommen == 2) {
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0042, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.MainNarrator, text.MainNarrator.T0028, true, true, 5, 50, sound.MainNarrator, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T00442, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.MainNarrator, text.MainNarrator.T0029, true, true, 5, 50, sound.MainNarrator, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0044, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0045, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0046, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0047, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0048, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0049, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.MainNarrator, text.MainNarrator.T0030, true, true, 5, 50, sound.MainNarrator, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0050, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0051, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0052, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0053, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0054, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.MainNarrator, text.MainNarrator.T0031, true, true, 5, 50, sound.MainNarrator, 2);
+                  }
+                  //Du schleichst hier rum! Bla Bla bla bla bla hast du ein ticket?
+            
+                  if (ticketbekommen == 1) {
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0042, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.MainNarrator, text.MainNarrator.T0028, true, true, 5, 50, sound.MainNarrator, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T00442, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.MainNarrator, text.MainNarrator.T0029, true, true, 5, 50, sound.MainNarrator, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0044, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0045, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0046, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0047, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0048, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0049, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.MainNarrator, text.MainNarrator.T0032, true, true, 5, 50, sound.MainNarrator, 2);
+            
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0034, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0035, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0036, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0037, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0038, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0039, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0040, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0041, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0042, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    //Ja, das ist trotzdem nicht gut rumzuschleichen aber du kannst gerne rein
+                  }
+                  //bla bla bla warm schleichst du rum das macht man nicht! Aber du siehst aus wie jemand der das nicht so oft tut. Komm, heute mache ich eine ausnahme
+                }*/
+                /*if (ticketbekommen == 1) {
+                  if (sneaken == 1) {
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0050, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0051, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0052, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0053, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0054, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                  }
+                  //Viel Spaß bla bla
+                }*/
+                //ÜBERGANG INS THEATER
+                //Im Saal
+                /*    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0031, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                   await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0032, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                   await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0033, false, false, 5, 50, sound.Ticketkontrolleur, 2);
+               
+                   
+                   let ticketgeben = {
+                     geben: "Ticket vorzeigen",
+                   };
+                   let gebenelement = await ƒS.Menu.getInput(ticketgeben, "auswahl");
+                   await ƒS.Sound.play(sound.buttonhover, .2, false);
+                   switch (gebenelement) {
+                     case ticketgeben.geben:
+                       dataForSave.good + 1;
+                       break;
+                   }
+                   await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0034, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                   await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0035, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                   await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0036, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                   await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0037, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                   await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0038, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                   await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0039, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+                   await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0040, true, true, 5, 50, sound.Ticketkontrolleur, 2);
+               
+                   //Reinschleichen
+                   if (sneaken == 1) {
+               
+                   } */
+                Template.ƒS.Character.hideAll();
+                Template.ƒS.Speech.hide();
+                await Template.ƒS.Location.show(Template.locations.blackbackground);
+                Template.ƒS.update(3);
+                await Template.ƒS.Sound.fade(Template.sound.nightambience, 0, 4, false);
+                Template.ƒS.update(1);
             }
         }
-        if (sneaken == 1) {
-            Template.dataForSave.evil + 1;
-            if (ticketbekommen == 2) {
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0042, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0028, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T00442, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0029, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0044, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0045, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0046, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0047, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0048, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0049, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0030, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0050, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0051, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0052, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0053, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0054, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0031, true, true, 5, 50, Template.sound.MainNarrator, 2);
-            }
-            //Du schleichst hier rum! Bla Bla bla bla bla hast du ein ticket?
-            if (ticketbekommen == 1) {
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0042, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0028, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T00442, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0029, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0044, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0045, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0046, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0047, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0048, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0049, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0032, true, true, 5, 50, Template.sound.MainNarrator, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0034, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0035, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0036, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0037, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0038, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0039, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0040, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0041, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0042, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                //Ja, das ist trotzdem nicht gut rumzuschleichen aber du kannst gerne rein
-            }
-            //bla bla bla warm schleichst du rum das macht man nicht! Aber du siehst aus wie jemand der das nicht so oft tut. Komm, heute mache ich eine ausnahme
-        }
-        if (ticketbekommen == 1) {
-            if (sneaken == 1) {
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0050, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0051, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0052, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0053, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-                await Template.satzbau(Template.characters.Ticketkontrolleur, text.Ticketkontrolleur.T0054, true, true, 5, 50, Template.sound.Ticketkontrolleur, 2);
-            }
-            //Viel Spaß bla bla
-        }
-        //ÜBERGANG INS THEATER
-        //Im Saal
-        /*    await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0031, true, true, 5, 50, sound.Ticketkontrolleur, 2);
-           await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0032, true, true, 5, 50, sound.Ticketkontrolleur, 2);
-           await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0033, false, false, 5, 50, sound.Ticketkontrolleur, 2);
-       
-           
-           let ticketgeben = {
-             geben: "Ticket vorzeigen",
-           };
-           let gebenelement = await ƒS.Menu.getInput(ticketgeben, "auswahl");
-           await ƒS.Sound.play(sound.buttonhover, .2, false);
-           switch (gebenelement) {
-             case ticketgeben.geben:
-               dataForSave.good + 1;
-               break;
-           }
-           await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0034, true, true, 5, 50, sound.Ticketkontrolleur, 2);
-           await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0035, true, true, 5, 50, sound.Ticketkontrolleur, 2);
-           await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0036, true, true, 5, 50, sound.Ticketkontrolleur, 2);
-           await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0037, true, true, 5, 50, sound.Ticketkontrolleur, 2);
-           await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0038, true, true, 5, 50, sound.Ticketkontrolleur, 2);
-           await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0039, true, true, 5, 50, sound.Ticketkontrolleur, 2);
-           await satzbau(characters.Ticketkontrolleur, text.Ticketkontrolleur.T0040, true, true, 5, 50, sound.Ticketkontrolleur, 2);
-       
-           //Reinschleichen
-           if (sneaken == 1) {
-       
-           } */
-        Template.ƒS.Character.hideAll();
-        Template.ƒS.Speech.hide();
-        await Template.ƒS.Location.show(Template.locations.blackbackground);
-        Template.ƒS.update(3);
-        await Template.ƒS.Sound.fade(Template.sound.nightambience, 0, 4, false);
-        Template.ƒS.update(1);
     }
     Template.Szene1_4 = Szene1_4;
 })(Template || (Template = {}));
@@ -3716,11 +3797,15 @@ var Template;
                 await Template.satzbau(Template.characters.Halistrator, text.Halistrator.T133, true, true, 5, 50, Template.sound.Halistrator, 3);
                 await Template.ƒS.Sound.fade(Template.sound.Meadow, 0, 2, false);
                 await Template.ƒS.update(2);
+                Template.ƒS.Location.show(Template.locations.blackbackground);
+                Template.ƒS.update(3);
                 await Template.ƒS.Character.hide(Template.characters.Halistrator);
                 await Template.ƒS.update(5);
                 await Template.satzbau(Template.characters.Halistrator, text.Halistrator.T134, true, true, 5, 50, Template.sound.Halistrator, 3);
                 await Template.satzbau(Template.characters.Halistrator, text.Halistrator.T135, true, true, 5, 50, Template.sound.Halistrator, 3);
                 await Template.satzbau(Template.characters.Halistrator, text.Halistrator.T136, true, true, 5, 50, Template.sound.Halistrator, 3);
+                await Template.ƒS.Character.hide(Template.characters.Halistrator);
+                await Template.ƒS.update(5);
                 await Template.satzbau(Template.characters.Halistrator, text.Halistrator.T137, true, true, 5, 50, Template.sound.Halistrator, 3);
                 break;
         }
@@ -3740,12 +3825,21 @@ var Template;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
-    async function Szene5_Entscheidung() {
-        console.log("FudgeStory Template Scene5_Entscheidung starting");
+    async function Szene4_2() {
+        console.log("FudgeStory Template Scene4_2 starting");
         console.log(Template.characters.MainNarrator);
-        Template.ƒS.Character.hideAll();
-        Template.ƒS.Speech.hide();
-        Template.ƒS.update(1);
+        //Gesprochener Text
+        let text = {
+            MainNarrator: {
+                T001: ". . .",
+            },
+            whiteknight: {
+                T000: ". . .",
+            },
+            Halistrator: {
+                T001: "Nur ein Traum? Wie meinst du das?",
+            },
+        };
         //Szenenablauf
         //characters.whiteknight.name = "Vasi";
         //dataForSave.protagonist.name = characters.whiteknight.name;+
@@ -3753,15 +3847,17 @@ var Template;
             Template.dataForSave.protagonist.name = "???";
             Template.characters.whiteknight.name = Template.dataForSave.protagonist.name;
         }
-        if (Template.dataForSave.Entscheidungsfrage1 == 1) {
-            return "Szene6_2";
-        }
-        else {
-            Template.dataForSave.Entscheidungsfrage1 = 2;
-            return "Szene_6_1";
-        }
+        await Template.ƒS.Progress.save();
+        await Template.ƒS.update(1);
+        await Template.ƒS.Location.show(Template.locations.chapter1);
+        await Template.ƒS.update(1);
+        Template.ƒS.Sound.setMasterVolume(11);
+        await Template.ƒS.Sound.fade(Template.sound.deepdark, 0.07, 0.1, true);
+        await Template.ƒS.update(5);
+        //Aufwachen - Kapitel 1
+        await Template.satzbau(Template.characters.whiteknight, text.whiteknight.T000, true, true, 5, 50, Template.sound.MainNarrator, 3);
     }
-    Template.Szene5_Entscheidung = Szene5_Entscheidung;
+    Template.Szene4_2 = Szene4_2;
 })(Template || (Template = {}));
 // async function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number, voicetype: string, skiplänge: number) {
 //   let speechlength = text.length / 4;

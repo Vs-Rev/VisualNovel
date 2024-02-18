@@ -891,11 +891,15 @@ namespace Template {
         await satzbau(characters.Halistrator, text.Halistrator.T133, true, true, 5, 50, sound.Halistrator, 3);
         await ƒS.Sound.fade(sound.Meadow, 0, 2, false);
         await ƒS.update(2);
+        ƒS.Location.show(locations.blackbackground);
+        ƒS.update(3);
         await ƒS.Character.hide(characters.Halistrator);
         await ƒS.update(5);
         await satzbau(characters.Halistrator, text.Halistrator.T134, true, true, 5, 50, sound.Halistrator, 3);
         await satzbau(characters.Halistrator, text.Halistrator.T135, true, true, 5, 50, sound.Halistrator, 3);
         await satzbau(characters.Halistrator, text.Halistrator.T136, true, true, 5, 50, sound.Halistrator, 3);
+        await ƒS.Character.hide(characters.Halistrator);
+        await ƒS.update(5);
         await satzbau(characters.Halistrator, text.Halistrator.T137, true, true, 5, 50, sound.Halistrator, 3);
         break;
     }

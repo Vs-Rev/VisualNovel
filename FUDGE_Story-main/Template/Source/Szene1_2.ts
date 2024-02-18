@@ -247,6 +247,7 @@ namespace Template {
         await satzbau(characters.MainNarrator, text.MainNarrator.M0021 , true, true, 5, 50, sound.MainNarrator, 1);
         await satzbau(characters.MainNarrator, text.MainNarrator.M0022 , true, true, 5, 50, sound.MainNarrator, 1);
         gekleidet = 3;
+        ƒS.Inventory.add(items.Kleidung); 
         Aktion01.splice(1, 1, "");
         break;
       case Aktion01[2]:

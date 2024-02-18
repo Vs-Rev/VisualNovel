@@ -50,8 +50,8 @@ html, body {
 
 scene {
   cursor: url('./Images/Icons/spades.png'), auto;
-    width: 1280px; 
-    height: 720px; 
+    width: 1280px;
+    height: 720px;
     display: inline-block;
     position: absolute;
 }
@@ -79,7 +79,7 @@ speech {
   line-height: 50px;
   padding-top: 10px;
   font-size: 12pt;
-  bottom: 0px;
+  bottom: 50px;
   left: 0px;
   color: rgb(245, 220, 220);
   /*background-color: rgba(0, 0, 0, 0.918);*/
@@ -263,8 +263,10 @@ cursor:pointer
 /* Inventar */
 
 dialog[type="inventory"] {
-  align-items: center;
+  align-items: auto;
   justify-content: center;
+  text-align: left;
+  max-width: auto;
   cursor: url('./Images/Icons/spades.png'), auto;
   background-color: rgba(0, 0, 0, 0.8);
   border-style: dashed;
@@ -280,6 +282,7 @@ dialog[type="inventory"] img{
   max-width: 200px;
   height: auto;
 }
+
 
 dialog[type="inventory"]:hover{
   cursor: url('./Images/Icons/spadesblue.png'), auto;

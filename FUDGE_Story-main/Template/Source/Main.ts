@@ -56,6 +56,7 @@ namespace Template {
     Entscheidungsfrage2: 0,
     Entscheidugnsfrage3: 0,
     Entscheidungsfrage4: 0,
+    gefallen: 0,
   };
 
   export async function horizontalShake(): Promise<void> {
@@ -155,7 +156,7 @@ namespace Template {
   export let locations = {
     waldweg: {
       name: "waldweg",
-      background: "./Images/Backgrounds/Moonsky.png",
+      background: "./Images/Backgrounds/Waldweg/waldweg.png",
     },
     meadow: {
       name: "meadow",
@@ -735,9 +736,9 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      { id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
-      { id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
-      { id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
+      //{ id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
+      //{ id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
+      //{ id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
       { id: "Szene1_3", scene: Szene1_3, name: "Szene1_3" },
       { id: "Szene1_4", scene: Szene1_4, name: "Szene1_4" },
       { id: "Szene1_5", scene: Szene1_5, name: "Szene1_5" },
