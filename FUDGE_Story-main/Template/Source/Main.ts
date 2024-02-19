@@ -36,6 +36,13 @@ namespace Template {
       static: true,
       exist: true,
     },
+    Packt: {
+      name: "BILLs Flamme",
+      description: "Eine seltsame kalte blaue Flamme. Wenn BILL mit dir spricht, leuchtet sie stärker",
+      image: "./Images/Inventory/BILLsPakt.png",
+      static: true,
+      exist: true,
+    },
     Ticket: {
       name: "Ticket",
       description: "Die Eintrittskarte für die Theatershow der Schule mit dem Sitzplatz: 05C 01D",
@@ -51,6 +58,8 @@ namespace Template {
     protagonist: {
       name: "",
     },
+    billspakt: false,
+    billgetroffen: false,
     evil: 0,
     good: 0,
     entschuldigung: 0,
@@ -106,7 +115,9 @@ namespace Template {
     Meadow: "./Audio/Themes/Meadow.wav",
     Halistheme: "./Audio/Themes/HalisTheme.wav",
     MainTheme: "./Audio/Themes/MainTheme.wav",
+    BillTheme: "./Audio/Themes/asd.wav",
     //sounds
+    tension: "./Audio/Soundeffects/tension.wav",
     examplesound: "",
     inventoryadd: "./Audio/Soundeffects/Inventoryaddsound.wav",
     blackscreen: "./Audio/Soundeffects/Retroeffect1.wav",
@@ -136,6 +147,7 @@ namespace Template {
     oldmagic: "./Audio/Soundeffects/oldmagic.wav",
     teleport: "./Audio/Soundeffects/teleport.wav",
     //ambience
+    forest: "./Audio/Ambience/forest.wav",
     nightambience: "./Audio/Ambience/Nightambience.wav",
     darkwind: "./Audio/Ambience/darkwind.wav",
     forestnight: "./Audio/Ambience/Forestnight.wav",
@@ -300,6 +312,14 @@ namespace Template {
     tipp4: {
       name: "tipp4",
       background: "./Images/Tipps/Tipp5.png",
+    },
+    schlossweitsicht: {
+      name: "schlossweitsicht",
+      background: "./Images/Backgrounds/Schloss/Castle.png",
+    },
+    TempelimWald: {
+      name: "Tempel",
+      background: "./Images/Backgrounds/Bill/Temple.png",
     }
   };
 
@@ -351,6 +371,17 @@ namespace Template {
       pose: {
         standard: "./Images/Characters/Mysteryman/Mysteryman.png",
         eyesonly: "./Images/Characters/Mysteryman/Mysteryman_Eyesonly.png"
+      }
+    },
+    Bill: {
+      name: "BILL",
+      origin: ƒS.ORIGIN.CENTER,
+      pose: {
+        standard: "./Images/Characters/Bill/BigSize/Bill_Standard-export.png",
+        sauer: "./Images/Characters/Bill/BigSize/Bill_Angry-export.png",
+        holy: "./Images/Characters/Bill/BigSize/Bill_Introduction-export.png",
+        bored: "./Images/Characters/Bill/BigSize/Bill_Bored-export.png",
+        happy: "./Images/Characters/Bill/BigSize/Bill_Happy-export.png",
       }
     },
     Leserin: {
@@ -740,13 +771,14 @@ namespace Template {
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
       //{ id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
-      { id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
+      //{ id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
       //{ id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
-      { id: "Szene1_3", scene: Szene1_3, name: "Szene1_3" },
-      { id: "Szene1_4", scene: Szene1_4, name: "Szene1_4" },
-      { id: "Szene1_5", scene: Szene1_5, name: "Szene1_5" },
-      { id: "Szene1_6", scene: Szene1_6, name: "Szene1_6" },
-      { id: "Szene4_1", scene: Szene4_1, name: "Szene4_1" },
+      //{ id: "Szene1_3", scene: Szene1_3, name: "Szene1_3" },
+      //{ id: "Szene1_4", scene: Szene1_4, name: "Szene1_4" },
+      //{ id: "Szene1_5", scene: Szene1_5, name: "Szene1_5" },
+      //{ id: "Szene1_6", scene: Szene1_6, name: "Szene1_6" },
+      //{ id: "Szene4_1", scene: Szene4_1, name: "Szene4_1" },
+      { id: "Szene4_2", scene: Szene4_2, name: "Szene4_2" }
       //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
       //{ scene: Szene2, name: "Szene2" },
     ];

@@ -31,6 +31,13 @@ declare namespace Template {
             static: boolean;
             exist: boolean;
         };
+        Packt: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+            exist: boolean;
+        };
         Ticket: {
             name: string;
             description: string;
@@ -43,6 +50,8 @@ declare namespace Template {
         protagonist: {
             name: string;
         };
+        billspakt: boolean;
+        billgetroffen: boolean;
         evil: number;
         good: number;
         entschuldigung: number;
@@ -64,6 +73,8 @@ declare namespace Template {
         Meadow: string;
         Halistheme: string;
         MainTheme: string;
+        BillTheme: string;
+        tension: string;
         examplesound: string;
         inventoryadd: string;
         blackscreen: string;
@@ -92,6 +103,7 @@ declare namespace Template {
         laughterold: string;
         oldmagic: string;
         teleport: string;
+        forest: string;
         nightambience: string;
         darkwind: string;
         forestnight: string;
@@ -252,6 +264,14 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        schlossweitsicht: {
+            name: string;
+            background: string;
+        };
+        TempelimWald: {
+            name: string;
+            background: string;
+        };
     };
     function animationwalking(): Promise<void>;
     let characters: {
@@ -261,6 +281,17 @@ declare namespace Template {
             pose: {
                 standard: string;
                 eyesonly: string;
+            };
+        };
+        Bill: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                standard: string;
+                sauer: string;
+                holy: string;
+                bored: string;
+                happy: string;
             };
         };
         Leserin: {
@@ -323,9 +354,6 @@ declare namespace Template {
     function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number, voicetype: string, skiplänge: number): Promise<void>;
     let delay: ƒS.Signal;
     function hndKeyPress(_event: KeyboardEvent): Promise<any>;
-}
-declare namespace Template {
-    function Scene(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Szene0_1(): ƒS.SceneReturn;
