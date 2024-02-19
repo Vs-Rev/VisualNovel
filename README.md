@@ -35,11 +35,14 @@ A FUDGE module for the easy development of interactive stories, visual novels an
 
 
 ## Wichtige Links im Überblick: 
-*[Spielbare Anwendung](https://vs-rev.github.io/VisualNovel/FUDGE_Story-main/Template/Template.html)
-*[Konzeptdokument](https://github.com/Vs-Rev/VisualNovel/tree/main/Documents/Konzeptionsdatien%20%26%20Brainstorming/Digital%20Artbook)
-*[Gepacktes Archiv mit sämtlichen relevanten Inhalten](https://www.mediafire.com/file/704ofpb8yshmet3/Gurev_Vasilii_The+Tale+of+a+Knight.rar/file)
+[Spielbare Anwendung](https://vs-rev.github.io/VisualNovel/FUDGE_Story-main/Template/Template.html)
+
+[Konzeptdokument](https://github.com/Vs-Rev/VisualNovel/tree/main/Documents/Konzeptionsdatien%20%26%20Brainstorming/Digital%20Artbook)
+
+[Gepacktes Archiv mit sämtlichen relevanten Inhalten](https://www.mediafire.com/file/704ofpb8yshmet3/Gurev_Vasilii_The+Tale+of+a+Knight.rar/file)
 Man beachte; Das Archiv konnte nicht auf GitHub hochgeladen werden, da sämtliche Inhalte das Push-Limit von 100MB überschreiten. Daher wurde das Archiv auf Mediafire hochgeladen.
-*[Link zu dem Ordner mit sämtlichen relevanten Inhalten](https://github.com/Vs-Rev/VisualNovel/tree/main/FUDGE_Story-main/Template)
+
+[Link zu dem Ordner mit sämtlichen relevanten Inhalten](https://github.com/Vs-Rev/VisualNovel/tree/main/FUDGE_Story-main/Template)
 Man beachte; Sämtliche übergeordnete Dateien (FUDGE_Story-main) beinhalten zusätzliche und irrelevante Dateien und wurden aus Referenzzwecken eingebaut.
 
 
