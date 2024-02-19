@@ -13,6 +13,9 @@ declare namespace Template {
             edge: number;
         };
     };
+    let state: {
+        a: number;
+    };
     let items: {
         pageVampire: {
             name: string;

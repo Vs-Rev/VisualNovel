@@ -17,6 +17,9 @@ var Template;
             edge: 1,
         }
     };
+    Template.state = {
+        a: 1,
+    };
     Template.items = {
         pageVampire: {
             name: "Vampire Novel Notes",
@@ -716,7 +719,7 @@ var Template;
         //Szenen aufrufen bezogen auf die .TS Datei
         let scenes = [
             //{ id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
-            //{ id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
+            { id: "Szene1_1", scene: Template.Szene1_1, name: "Szene1_1" },
             //{ id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
             { id: "Szene1_3", scene: Template.Szene1_3, name: "Szene1_3" },
             { id: "Szene1_4", scene: Template.Szene1_4, name: "Szene1_4" },
@@ -1064,6 +1067,7 @@ var Template;
         console.log("audio is being played");
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.newversion, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update(10);
+        Template.state.a = 10;
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/ false, /*skipbar*/ false, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0001, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);
         await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T0002, /*waitfornext*/ true, /*skipbar*/ true, /*pausenlänge*/ 3, /*geschwindigkeit*/ 50, /*Stimme*/ Template.sound.MainNarrator, /*skiplänge*/ 1);

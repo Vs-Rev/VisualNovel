@@ -18,6 +18,9 @@ namespace Template {
 
     }
   };
+  export let state = {
+    a: 1,
+  };
   export let items = {
     pageVampire: {
       name: "Vampire Novel Notes",
@@ -737,7 +740,7 @@ namespace Template {
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
       //{ id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
-      //{ id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
+      { id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
       //{ id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
       { id: "Szene1_3", scene: Szene1_3, name: "Szene1_3" },
       { id: "Szene1_4", scene: Szene1_4, name: "Szene1_4" },
