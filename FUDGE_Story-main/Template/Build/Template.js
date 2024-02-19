@@ -4424,7 +4424,9 @@ var Template;
                 await Template.ƒS.Character.hideAll;
                 await Template.ƒS.Sound.fade(Template.sound.wachentheme, 0, 3, true);
                 await Template.ƒS.Character.hide(Template.characters.Wache1);
+                await Template.ƒS.update(3);
                 await Template.ƒS.Character.hide(Template.characters.Wache2);
+                await Template.ƒS.update(3);
                 await Template.ƒS.Character.hide(Template.characters.Halistrator);
                 await Template.ƒS.update(3);
                 await Template.ƒS.Location.show(Template.locations.Thronsaal);
@@ -4434,7 +4436,8 @@ var Template;
                 await Template.ƒS.Character.show(Template.characters.Halistrator, Template.characters.Halistrator.pose.surprised, Template.ƒS.positionPercent(50, 48));
                 await Template.ƒS.update(3);
                 await Template.satzbau(Template.characters.Halistrator, text.Halistrator.T009, true, true, 5, 50, Template.sound.Halistrator, 3);
-                await Template.ƒS.Character.hideAll;
+                await Template.ƒS.Character.hide(Template.characters.Halistrator);
+                await Template.ƒS.update(2);
                 await Template.ƒS.Character.show(Template.characters.Berater, Template.characters.Berater.pose.standard, Template.ƒS.positionPercent(50, 48));
                 await Template.ƒS.update(3);
                 await Template.satzbau(Template.characters.Berater, text.Berater.T000, true, true, 5, 50, Template.sound.Elo, 3);
@@ -4450,8 +4453,8 @@ var Template;
                 await Template.satzbau(Template.characters.Berater, text.Berater.T009, true, true, 5, 50, Template.sound.Elo, 3);
                 await Template.buttonpress(Template.sound.buttonhover, .2);
                 let abenteuerannehmen = {
-                    annehmen: "Der Hofnarr",
-                    ablehnen: "Unterwerfen",
+                    annehmen: "Annehmen",
+                    ablehnen: "Ablehnen",
                 };
                 let abenteuerelement = await Template.ƒS.Menu.getInput(abenteuerannehmen, "auswahl");
                 switch (abenteuerelement) {
