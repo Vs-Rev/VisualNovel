@@ -174,6 +174,10 @@ namespace Template {
       name: "waldweg",
       background: "./Images/Backgrounds/Waldweg/waldweg.png",
     },
+    fortsetzungfolgt: {
+      name: "fortsetzungfolgt",
+      background: "./Images/Backgrounds/fortsetzungfolgt.png",
+    },
     meadow: {
       name: "meadow",
       background: "./Images/Backgrounds/Meadow/Meadow_Final.png",
@@ -385,6 +389,9 @@ namespace Template {
         standard: "./Images/Characters/Mysteryman/Mysteryman.png",
         eyesonly: "./Images/Characters/Mysteryman/Mysteryman_Eyesonly.png"
       }
+    },
+    MysteriousWoman: {
+      name: "Mysteriöse Frau",
     },
     Wache1: {
       name: "Wache 1",

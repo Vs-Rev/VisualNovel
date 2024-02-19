@@ -125,6 +125,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        fortsetzungfolgt: {
+            name: string;
+            background: string;
+        };
         meadow: {
             name: string;
             background: string;
@@ -295,6 +299,9 @@ declare namespace Template {
                 standard: string;
                 eyesonly: string;
             };
+        };
+        MysteriousWoman: {
+            name: string;
         };
         Wache1: {
             name: string;
