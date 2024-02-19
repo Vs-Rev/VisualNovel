@@ -11,9 +11,9 @@ A FUDGE module for the easy development of interactive stories, visual novels an
 
 | Nr | Bezeichnung           | Inhalt |
 |---:|-----------------------|------|
-|    | Titel                 |   |
-|    | Name                  |   |
-|    | Matrikelnummer        |   |
+|    | Titel                 |  Tale of a Knight  |
+|    | Name                  | Vasilii Gurev  |
+|    | Matrikelnummer        |  263754 |
 |  1 | Konzeption     | Die Story der Visual Novel wird in einer kurzen Inhaltsangabe beschrieben und der Konzeption beigefügt. In dieser sind jegliche Diagramme (Decision-Tree-Diagrams), Scribbles sowie entweder ein Storyboard, ein Drehbuch oder Ähnliches enthalten.                                                                                                                            |
 |  2 | Charaktersteckbriefe     | Kommen Archetypen zum Einsatz? Welche anderweitigen Charaktermodelle existieren (Steckbriefe)?                                                                                                                                                                                |
 |  3 | Auswahlmöglichkeiten | Dialogoptionen stellen _branching plots_ zur Verfügung und lassen den Spieler zu einem gewissen Grad selbstbestimmt handeln. Sind derartige Entscheidungen vorhanden und unterscheidet sich der Dialog je nach getätigter Auswahl?                                                                                                                                                     |
