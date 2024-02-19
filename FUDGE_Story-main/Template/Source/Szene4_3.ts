@@ -158,7 +158,7 @@ namespace Template {
     await ƒS.Location.show(locations.Schlosstor);
     await ƒS.update(3);
     await ƒS.Sound.fade(sound.wachentheme, 0.07, 3, true);
-    await ƒS.Character.show(characters.Wache1, characters.Wache2.pose.standard, ƒS.positionPercent(70, 48));
+    await ƒS.Character.show(characters.Wache2, characters.Wache2.pose.standard, ƒS.positionPercent(70, 48));
     await ƒS.update(3);
     await ƒS.Character.show(characters.Wache1, characters.Wache1.pose.standard, ƒS.positionPercent(20, 48));
     await ƒS.update(3);
@@ -234,14 +234,13 @@ namespace Template {
           break;
       }
       
-    await ƒS.Character.hideAll;
     await ƒS.Sound.fade(sound.wachentheme, 0, 3, true);
-    await ƒS.Character.hide(characters.Wache1);
-    await ƒS.update(3);
-    await ƒS.Character.hide(characters.Wache2);
-    await ƒS.update(3);
     await ƒS.Character.hide(characters.Halistrator);
-    await ƒS.update(3);
+    await ƒS.update(1);
+    await ƒS.Character.hide(characters.Wache1);
+    await ƒS.update(1);
+    await ƒS.Character.hide(characters.Wache2);
+    await ƒS.update(2);
     await ƒS.Location.show(locations.Thronsaal);
     await ƒS.update(3);
     await ƒS.Sound.fade(sound.titletheme, 0.03, 3, true);
@@ -313,7 +312,11 @@ namespace Template {
         break;
     }
     await ƒS.update(5);
-    await ƒS.Character.hideAll;
+    await ƒS.Character.hide(characters.Halistrator);
+    await ƒS.Character.hide(characters.Wache1);
+    await ƒS.Character.hide(characters.Wache2);
+    await ƒS.Character.hide(characters.Berater);
+    await ƒS.update(2);
     await ƒS.Sound.fade(sound.titletheme, 0, 3, true);
     await ƒS.Location.show(locations.fortsetzungfolgt);
     await ƒS.update(10);
@@ -329,7 +332,11 @@ namespace Template {
       await ƒS.Sound.fade(sound.wachentheme, 0, 3, true);
       await ƒS.Location.show(locations.blackbackground);
       await ƒS.update(5);
-      await ƒS.Character.hideAll;
+      await ƒS.Character.hide(characters.Halistrator);
+      await ƒS.Character.hide(characters.Wache1);
+      await ƒS.Character.hide(characters.Wache2);
+      await ƒS.Character.hide(characters.Berater);
+      await ƒS.update(2);
       await ƒS.Character.show(characters.Halistrator, characters.Halistrator.pose.surprised, ƒS.positionPercent(50, 48));
       await ƒS.update(5);
       await satzbau(characters.Halistrator, text.Halistrator.T003, true, true, 5, 50, sound.Halistrator, 3);
