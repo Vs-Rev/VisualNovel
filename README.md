@@ -50,11 +50,11 @@ Folgende Inhalte wurden von externen Quellen bezogen;
 | 9 | Animation      | Animationen werden zur Stilistik verwendet. Es gibt Schüttelanimationen, Charaktere welche sich von Seite zur Seite Bewegen und viele Mehr. Animationen werden immer dann verwendet, wenn eine Situation besonders hervorgehoben werden sollte.           |
 | 10 | Styling          | Alle Elemente wurden nach einem gemeinsamen Design gestyled und sind harmonisch zueinander abgestimmt.              |
 | 11 | Creative Corner          | Es gibt viele Alleinstellungsmerkmale dieses Spiels. Darunter sind: Moralisches Wertungssystem, Vollständie Freiheit, Integrierung eines "Selbst" in das Spiel, das Brechen der "Fourth Wall" durch einbeziehung des realen Spielers, Gefährten, welchen einen das Spiel über begleiten können usw.             |
-| 12 | Enden            | Die finale Visual Novel ist dazu konzipiert, bis zu 50 verschiedene Enden zu haben. Da dieses Vorhaben jedoch den Rahmen sprengen würde und aus Zeitgründen nicht einwandfrei umsetzbar ist, beinhaltet die präsentierte Version 3 verschiedene Enden mit jeweils unterschiedlichen Charakterinteraktionen.                      |
+| 12 | Enden            | Die finale Visual Novel ist dazu konzipiert, bis zu 50 verschiedene Enden zu haben. Da dieses Vorhaben jedoch den Rahmen sprengen würde und aus Zeitgründen nicht einwandfrei umsetzbar ist, beinhaltet die präsentierte Version 7 verschiedene Enden mit jeweils unterschiedlichen Charakterinteraktionen. Fortsetzung folgt.                      |
 |  A | Inventory- und Item-System     | Das Inventarsystem dient zur Kontrolle des Fortschritts und für Tipps. Beispielsweise wird Kleidung hinzugefügt damit man weiß, dass man nicht nackt rumläuft oder der Packt von BILL, sofern akzeptiert, welcher einen dazu befähigt, BILL zu seiner Seite zu rufen, wenn gefordert.|
 |  B | Punkteverteilungssystem     | Das Punktesystem wurde in dieser Visual Novel für die Bewertung der Moral von Entscheidungen verwendet. Abhängig von der aktuellen Moralwertung können unterschiedliche Dialogoptionen nicht zur Verfügung stehen, wohingegen andere verfügbar werden.           |
 |  C | Novel-Pages             | _Novel-Pages_ wurden nur begrenzt verwendet. Funktionen der Novel Pages wurden mit selbstständig erstelltem Code in andere Funktionen integriert.                      |
-|  D | Meter-bar             | Die Meter-Bar wurde als Battleprogress eingesetzt.
+|  D | Meter-bar             | Die Meter-Bar wurde als Battleprogress eingesetzt. Jedoch hat sie in der vorhandenen Fudge STORY -Version nicht funktioniert und wurde deshalb samt Kämpfen entnommen.
 
 
 ## Wichtige Links im Überblick: 
@@ -62,7 +62,7 @@ Folgende Inhalte wurden von externen Quellen bezogen;
 
 [Konzeptdokument](https://github.com/Vs-Rev/VisualNovel/blob/main/Documents/Konzeptionsdatien%20%26%20Brainstorming/Konzeptdokument.pdf)
 
-[Gepacktes Archiv mit sämtlichen relevanten Inhalten](https://www.mediafire.com/file/8dv1d26jda8uqqe/Gurev_Vasilii_The+Tale+of+a+Knight.rar/file)
+[Gepacktes Archiv mit sämtlichen relevanten Inhalten](https://www.mediafire.com/file/nr66byaq1aulhqf/Gurev_Vasilii_The+Tale+of+a+Knight.rar/file)
 : Man beachte; Das Archiv konnte nicht auf GitHub hochgeladen werden, da sämtliche Inhalte das Push-Limit von 100MB überschreiten. Daher wurde das Archiv auf Mediafire hochgeladen.
 
 [Link zu dem Ordner mit sämtlichen relevanten Inhalten](https://github.com/Vs-Rev/VisualNovel/tree/main/FUDGE_Story-main/Template)
