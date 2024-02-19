@@ -4,6 +4,29 @@ A FUDGE module for the easy development of interactive stories, visual novels an
 # Inhaltsangabe
 "The Tale of a Knight" entführt in eine Welt, in der die Grenzen zwischen Realität und Fantasie verschwimmen. Ein junger Held, ohne Erinnerung an seine Vergangenheit, findet sich in einem geheimnisvollen Ort wieder. Eine bezaubernde Erzählung eines alten Mannes dient als einzige Brücke zwischen den Welten und entfacht ein Abenteuer, das die Definition von Mut und Bestimmung neu zeichnet. Als der Held in seiner alltäglichen Welt erwacht, ahnt er nicht, dass eine einfache Pflicht, seine Schwester abzuholen, ihn in eine außergewöhnliche Saga stürzt. Die Reise führt ihn durch die Schatten eines alten Theaters, in die farbenfrohen Weiten der Wunderwelt Verdantia und in die Herzen unvergesslicher Gefährten. Zwischen den sanften Wiesen von Verdantia und den dunklen Hallen des Schlosses der Dunkelheit entfaltet sich eine Geschichte von Freundschaft, Mut und der Suche nach dem eigenen Ich. "The Tale of a Knight" ist eine Hommage an die Kraft der Geschichten, die uns definieren und die Sterne erreichen lassen.
 
+##  Verweis auf eigenproduzierte Inhalte
+Im Folgenden werden sämtliche eigenproduzierte Inhalte aufgeführt;
+* Characterbilder
+* Jeder Song ist selbst in FL-Studio produziert worden
+* Der gesamte Inhalt, die Geschichte sowie die Visual Novel selbst
+* Sämtliche grafiken (Ausnahmen sind weiter unten aufgeführt)
+
+Folgende Inhalte wurden von externen Quellen bezogen;
+* Hintergrundbilder (KI-Generiert)
+   * Kapitel 1: Wiese
+   * Kapitel 1: Schloss
+   * Kapitel 1: Tempel
+   * Kapitel 2: Vor dem Schlosstor
+   * Kapitel 2: Thronsaal
+   * Kapitel 2: BILLs Thronsaal
+* Characterbilder
+   * Wache 1 + 2: Nina Distler
+   * Berater des Königs (menschliche Form): Nina Distler
+* Inventargegenstände (KI-Generiert)
+   * Kleidung
+   * BILLS PAKT
+* Soundeffekte / SFX (Freesound.org Royalty Free Lizenz)
+
 # References
 - [APIs](https://jirkadelloro.github.io/FUDGE_Story/Documentation/Reference/#fudge-story-reference)
 - [Pages-Link](https://jirkadelloro.github.io/FUDGE_Story/Tutorial_WS22/Tutorial_WS22.html)
