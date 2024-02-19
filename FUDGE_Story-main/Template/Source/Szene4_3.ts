@@ -236,12 +236,14 @@ namespace Template {
       
     await ƒS.Character.hideAll;
     await ƒS.Sound.fade(sound.wachentheme, 0, 3, true);
+    await ƒS.Character.hide(characters.Wache1);
+    await ƒS.Character.hide(characters.Wache2);
+    await ƒS.Character.hide(characters.Halistrator);
     await ƒS.update(3);
     await ƒS.Location.show(locations.Thronsaal);
     await ƒS.update(3);
     await ƒS.Sound.fade(sound.titletheme, 0.03, 3, true);
     await satzbau(characters.MainNarrator, text.MainNarrator.T003, true, true, 5, 50, sound.MainNarrator, 3);
-    await ƒS.Character.hideAll;
     await ƒS.Character.show(characters.Halistrator, characters.Halistrator.pose.surprised, ƒS.positionPercent(50, 48));
     await ƒS.update(3);
     await satzbau(characters.Halistrator, text.Halistrator.T009, true, true, 5, 50, sound.Halistrator, 3);

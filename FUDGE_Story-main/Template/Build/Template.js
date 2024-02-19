@@ -4423,12 +4423,14 @@ var Template;
                 }
                 await Template.ƒS.Character.hideAll;
                 await Template.ƒS.Sound.fade(Template.sound.wachentheme, 0, 3, true);
+                await Template.ƒS.Character.hide(Template.characters.Wache1);
+                await Template.ƒS.Character.hide(Template.characters.Wache2);
+                await Template.ƒS.Character.hide(Template.characters.Halistrator);
                 await Template.ƒS.update(3);
                 await Template.ƒS.Location.show(Template.locations.Thronsaal);
                 await Template.ƒS.update(3);
                 await Template.ƒS.Sound.fade(Template.sound.titletheme, 0.03, 3, true);
                 await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T003, true, true, 5, 50, Template.sound.MainNarrator, 3);
-                await Template.ƒS.Character.hideAll;
                 await Template.ƒS.Character.show(Template.characters.Halistrator, Template.characters.Halistrator.pose.surprised, Template.ƒS.positionPercent(50, 48));
                 await Template.ƒS.update(3);
                 await Template.satzbau(Template.characters.Halistrator, text.Halistrator.T009, true, true, 5, 50, Template.sound.Halistrator, 3);
