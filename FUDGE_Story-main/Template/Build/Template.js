@@ -3907,7 +3907,7 @@ var Template;
         //Aufwachen - Kapitel 1
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.newversion, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update(3);
-        Template.dataForSave.Halisgefährteangenommen = false;
+        //dataForSave.Halisgefährteangenommen = false;
         if (Template.dataForSave.Halisgefährteangenommen == true) {
             await Template.ƒS.Sound.fade(Template.sound.Meadow, 0.07, 3, true);
             console.log("audio is being played");
@@ -4180,6 +4180,57 @@ var Template;
         }
     }
     Template.Szene4_2 = Szene4_2;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function Szene4_3() {
+        console.log("FudgeStory Template Scene4_3 starting");
+        console.log(Template.characters.MainNarrator);
+        //Gesprochener Text
+        let text = {
+            MainNarrator: {
+                T001: "Halistrator stolperte über seine eigenen Füße. . .",
+            },
+            whiteknight: {
+                T000: ". . .",
+            },
+            Halistrator: {
+                T001: "Sieh mal!!!",
+            },
+            BILL: {
+                T000: "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+            }
+        };
+        //Szenenablauf
+        //characters.whiteknight.name = "Vasi";
+        //dataForSave.protagonist.name = characters.whiteknight.name;+
+        if (Template.dataForSave.protagonist.name == "") {
+            Template.dataForSave.protagonist.name = "???";
+            Template.characters.whiteknight.name = Template.dataForSave.protagonist.name;
+        }
+        await Template.ƒS.Progress.save();
+        await Template.ƒS.update(1);
+        //await ƒS.Location.show(locations.chapter1);
+        await Template.ƒS.update(1);
+        Template.ƒS.Sound.setMasterVolume(11);
+        //await ƒS.Sound.fade(sound.deepdark, 0.07, 0.1, true);
+        //await ƒS.update(5);
+        //Aufwachen - Kapitel 1
+        await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.newversion, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update(3);
+        if (Template.dataForSave.Halisgefährteangenommen == true) {
+            await Template.ƒS.Sound.fade(Template.sound.Meadow, 0.07, 3, true);
+            console.log("audio is being played");
+            await Template.ƒS.Location.show(Template.locations.schlossweitsicht);
+            await Template.ƒS.update(3);
+            await Template.ƒS.Character.show(Template.characters.Halistrator, Template.characters.Halistrator.pose.surprised, Template.ƒS.positionPercent(50, 48));
+        }
+        //Hier geht es weiter, wenn Halistrator mitkommt
+        //Hier geht es weiter, wenn man Halistrator abgelehnt hat
+        if (Template.dataForSave.Halisgefährteangenommen == false) {
+        }
+    }
+    Template.Szene4_3 = Szene4_3;
 })(Template || (Template = {}));
 // async function satzbau(Sprecher: any, text: string, waitfornext: boolean, skipbar: boolean, pausenlänge: number, textgeschwindigkeit: number, voicetype: string, skiplänge: number) {
 //   let speechlength = text.length / 4;

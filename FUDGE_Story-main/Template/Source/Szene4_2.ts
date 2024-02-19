@@ -157,7 +157,7 @@ namespace Template {
       ƒS.positionPercent(50, 100)
     );
     await ƒS.update(3);
-    dataForSave.Halisgefährteangenommen = false;
+    //dataForSave.Halisgefährteangenommen = false;
 
     if (dataForSave.Halisgefährteangenommen == true){
       await ƒS.Sound.fade(sound.Meadow, 0.07, 3, true);

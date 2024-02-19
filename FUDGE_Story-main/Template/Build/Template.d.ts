@@ -382,3 +382,6 @@ declare namespace Template {
 declare namespace Template {
     function Szene4_2(): ƒS.SceneReturn;
 }
+declare namespace Template {
+    function Szene4_3(): ƒS.SceneReturn;
+}
