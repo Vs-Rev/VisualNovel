@@ -253,6 +253,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        chapter2: {
+            name: string;
+            background: string;
+        };
         tipp1: {
             name: string;
             background: string;

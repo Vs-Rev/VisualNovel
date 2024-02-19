@@ -190,7 +190,6 @@ namespace Template {
 
       },
     };
-    dataForSave.Halisgefährteangenommen = false;
 
     //Szenenablauf
     //characters.whiteknight.name = "Vasi";
@@ -199,6 +198,12 @@ namespace Template {
       dataForSave.protagonist.name = "???";
       characters.whiteknight.name = dataForSave.protagonist.name;
     }
+    ƒS.Sound.play(sound.chaptertransition, 0.05, false);
+    await ƒS.Location.show(locations.chapter2);
+    await ƒS.update(3);
+    await ƒS.Location.show(locations.blackbackground);
+    ƒS.Sound.play(sound.chaptertransition, 0.05, false);
+    await ƒS.update(3);
     await ƒS.Progress.save();
     await ƒS.update(1);
     //await ƒS.Location.show(locations.chapter1);
@@ -527,6 +532,7 @@ namespace Template {
         await satzbau(characters.Bill, text.BILL.T016, true, true, 5, 50, sound.Leserin, 3);
         await satzbau(characters.Bill, text.BILL.T017, true, true, 5, 50, sound.Leserin, 3);
         await satzbau(characters.Bill, text.BILL.T018, true, true, 5, 50, sound.Leserin, 3);
+        //ENDING 1
       }
       if(dataForSave.billspakt == false){
         await satzbau(characters.Bill, text.BILL.T019, true, true, 5, 50, sound.Leserin, 3);
@@ -538,6 +544,7 @@ namespace Template {
         await satzbau(characters.Bill, text.BILL.T025, true, true, 5, 50, sound.Leserin, 3);
         await satzbau(characters.Bill, text.BILL.T026, true, true, 5, 50, sound.Leserin, 3);
         await satzbau(characters.Bill, text.BILL.T027, true, true, 5, 50, sound.Leserin, 3);
+        //ENDING 2
       }
       await ƒS.Character.hide(characters.Bill);
       await ƒS.Character.hide(characters.Halistrator);

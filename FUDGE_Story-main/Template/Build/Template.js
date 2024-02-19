@@ -293,6 +293,10 @@ var Template;
             name: "chapter1",
             background: "./Images/Chapters/Chapter1.png",
         },
+        chapter2: {
+            name: "chapter2",
+            background: "./Images/Chapters/Chapter2.png",
+        },
         tipp1: {
             name: "tipp1",
             background: "./Images/Tipps/Tipp1.png",
@@ -790,15 +794,15 @@ var Template;
         Template.gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
         //Szenen aufrufen bezogen auf die .TS Datei
         let scenes = [
-            //{ id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
-            //{ id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
-            //{ id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
-            //{ id: "Szene1_3", scene: Szene1_3, name: "Szene1_3" },
-            //{ id: "Szene1_4", scene: Szene1_4, name: "Szene1_4" },
-            //{ id: "Szene1_5", scene: Szene1_5, name: "Szene1_5" },
-            //{ id: "Szene1_6", scene: Szene1_6, name: "Szene1_6" },
-            //{ id: "Szene4_1", scene: Szene4_1, name: "Szene4_1" },
-            //{ id: "Szene4_2", scene: Szene4_2, name: "Szene4_2" },
+            { id: "Szene0_1", scene: Template.Szene0_1, name: "Szene0_1" },
+            { id: "Szene1_1", scene: Template.Szene1_1, name: "Szene1_1" },
+            { id: "Szene1_2", scene: Template.Szene1_2, name: "Szene1_2" },
+            { id: "Szene1_3", scene: Template.Szene1_3, name: "Szene1_3" },
+            { id: "Szene1_4", scene: Template.Szene1_4, name: "Szene1_4" },
+            { id: "Szene1_5", scene: Template.Szene1_5, name: "Szene1_5" },
+            { id: "Szene1_6", scene: Template.Szene1_6, name: "Szene1_6" },
+            { id: "Szene4_1", scene: Template.Szene4_1, name: "Szene4_1" },
+            { id: "Szene4_2", scene: Template.Szene4_2, name: "Szene4_2" },
             { id: "Szene4_3", scene: Template.Szene4_3, name: "Szene4_3" },
             //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
             //{ scene: Szene2, name: "Szene2" },
@@ -4377,7 +4381,6 @@ var Template;
                 T020: "Ja, so lauten die Befehle! Was habt ihr hier verloren?",
             },
         };
-        Template.dataForSave.Halisgefährteangenommen = false;
         //Szenenablauf
         //characters.whiteknight.name = "Vasi";
         //dataForSave.protagonist.name = characters.whiteknight.name;+
@@ -4385,6 +4388,12 @@ var Template;
             Template.dataForSave.protagonist.name = "???";
             Template.characters.whiteknight.name = Template.dataForSave.protagonist.name;
         }
+        Template.ƒS.Sound.play(Template.sound.chaptertransition, 0.05, false);
+        await Template.ƒS.Location.show(Template.locations.chapter2);
+        await Template.ƒS.update(3);
+        await Template.ƒS.Location.show(Template.locations.blackbackground);
+        Template.ƒS.Sound.play(Template.sound.chaptertransition, 0.05, false);
+        await Template.ƒS.update(3);
         await Template.ƒS.Progress.save();
         await Template.ƒS.update(1);
         //await ƒS.Location.show(locations.chapter1);
@@ -4684,6 +4693,7 @@ var Template;
                 await Template.satzbau(Template.characters.Bill, text.BILL.T016, true, true, 5, 50, Template.sound.Leserin, 3);
                 await Template.satzbau(Template.characters.Bill, text.BILL.T017, true, true, 5, 50, Template.sound.Leserin, 3);
                 await Template.satzbau(Template.characters.Bill, text.BILL.T018, true, true, 5, 50, Template.sound.Leserin, 3);
+                //ENDING 1
             }
             if (Template.dataForSave.billspakt == false) {
                 await Template.satzbau(Template.characters.Bill, text.BILL.T019, true, true, 5, 50, Template.sound.Leserin, 3);
@@ -4695,6 +4705,7 @@ var Template;
                 await Template.satzbau(Template.characters.Bill, text.BILL.T025, true, true, 5, 50, Template.sound.Leserin, 3);
                 await Template.satzbau(Template.characters.Bill, text.BILL.T026, true, true, 5, 50, Template.sound.Leserin, 3);
                 await Template.satzbau(Template.characters.Bill, text.BILL.T027, true, true, 5, 50, Template.sound.Leserin, 3);
+                //ENDING 2
             }
             await Template.ƒS.Character.hide(Template.characters.Bill);
             await Template.ƒS.Character.hide(Template.characters.Halistrator);

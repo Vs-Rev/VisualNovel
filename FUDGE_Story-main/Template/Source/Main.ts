@@ -302,6 +302,10 @@ namespace Template {
       name: "chapter1",
       background: "./Images/Chapters/Chapter1.png",
     },
+    chapter2: {
+      name: "chapter2",
+      background: "./Images/Chapters/Chapter2.png",
+    },
     tipp1: {
       name: "tipp1",
       background: "./Images/Tipps/Tipp1.png",
@@ -811,15 +815,15 @@ namespace Template {
 
     //Szenen aufrufen bezogen auf die .TS Datei
     let scenes: ƒS.Scenes = [
-      //{ id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
-      //{ id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
-      //{ id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
-      //{ id: "Szene1_3", scene: Szene1_3, name: "Szene1_3" },
-      //{ id: "Szene1_4", scene: Szene1_4, name: "Szene1_4" },
-      //{ id: "Szene1_5", scene: Szene1_5, name: "Szene1_5" },
-      //{ id: "Szene1_6", scene: Szene1_6, name: "Szene1_6" },
-      //{ id: "Szene4_1", scene: Szene4_1, name: "Szene4_1" },
-      //{ id: "Szene4_2", scene: Szene4_2, name: "Szene4_2" },
+      { id: "Szene0_1", scene: Szene0_1, name: "Szene0_1" },
+      { id: "Szene1_1", scene: Szene1_1, name: "Szene1_1" },
+      { id: "Szene1_2", scene: Szene1_2, name: "Szene1_2" },
+      { id: "Szene1_3", scene: Szene1_3, name: "Szene1_3" },
+      { id: "Szene1_4", scene: Szene1_4, name: "Szene1_4" },
+      { id: "Szene1_5", scene: Szene1_5, name: "Szene1_5" },
+      { id: "Szene1_6", scene: Szene1_6, name: "Szene1_6" },
+      { id: "Szene4_1", scene: Szene4_1, name: "Szene4_1" },
+      { id: "Szene4_2", scene: Szene4_2, name: "Szene4_2" },
       { id: "Szene4_3", scene: Szene4_3, name: "Szene4_3" },
       //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
       //{ scene: Szene2, name: "Szene2" },
