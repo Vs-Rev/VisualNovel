@@ -109,6 +109,7 @@ var Template;
         Halistheme: "./Audio/Themes/HalisTheme.wav",
         MainTheme: "./Audio/Themes/MainTheme.wav",
         BillTheme: "./Audio/Themes/asd.wav",
+        wachentheme: "./Audio/Themes/GuaridansTheme.wav",
         //sounds
         tension: "./Audio/Soundeffects/tension.wav",
         examplesound: "",
@@ -311,7 +312,19 @@ var Template;
         TempelimWald: {
             name: "Tempel",
             background: "./Images/Backgrounds/Bill/Temple.png",
-        }
+        },
+        Schlosstor: {
+            name: "Schlosstor",
+            background: "./Images/Backgrounds/Schloss/Castlegate.png",
+        },
+        Thronsaal: {
+            name: "Thronsaal",
+            background: "./Images/Backgrounds/Schloss/throneroom.png",
+        },
+        Billsraum: {
+            name: "Billsraum",
+            background: "./Images/Backgrounds/Schloss/throneroomBILL.png",
+        },
     };
     async function animationwalking() {
         await Template.ƒS.Location.show(Template.locations.walking01);
@@ -359,6 +372,27 @@ var Template;
             pose: {
                 standard: "./Images/Characters/Mysteryman/Mysteryman.png",
                 eyesonly: "./Images/Characters/Mysteryman/Mysteryman_Eyesonly.png"
+            }
+        },
+        Wache1: {
+            name: "Wache 1",
+            origin: Template.ƒS.ORIGIN.CENTER,
+            pose: {
+                standard: "./Images/Characters/Castle/wache1.png",
+            }
+        },
+        Wache2: {
+            name: "Wache 2",
+            origin: Template.ƒS.ORIGIN.CENTER,
+            pose: {
+                standard: "./Images/Characters/Castle/wache2.png",
+            }
+        },
+        Berater: {
+            name: "Königlicher Berater",
+            origin: Template.ƒS.ORIGIN.CENTER,
+            pose: {
+                standard: "./Images/Characters/Castle/berater.png",
             }
         },
         Bill: {
@@ -757,7 +791,8 @@ var Template;
             //{ id: "Szene1_5", scene: Szene1_5, name: "Szene1_5" },
             //{ id: "Szene1_6", scene: Szene1_6, name: "Szene1_6" },
             //{ id: "Szene4_1", scene: Szene4_1, name: "Szene4_1" },
-            { id: "Szene4_2", scene: Template.Szene4_2, name: "Szene4_2" }
+            //{ id: "Szene4_2", scene: Szene4_2, name: "Szene4_2" },
+            { id: "Szene4_3", scene: Template.Szene4_3, name: "Szene4_3" },
             //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
             //{ scene: Szene2, name: "Szene2" },
         ];
@@ -4195,11 +4230,25 @@ var Template;
                 T000: ". . .",
             },
             Halistrator: {
-                T001: "Sieh mal!!!",
+                T001: "W-wir wollen zum Berater des Königs! Wir sind gekommen, um zu helfen!",
             },
             BILL: {
                 T000: "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
-            }
+            },
+            Wache1: {
+                T000: "HAAAAAALT!",
+                T001: "NENNT EUER ANLIEGEN! SOFORT!",
+                T002: "RAUDIES",
+            },
+            Wache2: {
+                T000: "Wo wollt ihr denn hin?",
+                T001: "Kannst du mir mal bitte nicht ins Ohr schreien? Ich stehe direkt neben dir!",
+                T002: "Entschuldigt bitte meinen Kammeraden hier. . .",
+                T003: "Er kann manchmal etwas. . .",
+                T004: "Aufbrausend wirken",
+                T005: "Aber ihr seht nicht aus wie irgendwelche. . .",
+                T006: "Ja genau danke, Raudies",
+            },
         };
         //Szenenablauf
         //characters.whiteknight.name = "Vasi";
@@ -4218,14 +4267,33 @@ var Template;
         //Aufwachen - Kapitel 1
         await Template.ƒS.Character.show(Template.characters.Speechbox, Template.characters.Speechbox.pose.newversion, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update(3);
+        //Hier geht es weiter, wenn Halistrator mitkommt
         if (Template.dataForSave.Halisgefährteangenommen == true) {
-            await Template.ƒS.Sound.fade(Template.sound.Meadow, 0.07, 3, true);
-            console.log("audio is being played");
-            await Template.ƒS.Location.show(Template.locations.schlossweitsicht);
+            await Template.ƒS.Location.show(Template.locations.Schlosstor);
             await Template.ƒS.update(3);
+            await Template.ƒS.Sound.fade(Template.sound.wachentheme, 0.07, 3, true);
+            await Template.ƒS.Character.show(Template.characters.Wache1, Template.characters.Wache2.pose.standard, Template.ƒS.positionPercent(70, 48));
+            await Template.ƒS.Character.show(Template.characters.Wache1, Template.characters.Wache1.pose.standard, Template.ƒS.positionPercent(20, 48));
+            if (Template.dataForSave.evil <= Template.dataForSave.good) {
+                //wenn gut mehr als böse
+                await Template.satzbau(Template.characters.Wache1, text.Wache1.T000, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.satzbau(Template.characters.Wache2, text.Wache2.T000, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.satzbau(Template.characters.Wache1, text.Wache1.T001, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.satzbau(Template.characters.Wache2, text.Wache2.T001, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.satzbau(Template.characters.Wache2, text.Wache2.T002, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.satzbau(Template.characters.Wache2, text.Wache2.T003, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.satzbau(Template.characters.Wache2, text.Wache2.T004, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.satzbau(Template.characters.Wache2, text.Wache2.T005, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.satzbau(Template.characters.Wache1, text.Wache1.T002, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.satzbau(Template.characters.Wache2, text.Wache2.T006, true, true, 5, 50, Template.sound.MainNarrator, 3);
+                await Template.ƒS.Character.show(Template.characters.Halistrator, Template.characters.Halistrator.pose.surprised, Template.ƒS.positionPercent(50, 48));
+                await Template.satzbau(Template.characters.Halistrator, text.Halistrator.T001, true, true, 5, 50, Template.sound.Halistrator, 3);
+            }
+            if (Template.dataForSave.good <= Template.dataForSave.evil) {
+                //wenn böse mehr als gut
+            }
             await Template.ƒS.Character.show(Template.characters.Halistrator, Template.characters.Halistrator.pose.surprised, Template.ƒS.positionPercent(50, 48));
         }
-        //Hier geht es weiter, wenn Halistrator mitkommt
         //Hier geht es weiter, wenn man Halistrator abgelehnt hat
         if (Template.dataForSave.Halisgefährteangenommen == false) {
         }

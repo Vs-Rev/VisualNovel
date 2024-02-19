@@ -116,6 +116,7 @@ namespace Template {
     Halistheme: "./Audio/Themes/HalisTheme.wav",
     MainTheme: "./Audio/Themes/MainTheme.wav",
     BillTheme: "./Audio/Themes/asd.wav",
+    wachentheme: "./Audio/Themes/GuaridansTheme.wav",
     //sounds
     tension: "./Audio/Soundeffects/tension.wav",
     examplesound: "",
@@ -320,7 +321,19 @@ namespace Template {
     TempelimWald: {
       name: "Tempel",
       background: "./Images/Backgrounds/Bill/Temple.png",
-    }
+    },
+    Schlosstor: {
+      name: "Schlosstor",
+      background: "./Images/Backgrounds/Schloss/Castlegate.png",
+    },
+    Thronsaal: {
+      name: "Thronsaal",
+      background: "./Images/Backgrounds/Schloss/throneroom.png",
+    },
+    Billsraum: {
+      name: "Billsraum",
+      background: "./Images/Backgrounds/Schloss/throneroomBILL.png",
+    },
   };
 
   export async function animationwalking() {
@@ -371,6 +384,27 @@ namespace Template {
       pose: {
         standard: "./Images/Characters/Mysteryman/Mysteryman.png",
         eyesonly: "./Images/Characters/Mysteryman/Mysteryman_Eyesonly.png"
+      }
+    },
+    Wache1: {
+      name: "Wache 1",
+      origin: ƒS.ORIGIN.CENTER,
+      pose: {
+        standard: "./Images/Characters/Castle/wache1.png",
+      }
+    },
+    Wache2: {
+      name: "Wache 2",
+      origin: ƒS.ORIGIN.CENTER,
+      pose: {
+        standard: "./Images/Characters/Castle/wache2.png",
+      }
+    },
+    Berater: {
+      name: "Königlicher Berater",
+      origin: ƒS.ORIGIN.CENTER,
+      pose: {
+        standard: "./Images/Characters/Castle/berater.png",
       }
     },
     Bill: {
@@ -778,7 +812,8 @@ namespace Template {
       //{ id: "Szene1_5", scene: Szene1_5, name: "Szene1_5" },
       //{ id: "Szene1_6", scene: Szene1_6, name: "Szene1_6" },
       //{ id: "Szene4_1", scene: Szene4_1, name: "Szene4_1" },
-      { id: "Szene4_2", scene: Szene4_2, name: "Szene4_2" }
+      //{ id: "Szene4_2", scene: Szene4_2, name: "Szene4_2" },
+      { id: "Szene4_3", scene: Szene4_3, name: "Szene4_3" },
       //{ id:"Szene5_Entscheidung",scene: Szene5_Entscheidung, name: "Szene5_Entscheidung" },
       //{ scene: Szene2, name: "Szene2" },
     ];

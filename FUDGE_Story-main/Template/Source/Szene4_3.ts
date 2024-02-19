@@ -15,13 +15,28 @@ namespace Template {
       },
 
       Halistrator: {
-        T001: "Sieh mal!!!",
+        T001: "W-wir wollen zum Berater des Königs! Wir sind gekommen, um zu helfen!",
 
       },
 
       BILL: {
         T000: "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
-      }
+      },
+      Wache1: {
+        T000: "HAAAAAALT!",
+        T001: "NENNT EUER ANLIEGEN! SOFORT!",
+        T002: "RAUDIES",
+      },
+      Wache2: {
+        T000: "Wo wollt ihr denn hin?",
+        T001: "Kannst du mir mal bitte nicht ins Ohr schreien? Ich stehe direkt neben dir!",
+        T002: "Entschuldigt bitte meinen Kammeraden hier. . .",
+        T003: "Er kann manchmal etwas. . .",
+        T004: "Aufbrausend wirken",
+        T005: "Aber ihr seht nicht aus wie irgendwelche. . .",
+        T006: "Ja genau danke, Raudies",
+
+      },
     };
 
     //Szenenablauf
@@ -45,14 +60,58 @@ namespace Template {
       ƒS.positionPercent(50, 100)
     );
     await ƒS.update(3);
+
+
+
+        //Hier geht es weiter, wenn Halistrator mitkommt
     if (dataForSave.Halisgefährteangenommen == true){
-      await ƒS.Sound.fade(sound.Meadow, 0.07, 3, true);
-      console.log("audio is being played");
-    await ƒS.Location.show(locations.schlossweitsicht);
+    await ƒS.Location.show(locations.Schlosstor);
     await ƒS.update(3);
+    await ƒS.Sound.fade(sound.wachentheme, 0.07, 3, true);
+    await ƒS.Character.show(characters.Wache1, characters.Wache2.pose.standard, ƒS.positionPercent(70, 48));
+    await ƒS.Character.show(characters.Wache1, characters.Wache1.pose.standard, ƒS.positionPercent(20, 48));
+
+    if(dataForSave.evil <= dataForSave.good){
+
+      //wenn gut mehr als böse
+
+      await satzbau(characters.Wache1, text.Wache1.T000, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache2, text.Wache2.T000, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache1, text.Wache1.T001, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache2, text.Wache2.T001, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache2, text.Wache2.T002, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache2, text.Wache2.T003, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache2, text.Wache2.T004, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache2, text.Wache2.T005, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache1, text.Wache1.T002, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache2, text.Wache2.T006, true, true, 5, 50, sound.MainNarrator, 3);
+      await ƒS.Character.show(characters.Halistrator, characters.Halistrator.pose.surprised, ƒS.positionPercent(50, 48));
+      await satzbau(characters.Halistrator, text.Halistrator.T001, true, true, 5, 50, sound.Halistrator, 3);
+
+    }
+    if(dataForSave.good <= dataForSave.evil){
+      //wenn böse mehr als gut
+    }
+
+
     await ƒS.Character.show(characters.Halistrator, characters.Halistrator.pose.surprised, ƒS.positionPercent(50, 48));
     }
-    //Hier geht es weiter, wenn Halistrator mitkommt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //Hier geht es weiter, wenn man Halistrator abgelehnt hat
     if (dataForSave.Halisgefährteangenommen == false){
     }

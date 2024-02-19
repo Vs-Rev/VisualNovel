@@ -74,6 +74,7 @@ declare namespace Template {
         Halistheme: string;
         MainTheme: string;
         BillTheme: string;
+        wachentheme: string;
         tension: string;
         examplesound: string;
         inventoryadd: string;
@@ -272,6 +273,18 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        Schlosstor: {
+            name: string;
+            background: string;
+        };
+        Thronsaal: {
+            name: string;
+            background: string;
+        };
+        Billsraum: {
+            name: string;
+            background: string;
+        };
     };
     function animationwalking(): Promise<void>;
     let characters: {
@@ -281,6 +294,27 @@ declare namespace Template {
             pose: {
                 standard: string;
                 eyesonly: string;
+            };
+        };
+        Wache1: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                standard: string;
+            };
+        };
+        Wache2: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                standard: string;
+            };
+        };
+        Berater: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                standard: string;
             };
         };
         Bill: {
