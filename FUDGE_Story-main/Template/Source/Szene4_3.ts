@@ -10,6 +10,21 @@ namespace Template {
         T003: "Endlich angekommen im Thronsaal vom Schloss des Lichts finden unsere Helden den königlichen Berater",
         T004: "Ihr setzt den Berater des Königs über euer Vorhaben in Kenntniss",
 
+        //BILL
+        T005: "Irgendetwas tief in unserem Helden führte ihn aus dem Wald heraus",
+        T006: "Es war wie, als würde eine zweite Seele im Körper unseres Helden hausen",
+        T007: "So kam unser Held endlich beim Schloss an, von dem Halistrator erzählt hatte",
+        T008: "Ob er auch schon dort ist. . .",
+        T009: "Du spürst das Brennen der blauen Flamme in deiner Seele",
+
+        T010: "Sieh mal, Halistrator ist auch hier!",
+        T011: "Was?",
+        T012: "Hey-y das kannst du doch nicht bringen?",
+        T013: "Ich bin doch der Erzähler!",
+        T014: "Nein, warte",
+        T015: "Wie bist du hier her gekommmen?",
+        T016: "Was halt nein",
+        T017: "Ne- e- e- ei",
 
       },
       whiteknight: {
@@ -69,10 +84,49 @@ namespace Template {
         T012: "Die KÖNIGLICHEN BEFEHLE ZU MISSACHTEN!?",
         T013: "WACHEN!!!",
 
+        //BILL
+        T014: "HAALT! Wie seid ihr hier reingekommen?!",
+        T015: "WACHEN!!!",
+
       },
 
       BILL: {
-        T000: "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+        T000: "Pass auf, lass mich das für dich erledigen",
+        T001: "Okay mein Bester, ich übernehme ab hier!",
+
+        T002: "Ah wie schön es ist, wieder hier zu sein!",
+        T003: "Nach all der langen langen LANGEN Zeit",
+        T004: "Danke dir!",
+        T005: "Du hast mir wirklich den Allerwertesten gerettet",
+        T006: "Dafür, möchte ich dir was zeigen!",
+
+        T007: "WILLKOMMEN IN",
+        T008: "MEINEM REICH!",
+
+        T009: "Gefällt es dir?",
+        T010: "Mach es dir gerne gemütlich!",
+        T011: "Ahja, wegen deinem kleinen Freund. . .",
+        T012: "Er hat dich doch schon sicherlich genug genervt oder?",
+        T013: "Um den musst du dir keine Sorgen mehr machen. . .",
+        T014: "Heh heh",
+
+        T015: "Ich werde dich nun aus dieser Welt in deine eigene zurückbringen",
+        T016: "Ahja, es wird etwas schmerzhaft",
+        T017: "Keiner hat gesagt, dass du dabei LEBEND sein musst oder?",
+        T018: "HAH HAH HAH HAH HAAHAHAHAHAHAHAHA",
+
+
+        //Pakt Abgelehnt
+
+        T019: "Aber das war einmal. . .",
+        T020: "Ich muss meine Familie rächen verstehst du!",
+        T021: "Der Feind hat mich verflucht",
+        T022: "Siehst du das Symbol auf dem Boden? Das ist das Zeichen der Finsternis!",
+        T023: "Ich kann mich nicht länger manifestieren. . .",
+        T024: "Ich werde dir helfen, versprochen!",
+        T025: "Nehme mich mit und ich stehe dir zur Seite",
+        T026: "Aber du musst auch etwas für mich tun. . .",
+        T027: "Bitte helfe mir, mich zu erlösen!!!",
       },
       Wache1: {
         T000: "HAAAAAALT!",
@@ -90,6 +144,11 @@ namespace Template {
         T008: "ICH KENNE DICH DOCH IRGENDWOHER. . .",
         T009: "DU WOLLTEST DOCH IRGENDWANN SCHONEINMAL REIN ODER NICHT?!",
         T010: "JA OHNE GENEHMIGUNG!",
+//BILL
+        T011: "HAAAAAALT!",
+        T012: "NIEMAND DARF IN DIE HALLEN DES BERATERS PASSIEREN!",
+
+
 
 
       },
@@ -126,8 +185,12 @@ namespace Template {
         T018: "Seit dem Drachenangriff werden wir sowieso nicht mehr bezahlt",
         T019: "Wir stehen hier eigentlich nur zum Spaß rum",
 
+        //BILL
+        T020: "Ja, so lauten die Befehle! Was habt ihr hier verloren?",
+
       },
     };
+    dataForSave.Halisgefährteangenommen = false;
 
     //Szenenablauf
     //characters.whiteknight.name = "Vasi";
@@ -368,6 +431,123 @@ namespace Template {
 
     //Hier geht es weiter, wenn man Halistrator abgelehnt hat
     if (dataForSave.Halisgefährteangenommen == false){
+      await satzbau(characters.MainNarrator, text.MainNarrator.T005, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T006, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T007, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T008, true, true, 5, 50, sound.MainNarrator, 3);
+      await ƒS.Location.show(locations.Schlosstor);
+      await ƒS.update(3);
+      await ƒS.Sound.fade(sound.wachentheme, 0.07, 3, true);
+      await ƒS.Character.show(characters.Wache2, characters.Wache2.pose.standard, ƒS.positionPercent(70, 48));
+      await ƒS.update(3);
+      await ƒS.Character.show(characters.Wache1, characters.Wache1.pose.standard, ƒS.positionPercent(20, 48));
+      await ƒS.update(3);
+      await satzbau(characters.Wache1, text.Wache1.T011, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache1, text.Wache1.T012, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Wache2, text.Wache2.T020, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.Bill, text.BILL.T000, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T009, true, true, 5, 50, sound.MainNarrator, 3);
+      await buttonpress(sound.buttonhover, .2);
+      ƒS.Sound.play(sound.glitch, 0.03, false);
+      let BILL = {
+        BILL: "B I L L",
+        BILL2: "B I L L",
+      };
+      let billelement = await ƒS.Menu.getInput(BILL, "auswahl");
+      switch (billelement) {
+        case BILL.BILL:
+          dataForSave.evil +5;
+          break;
+        case BILL.BILL2:
+          dataForSave.evil +5;
+          break;
+      }
+      await ƒS.Sound.fade(sound.wachentheme, 0, 3, true);
+      await ƒS.Character.hide(characters.Wache1);
+      await ƒS.update(1);
+      await ƒS.Character.hide(characters.Wache2);
+      await ƒS.update(2);
+      await ƒS.Location.show(locations.Thronsaal);
+      await ƒS.update(3);
+      await ƒS.Character.show(characters.Berater, characters.Berater.pose.standard, ƒS.positionPercent(50, 48));
+      await ƒS.update(3);
+      await satzbau(characters.Berater, text.Berater.T014, true, true, 5, 50, sound.Elo, 3);
+      await satzbau(characters.Berater, text.Berater.T015, true, true, 5, 50, sound.Elo, 3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T010, true, true, 5, 50, sound.MainNarrator, 3);
+      await ƒS.Character.show(characters.Halistrator, characters.Halistrator.pose.sauer, ƒS.positionPercent(20, 48));
+      await ƒS.update(3);
+      ƒS.Sound.play(sound.glitch, 0.03, false);
+      await satzbau(characters.Bill, text.BILL.T001, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T011, true, true, 5, 50, sound.MainNarrator, 3);
+      verticalShake();
+      await satzbau(characters.MainNarrator, text.MainNarrator.T012, true, true, 5, 50, sound.MainNarrator, 3);
+      verticalShake();
+      await satzbau(characters.MainNarrator, text.MainNarrator.T013, true, true, 5, 50, sound.MainNarrator, 3);
+      verticalShake();
+      await satzbau(characters.MainNarrator, text.MainNarrator.T014, true, true, 5, 50, sound.MainNarrator, 3);
+      verticalShake();
+      await satzbau(characters.MainNarrator, text.MainNarrator.T015, true, true, 5, 50, sound.MainNarrator, 3);
+      await satzbau(characters.MainNarrator, text.MainNarrator.T016, true, true, 5, 50, sound.MainNarrator, 3);
+      verticalShake();
+      await satzbau(characters.MainNarrator, text.MainNarrator.T017, true, true, 5, 50, sound.MainNarrator, 3);
+      await ƒS.Character.hide(characters.Halistrator);
+      await ƒS.Character.hide(characters.Wache1);
+      await ƒS.Character.hide(characters.Wache2);
+      await ƒS.Character.hide(characters.Berater);
+      await ƒS.update(2);
+      await ƒS.Character.show(characters.Bill, characters.Bill.pose.happy, ƒS.positionPercent(50, 48));
+      await ƒS.update(3);
+      await satzbau(characters.Bill, text.BILL.T002, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T003, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T004, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T005, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T006, true, true, 5, 50, sound.Leserin, 3);
+      verticalShake();
+      ƒS.Sound.play(sound.glitch, 0.03, false);
+      await ƒS.Sound.fade(sound.BillTheme, 0.03, 3, true);
+      await ƒS.Location.show(locations.Billsraum);
+      await ƒS.update(2);
+      await ƒS.Character.hide(characters.Bill);
+      await ƒS.Character.show(characters.Bill, characters.Bill.pose.bored, ƒS.positionPercent(50, 48));
+      await ƒS.update(3);
+      await satzbau(characters.Bill, text.BILL.T007, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T008, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T009, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T010, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T011, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T012, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T013, true, true, 5, 50, sound.Leserin, 3);
+      await satzbau(characters.Bill, text.BILL.T014, true, true, 5, 50, sound.Leserin, 3);
+      //Wenn packt angenommen
+      if(dataForSave.billspakt == true){
+        await ƒS.Character.hide(characters.Bill);
+        await ƒS.Character.show(characters.Bill, characters.Bill.pose.happy, ƒS.positionPercent(50, 48));
+        await ƒS.update(3);
+        await satzbau(characters.Bill, text.BILL.T015, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T016, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T017, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T018, true, true, 5, 50, sound.Leserin, 3);
+      }
+      if(dataForSave.billspakt == false){
+        await satzbau(characters.Bill, text.BILL.T019, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T020, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T021, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T022, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T023, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T024, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T025, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T026, true, true, 5, 50, sound.Leserin, 3);
+        await satzbau(characters.Bill, text.BILL.T027, true, true, 5, 50, sound.Leserin, 3);
+      }
+      await ƒS.Character.hide(characters.Bill);
+      await ƒS.Character.hide(characters.Halistrator);
+      await ƒS.Character.hide(characters.Wache1);
+      await ƒS.Character.hide(characters.Wache2);
+      await ƒS.Character.hide(characters.Berater);
+      await ƒS.update(2);
+      await ƒS.Sound.fade(sound.BillTheme, 0, 3, true);
+      await ƒS.Location.show(locations.fortsetzungfolgt);
+      await ƒS.update(10);
     }
 }
 }

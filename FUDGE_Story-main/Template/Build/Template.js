@@ -4235,6 +4235,20 @@ var Template;
                 T002: "Die Wachen richten ihre Waffen auf euch",
                 T003: "Endlich angekommen im Thronsaal vom Schloss des Lichts finden unsere Helden den königlichen Berater",
                 T004: "Ihr setzt den Berater des Königs über euer Vorhaben in Kenntniss",
+                //BILL
+                T005: "Irgendetwas tief in unserem Helden führte ihn aus dem Wald heraus",
+                T006: "Es war wie, als würde eine zweite Seele im Körper unseres Helden hausen",
+                T007: "So kam unser Held endlich beim Schloss an, von dem Halistrator erzählt hatte",
+                T008: "Ob er auch schon dort ist. . .",
+                T009: "Du spürst das Brennen der blauen Flamme in deiner Seele",
+                T010: "Sieh mal, Halistrator ist auch hier!",
+                T011: "Was?",
+                T012: "Hey-y das kannst du doch nicht bringen?",
+                T013: "Ich bin doch der Erzähler!",
+                T014: "Nein, warte",
+                T015: "Wie bist du hier her gekommmen?",
+                T016: "Was halt nein",
+                T017: "Ne- e- e- ei",
             },
             whiteknight: {
                 T000: ". . .",
@@ -4280,9 +4294,40 @@ var Template;
                 T011: "WIE KANNST DU ES WAGEN",
                 T012: "Die KÖNIGLICHEN BEFEHLE ZU MISSACHTEN!?",
                 T013: "WACHEN!!!",
+                //BILL
+                T014: "HAALT! Wie seid ihr hier reingekommen?!",
+                T015: "WACHEN!!!",
             },
             BILL: {
-                T000: "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+                T000: "Pass auf, lass mich das für dich erledigen",
+                T001: "Okay mein Bester, ich übernehme ab hier!",
+                T002: "Ah wie schön es ist, wieder hier zu sein!",
+                T003: "Nach all der langen langen LANGEN Zeit",
+                T004: "Danke dir!",
+                T005: "Du hast mir wirklich den Allerwertesten gerettet",
+                T006: "Dafür, möchte ich dir was zeigen!",
+                T007: "WILLKOMMEN IN",
+                T008: "MEINEM REICH!",
+                T009: "Gefällt es dir?",
+                T010: "Mach es dir gerne gemütlich!",
+                T011: "Ahja, wegen deinem kleinen Freund. . .",
+                T012: "Er hat dich doch schon sicherlich genug genervt oder?",
+                T013: "Um den musst du dir keine Sorgen mehr machen. . .",
+                T014: "Heh heh",
+                T015: "Ich werde dich nun aus dieser Welt in deine eigene zurückbringen",
+                T016: "Ahja, es wird etwas schmerzhaft",
+                T017: "Keiner hat gesagt, dass du dabei LEBEND sein musst oder?",
+                T018: "HAH HAH HAH HAH HAAHAHAHAHAHAHAHA",
+                //Pakt Abgelehnt
+                T019: "Aber das war einmal. . .",
+                T020: "Ich muss meine Familie rächen verstehst du!",
+                T021: "Der Feind hat mich verflucht",
+                T022: "Siehst du das Symbol auf dem Boden? Das ist das Zeichen der Finsternis!",
+                T023: "Ich kann mich nicht länger manifestieren. . .",
+                T024: "Ich werde dir helfen, versprochen!",
+                T025: "Nehme mich mit und ich stehe dir zur Seite",
+                T026: "Aber du musst auch etwas für mich tun. . .",
+                T027: "Bitte helfe mir, mich zu erlösen!!!",
             },
             Wache1: {
                 T000: "HAAAAAALT!",
@@ -4296,6 +4341,9 @@ var Template;
                 T008: "ICH KENNE DICH DOCH IRGENDWOHER. . .",
                 T009: "DU WOLLTEST DOCH IRGENDWANN SCHONEINMAL REIN ODER NICHT?!",
                 T010: "JA OHNE GENEHMIGUNG!",
+                //BILL
+                T011: "HAAAAAALT!",
+                T012: "NIEMAND DARF IN DIE HALLEN DES BERATERS PASSIEREN!",
             },
             Mysteriouswoman: {
                 T000: "Halt warte!",
@@ -4325,8 +4373,11 @@ var Template;
                 T017: "Verstehe. Nun gut, geht rein!",
                 T018: "Seit dem Drachenangriff werden wir sowieso nicht mehr bezahlt",
                 T019: "Wir stehen hier eigentlich nur zum Spaß rum",
+                //BILL
+                T020: "Ja, so lauten die Befehle! Was habt ihr hier verloren?",
             },
         };
+        Template.dataForSave.Halisgefährteangenommen = false;
         //Szenenablauf
         //characters.whiteknight.name = "Vasi";
         //dataForSave.protagonist.name = characters.whiteknight.name;+
@@ -4537,6 +4588,123 @@ var Template;
         }
         //Hier geht es weiter, wenn man Halistrator abgelehnt hat
         if (Template.dataForSave.Halisgefährteangenommen == false) {
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T005, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T006, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T007, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T008, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.ƒS.Location.show(Template.locations.Schlosstor);
+            await Template.ƒS.update(3);
+            await Template.ƒS.Sound.fade(Template.sound.wachentheme, 0.07, 3, true);
+            await Template.ƒS.Character.show(Template.characters.Wache2, Template.characters.Wache2.pose.standard, Template.ƒS.positionPercent(70, 48));
+            await Template.ƒS.update(3);
+            await Template.ƒS.Character.show(Template.characters.Wache1, Template.characters.Wache1.pose.standard, Template.ƒS.positionPercent(20, 48));
+            await Template.ƒS.update(3);
+            await Template.satzbau(Template.characters.Wache1, text.Wache1.T011, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.satzbau(Template.characters.Wache1, text.Wache1.T012, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.satzbau(Template.characters.Wache2, text.Wache2.T020, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T000, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T009, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.buttonpress(Template.sound.buttonhover, .2);
+            Template.ƒS.Sound.play(Template.sound.glitch, 0.03, false);
+            let BILL = {
+                BILL: "B I L L",
+                BILL2: "B I L L",
+            };
+            let billelement = await Template.ƒS.Menu.getInput(BILL, "auswahl");
+            switch (billelement) {
+                case BILL.BILL:
+                    Template.dataForSave.evil + 5;
+                    break;
+                case BILL.BILL2:
+                    Template.dataForSave.evil + 5;
+                    break;
+            }
+            await Template.ƒS.Sound.fade(Template.sound.wachentheme, 0, 3, true);
+            await Template.ƒS.Character.hide(Template.characters.Wache1);
+            await Template.ƒS.update(1);
+            await Template.ƒS.Character.hide(Template.characters.Wache2);
+            await Template.ƒS.update(2);
+            await Template.ƒS.Location.show(Template.locations.Thronsaal);
+            await Template.ƒS.update(3);
+            await Template.ƒS.Character.show(Template.characters.Berater, Template.characters.Berater.pose.standard, Template.ƒS.positionPercent(50, 48));
+            await Template.ƒS.update(3);
+            await Template.satzbau(Template.characters.Berater, text.Berater.T014, true, true, 5, 50, Template.sound.Elo, 3);
+            await Template.satzbau(Template.characters.Berater, text.Berater.T015, true, true, 5, 50, Template.sound.Elo, 3);
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T010, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.ƒS.Character.show(Template.characters.Halistrator, Template.characters.Halistrator.pose.sauer, Template.ƒS.positionPercent(20, 48));
+            await Template.ƒS.update(3);
+            Template.ƒS.Sound.play(Template.sound.glitch, 0.03, false);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T001, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T011, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            Template.verticalShake();
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T012, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            Template.verticalShake();
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T013, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            Template.verticalShake();
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T014, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            Template.verticalShake();
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T015, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T016, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            Template.verticalShake();
+            await Template.satzbau(Template.characters.MainNarrator, text.MainNarrator.T017, true, true, 5, 50, Template.sound.MainNarrator, 3);
+            await Template.ƒS.Character.hide(Template.characters.Halistrator);
+            await Template.ƒS.Character.hide(Template.characters.Wache1);
+            await Template.ƒS.Character.hide(Template.characters.Wache2);
+            await Template.ƒS.Character.hide(Template.characters.Berater);
+            await Template.ƒS.update(2);
+            await Template.ƒS.Character.show(Template.characters.Bill, Template.characters.Bill.pose.happy, Template.ƒS.positionPercent(50, 48));
+            await Template.ƒS.update(3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T002, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T003, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T004, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T005, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T006, true, true, 5, 50, Template.sound.Leserin, 3);
+            Template.verticalShake();
+            Template.ƒS.Sound.play(Template.sound.glitch, 0.03, false);
+            await Template.ƒS.Sound.fade(Template.sound.BillTheme, 0.03, 3, true);
+            await Template.ƒS.Location.show(Template.locations.Billsraum);
+            await Template.ƒS.update(2);
+            await Template.ƒS.Character.hide(Template.characters.Bill);
+            await Template.ƒS.Character.show(Template.characters.Bill, Template.characters.Bill.pose.bored, Template.ƒS.positionPercent(50, 48));
+            await Template.ƒS.update(3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T007, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T008, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T009, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T010, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T011, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T012, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T013, true, true, 5, 50, Template.sound.Leserin, 3);
+            await Template.satzbau(Template.characters.Bill, text.BILL.T014, true, true, 5, 50, Template.sound.Leserin, 3);
+            //Wenn packt angenommen
+            if (Template.dataForSave.billspakt == true) {
+                await Template.ƒS.Character.hide(Template.characters.Bill);
+                await Template.ƒS.Character.show(Template.characters.Bill, Template.characters.Bill.pose.happy, Template.ƒS.positionPercent(50, 48));
+                await Template.ƒS.update(3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T015, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T016, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T017, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T018, true, true, 5, 50, Template.sound.Leserin, 3);
+            }
+            if (Template.dataForSave.billspakt == false) {
+                await Template.satzbau(Template.characters.Bill, text.BILL.T019, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T020, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T021, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T022, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T023, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T024, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T025, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T026, true, true, 5, 50, Template.sound.Leserin, 3);
+                await Template.satzbau(Template.characters.Bill, text.BILL.T027, true, true, 5, 50, Template.sound.Leserin, 3);
+            }
+            await Template.ƒS.Character.hide(Template.characters.Bill);
+            await Template.ƒS.Character.hide(Template.characters.Halistrator);
+            await Template.ƒS.Character.hide(Template.characters.Wache1);
+            await Template.ƒS.Character.hide(Template.characters.Wache2);
+            await Template.ƒS.Character.hide(Template.characters.Berater);
+            await Template.ƒS.update(2);
+            await Template.ƒS.Sound.fade(Template.sound.BillTheme, 0, 3, true);
+            await Template.ƒS.Location.show(Template.locations.fortsetzungfolgt);
+            await Template.ƒS.update(10);
         }
     }
     Template.Szene4_3 = Szene4_3;
