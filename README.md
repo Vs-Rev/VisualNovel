@@ -1,6 +1,8 @@
 # FUDGE_Story
 A FUDGE module for the easy development of interactive stories, visual novels and simple adventure games
 
+# Inhaltsangabe
+"The Tale of a Knight" entführt in eine Welt, in der die Grenzen zwischen Realität und Fantasie verschwimmen. Ein junger Held, ohne Erinnerung an seine Vergangenheit, findet sich in einem geheimnisvollen Ort wieder. Eine bezaubernde Erzählung eines alten Mannes dient als einzige Brücke zwischen den Welten und entfacht ein Abenteuer, das die Definition von Mut und Bestimmung neu zeichnet. Als der Held in seiner alltäglichen Welt erwacht, ahnt er nicht, dass eine einfache Pflicht, seine Schwester abzuholen, ihn in eine außergewöhnliche Saga stürzt. Die Reise führt ihn durch die Schatten eines alten Theaters, in die farbenfrohen Weiten der Wunderwelt Verdantia und in die Herzen unvergesslicher Gefährten. Zwischen den sanften Wiesen von Verdantia und den dunklen Hallen des Schlosses der Dunkelheit entfaltet sich eine Geschichte von Freundschaft, Mut und der Suche nach dem eigenen Ich. "The Tale of a Knight" ist eine Hommage an die Kraft der Geschichten, die uns definieren und die Sterne erreichen lassen.
 
 # References
 - [APIs](https://jirkadelloro.github.io/FUDGE_Story/Documentation/Reference/#fudge-story-reference)
