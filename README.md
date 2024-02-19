@@ -34,7 +34,8 @@ A FUDGE module for the easy development of interactive stories, visual novels an
 |  D | Meter-bar             | Die Meter-Bar wurde als Battleprogress eingesetzt.
 
 
-## Link zu der Visual Novel: https://vs-rev.github.io/VisualNovel/FUDGE_Story-main/Template/Template.html
+## Link zu der Visual Novel: 
+[KLICK MICH](https://vs-rev.github.io/VisualNovel/FUDGE_Story-main/Template/Template.html)
 
 ##  Abgabeformat
 
