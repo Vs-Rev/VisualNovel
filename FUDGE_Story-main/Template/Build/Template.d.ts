@@ -416,9 +416,6 @@ declare namespace Template {
     function Szene1_4(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function Szene1_5(): ƒS.SceneReturn;
-}
-declare namespace Template {
     function Szene1_6(): ƒS.SceneReturn;
 }
 declare namespace Template {
