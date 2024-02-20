@@ -149,6 +149,8 @@ namespace Template {
     ƒS.Character.hideAll();
     ƒS.Speech.hide();
     ƒS.update(1);
+    await ƒS.Sound.fade(sound.nightambience, 0, 2, true);
+    await ƒS.update(5);
     ƒS.Location.show(locations.blackbackground);
     ƒS.update(2);
     //return "Szene4_1";

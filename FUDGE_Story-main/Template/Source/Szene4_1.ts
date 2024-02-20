@@ -905,6 +905,8 @@ namespace Template {
     }
     ƒS.Location.show(locations.blackbackground);
     ƒS.update(3);
+    await ƒS.Character.hide(characters.Halistrator);
+    await ƒS.update(5);
     await ƒS.Sound.fade(sound.Meadow, 0, 2, false);
     if (dataForSave.Halisgefährteangenommen == true) {
       dataForSave.Entscheidungsfrage1 = 1;
