@@ -5,118 +5,118 @@ namespace Template {
     //Gesprochener Text
     let text = {
       MainNarrator: {
-        T0000: ". . .",
-        T0001: ". . .",
-        T0002: "Oh",
-        T0003: "Verzeih mir doch bitte meine Unachtsamkeit. . .",
-        T0004: "Ich bin wohl in meinen Gedanken versunken. . .",
-        T0005: "Kannst du mich sehen? ",
-        T1005: "Ich dich zumindest nicht. ",
-        T1006: "Wärst du wohl so freundlich und könntest mich",
-        T1007: ". . . erleuchten?",
-        T0006: "Es ist besser ein Licht anzuzünden, als die gesamte Dunkelheit zu verfluchen, findest du nicht?",
-        T0007: "Da wir uns gerade besser kennenlernen, möchtest du deinen Namen mit mir teilen?",
-
-        T0008: "Das ist sehr lieb von dir!",
-        T0009: ". . .",
-        T0010: "Spann mich nicht so auf die Folter. Sag schon, wie ist dein Name?",
-        T0011: ". . . gewöhnlicher Name",
-
+        T0000: "...",
+        T0001: "...",
+        T0002: "Oh,",
+        T0003: "Entschuldige meine Unachtsamkeit...",
+        T0004: "Ich war ganz in Gedanken versunken.",
+        T0005: "Kannst du mich sehen?",
+        T1005: "Ich kann dich leider nicht sehen.",
+        T1006: "Würdest du mir einen Gefallen tun und",
+        T1007: "... mich ins Licht rücken?",
+        T0006: "Ist es nicht besser, eine Kerze anzuzünden, als die Dunkelheit zu verfluchen?",
+        T0007: "Da wir gerade dabei sind, uns kennenzulernen, würdest du mir deinen Namen verraten?",
+      
+        T0008: "Das ist sehr freundlich von dir!",
+        T0009: "...",
+        T0010: "Mach es nicht so spannend. Wie heißt du?",
+        T0011: "... ein alltäglicher Name.",
+      
         T0012: "Dein Name ist also",
-        T0013: ". . .",
+        T0013: "...",
         T0014: "Ablehnen?",
-        T0015: "Sorry. Der Name ist bereits vergeben",
-        T0016: "An deiner Stelle hätte ich mir sowieso einen besseren Namen ausgedacht",
-        T0017: "Also. Wie heißt du wirklich?",
-
-        T0018: "Nun gut, dann übernehme ich die Entscheidung für dich. . .",
-        T0019: "Also. . . dein Name ist: ",
-
-        T0020: "Ahja bevor ich es vergesse. . .",
-        T0021: "Dich erwartet nun eine heldenhafte Reise in ein längst vergessenes Königreich voller Herausforderungen, Tücken und Gefahren.",
-        T0022: "Bevor ich dir diese Geschichte also zumute, muss ich wissen. . .",
-        T0023: "Bist du der Herausforderung gewachsen?",
-
-        T0024: "Wunderbar!!!",
-        T0025: " war definitiv nicht bereit, doch ",
-        T1026: " hatte leider keine andere Wahl",
-
-        //Lichtan
-        L0001: "Super!",
-        L0002: "Es gibt übrigens keinen Lichtschalter. . .",
-        L0003: "Aber der Wille zählt. Warte, lass mich das übernehmen",
-
-        //Lichtaus
-        L0004: "Willst du wirklich weiter so vor einem dunklen Bildschirm sitzen?",
-        L0005: "Lass mich mal ran",
-
-        //Tutorial
+        T0015: "Tut mir leid. Dieser Name ist schon vergeben.",
+        T0016: "Ich hätte mir an deiner Stelle sowieso einen besseren Namen ausgesucht.",
+        T0017: "Also, wie lautet dein richtiger Name?",
+      
+        T0018: "Gut, dann übernehme ich die Entscheidung für dich...",
+        T0019: "Also... dein Name ist:",
+      
+        T0020: "Ah, bevor ich es vergesse...",
+        T0021: "Eine heldenhafte Reise in ein längst vergessenes Königreich voller Herausforderungen, Tücken und Gefahren erwartet dich.",
+        T0022: "Bevor wir diese Geschichte beginnen, muss ich wissen...",
+        T0023: "Bist du bereit für diese Herausforderung?",
+      
+        T0024: "Fantastisch!!!",
+        T0025: " war definitiv nicht darauf vorbereitet, aber ",
+        T1026: " hatte keine andere Wahl",
+      
+        // Licht an
+        L0001: "Großartig!",
+        L0002: "Es gibt keinen Lichtschalter...",
+        L0003: "Aber es ist der Gedanke, der zählt. Warte, ich kümmere mich darum.",
+      
+        // Licht aus
+        L0004: "Möchtest du wirklich weiterhin vor einem dunklen Bildschirm sitzen?",
+        L0005: "Lass mich mal versuchen.",
+      
+        // Tutorial
         TT001: ", heute ist dein Glückstag!",
-        TT002: "Du steckst hier nun wohl auch fest. Aber dafür mit mir!",
-        TT003: "Wir werden SO VIEL Spaß zusammen haben!",
-        TT004: "Wie wärs mit einer kleinen Tour?",
-        TT005: "Oder möchtest du etwas trinken?",
-        TT006: "Ich habs! Wir könnten auch einfach Schweigen und nichts tun.",
-        //Trinken
-        TT007: "Gerne, was darf es sein?",
-        TT008: "Oh, moment mal. . .",
-        TT009: "Ich habe leider garnichts da.",
-
-        //Tour
+        TT002: "Sieht so aus, als wärst du jetzt auch hier gefangen. Aber immerhin mit mir!",
+        TT003: "Wir werden eine Menge Spaß zusammen haben!",
+        TT004: "Wie wäre es mit einer kleinen Führung?",
+        TT005: "Oder hättest du gerne etwas zu trinken?",
+        TT006: "Oder wir könnten auch einfach in Stille verweilen und nichts tun.",
+        // Trinken
+        TT007: "Gerne, was hättest du denn gerne?",
+        TT008: "Oh, Moment...",
+        TT009: "Es scheint, ich habe hier gar nichts.",
+      
+        // Tour
         TT010: "Wunderbar!",
-        TT011: "Hm. . .",
-        TT012: "Ich habe hier leider nicht viel zu zeigen. . .",
-        TT013: "Doch! Dieses Leuchten da vorne. Es ist so. . .",
-        TT014: ". . .Erleuchtend",
-
-        //Beenden
-        TT015: "Spiel wird beendet. . .",
-        TT016: "Bitte warten. . .",
-        TT017: "Speicherstände werden erstellt. . .",
+        TT011: "Hmm...",
+        TT012: "Ich fürchte, ich habe hier nicht viel zu zeigen...",
+        TT013: "Aber sieh nur! Dieses Leuchten dort. Es ist so...",
+        TT014: "... erhellend.",
+      
+        // Beenden
+        TT015: "Spiel wird beendet...",
+        TT016: "Bitte warten...",
+        TT017: "Speicherstände werden erstellt...",
         TT018: "Beenden fehlgeschlagen",
-        TT019: "Tja gibt wohl keinen Ausweg heh",
-
+        TT019: "Sieht so aus, als gäbe es keinen Ausweg, nicht wahr?",
+      
         T0026: "Mir ist gerade etwas eingefallen!",
-        T0027: "Weißt du, die Leute LIEBEN meine Geschichten",
-        T0028: "Von denen habe ich definitiv genug auf Lager",
-        T0029: "Möchtest du eine hören",
-
-        //Geschichte erzählen
-        G0014: "Das ist schön!",
-        G0015: "Es hat schon lange keiner mehr meinen Geschichten zugehört",
-        G0016: "Diese Geschichte hat es jedoch in sich.",
-        G0017: "Du solltest dich mental darauf vorbereiten",
-        G0018: "Möchtest du, dass ich dir dabei helfe?",
-        //Nach dem Herrn fragen
-        G0001: "Ich freue mich dass du dich für mich interessierst",
-        G0002: "Leider. . .",
-        G0003: "Kann ich mich nicht mehr an meinen Namen erinnern. . .",
-        G0004: "Genau so wenig weiß ich, wie ich hier gelandet bin",
-        G0005: "Ich weiß nur, dass ich hier schon eine Ewigkeit festsitze",
-        G0006: "Wenn du rausgefunden hast, wie man von diesem Ort entkommen kann. . .",
-        G0007: "Sei so gut und lass es mich bitte wissen, ja?",
-        //Nach der Umgebung fragen
+        T0027: "Die Leute lieben meine Geschichten.",
+        T0028: "Davon habe ich reichlich zu erzählen.",
+        T0029: "Möchtest du eine hören?",
+      
+        // Geschichte erzählen
+        G0014: "Das freut mich!",
+        G0015: "Es ist schon eine Weile her, dass jemand meinen Geschichten gelauscht hat.",
+        G0016: "Aber diese Geschichte wird dich sicher fesseln.",
+        G0017: "Bereite dich mental darauf vor.",
+        G0018: "Kann ich dir dabei helfen?",
+      
+        // Nach dem Herrn fragen
+        G0001: "Es freut mich, dass du Interesse an mir zeigst.",
+        G0002: "Leider...",
+        G0003: "kann ich mich nicht mehr an meinen Namen erinnern...",
+        G0004: "ebenso wenig, wie ich hierher gekommen bin.",
+        G0005: "Ich weiß nur, dass ich schon eine Ewigkeit hier feststecke.",
+        G0006: "Falls du einen Weg findest, von diesem Ort zu entkommen...",
+        G0007: "Bitte lass es mich wissen, ja?",
+      
+        // Nach der Umgebung fragen
         G0008: "Wo wir sind?",
-        G0009: "Ich bin mir nicht ganz sicher",
-        G0010: "Alles scheint vertraut zu sein, verhält sich jedoch sehr seltsam",
-        G0011: "Je länger du dich hier aufhältst, desto mehr Erinnerungen verschwinden aus deinem Gedächtnis",
-        G0012: ". . .",
+        G0009: "Ich bin mir nicht ganz sicher.",
+        G0010: "Alles kommt mir bekannt vor, verhält sich aber seltsam.",
+        G0011: "Je länger du hier verweilst, desto mehr Erinnerungen verblassen.",
+        G0012: "...",
         G0013: "Was habe ich gerade gesagt?",
-
-        //Tutorial Spielen
-        T0030: "Alles klar. . .",
-        T0031: "Moment. . .",
-        T0032: "Mir fällt gerade auf, dass es noch gar kein Tutorial gibt. . .",
-        T0033: "Ich bin mir sicher, du kommst auch so zurecht",
-
-        //Tutorial nicht spielen
-        T0034: "Ah. . . Du bist also eher die taffe Persönlichkeit?",
-        T0035: "Aber sag nicht ich hätte dich nicht gewarnt",
-        T0036: "Die Haftung meinerseits, für körperliche oder geistige Schäden wird hiermit ausgeschlossen. . . heh",
-
-        T0037: "Jetzt lehn dich zurück und hör gut zu. . .",
-
-
+      
+        // Tutorial spielen
+        T0030: "Alles klar...",
+        T0031: "Moment...",
+        T0032: "Es fällt mir gerade auf, dass es noch gar kein Tutorial gibt...",
+        T0033: "Ich bin sicher, du kommst auch ohne zurecht.",
+      
+        // Tutorial nicht spielen
+        T0034: "Ah, du magst also direktes Handeln?",
+        T0035: "Aber beschwer dich später nicht, ich habe dich gewarnt.",
+        T0036: "Jegliche Haftung für körperliche oder geistige Schäden ist hiermit ausgeschlossen... heh",
+      
+        T0037: "Jetzt mach es dir bequem und hör gut zu..."
       }
     };
 

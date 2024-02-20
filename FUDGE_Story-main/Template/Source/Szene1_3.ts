@@ -7,41 +7,41 @@ namespace Template {
     //Gesprochener Text
     let text = {
       MainNarrator: {
-        M0000: "Es ist eine dieser schönen Nächte findest du nicht?",
-        M0001: "Die Ruhe vor dem Sturm heh",
-        M0002: "Lass uns einfach mal für einen Moment nichts tun und schweigen",
-        M0003: "Nur einen Moment, erfüllt von Stille. . .",
-        M0004: ". . .",
-        M0005: "Muss das sein?",
-        M0006: "Na los, geh schon ran",
+        M0000: "Eine dieser perfekten Nächte, findest du nicht auch?",
+        M0001: "Die Ruhe vor dem Sturm, wie man so schön sagt.",
+        M0002: "Lass uns einen Moment innehalten und die Stille genießen.",
+        M0003: "Nur für einen kurzen Augenblick, umgeben von vollkommener Ruhe...",
+        M0004: "...",
+        M0005: "Ist das wirklich nötig?",
+        M0006: "Komm schon, geh schon ran.",
         M0007: "",
-        //Entschuldigung Annehmen
-        M0008: ". . .",
-        M0009: "Ich lass das mal deine Sorge sein",
-        //Telefonat ablehnen
-        M0010: "Danke. Okay, fahren wir mit der Geschichte fort. . .",
-        M0011: "Jetzt solltest du dich beeilen, es wird schon spät!",
+        // Entschuldigung annehmen
+        M0008: "...",
+        M0009: "Ich überlasse die Entscheidung dir.",
+        // Telefonat ablehnen
+        M0010: "Danke. Lass uns mit unserer Geschichte fortfahren...",
+        M0011: "Beeil dich, es wird bereits spät!",
       },
       Elo: {
         E0000: "Hey, ",
-        E0001: "Hör zu. . .",
-        E0002: "Ich wollte mich nur entschuldigen. . . für mein gestriges Verhalten. . .",
-        E0003: "Ich hätte nicht so eine Szene machen sollen",
-        E0004: "Es kam alles nur so plötzlich und ohne Vorwarnung. . .",
+        E0001: "Ich muss dir etwas sagen...",
+        E0002: "Es tut mir leid wegen gestern... Ich hätte nicht so reagieren sollen.",
+        E0003: "Ich hätte keinen solchen Aufstand machen dürfen.",
+        E0004: "Es kam alles so überraschend und unerwartet...",
         E0005: "Kannst du mir verzeihen?",
-        //Entschuldigung Annehmen
-        E0006: "Das ist schön. . .",
-        E0007: "Das beruhigt mich. . . Danke",
-        E0008: "Ich hoffe wir können uns bald wieder sehen",
-        E0009: "Ahja und vergiss nicht deine Schwester abzuholen",
-        E0010: "Ich weiß wie vergesslich du sein kannst!!!",
-        E0011: "Byeee",
-        //Entschuldigung Ablehnen
-        E0012: "Ich wusste du würdest es nicht verstehen. . .",
-        //Was meinst du
-        E0013: "Ah. . .",
-        E0014: "Verstehe schon, wir reden nicht darüber",
-        E0015: "Danke dir",
+        // Entschuldigung annehmen
+        E0006: "Das bedeutet mir viel...",
+        E0007: "Das beruhigt mich wirklich. Danke.",
+        E0008: "Ich hoffe, wir sehen uns bald wieder.",
+        E0009: "Ach ja, und vergiss nicht, deine Schwester abzuholen.",
+        E0010: "Ich kenne deine Vergesslichkeit!!!",
+        E0011: "Tschüss!",
+        // Entschuldigung ablehnen
+        E0012: "Ich dachte mir schon, dass du es nicht verstehen würdest...",
+        // Unklarheit
+        E0013: "Ah...",
+        E0014: "Alles klar, wir lassen das Thema ruhen.",
+        E0015: "Danke dir.",
       },
     };
     //await ƒS.Sound.fade(sound.introductiontheme, 0.3, 3, true);

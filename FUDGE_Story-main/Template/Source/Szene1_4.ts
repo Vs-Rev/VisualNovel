@@ -7,81 +7,83 @@ namespace Template {
     //Gesprochener Text
     let text = {
       MainNarrator: {
-        T0000: "Endlich sind wir da",
-        T0001: "Wir können schon reingehen, die Show scheint aber anscheinend noch nicht vorbeizusein. . .",
-        T0002: "Deine Entscheidung",
-
-        //Reingehen
-        T0003: "Nun gut, dann lass uns rein.",
-        T0004: "Wir sollten schauen dass wir einen Sitzplatz bekommen",
-
-        T0005: "Karte hinzugefügt",
-        //Wenn Entschuldigung abgelehnt (entschuldigung : 0):
-        T0006: "Wir brauchen dafür übrigens eine Karte",
-        T0007: "Und da geht sie",
-
-        T0008: "Hm. . . scheint hier wohl nicht viele zu geben die du fragen könntest",
-        T0009: "Vielleicht sollten wir uns. . .",
-        T0010: "Reinschleichen?",
-
-        T0011: "Warum möchtest du dich reinschleichen wenn du doch gerade eine Sitzgelegenheit bekommen hast?",
-        T0012: "Ich verstehe, du brauchst den Nervenkitzel",
-        T0013: "Na dann. . .",
-        T0014: "Was denn?",
-        T0015: "Dich aufhalten? Nein wieso denn?",
-        T0016: "Das macht das Ganze doch spannender",
-
-        T0017: "Sehr gut. Dann lass uns beeilen bevor die Vorstellung beginnt",
-
-        T0018: "Sehr gewagt. Doch wer nicht wagt, der nicht gewinnt",
-        T0019: "Nicht wahr?",
-
-        T0020: "So, das überlasse ich jetzt ganz dir",
-
-        T0021: "Meine Schwester. . .",
-        T0022: "Ich habe heute total vergessen dass sie eine Aufführung hat. . .",
-        T0023: "Deshalb habe ich auch kein Ticket holen können",
-        T0024: "Aber sie ist noch sehr jung. . .",
-        T0025: "Ich muss sie nach Hause begleiten",
-        T0026: "Außerdem würde ich gerne zusammen mit ihr die Vorstellung anschauen",
-        T0027: "Sonst ist sie ganz traurig. . .",
-        T0028: "Er hat dich bemerkt",
-        T0029: "Und jetzt?",
-        T0030: ". . .",
-        T0031: "Da hast du ja nochmal Glück gehabt",
-        T0032: "Du zeigst das Ticket vor",
-        T0033: "Mit dem Kopf durch die Wand. . .",
-        T0034: "Ob das wohl gut geht",
+        T0000: "Endlich angekommen.",
+        T0001: "Die Show ist noch im Gange. Wir können schon mal reingehen.",
+        T0002: "Was meinst du?",
+      
+        // Hineingehen
+        T0003: "Okay, dann lass uns reingehen.",
+        T0004: "Mal sehen, ob wir noch einen guten Platz finden.",
+      
+        T0005: "Ticket erhalten.",
+        // Bei abgelehnter Entschuldigung (entschuldigung: 0):
+        T0006: "Dafür brauchen wir ein Ticket.",
+        T0007: "Und da liegt das Problem.",
+      
+        T0008: "Es sieht so aus, als hätten wir hier wenig Auswahl.",
+        T0009: "Vielleicht könnten wir uns...",
+        T0010: "einschleichen?",
+      
+        T0011: "Warum einschleichen, wenn wir doch bereits Platz nehmen könnten?",
+        T0012: "Ah, du suchst den Nervenkitzel.",
+        T0013: "In Ordnung...",
+        T0014: "Was ist los?",
+        T0015: "Dich aufhalten? Warum sollte ich?",
+        T0016: "Das macht die Sache doch erst richtig spannend.",
+      
+        T0017: "Gut, dann lass uns schnell sein, bevor die Vorstellung beginnt.",
+      
+        T0018: "Mutig. Aber wie heißt es so schön: Wer nicht wagt, der nicht gewinnt.",
+        T0019: "Stimmt's?",
+      
+        T0020: "Jetzt liegt es an dir.",
+      
+        T0021: "Meine Schwester...",
+        T0022: "Ich habe total vergessen, dass sie heute auftritt.",
+        T0023: "Deshalb habe ich kein Ticket besorgt.",
+        T0024: "Sie ist noch so jung...",
+        T0025: "Ich muss sie nach der Vorstellung nach Hause bringen.",
+        T0026: "Ich möchte die Vorstellung mit ihr zusammen sehen.",
+        T0027: "Sonst ist sie bestimmt traurig...",
+        T0028: "Du wurdest bemerkt.",
+        T0029: "Was nun?",
+        T0030: "...",
+        T0031: "Glück gehabt.",
+        T0032: "Du zeigst dein Ticket.",
+        T0033: "Mit dem Kopf durch die Wand...",
+        T0034: "Mal sehen, ob das gutgeht.",
       },
       School: {
         S0000: "ERINNERUNG",
-        S0001: "LETZTE VORFÜHRUNG BEGINNT IN KÜRZE",
-        S0002: "BITTE BEGEBEN SIE SICH AUF IHRE PLÄTZE",
-
-        S0003: "ACHTUNG ACHTUNG",
+        S0001: "DIE LETZTE VORSTELLUNG BEGINNT BALD",
+        S0002: "BITTE NEHMEN SIE IHRE PLÄTZE EIN",
+      
+        S0003: "ACHTUNG",
         S0004: "LETZTER AUFRUF",
-        S0005: "BITTE BEGEBEN SIE SICH NUN AUF IHRE PLÄTZE",
-        S0006: "DIE LETZTE VORFÜHRUNG BEGINNT IN KÜRZE",
+        S0005: "ALLE ZUSCHAUER, BITTE NEHMEN SIE JETZT IHRE PLÄTZE EIN",
+        S0006: "DIE LETZTE VORSTELLUNG BEGINNT IN KÜRZE",
       },
       Elo: {
-        //Wenn Entschuldigung angenommen (entschuldigung: 1):
-        E0000: "Hey! Du bist ja ausnahmsweise mal früh dran",
-        E0001: "Langsam wirst du zu einem besseren Menschen",
-        E0002: "Sag mal, hast du überhaupt einen Sitzplatz reserviert?",
-        E0003: "Die ganze Halle ist voll und alle Plätze belegt.",
-        E0004: "Ich habe extra einen Platz dazugebucht, damit ich nicht neben jemand Fremdes sitzen muss",
-        E0005: "DU bist niemand. . . Fremdes",
-        E0006: "Wenn du magst, kannst du dich neben mich setzen und warten bis die Show zu ende ist",
-        //Wenn Nebensetzen
-        E0007: "Das freut mich! Ich hole uns noch etwas zu trinken. Geh schonmal vor. Hier die Karte für dich!",
-        //Wenn Anruf ignoriert (entschuldigung : 2):
-        E0008: "Oh Hey! Ich habe versucht dich zu erreichen, vermutlich warst du zu beschäftigt. . .",
-        E0009: "Hör zu. . .",
-        E0010: "Eigentlich wollte ich mich. . .",
-
-        E0011: "Oh. . . egal",
-        E0012: "Das hat auch später Zeit. Wir sollten jetzt los.",
-        E0013: "Ich möchte die letzte Vorführung nicht verpassen. Ich LIEBE Geschichten",
+        // Bei angenommener Entschuldigung (entschuldigung: 1):
+        E0000: "Hey, du bist ja mal pünktlich!",
+        E0001: "Du wirst ja immer besser.",
+        E0002: "Hast du denn schon einen Platz reserviert?",
+        E0003: "Die Halle ist voll, alle Plätze sind belegt.",
+        E0004: "Ich habe extra einen Platz neben mir freigehalten.",
+        E0005: "Du bist ja kein Fremder.",
+        E0006: "Wenn du möchtest, kannst du dich neben mich setzen, bis die Show vorbei ist.",
+        // Platz nehmen
+        E0007: "Super, ich hol uns was zu trinken. Geh schon mal vor. Hier ist deine Karte.",
+        // Anruf ignoriert (entschuldigung: 2):
+        E0008: "Hey, ich habe versucht, dich zu erreichen. Warst wohl beschäftigt...",
+        E0009: "Hör zu...",
+        E0010: "Eigentlich wollte ich mich entschuldigen...",
+      
+        E0011: "Ach, egal.",
+        E0012: "Das kann warten. Lass uns loslegen.",
+        E0013: "Ich möchte die letzte Vorführung nicht verpassen. Ich liebe Geschichten.",
+      
+        // Platz ablehnen
 
         //Wenn setzen ablehenn
         E0014: "Ich verstehe. . .",

@@ -7,76 +7,73 @@ namespace Template {
     //Gesprochener Text
     let text = {
       MainNarrator: {
-        M0000: "Wach auf",
-        //Aufwachen ja
-        M0001: ", hast du nicht etwas wichtiges vergessen?",
-        M0002: "Etwas SEHR wichtiges?",
-
-        M1003: "Naja, deine Eltern sind für 2 Wochen im Urlaub",
-        M1004: "Du musst also alleine auf das Haus und auf deine Schwester aufpassen",
-        M1005: "Sie ist heute länger in der Schule, da heute Geschichtserzähltag ist. Du solltest sie abholen, es ist schon dunkel geworden!",
-        M1006: "Das ist etwas. . .",
-        M1007: "Das man nicht vergessen sollte",
-
-        M1008: "Doch",
+        M0000: "Wach auf!",
+        // Aufwachen ja
+        M0001: "Hast du vielleicht etwas Wichtiges vergessen?",
+        M0002: "Etwas SEHR Wichtiges?",
+      
+        M1003: "Deine Eltern sind für zwei Wochen im Urlaub.",
+        M1004: "Du bist verantwortlich für das Haus und deine Schwester.",
+        M1005: "Sie bleibt heute länger in der Schule wegen des Geschichtserzähltags. Es ist bereits dunkel; du solltest sie abholen.",
+        M1006: "Das ist etwas...",
+        M1007: "was man nicht einfach vergessen sollte.",
+      
+        M1008: "Doch.",
         M1009: "Doch!",
-        M1010: "DOCH",
-
-
+        M1010: "DOCH!",
+      
         M0003: "",
-        M0004: "schaffte es letztendlich aufzustehen",
-        //Aufwachen nein
-        M0005: " blieb liegen und verschlief alles spannende",
-        M0006: "Ende",
+        M0004: "stand letztendlich auf.",
+        // Aufwachen nein
+        M0005: "blieb liegen und verpasste das Spannende.",
+        M0006: "Ende.",
         M0007: "Wie fandest du die Geschichte?",
-        M2008: "Blöd?",
-        M2009: "Kann ich mir vorstellen, ist ja noch nicht viel passiert",
-        M2010: "Also steh jetzt auf und verschwende keine Zeit!",
-
-        M0008: ", kein Grund gleich so wütend zu werden",
-        M0009: "Heb dir deine Energie lieber für später auf",
-
-        M0010: ", gute Einstellung. Es ist auch besser sich nicht zu wehren.",
-        M0011: "Doch ich glaube. . .",
-        M0012: "dir ist nicht klar, was noch alles vor dir liegt",
-
-        M0013: "Schweigen ist auch eine Antwort. . .",
-        M0014: "wenn auch keine Gute",
-        M0015: "Wie dem auch sei. . .",
-
-        M0020: "Zimmer verlassen",
-        M0021: "Gute Idee! Du solltest dich ordentlich kleiden, bevor du aus dem Haus gehst",
-        M0022: "Kleidung wurde hinzugefügt",
-        M0023: "Du tust. . .",
-        M0024: "also nichts. . .",
-        M0025: "Wie einfallsreich. . .",
-
-        M0026: "Warte mal!",
-        M0027: "Mir gefällt deine - mit dem Kopf durch die Wand - Einstellung, aber du solltest nicht in Schlafsachen zur Schule deiner Schwester gehen",
-        M0028: "Warte, lass mich dir helfen. . .",
-        M0029: "Gerngeschehen!",
-
-        M0030: "Du solltest dich wirklich langsam auf den Weg machen",
-        M0031: "Sonst wartet deine Schwester ganz alleine auf dich",
-        M0032: "Oder Schlimmeres. . .",
-
+        M2008: "Nicht gut?",
+        M2009: "Verständlich, bisher ist noch nicht viel passiert.",
+        M2010: "Also steh auf und trödel nicht!",
+      
+        M0008: "Kein Grund, gleich so aufzubrausen.",
+        M0009: "Spar dir deine Energie lieber für später.",
+      
+        M0010: "Gute Einstellung. Besser, sich nicht unnötig aufzuregen.",
+        M0011: "Aber ich glaube...",
+        M0012: "du ahnst noch nicht, was alles auf dich zukommt.",
+      
+        M0013: "Schweigen kann auch eine Antwort sein...",
+        M0014: "wenn auch keine gute.",
+        M0015: "Wie dem auch sei...",
+      
+        M0020: "Zimmer verlassen.",
+        M0021: "Gute Idee! Zieh dich ordentlich an, bevor du gehst.",
+        M0022: "Kleidung hinzugefügt.",
+        M0023: "Du entscheidest dich...",
+        M0024: "fürs Nichtstun...",
+        M0025: "Wie originell...",
+      
+        M0026: "Moment!",
+        M0027: "Deine Entschlossenheit imponiert mir, aber in Schlafsachen zur Schule deiner Schwester zu gehen ist keine gute Idee.",
+        M0028: "Warte, ich helfe dir...",
+        M0029: "Bitte sehr!",
+      
+        M0030: "Du solltest dich langsam auf den Weg machen.",
+        M0031: "Deine Schwester wartet schon auf dich.",
+        M0032: "Oder noch schlimmer...",
+      
         M0033: "Mit dem Fahrrad?",
-        M0034: "Motivation scheint dir nicht zu fehlen. . .",
-        M0035: "Dann tret mal in die Pedale!",
-
+        M0034: "Du scheinst motiviert zu sein...",
+        M0035: "Na dann, tritt kräftig in die Pedale!",
+      
         M0036: "Zu Fuß?",
-        M0037: "Sportlich. . .",
-        M0038: "Nur nicht gerade vorteilhaft wenn du sowieso spät dran bist. . .",
-        //M0035
-
+        M0037: "Sportlich...",
+        M0038: "Aber nicht gerade die beste Wahl, wenn du ohnehin schon spät dran bist...",
+      
         M0039: "Mit dem Bus?",
-        M0040: "Bescheiden. . .",
+        M0040: "Bescheiden...",
         M0041: "Aber beeil dich!",
-        
+      
         M0042: "Mit der Bahn?",
-        M0043: "Scheint wohl die schnellste Lösung zu sein",
-        M0044: "Dann nichts wie weg mit dir!",
-
+        M0043: "Das scheint wohl die schnellste Option zu sein.",
+        M0044: "Auf geht's!"
 
       },
       whiteknight: {

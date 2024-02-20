@@ -5,65 +5,60 @@ namespace Template {
     //Gesprochener Text
     let text = {
       MainNarrator: {
-        T0000: "Da, der Vorhang öffnet sich!",
-        T0001: "Ohhh wie schön! Ich liebe Geschichten!",
-        T0002: "Es wird dunkel",
-        T0003: "Du fühlst dich. . .",
-        T0004: "Etwas unwohl. . .",
-        T0005:
-          "Ausgehend von der mysteriösen alten Dame vernimmst du ein seltsames, schwaches Leuchten",
-        T0006:
-          "Du fühlst dich zunehmend unwohler. Irgendetwas stimmt hier nicht",
-        T0007:
-          "Aus der Richtung der Dame scheinen regelrecht Funken zu sprühen",
-        T0008: "Deine Sinne scheinen dir nicht länger treu zu sein",
-        T0009:
-          "Du hast das Gefühl, als würdest du gleich dein Bewusstsein verlieren",
-        T0100: "Speichere. . .",
-
-        //Abreagieren / Nachgeben
-        T0010: "Du versuchst dich zu beruhigen",
-        T0011: ". . .",
-        T0012: "Dein Körper fühlt sich leicht an",
-        T0013: "So leicht, als würdest du schweben",
-        T0014: "Dein Abenteuer. . .",
-        //Schreien
-        T0015: "Du möchtest aufstehen und aus deiner tiefsten Kehle schreien",
-        T0016: "Du erträgst es nicht!",
-        T0017: "Du verlierst die Kontrolle",
-        T0018: "Du fühlst dich plötzlich so an, als würdest du schweben",
+        T0000: "Der Vorhang hebt sich!",
+        T0001: "Oh, wie wunderbar! Ich liebe Geschichten!",
+        T0002: "Es wird dunkel um dich herum.",
+        T0003: "Du fühlst dich...",
+        T0004: "etwas unwohl...",
+        T0005: "Von der geheimnisvollen alten Dame geht ein seltsames, schwaches Leuchten aus.",
+        T0006: "Dein Unbehagen nimmt zu. Etwas stimmt hier nicht.",
+        T0007: "Es scheint, als würden Funken aus ihrer Richtung sprühen.",
+        T0008: "Deine Sinne scheinen dich zu täuschen.",
+        T0009: "Du hast das Gefühl, das Bewusstsein zu verlieren.",
+        T0100: "Speichern...",
+      
+        // Beruhigen / Nachgeben
+        T0010: "Du versuchst, dich zu beruhigen.",
+        T0011: "...",
+        T0012: "Dein Körper fühlt sich federleicht an.",
+        T0013: "So leicht, als würdest du schweben.",
+        T0014: "Dein Abenteuer beginnt...",
+        // Schreien
+        T0015: "Du möchtest aufspringen und schreien.",
+        T0016: "Es ist unerträglich!",
+        T0017: "Du verlierst die Kontrolle.",
+        T0018: "Plötzlich fühlst du dich, als würdest du schweben.",
       },
       Leserin: {
-        L0000: ". . .",
-        L0001: "Hmpf. . .",
+        L0000: "...",
+        L0001: "Hmpf...",
         L0002: "HUST HUST",
-        L0003: ". . .",
-        L0004: "Na eendliich",
-        L0005:
-          "Iiich bin hier her eeingeladen worden um euch eine meiner Geschichten zu erzählen",
-        L0006: "Ihr glaauubt Geschichten sind nuuur etwas für Kinder?",
+        L0003: "...",
+        L0004: "Endlich.",
+        L0005: "Ich wurde hierher eingeladen, um eine meiner Geschichten zu erzählen.",
+        L0006: "Glaubt ihr, Geschichten sind nur etwas für Kinder?",
         L0007: "Ha-Ha-Ha-Ha-Ha",
-        L0008: "Paasst bloß aauf, dieese hier haaat es in sich",
-        L0009: "Nuun deennn. . .",
-        L0010: "Es war einmal, in einer anderen Welt. . .",
-        L0011: "Ein lang erwarteter Besucher. . .",
-        L0012: "Eine Welt die kurz vor dem Abgrund steht. . .",
-
-        L0013: "B E G I N N T",
+        L0008: "Passt gut auf, diese Geschichte hat es in sich.",
+        L0009: "Nun denn...",
+        L0010: "Es war einmal, in einer anderen Welt...",
+        L0011: "Ein lang erwarteter Besucher...",
+        L0012: "Eine Welt am Rande des Abgrunds...",
+      
+        L0013: "BEGINNT",
       },
       whiteknight: {
         W0000: "",
       },
       Publikum: {
         P0000: "Das war grandios!",
-        P0001: "Jaa! Zugabe!",
-        P0002: "Naja so toll war das jetzt auch nicht",
-        P0003: "Mein Kind kann das bestimmt besser",
-        P0004: "was kommt denn nun?",
+        P0001: "Ja! Zugabe!",
+        P0002: "Naja, so toll war es jetzt auch nicht.",
+        P0003: "Mein Kind könnte das besser.",
+        P0004: "Was kommt als Nächstes?",
         P0005: "Wer ist das?",
-        P0006: "Stand das auf dem Plan?",
-        P0007: "Ich habe mein Schnitzel im Backofen vergessen!",
-        P0008: ". . .",
+        P0006: "War das geplant?",
+        P0007: "Ich habe mein Schnitzel im Ofen vergessen!",
+        P0008: "...",
       },
     };
 
