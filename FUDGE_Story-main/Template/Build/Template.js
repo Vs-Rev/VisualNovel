@@ -910,7 +910,7 @@ var Template;
         //Gesprochener Text
         let text = {
             MainNarrator: {
-                T000: "Irgendwann kommt der Moment, in dem du entschieden musst, ob du die Seite umblätterst, oder das Buch schließt.",
+                T000: "Irgendwann kommt der Moment, in dem du entscheiden musst, ob du die Seite umblätterst, oder das Buch schließt.",
             },
         };
         //Szenenablauf
