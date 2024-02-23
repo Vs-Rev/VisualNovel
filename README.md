@@ -40,7 +40,7 @@ Folgende Inhalte wurden von externen Quellen bezogen;
 
 [Konzeptdokument](https://github.com/Vs-Rev/VisualNovel/blob/main/Documents/Konzeptionsdatien%20%26%20Brainstorming/Konzeptdokument.pdf)
 
-[Gepacktes Archiv mit sämtlichen relevanten Inhalten](https://www.mediafire.com/file/7bip80et7k95xdz/Gurev_Vasilii_The+Tale+of+a+Knight.rar/file)
+[Gepacktes Archiv mit sämtlichen relevanten Inhalten](https://www.mediafire.com/file/dd5vesrab36o4de/Gurev_Vasilii_The+Tale+of+a+Knight.rar/file)
 : Man beachte; Das Archiv konnte nicht auf GitHub hochgeladen werden, da sämtliche Inhalte das Push-Limit von 100MB überschreiten. Daher wurde das Archiv auf Mediafire hochgeladen.
 
 [Link zu dem Ordner mit sämtlichen relevanten Inhalten](https://github.com/Vs-Rev/VisualNovel/tree/main/FUDGE_Story-main/Template)
