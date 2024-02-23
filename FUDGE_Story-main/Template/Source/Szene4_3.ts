@@ -159,7 +159,6 @@ namespace Template {
 
       },
     };
-
     //Szenenablauf
     //characters.whiteknight.name = "Vasi";
     //dataForSave.protagonist.name = characters.whiteknight.name;+
@@ -199,6 +198,7 @@ namespace Template {
     await ƒS.update(3);
     await ƒS.Character.show(characters.Wache1, characters.Wache1.pose.standard, ƒS.positionPercent(20, 48));
     await ƒS.update(3);
+
 
     if(dataForSave.evil <= dataForSave.good){
 
@@ -359,7 +359,6 @@ namespace Template {
     await ƒS.update(10);
 
     }
-
     //ENDE 6
     if(dataForSave.good <= dataForSave.evil){
       await satzbau(characters.Wache2, text.Wache2.T007, true, true, 5, 50, sound.MainNarrator, 3);
