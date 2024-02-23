@@ -32,7 +32,20 @@ Folgende Inhalte wurden von externen Quellen bezogen;
 
 # References
 - [APIs](https://jirkadelloro.github.io/FUDGE_Story/Documentation/Reference/#fudge-story-reference)
-- [Pages-Link](https://jirkadelloro.github.io/FUDGE_Story/Tutorial_WS22/Tutorial_WS22.html)
+- [Pages-Link (JIRKA)](https://jirkadelloro.github.io/FUDGE_Story/Tutorial_WS22/Tutorial_WS22.html)
+
+
+## Wichtige Links im Überblick: 
+[Spielbare Anwendung](https://vs-rev.github.io/VisualNovel/FUDGE_Story-main/Template/Template.html)
+
+[Konzeptdokument](https://github.com/Vs-Rev/VisualNovel/blob/main/Documents/Konzeptionsdatien%20%26%20Brainstorming/Konzeptdokument.pdf)
+
+[Gepacktes Archiv mit sämtlichen relevanten Inhalten](https://www.mediafire.com/file/zwhj3q0pfkwlwpj/Gurev_Vasilii_The+Tale+of+a+Knight.rar/file)
+: Man beachte; Das Archiv konnte nicht auf GitHub hochgeladen werden, da sämtliche Inhalte das Push-Limit von 100MB überschreiten. Daher wurde das Archiv auf Mediafire hochgeladen.
+
+[Link zu dem Ordner mit sämtlichen relevanten Inhalten](https://github.com/Vs-Rev/VisualNovel/tree/main/FUDGE_Story-main/Template)
+: Man beachte; Sämtliche übergeordnete Dateien (FUDGE_Story-main) beinhalten zusätzliche und irrelevante Dateien und wurden aus Referenzzwecken eingebaut.
+
 
 ## Bewertungskriterien
 © Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU  
@@ -58,18 +71,6 @@ Folgende Inhalte wurden von externen Quellen bezogen;
 |  B | Punkteverteilungssystem     | Das Punktesystem wurde in dieser Visual Novel für die Bewertung der Moral von Entscheidungen verwendet. Abhängig von der aktuellen Moralwertung können unterschiedliche Dialogoptionen nicht zur Verfügung stehen, wohingegen andere verfügbar werden.           |
 |  C | Novel-Pages             | _Novel-Pages_ wurden nur begrenzt verwendet. Funktionen der Novel Pages wurden mit selbstständig erstelltem Code in andere Funktionen integriert.                      |
 |  D | Meter-bar             | Die Meter-Bar wurde als Battleprogress eingesetzt. Jedoch hat sie in der vorhandenen Fudge STORY -Version nicht funktioniert und wurde deshalb samt Kämpfen entnommen.
-
-
-## Wichtige Links im Überblick: 
-[Spielbare Anwendung](https://vs-rev.github.io/VisualNovel/FUDGE_Story-main/Template/Template.html)
-
-[Konzeptdokument](https://github.com/Vs-Rev/VisualNovel/blob/main/Documents/Konzeptionsdatien%20%26%20Brainstorming/Konzeptdokument.pdf)
-
-[Gepacktes Archiv mit sämtlichen relevanten Inhalten](https://www.mediafire.com/file/zwhj3q0pfkwlwpj/Gurev_Vasilii_The+Tale+of+a+Knight.rar/file)
-: Man beachte; Das Archiv konnte nicht auf GitHub hochgeladen werden, da sämtliche Inhalte das Push-Limit von 100MB überschreiten. Daher wurde das Archiv auf Mediafire hochgeladen.
-
-[Link zu dem Ordner mit sämtlichen relevanten Inhalten](https://github.com/Vs-Rev/VisualNovel/tree/main/FUDGE_Story-main/Template)
-: Man beachte; Sämtliche übergeordnete Dateien (FUDGE_Story-main) beinhalten zusätzliche und irrelevante Dateien und wurden aus Referenzzwecken eingebaut.
 
 
 ##  Abgabeformat
