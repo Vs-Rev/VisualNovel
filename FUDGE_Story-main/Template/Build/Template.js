@@ -577,12 +577,50 @@ var Template;
             "-------------" + "<br/>" +
             "Die Transitions wurden sowohl aus dem FreeTransitions Ordner verwendet als auch selbst erstellt." +
             "<br/>" +
-            "-------------" + "<br/>" +
-            "Jegliche visuelle Inhalte wie Gegenstände, Charaktere und Hintergründe wurden selbst erstellt." +
+            "Der Großteil der Geräuschkulisse wurde selbst erstellt und zum Teil von Freesound.org mit einer Royalty Free Lizenz verwendet." +
             "<br/>" +
             "-------------" + "<br/>" +
-            "Der Großteil der Geräuschkulisse wurde selbst erstellt und zum Teil von Freesound.org mit einer Royalty Free Lizenz verwendet." +
-            "<br/>");
+            "Musik" + "<br/>" +
+            "*----Vasilii Gurev----*" + "<br/>" +
+            "-------------" + "<br/>" +
+            "Hintergründe" + "<br/>" +
+            "*----Vasilii Gurev----*" + "<br/>" +
+            "-------------" + "<br/>" +
+            "Story" + "<br/>" +
+            "*----Vasilii Gurev----*" + "<br/>" +
+            "-------------" + "<br/>" +
+            "Charaktere" + "<br/>" +
+            "*----Vasilii Gurev----*" + "<br/>" +
+            "Konzept" + "<br/>" +
+            "*----Vasilii Gurev----*" + "<br/>" +
+            "-------------" + "<br/>" + "<br/>" + "<br/>" + "<br/>" +
+            "EXTERNE INHALTE" + "<br/>" + "<br/>" + "<br/>" + "<br/>" +
+            "-------------" + "<br/>" +
+            "Charaktere" + "<br/>" +
+            "*----Nina Distler----*" + "<br/>" +
+            "Wache 1" + "<br/>" +
+            "Wache 2" + "<br/>" +
+            "Königlicher Berater" + "<br/>" +
+            "-------------" + "<br/>" +
+            "Hintergründe" + "<br/>" +
+            "*----DALL·E----*" + "<br/>" +
+            "Wiesen des Friedens" + "<br/>" +
+            "Schloss am Ufer" + "<br/>" +
+            "Wald des Vergessenen" + "<br/>" +
+            "Tor vor dem Schloss" + "<br/>" +
+            "Thornsaal" + "<br/>" +
+            "BILLs Thronsaal" + "<br/>" +
+            "-------------" + "<br/>" +
+            "Inventar" + "<br/>" +
+            "*----DALL·E----*" + "<br/>" +
+            "Kleidung" + "<br/>" +
+            "BILLs Pakt" + "<br/>" +
+            "-------------" + "<br/>" +
+            "SFX" + "<br/>" +
+            "*----Freesound.org----*" + "<br/>" +
+            "Bezogen und bearbeitet mit einer Royalty free Linzenz" + "<br/>" +
+            "-------------" + "<br/>" +
+            "Eine Geschichte inspiriert von UNDERTALE by Toby Fox" + "<br/>");
     }
     Template.showCredits = showCredits;
     function showSteuerung() {
